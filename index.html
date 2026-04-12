@@ -17,6 +17,7 @@
 <meta name="twitter:title" content="PERM Processing Times 2026 — Live DOL Tracker">
 <meta name="twitter:description" content="Real-time PERM labor certification tracking with status breakdowns, monthly trends, and employer filing stats.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ImmiLane PERM Tracker","url":"https://immilane.com","description":"Real-time PERM labor certification processing tracker with DOL case data, status breakdowns, and monthly trends.","applicationCategory":"Government Data Tracker","operatingSystem":"Web","provider":{"@type":"Organization","name":"ImmiLane","url":"https://immilane.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are current PERM processing times in 2026?","acceptedAnswer":{"@type":"Answer","text":"ImmiLane tracks PERM labor certification processing times in real time using DOL FLAG data. Visit immilane.com for live status breakdowns and monthly trends."}},{"@type":"Question","name":"What is the PERM certification rate?","acceptedAnswer":{"@type":"Answer","text":"The PERM certification rate varies by filing month. ImmiLane provides real-time status distribution showing certified, analyst review, denied, RFI, and withdrawn cases."}}]}</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +30,9 @@
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
   .nav-links a.active, .nav-links a:hover { color: #f0f0f8; }
-  .nav-right { display: flex; align-items: center; gap: 12px; }
+  footer { text-align: center; padding: 32px 24px; color: #475569; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 0; }
+  footer a { color: #64748b; text-decoration: none; }
+  footer a:hover { color: #94a3b8; }
   .hero { padding: 40px 0 20px; }
   .hero h1 { font-size: 14px; font-weight: 500; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
   .hero h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; background: linear-gradient(135deg, #f0f0f8, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -116,7 +119,7 @@
 
   /* ── TIMELINE + BACKLOG ── */
   .combo-section { margin: 16px 0; overflow: visible; }
-  .combo-scroll  { overflow-x: auto; overflow-y: visible; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+  .combo-scroll  { overflow-x: auto; overflow-y: visible; padding-bottom: 8px; }
   .combo-grid    { display: flex; gap: 0; min-width: max-content; padding: 56px 8px 0; position: relative; }
   .combo-col     { display: flex; flex-direction: column; align-items: center; min-width: 68px; flex: 1; position: relative; }
 
@@ -167,7 +170,7 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .container { padding: 0 14px; }
     nav {
       padding: 12px 14px;
@@ -234,34 +237,6 @@
 
   @media (max-width: 480px) {
     nav { padding: 10px 10px; }
-    .container { padding: 0 10px; }
-    .logo { font-size: 16px; }
-    .logo-icon { width: 26px; height: 26px; }
-    .nav-links a { font-size: 13px; }
-    .hero h1 { font-size: 12px; }
-    .hero h2 { font-size: 20px; }
-    .update-time { font-size: 13px; }
-    .stats-grid { grid-template-columns: 1fr; }
-    .stat-value { font-size: 28px; }
-    .card { padding: 14px; }
-    .card-title { font-size: 15px; }
-    .card-subtitle { font-size: 12px; }
-    .rate-chart-wrap { height: 200px; }
-    .y-axis { width: 32px; }
-    .y-tick { font-size: 10px; }
-    .bar-label { font-size: 9px; }
-    .combo-grid { min-width: 760px; }
-    .donut-wrap,
-    .donut-svg {
-      width: 160px;
-      height: 160px;
-    }
-    .donut-number { font-size: 18px; }
-    .employer-row { grid-template-columns: 20px 1fr 54px 70px; }
-  }
-  footer { text-align: center; padding: 32px 24px; color: #475569; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 0; }
-  footer a { color: #64748b; text-decoration: none; }
-  footer a:hover { color: #94a3b8; }
 </style>
 </head>
 <body>
@@ -273,7 +248,6 @@
   <ul class="nav-links">
     <li><a href="#" class="active">Dashboard</a></li>
   </ul>
-  <div class="nav-right"></div>
 </nav>
 
 <div class="container">
@@ -346,12 +320,765 @@
 </div>
 
 <script>
+/* ===== DASHBOARD_DATA START ===== */
+window.DASHBOARD_DATA = {
+  "updatedAt": "2026-04-12T12:56:04-04:00",
+  "backlog": {
+    "total": 142903,
+    "startOfMonth": 142903,
+    "thisMonth": {
+      "name": "Apr 2026",
+      "processed": 5050,
+      "intake": 0
+    },
+    "lastMonth": {
+      "name": "Mar 2026",
+      "processed": 888,
+      "intake": 0
+    }
+  },
+  "avgDays": {
+    "current": 503,
+    "deltaFromLastMonth": 2,
+    "certified": 487,
+    "rfi": 612,
+    "denied": 534,
+    "trend90Day": 8
+  },
+  "today": {
+    "total": 99,
+    "certified": 94,
+    "rfi": 0,
+    "denied": 5,
+    "withdrawn": 0,
+    "stillUpdating": false,
+    "yesterday": {
+      "total": 153,
+      "certified": 140,
+      "rfi": 2,
+      "denied": 11,
+      "withdrawn": 0
+    }
+  },
+  "dol": {
+    "label": "Dec '24",
+    "monthFull": "December",
+    "day": 33,
+    "daysInMonth": 100,
+    "estFinish": "May 4",
+    "movementPerWeek": 6.5,
+    "casesRemaining": 6498,
+    "latestLetter": "S",
+    "pctProcessed": 33
+  },
+  "timeline": [
+    {
+      "label": "Nov '24",
+      "total": 10623,
+      "certified": 9030,
+      "review": 336,
+      "withdrawn": 508,
+      "denied": 719,
+      "status": "done"
+    },
+    {
+      "label": "Dec '24",
+      "total": 10512,
+      "certified": 3253,
+      "review": 6498,
+      "withdrawn": 522,
+      "denied": 236,
+      "status": "active",
+      "dolDay": 33,
+      "dolDays": 100
+    },
+    {
+      "label": "Jan '25",
+      "total": 6699,
+      "certified": 21,
+      "review": 6334,
+      "withdrawn": 342,
+      "denied": 1,
+      "status": "pending"
+    },
+    {
+      "label": "Feb '25",
+      "total": 6929,
+      "certified": 13,
+      "review": 6598,
+      "withdrawn": 311,
+      "denied": 4,
+      "status": "pending"
+    },
+    {
+      "label": "Mar '25",
+      "total": 7329,
+      "certified": 24,
+      "review": 6995,
+      "withdrawn": 310,
+      "denied": 0,
+      "status": "pending"
+    },
+    {
+      "label": "Apr '25",
+      "total": 8434,
+      "certified": 20,
+      "review": 8014,
+      "withdrawn": 400,
+      "denied": 0,
+      "status": "pending"
+    },
+    {
+      "label": "May '25",
+      "total": 8960,
+      "certified": 17,
+      "review": 8578,
+      "withdrawn": 361,
+      "denied": 3,
+      "status": "pending"
+    },
+    {
+      "label": "Jun '25",
+      "total": 10922,
+      "certified": 36,
+      "review": 10413,
+      "withdrawn": 472,
+      "denied": 1,
+      "status": "pending"
+    },
+    {
+      "label": "Jul '25",
+      "total": 9779,
+      "certified": 0,
+      "review": 9457,
+      "withdrawn": 313,
+      "denied": 7,
+      "status": "pending"
+    },
+    {
+      "label": "Aug '25",
+      "total": 9946,
+      "certified": 0,
+      "review": 9610,
+      "withdrawn": 316,
+      "denied": 3,
+      "status": "pending"
+    },
+    {
+      "label": "Sep '25",
+      "total": 13643,
+      "certified": 0,
+      "review": 13235,
+      "withdrawn": 380,
+      "denied": 5,
+      "status": "pending"
+    },
+    {
+      "label": "Oct '25",
+      "total": 512,
+      "certified": 0,
+      "review": 489,
+      "withdrawn": 23,
+      "denied": 0,
+      "status": "pending"
+    },
+    {
+      "label": "Nov '25",
+      "total": 15075,
+      "certified": 0,
+      "review": 14644,
+      "withdrawn": 428,
+      "denied": 1,
+      "status": "pending"
+    },
+    {
+      "label": "Dec '25",
+      "total": 15334,
+      "certified": 0,
+      "review": 15009,
+      "withdrawn": 323,
+      "denied": 1,
+      "status": "pending"
+    },
+    {
+      "label": "Jan '26",
+      "total": 11738,
+      "certified": 0,
+      "review": 11503,
+      "withdrawn": 234,
+      "denied": 1,
+      "status": "pending"
+    },
+    {
+      "label": "Feb '26",
+      "total": 5607,
+      "certified": 0,
+      "review": 5482,
+      "withdrawn": 122,
+      "denied": 2,
+      "status": "pending"
+    },
+    {
+      "label": "Mar '26",
+      "total": 7128,
+      "certified": 0,
+      "review": 7008,
+      "withdrawn": 119,
+      "denied": 0,
+      "status": "pending"
+    },
+    {
+      "label": "Apr '26",
+      "total": 2720,
+      "certified": 0,
+      "review": 2700,
+      "withdrawn": 19,
+      "denied": 0,
+      "status": "pending"
+    }
+  ],
+  "rateDays": [
+    {
+      "date": "2026-03-14",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-15",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-16",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-17",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-18",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-19",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-20",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-21",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-22",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-23",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-24",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-25",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-26",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-27",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-28",
+      "total": 13,
+      "certified": 13,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-03-29",
+      "total": 48,
+      "certified": 47,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 1
+    },
+    {
+      "date": "2026-03-30",
+      "total": 644,
+      "certified": 565,
+      "rfi": 28,
+      "denied": 43,
+      "withdrawn": 8
+    },
+    {
+      "date": "2026-03-31",
+      "total": 183,
+      "certified": 151,
+      "rfi": 9,
+      "denied": 23,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-04-01",
+      "total": 992,
+      "certified": 843,
+      "rfi": 55,
+      "denied": 92,
+      "withdrawn": 2
+    },
+    {
+      "date": "2026-04-02",
+      "total": 534,
+      "certified": 498,
+      "rfi": 17,
+      "denied": 19,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-04-03",
+      "total": 481,
+      "certified": 427,
+      "rfi": 7,
+      "denied": 47,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-04-04",
+      "total": 106,
+      "certified": 91,
+      "rfi": 1,
+      "denied": 14,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-04-05",
+      "total": 115,
+      "certified": 104,
+      "rfi": 2,
+      "denied": 9,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-04-06",
+      "total": 590,
+      "certified": 533,
+      "rfi": 28,
+      "denied": 28,
+      "withdrawn": 1
+    },
+    {
+      "date": "2026-04-07",
+      "total": 623,
+      "certified": 546,
+      "rfi": 25,
+      "denied": 51,
+      "withdrawn": 1
+    },
+    {
+      "date": "2026-04-08",
+      "total": 542,
+      "certified": 508,
+      "rfi": 7,
+      "denied": 25,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-04-09",
+      "total": 470,
+      "certified": 425,
+      "rfi": 15,
+      "denied": 30,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-04-10",
+      "total": 345,
+      "certified": 313,
+      "rfi": 11,
+      "denied": 20,
+      "withdrawn": 1
+    },
+    {
+      "date": "2026-04-11",
+      "total": 153,
+      "certified": 140,
+      "rfi": 2,
+      "denied": 11,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-04-12",
+      "total": 99,
+      "certified": 94,
+      "rfi": 0,
+      "denied": 5,
+      "withdrawn": 0
+    }
+  ],
+  "rateWeeks": [
+    {
+      "weekStart": "2026-01-19",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-01-26",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-02-02",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-02-09",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-02-16",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-02-23",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-03-02",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-03-09",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-03-16",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "weekStart": "2026-03-23",
+      "total": 61,
+      "certified": 60,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 1
+    },
+    {
+      "weekStart": "2026-03-30",
+      "total": 3055,
+      "certified": 2679,
+      "rfi": 119,
+      "denied": 247,
+      "withdrawn": 10
+    },
+    {
+      "weekStart": "2026-04-06",
+      "total": 2822,
+      "certified": 2559,
+      "rfi": 88,
+      "denied": 170,
+      "withdrawn": 3,
+      "partial": true
+    }
+  ],
+  "statusDistribution": [
+    {
+      "tabKey": "active",
+      "tabLabel": "Nov",
+      "subtitle": "Nov 2024 filings \u00b7 10,593 total",
+      "certified": 9030,
+      "review": 336,
+      "withdrawn": 508,
+      "rfi": 313,
+      "denied": 406
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Dec",
+      "subtitle": "Dec 2024 filings \u00b7 10,509 total",
+      "certified": 3253,
+      "review": 6498,
+      "withdrawn": 522,
+      "rfi": 66,
+      "denied": 170
+    }
+  ],
+  "employers": [
+    {
+      "tabKey": "active",
+      "tabLabel": "Nov '24",
+      "subtitle": "November 2024 \u00b7 REAL DATA",
+      "list": [
+        {
+          "name": "Cisco Systems, Inc.",
+          "count": 417
+        },
+        {
+          "name": "NVIDIA Corporation",
+          "count": 286
+        },
+        {
+          "name": "CORE TECH INTERNATIONAL CORPORATION",
+          "count": 148
+        },
+        {
+          "name": "Napoli PSC Series LLC",
+          "count": 145
+        },
+        {
+          "name": "Deloitte Consulting LLP",
+          "count": 100
+        },
+        {
+          "name": "Stoughton Trailers, LLC",
+          "count": 95
+        },
+        {
+          "name": "Ernst & Young U.S. LLP",
+          "count": 88
+        },
+        {
+          "name": "FMR LLC",
+          "count": 82
+        },
+        {
+          "name": "Omni Hotels Management Corp.",
+          "count": 72
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 62
+        },
+        {
+          "name": "Carolina QSC Management, LLC",
+          "count": 56
+        },
+        {
+          "name": " Koch Foods of Gadsden, LLC",
+          "count": 53
+        },
+        {
+          "name": "Phase Three Star LLC",
+          "count": 49
+        },
+        {
+          "name": "THE DEVEREUX FOUNDATION",
+          "count": 48
+        },
+        {
+          "name": "RP Restaurant, LLC",
+          "count": 47
+        },
+        {
+          "name": "Salesforce, Inc.",
+          "count": 46
+        },
+        {
+          "name": "ByteDance Inc.",
+          "count": 46
+        },
+        {
+          "name": "LTIMindtree Limited",
+          "count": 43
+        },
+        {
+          "name": "TikTok Inc.",
+          "count": 42
+        },
+        {
+          "name": "JKS&K, Inc.",
+          "count": 42
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Dec '24",
+      "subtitle": "December 2024 \u00b7 REAL DATA",
+      "list": [
+        {
+          "name": "Microsoft Corporation",
+          "count": 176
+        },
+        {
+          "name": "Skilled In Management Co LLC",
+          "count": 139
+        },
+        {
+          "name": "THE BOSTON CONSULTING GROUP, INC. ",
+          "count": 117
+        },
+        {
+          "name": "Stoughton Trailers, LLC",
+          "count": 112
+        },
+        {
+          "name": "FMR LLC",
+          "count": 92
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 86
+        },
+        {
+          "name": "Deloitte Consulting LLP",
+          "count": 79
+        },
+        {
+          "name": "ByteDance Inc.",
+          "count": 78
+        },
+        {
+          "name": "Government Employees Insurance Company (GEICO)",
+          "count": 66
+        },
+        {
+          "name": "Ernst & Young U.S. LLP",
+          "count": 64
+        },
+        {
+          "name": "Wayfair LLC",
+          "count": 59
+        },
+        {
+          "name": "Robison Venture Group, LLC",
+          "count": 55
+        },
+        {
+          "name": "TW Services, Inc",
+          "count": 52
+        },
+        {
+          "name": "Salesforce, Inc.",
+          "count": 51
+        },
+        {
+          "name": "PECO FOODS, INC",
+          "count": 51
+        },
+        {
+          "name": "Fogo de Chao Holdings Inc",
+          "count": 47
+        },
+        {
+          "name": "Delight VA Beach Management, LLC",
+          "count": 46
+        },
+        {
+          "name": "COMPUNNEL SOFTWARE GROUP INC.",
+          "count": 46
+        },
+        {
+          "name": "SPACE COAST SERVICES MANAGEMENT, INC.",
+          "count": 44
+        },
+        {
+          "name": "T-Mobile USA, Inc.",
+          "count": 42
+        }
+      ]
+    }
+  ]
+};
+/* ===== DASHBOARD_DATA END ===== */
 
-// Load data from external JSON and render
-fetch('data/dashboard_data.json?t=' + Date.now())
-  .then(r => r.json())
-  .then(data => {
-    window.DASHBOARD_DATA = data;
 // ═══════════════════════════════════════════════════════
 // HELPERS
 // ═══════════════════════════════════════════════════════
@@ -448,6 +1175,7 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
 // ═══════════════════════════════════════════════════════
 (function renderStatCards() {
   const { backlog, avgDays, today, dol } = D;
+  const dolMonth = D.timeline.find(m => m.status === 'active');
   const netThis = backlog.thisMonth.processed - backlog.thisMonth.intake; // positive = backlog reduced
   const netLast = backlog.lastMonth.processed - backlog.lastMonth.intake;
   // Format net: always show direction explicitly, never double-negate
@@ -521,12 +1249,12 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
         <span class="info-icon">?<span class="tooltip">The filing month DOL is currently reviewing.</span></span>
       </div>
       <div class="stat-value" style="color:#8b5cf6;">${dol.label}</div>
-      <div class="stat-trend trend-neutral">${dol.label} day ${dol.day} — ${prog}% through</div>
+      <div class="stat-trend trend-neutral">${prog}% processed · ${n(dol.casesRemaining)} remaining</div>
       <div class="stat-details">
-        <div class="stat-detail-row"><span class="stat-detail-label">Days into month</span><span class="stat-detail-value">${dol.day} of ${dol.daysInMonth}</span></div>
-        <div class="stat-detail-row"><span class="stat-detail-label">Est. finish</span><span class="stat-detail-value">${dol.estFinish}</span></div>
-        <div class="stat-detail-row"><span class="stat-detail-label">Movement/week</span><span class="stat-detail-value">~${dol.movementPerWeek} days</span></div>
-        <div class="stat-detail-row"><span class="stat-detail-label">Cases remaining</span><span class="stat-detail-value">~${n(dol.casesRemaining)}</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Total cases</span><span class="stat-detail-value">${n(dolMonth ? dolMonth.total : 0)}</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Est. finish</span><span class="stat-detail-value">${dol.estFinish || 'TBD'}</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Movement/week</span><span class="stat-detail-value">~${dol.movementPerWeek || '—'} days</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Cases remaining</span><span class="stat-detail-value" style="color:#f59e0b;">~${n(dol.casesRemaining)}</span></div>
       </div>
     </div>`;
 })();
@@ -689,11 +1417,7 @@ function renderRate(range) {
   document.getElementById('rate-subtitle').textContent = subtitle;
 
   const chartH = 190;
-  const observedBars = bars.filter(b => (b.total || 0) > 0);
-  const avgBase = observedBars.length ? observedBars : bars;
-  const avgVal = avgBase.length
-    ? Math.round(avgBase.reduce((s,b) => s + (b.total || 0), 0) / avgBase.length)
-    : 0;
+  const avgVal = Math.round((() => { const obs = bars.filter(b => b.total > 0); return obs.length ? obs.reduce((s,b) => s+b.total,0) / obs.length : 0; })());
   const avgH   = Math.round(avgVal / niceMax * (chartH-4));
   const avgLabel = range === 'day' ? 'Daily avg: '+n(avgVal) : 'Weekly avg: '+n(avgVal);
   document.getElementById('rate-avg-stat').textContent = avgLabel;
@@ -835,12 +1559,8 @@ function renderEmployers(idx) {
 }
 renderEmployers(0);
 setupTabs('employer-tabs', t => renderEmployers(parseInt(t.dataset.ei)));
-  })
-  .catch(err => {
-    document.querySelector('.hero h2').textContent = 'Error loading data';
-    console.error(err);
-  });
 </script>
+
 <footer>
   Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; &copy; 2026 ImmiLane
 </footer>
