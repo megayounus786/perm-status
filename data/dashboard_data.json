@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-04-12T21:08:21-04:00",
+  "updatedAt": "2026-04-13T00:33:01-04:00",
   "backlog": {
-    "total": 142838,
-    "startOfMonth": 142838,
+    "total": 142870,
+    "startOfMonth": 142870,
     "thisMonth": {
       "name": "Apr 2026",
       "processed": 5115,
@@ -23,17 +23,17 @@
     "trend90Day": 8
   },
   "today": {
-    "total": 164,
-    "certified": 159,
+    "total": 0,
+    "certified": 0,
     "rfi": 0,
-    "denied": 5,
+    "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 153,
-      "certified": 140,
-      "rfi": 2,
-      "denied": 11,
+      "total": 164,
+      "certified": 159,
+      "rfi": 0,
+      "denied": 5,
       "withdrawn": 0
     }
   },
@@ -42,8 +42,8 @@
     "monthFull": "December",
     "day": 34,
     "daysInMonth": 100,
-    "estFinish": "May 4",
-    "movementPerWeek": 6.5,
+    "estFinish": "May 5",
+    "movementPerWeek": 6.4,
     "casesRemaining": 6433,
     "latestLetter": "U",
     "pctProcessed": 34
@@ -206,23 +206,15 @@
     },
     {
       "label": "Apr '26",
-      "total": 2720,
+      "total": 2752,
       "certified": 0,
-      "review": 2700,
+      "review": 2732,
       "withdrawn": 19,
       "denied": 0,
       "status": "pending"
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-03-14",
-      "total": 0,
-      "certified": 0,
-      "rfi": 0,
-      "denied": 0,
-      "withdrawn": 0
-    },
     {
       "date": "2026-03-15",
       "total": 0,
@@ -454,17 +446,17 @@
       "rfi": 0,
       "denied": 5,
       "withdrawn": 0
-    }
-  ],
-  "rateWeeks": [
+    },
     {
-      "weekStart": "2026-01-19",
+      "date": "2026-04-13",
       "total": 0,
       "certified": 0,
       "rfi": 0,
       "denied": 0,
       "withdrawn": 0
-    },
+    }
+  ],
+  "rateWeeks": [
     {
       "weekStart": "2026-01-26",
       "total": 0,
@@ -551,7 +543,15 @@
       "certified": 2624,
       "rfi": 88,
       "denied": 170,
-      "withdrawn": 3,
+      "withdrawn": 3
+    },
+    {
+      "weekStart": "2026-04-13",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0,
       "partial": true
     }
   ],
