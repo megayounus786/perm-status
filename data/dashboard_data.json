@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-04-22T12:02:29-04:00",
+  "updatedAt": "2026-04-22T15:10:08-04:00",
   "backlog": {
-    "total": 140130,
-    "startOfMonth": 140130,
+    "total": 139670,
+    "startOfMonth": 139670,
     "thisMonth": {
       "name": "Apr 2026",
-      "processed": 10228,
+      "processed": 10688,
       "intake": 5139
     },
     "lastMonth": {
@@ -15,19 +15,19 @@
     }
   },
   "avgDays": {
-    "current": 489,
+    "current": 488,
     "deltaFromLastMonth": 0,
-    "certified": 488,
+    "certified": 487,
     "rfi": 492,
     "denied": 496,
     "trend90Day": 0
   },
   "today": {
-    "total": 59,
-    "certified": 52,
-    "rfi": 1,
-    "denied": 6,
-    "withdrawn": 0,
+    "total": 519,
+    "certified": 481,
+    "rfi": 2,
+    "denied": 10,
+    "withdrawn": 26,
     "stillUpdating": false,
     "yesterday": {
       "total": 528,
@@ -38,45 +38,45 @@
     }
   },
   "dol": {
-    "label": "Dec '24",
-    "monthFull": "December",
-    "day": 81,
+    "label": "Jan '25",
+    "monthFull": "January",
+    "day": 6,
     "daysInMonth": 100,
-    "estFinish": "Apr 27",
-    "movementPerWeek": 8.4,
-    "casesRemaining": 1471,
-    "latestLetter": "V",
-    "pctProcessed": 81
+    "estFinish": "May 9",
+    "movementPerWeek": 12.4,
+    "casesRemaining": 5948,
+    "latestLetter": "Z",
+    "pctProcessed": 6
   },
   "timeline": [
     {
       "label": "Nov '24",
       "total": 10623,
       "certified": 9078,
-      "review": 185,
+      "review": 183,
       "withdrawn": 508,
-      "denied": 822,
+      "denied": 824,
       "status": "done"
     },
     {
       "label": "Dec '24",
       "total": 10512,
-      "certified": 7904,
-      "review": 1471,
+      "certified": 7974,
+      "review": 1399,
       "withdrawn": 524,
-      "denied": 610,
-      "status": "active",
-      "dolDay": 81,
-      "dolDays": 100
+      "denied": 612,
+      "status": "done"
     },
     {
       "label": "Jan '25",
       "total": 6699,
-      "certified": 21,
-      "review": 6334,
-      "withdrawn": 342,
-      "denied": 1,
-      "status": "pending"
+      "certified": 380,
+      "review": 5948,
+      "withdrawn": 368,
+      "denied": 2,
+      "status": "active",
+      "dolDay": 6,
+      "dolDays": 100
     },
     {
       "label": "Feb '25",
@@ -449,11 +449,11 @@
     },
     {
       "date": "2026-04-22",
-      "total": 59,
-      "certified": 52,
-      "rfi": 1,
-      "denied": 6,
-      "withdrawn": 0
+      "total": 519,
+      "certified": 481,
+      "rfi": 2,
+      "denied": 10,
+      "withdrawn": 26
     }
   ],
   "rateWeeks": [
@@ -547,126 +547,39 @@
     },
     {
       "weekStart": "2026-04-20",
-      "total": 1064,
-      "certified": 999,
-      "rfi": 28,
-      "denied": 36,
-      "withdrawn": 1,
+      "total": 1524,
+      "certified": 1428,
+      "rfi": 29,
+      "denied": 40,
+      "withdrawn": 27,
       "partial": true
     }
   ],
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Nov",
-      "subtitle": "November 2024 filings \u00b7 10,593 total",
-      "certified": 9078,
-      "review": 185,
-      "withdrawn": 508,
-      "rfi": 320,
-      "denied": 502
+      "tabLabel": "Dec",
+      "subtitle": "December 2024 filings \u00b7 10,509 total",
+      "certified": 7974,
+      "review": 1399,
+      "withdrawn": 524,
+      "rfi": 232,
+      "denied": 380
     },
     {
       "tabKey": "next",
-      "tabLabel": "Dec",
-      "subtitle": "December 2024 filings \u00b7 10,509 total",
-      "certified": 7904,
-      "review": 1471,
-      "withdrawn": 524,
-      "rfi": 232,
-      "denied": 378
+      "tabLabel": "Jan",
+      "subtitle": "January 2025 filings \u00b7 6,698 total",
+      "certified": 380,
+      "review": 5948,
+      "withdrawn": 368,
+      "rfi": 1,
+      "denied": 1
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Nov '24",
-      "subtitle": "November 2024 \u00b7 REAL DATA",
-      "list": [
-        {
-          "name": "Cisco Systems, Inc.",
-          "count": 417
-        },
-        {
-          "name": "NVIDIA Corporation",
-          "count": 286
-        },
-        {
-          "name": "CORE TECH INTERNATIONAL CORPORATION",
-          "count": 148
-        },
-        {
-          "name": "Napoli PSC Series LLC",
-          "count": 145
-        },
-        {
-          "name": "Deloitte Consulting LLP",
-          "count": 100
-        },
-        {
-          "name": "Stoughton Trailers, LLC",
-          "count": 95
-        },
-        {
-          "name": "Ernst & Young U.S. LLP",
-          "count": 88
-        },
-        {
-          "name": "FMR LLC",
-          "count": 82
-        },
-        {
-          "name": "Omni Hotels Management Corp.",
-          "count": 72
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 62
-        },
-        {
-          "name": "Carolina QSC Management, LLC",
-          "count": 56
-        },
-        {
-          "name": " Koch Foods of Gadsden, LLC",
-          "count": 53
-        },
-        {
-          "name": "Phase Three Star LLC",
-          "count": 49
-        },
-        {
-          "name": "THE DEVEREUX FOUNDATION",
-          "count": 48
-        },
-        {
-          "name": "RP Restaurant, LLC",
-          "count": 47
-        },
-        {
-          "name": "Salesforce, Inc.",
-          "count": 46
-        },
-        {
-          "name": "ByteDance Inc.",
-          "count": 46
-        },
-        {
-          "name": "LTIMindtree Limited",
-          "count": 43
-        },
-        {
-          "name": "TikTok Inc.",
-          "count": 42
-        },
-        {
-          "name": "JKS&K, Inc.",
-          "count": 42
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Dec '24",
       "subtitle": "December 2024 \u00b7 REAL DATA",
       "list": [
@@ -749,6 +662,93 @@
         {
           "name": "T-Mobile USA, Inc.",
           "count": 42
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Jan '25",
+      "subtitle": "January 2025 \u00b7 REAL DATA",
+      "list": [
+        {
+          "name": "Management Health Systems, LLC",
+          "count": 130
+        },
+        {
+          "name": "Microsoft Corporation",
+          "count": 106
+        },
+        {
+          "name": "Dakota Provisions LLC",
+          "count": 99
+        },
+        {
+          "name": "JCG Foods of Georgia, LLC",
+          "count": 97
+        },
+        {
+          "name": "FH Miami Operations LLC",
+          "count": 76
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 58
+        },
+        {
+          "name": "Case Farms Processing, Inc",
+          "count": 51
+        },
+        {
+          "name": "Salesforce, Inc.",
+          "count": 49
+        },
+        {
+          "name": "Deloitte Consulting LLP",
+          "count": 47
+        },
+        {
+          "name": "Ernst & Young U.S. LLP",
+          "count": 45
+        },
+        {
+          "name": "WAL-MART ASSOCIATES, INC.",
+          "count": 44
+        },
+        {
+          "name": "TW Services, Inc",
+          "count": 43
+        },
+        {
+          "name": "LinkedIn Corporation",
+          "count": 37
+        },
+        {
+          "name": "FMR LLC",
+          "count": 33
+        },
+        {
+          "name": "America West Medical Transportation Inc.",
+          "count": 30
+        },
+        {
+          "name": "Intel Corporation",
+          "count": 29
+        },
+        {
+          "name": "Rotolo Consultants, INC.",
+          "count": 28
+        },
+        {
+          "name": "MCKINSEY & COMPANY, INC. UNITED STATES",
+          "count": 28
+        },
+        {
+          "name": "Loyet Landscape Maintenance, Inc.",
+          "count": 27
+        },
+        {
+          "name": "Labor Guys, LLC",
+          "count": 27
         }
       ]
     }
