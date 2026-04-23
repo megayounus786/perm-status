@@ -20,8 +20,10 @@
 <meta name="twitter:description" content="Real-time PERM labor certification tracking with status breakdowns, monthly trends, and employer filing stats.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ImmiLane PERM Tracker","url":"https://immilane.com","description":"Real-time PERM labor certification processing tracker with DOL case data, status breakdowns, and monthly trends.","applicationCategory":"Government Data Tracker","operatingSystem":"Web","provider":{"@type":"Organization","name":"ImmiLane","url":"https://immilane.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are current PERM processing times in 2026?","acceptedAnswer":{"@type":"Answer","text":"ImmiLane tracks PERM labor certification processing times in real time using DOL FLAG data. Visit immilane.com for live status breakdowns and monthly trends."}},{"@type":"Question","name":"What is the PERM certification rate?","acceptedAnswer":{"@type":"Answer","text":"The PERM certification rate varies by filing month. ImmiLane provides real-time status distribution showing certified, analyst review, denied, RFI, and withdrawn cases."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a12; color: #f0f0f8; min-height: 100vh; overflow-x: hidden; }
   body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, rgba(59,130,246,0.08) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(139,92,246,0.06) 0%, transparent 50%); z-index: 0; }
@@ -239,9 +241,26 @@
 
   @media (max-width: 480px) {
     nav { padding: 10px 10px; }
+    .hero h2 { font-size: 20px; }
+    .stat-value { font-size: 26px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 10px; }
+    .stat-card { padding: 16px 14px; }
+    .card { padding: 14px; }
+    .donut-wrap, .donut-svg { width: 140px; height: 140px; }
+    .legend-item { font-size: 12px; }
+    .employer-grid { grid-template-columns: 1fr; }
+    .combo-col { min-width: 56px; }
+  }
 </style>
 </head>
 <body>
+
+<noscript>
+  <div style="padding:40px 20px;text-align:center;color:#f0f0f8;background:#0a0a12;min-height:100vh;font-family:sans-serif;">
+    <h1 style="margin-bottom:16px;">ImmiLane PERM Tracker</h1>
+    <p>This dashboard requires JavaScript to display real-time PERM processing data. Please enable JavaScript in your browser settings and reload the page.</p>
+  </div>
+</noscript>
 
 <div id="gtip"></div>
 
@@ -1086,16 +1105,20 @@ window.DASHBOARD_DATA = {
 // ═══════════════════════════════════════════════════════
 const D = window.DASHBOARD_DATA;
 
+function esc(s) { var d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
 function n(v)  { return v.toLocaleString(); }
 function pct(a,b) { return b ? Math.round(a/b*100) : 0; }
 
 // Compute "last 12 months excluding current month" range string from an ISO timestamp
 // e.g. updatedAt = "2026-03-30..." → "Apr 2025 – Feb 2026"
 function last12MonthsRange(updatedAtIso) {
-  const ref = new Date(updatedAtIso);
+  // Parse local month/year directly from the ISO string to avoid UTC offset bugs
+  const parts = updatedAtIso.match(/^(\d{4})-(\d{2})/);
+  const refYear = parseInt(parts[1], 10);
+  const refMonth = parseInt(parts[2], 10); // 1-indexed
   // End = month before current month
-  const endYear  = ref.getUTCMonth() === 0 ? ref.getUTCFullYear()-1 : ref.getUTCFullYear();
-  const endMonth = ref.getUTCMonth() === 0 ? 12 : ref.getUTCMonth(); // 1-indexed
+  const endYear  = refMonth === 1 ? refYear - 1 : refYear;
+  const endMonth = refMonth === 1 ? 12 : refMonth - 1; // 1-indexed
   // Start = 11 months before end
   let startMonth = endMonth - 11; let startYear = endYear;
   if (startMonth <= 0) { startMonth += 12; startYear--; }
@@ -1350,6 +1373,7 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
 
   // DOL marker
   requestAnimationFrame(() => {
+    if (ai === -1) return;
     const cols = el.querySelectorAll('.combo-col');
     const aC = cols[ai], nC = cols[ai+1];
     if (!aC) return;
@@ -1388,6 +1412,7 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
       '</div>';
     el.appendChild(mk);
     requestAnimationFrame(() => {
+    if (ai === -1) return;
       const rw = mk.querySelector('.dol-radar-wrap');
       const dotCenter = rw.offsetTop + rw.offsetHeight/2;
       mk.style.left = dolX+'px';
@@ -1547,13 +1572,14 @@ setupTabs('status-tabs', t => renderDonut(parseInt(t.dataset.si)));
 
 function renderEmployers(idx) {
   const emp = D.employers[idx]; if (!emp) return;
+  if (!emp.list.length) return;
   const max = emp.list[0].count;
   const empSubtitle = emp.tabKey === '1y' ? 'Last 12 months: '+last12MonthsRange(D.updatedAt) : emp.subtitle;
   document.getElementById('employer-subtitle').textContent = empSubtitle;
   document.getElementById('employer-list').innerHTML = emp.list.map((e,i) =>
     '<div class="employer-row">'+
       '<span class="employer-rank">'+(i+1)+'</span>'+
-      '<span class="employer-name">'+e.name+'</span>'+
+      '<span class="employer-name">'+esc(e.name)+'</span>'+
       '<span class="employer-count">'+n(e.count)+'</span>'+
       '<div class="employer-bar"><div class="employer-bar-fill" style="width:'+Math.round(e.count/max*100)+'%;"></div></div>'+
     '</div>'
