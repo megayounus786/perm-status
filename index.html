@@ -251,6 +251,55 @@
     .employer-grid { grid-template-columns: 1fr; }
     .combo-col { min-width: 56px; }
   }
+
+  /* ── ESTIMATE TAB ── */
+  .estimate-card { max-width: 640px; margin: 0 auto 24px; }
+  .est-subtabs { display: flex; gap: 4px; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 3px; margin-bottom: 20px; }
+  .est-subtab { flex: 1; padding: 10px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; color: #64748b; cursor: pointer; border: none; background: none; transition: all 0.2s; text-align: center; }
+  .est-subtab:hover { color: #94a3b8; }
+  .est-subtab.active { background: rgba(255,255,255,0.1); color: #f0f0f8; }
+  .est-input-group { margin-bottom: 16px; }
+  .est-input-group label { display: block; font-size: 12px; color: #94a3b8; font-weight: 500; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .est-input { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #f0f0f8; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.2s; }
+  .est-input:focus { border-color: #3b82f6; }
+  .est-input::placeholder { color: #475569; }
+  .est-btn { width: 100%; padding: 14px; border: none; border-radius: 10px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: opacity 0.2s, transform 0.1s; font-family: inherit; }
+  .est-btn:hover { opacity: 0.9; }
+  .est-btn:active { transform: scale(0.98); }
+  .est-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .est-spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 8px; }
+  .est-error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px; color: #fca5a5; font-size: 13px; margin-top: 16px; }
+
+  .est-result { margin-top: 24px; }
+  .est-result-hero { text-align: center; padding: 28px 0 20px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 20px; }
+  .est-result-label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .est-result-date { font-size: 32px; font-weight: 800; letter-spacing: -1px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .est-result-days { font-size: 14px; color: #94a3b8; margin-top: 4px; font-weight: 500; }
+
+  .est-confidence { margin: 20px 0; }
+  .est-conf-bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; position: relative; overflow: hidden; }
+  .est-conf-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); transition: width 0.6s ease; }
+  .est-conf-labels { display: flex; justify-content: space-between; font-size: 11px; color: #64748b; margin-top: 6px; }
+
+  .est-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .est-stat { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 14px 16px; }
+  .est-stat-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .est-stat-value { font-size: 18px; font-weight: 700; color: #f0f0f8; }
+  .est-stat-value.accent { color: #3b82f6; }
+  .est-stat-value.warning { color: #f59e0b; }
+  .est-stat-value.success { color: #22c55e; }
+
+  .est-case-info { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+  .est-case-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; }
+  .est-case-label { color: #64748b; }
+  .est-case-value { color: #f0f0f8; font-weight: 500; }
+  .est-case-status { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+
+  @media (max-width: 480px) {
+    .est-result-date { font-size: 26px; }
+    .est-stats { grid-template-columns: 1fr; }
+    .est-subtabs { flex-direction: column; }
+  }
 </style>
 </head>
 <body>
@@ -267,7 +316,8 @@
 <nav>
   <div class="logo"><div class="logo-icon">🏛️</div>PERM Tracker</div>
   <ul class="nav-links">
-    <li><a href="#" class="active">Dashboard</a></li>
+    <li><a href="#dashboard" id="nav-dashboard" class="active">Dashboard</a></li>
+    <li><a href="#estimate" id="nav-estimate">Estimate</a></li>
   </ul>
 </nav>
 
@@ -337,6 +387,41 @@
       </div>
       <div class="employer-grid" id="employer-list"></div>
     </div>
+  </div>
+</div>
+
+<!-- ═══ ESTIMATE TAB ═══ -->
+<div id="estimate-section" class="container" style="display:none; padding-bottom: 40px;">
+  <div class="hero">
+    <h1>PERM Timeline Estimator</h1>
+    <h2>Estimate Your Case Processing Date</h2>
+    <p class="update-time"><span class="dot"></span>Based on live DOL processing data</p>
+  </div>
+
+  <div class="card estimate-card">
+    <div class="est-subtabs">
+      <button class="est-subtab active" id="est-tab-case">By Case Number</button>
+      <button class="est-subtab" id="est-tab-date">By Filing Date</button>
+    </div>
+
+    <div id="est-form-case">
+      <div class="est-input-group">
+        <label for="est-case-input">Case Number</label>
+        <input type="text" id="est-case-input" class="est-input" placeholder="G-100-XXXXX-XXXXXX" maxlength="20" autocomplete="off" spellcheck="false">
+      </div>
+      <button class="est-btn" id="est-btn-case">Estimate Timeline</button>
+    </div>
+
+    <div id="est-form-date" style="display:none;">
+      <div class="est-input-group">
+        <label for="est-date-input">Filing Date</label>
+        <input type="date" id="est-date-input" class="est-input" min="2024-11-01">
+      </div>
+      <button class="est-btn" id="est-btn-date">Estimate Timeline</button>
+    </div>
+
+    <div id="est-error" class="est-error" style="display:none;"></div>
+    <div id="est-result" class="est-result" style="display:none;"></div>
   </div>
 </div>
 
@@ -1587,6 +1672,221 @@ function renderEmployers(idx) {
 }
 renderEmployers(0);
 setupTabs('employer-tabs', t => renderEmployers(parseInt(t.dataset.ei)));
+
+// ═══════════════════════════════════════════════════════
+// ESTIMATE TAB
+// ═══════════════════════════════════════════════════════
+const API_BASE = 'https://api.immilane.com';
+
+(function initEstimate() {
+  const dashboardEl = document.querySelector('.container');
+  const estimateEl  = document.getElementById('estimate-section');
+  const navDash     = document.getElementById('nav-dashboard');
+  const navEst      = document.getElementById('nav-estimate');
+
+  function showDashboard() {
+    dashboardEl.style.display = '';
+    estimateEl.style.display  = 'none';
+    navDash.classList.add('active');
+    navEst.classList.remove('active');
+  }
+  function showEstimate() {
+    dashboardEl.style.display = 'none';
+    estimateEl.style.display  = '';
+    navEst.classList.add('active');
+    navDash.classList.remove('active');
+  }
+
+  navDash.addEventListener('click', e => { e.preventDefault(); showDashboard(); });
+  navEst.addEventListener('click',  e => { e.preventDefault(); showEstimate(); });
+
+  // Sub-tabs
+  const tabCase = document.getElementById('est-tab-case');
+  const tabDate = document.getElementById('est-tab-date');
+  const formCase = document.getElementById('est-form-case');
+  const formDate = document.getElementById('est-form-date');
+
+  tabCase.addEventListener('click', () => {
+    tabCase.classList.add('active'); tabDate.classList.remove('active');
+    formCase.style.display = ''; formDate.style.display = 'none';
+    clearEstResult();
+  });
+  tabDate.addEventListener('click', () => {
+    tabDate.classList.add('active'); tabCase.classList.remove('active');
+    formDate.style.display = ''; formCase.style.display = 'none';
+    clearEstResult();
+  });
+
+  // Set max date on date input
+  document.getElementById('est-date-input').max = new Date().toISOString().split('T')[0];
+
+  const errorEl  = document.getElementById('est-error');
+  const resultEl = document.getElementById('est-result');
+
+  function clearEstResult() { errorEl.style.display = 'none'; resultEl.style.display = 'none'; }
+
+  function showEstError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = '';
+    resultEl.style.display = 'none';
+  }
+
+  function setLoading(btn, loading) {
+    if (loading) {
+      btn.disabled = true;
+      btn.innerHTML = '<span class="est-spinner"></span>Estimating…';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Estimate Timeline';
+    }
+  }
+
+  function fmtEstDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso + 'T12:00:00Z');
+    const mo = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return mo[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+
+  function fmtShortDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso + 'T12:00:00Z');
+    const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return mo[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+
+  function statusColor(s) {
+    if (s === 'CERTIFIED') return { bg:'rgba(34,197,94,0.15)', color:'#22c55e' };
+    if (s === 'DENIED')    return { bg:'rgba(239,68,68,0.15)', color:'#ef4444' };
+    if (s === 'RFI ISSUED') return { bg:'rgba(245,158,11,0.15)', color:'#f59e0b' };
+    if (s === 'ANALYST REVIEW') return { bg:'rgba(59,130,246,0.15)', color:'#3b82f6' };
+    return { bg:'rgba(100,116,139,0.15)', color:'#94a3b8' };
+  }
+
+  function renderEstResult(data, isLookup) {
+    clearEstResult();
+    let html = '';
+
+    if (isLookup) {
+      const sc = statusColor(data.current_status);
+      html += '<div class="est-case-info">';
+      html += '<div class="est-case-row"><span class="est-case-label">Case Number</span><span class="est-case-value">' + esc(data.case_number) + '</span></div>';
+      html += '<div class="est-case-row"><span class="est-case-label">Employer</span><span class="est-case-value">' + esc(data.employer) + '</span></div>';
+      html += '<div class="est-case-row"><span class="est-case-label">Filed</span><span class="est-case-value">' + fmtShortDate(data.submitted_date.substring(0,10)) + '</span></div>';
+      html += '<div class="est-case-row"><span class="est-case-label">Status</span><span class="est-case-status" style="background:' + sc.bg + ';color:' + sc.color + ';">' + esc(data.current_status) + '</span></div>';
+      html += '</div>';
+
+      if (data.current_status !== 'ANALYST REVIEW') {
+        html += '<div style="text-align:center;padding:20px 0;color:#94a3b8;font-size:14px;">This case has already been processed — no estimate needed.</div>';
+        resultEl.innerHTML = html;
+        resultEl.style.display = '';
+        return;
+      }
+    }
+
+    const est = isLookup ? data.estimate : data;
+
+    if (est.already_in_range) {
+      html += '<div style="text-align:center;padding:20px 0;">';
+      html += '<div style="font-size:14px;color:#f59e0b;font-weight:600;margin-bottom:8px;">DOL has already passed this filing month</div>';
+      html += '<div style="font-size:13px;color:#94a3b8;">Your case should be processed very soon, or may require additional review.</div>';
+      html += '<div class="est-stats" style="margin-top:16px;">';
+      html += '<div class="est-stat"><div class="est-stat-label">DOL Position</div><div class="est-stat-value warning">' + esc(est.dol_current) + '</div></div>';
+      html += '<div class="est-stat"><div class="est-stat-label">Filing Month</div><div class="est-stat-value">' + esc(est.filing_month) + '</div></div>';
+      html += '</div></div>';
+      resultEl.innerHTML = html;
+      resultEl.style.display = '';
+      return;
+    }
+
+    if (!est.estimated_date) {
+      html += '<div style="text-align:center;padding:20px 0;color:#94a3b8;font-size:14px;">Unable to calculate estimate — insufficient processing data.</div>';
+      resultEl.innerHTML = html;
+      resultEl.style.display = '';
+      return;
+    }
+
+    // Hero date
+    html += '<div class="est-result-hero">';
+    html += '<div class="est-result-label">Estimated Completion</div>';
+    html += '<div class="est-result-date">' + fmtEstDate(est.estimated_date) + '</div>';
+    html += '<div class="est-result-days">~' + n(est.days_remaining) + ' days remaining</div>';
+    html += '</div>';
+
+    // Confidence range
+    var totalRange = est.days_remaining * 0.3;
+    var lowDays = Math.round(est.days_remaining * 0.85);
+    var highDays = Math.round(est.days_remaining * 1.15);
+    var midPct = totalRange > 0 ? Math.round((est.days_remaining - lowDays) / (highDays - lowDays) * 100) : 50;
+
+    html += '<div class="est-confidence">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">';
+    html += '<span style="font-size:12px;color:#64748b;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;">Confidence Range</span>';
+    html += '</div>';
+    html += '<div class="est-conf-bar-track"><div class="est-conf-bar-fill" style="width:' + midPct + '%;"></div></div>';
+    html += '<div class="est-conf-labels"><span>' + fmtShortDate(est.confidence_low) + '</span><span style="color:#94a3b8;font-weight:600;">' + fmtShortDate(est.estimated_date) + '</span><span>' + fmtShortDate(est.confidence_high) + '</span></div>';
+    html += '</div>';
+
+    // Stats grid
+    html += '<div class="est-stats">';
+    html += '<div class="est-stat"><div class="est-stat-label">Filing Month</div><div class="est-stat-value">' + esc(est.filing_month) + '</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">DOL Position</div><div class="est-stat-value warning">' + esc(est.dol_current) + '</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Months Ahead</div><div class="est-stat-value accent">' + est.months_ahead + '</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Cases in Queue</div><div class="est-stat-value">' + n(est.cases_ahead) + '</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Processing Speed</div><div class="est-stat-value success">' + n(est.processing_speed_per_week) + '/wk</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Days Remaining</div><div class="est-stat-value accent">~' + n(est.days_remaining) + '</div></div>';
+    html += '</div>';
+
+    resultEl.innerHTML = html;
+    resultEl.style.display = '';
+  }
+
+  async function fetchEstimate(url, btn, isLookup) {
+    setLoading(btn, true);
+    clearEstResult();
+    try {
+      const resp = await fetch(url);
+      const data = await resp.json();
+      if (!resp.ok) { showEstError(data.error || 'Request failed'); return; }
+      renderEstResult(data, isLookup);
+    } catch (err) {
+      showEstError('Unable to reach the estimate API. Please try again later.');
+    } finally {
+      setLoading(btn, false);
+    }
+  }
+
+  // Case lookup
+  const btnCase = document.getElementById('est-btn-case');
+  const inputCase = document.getElementById('est-case-input');
+  btnCase.addEventListener('click', () => {
+    const val = inputCase.value.trim().toUpperCase();
+    if (!/^G-\d{3}-\d{5}-\d{6}$/.test(val)) {
+      showEstError('Invalid case number format. Expected: G-100-XXXXX-XXXXXX');
+      return;
+    }
+    fetchEstimate(API_BASE + '/api/lookup?case=' + encodeURIComponent(val), btnCase, true);
+  });
+  inputCase.addEventListener('keydown', e => { if (e.key === 'Enter') btnCase.click(); });
+
+  // Date estimate
+  const btnDate = document.getElementById('est-btn-date');
+  const inputDate = document.getElementById('est-date-input');
+  btnDate.addEventListener('click', () => {
+    const val = inputDate.value;
+    if (!val) { showEstError('Please select a filing date.'); return; }
+    fetchEstimate(API_BASE + '/api/estimate?date=' + encodeURIComponent(val), btnDate, false);
+  });
+  inputDate.addEventListener('keydown', e => { if (e.key === 'Enter') btnDate.click(); });
+
+  // Handle hash navigation
+  function checkHash() {
+    if (location.hash === '#estimate') showEstimate();
+    else showDashboard();
+  }
+  window.addEventListener('hashchange', checkHash);
+  if (location.hash === '#estimate') showEstimate();
+})();
 </script>
 
 <footer>
