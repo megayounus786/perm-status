@@ -1686,11 +1686,13 @@ const API_BASE = 'https://api.immilane.com';
     tabCase.classList.add('active'); tabDate.classList.remove('active');
     formCase.style.display = ''; formDate.style.display = 'none';
     clearEstResult();
+    gtag('event', 'estimate_tab_switch', { method: 'case_number' });
   });
   tabDate.addEventListener('click', () => {
     tabDate.classList.add('active'); tabCase.classList.remove('active');
     formDate.style.display = ''; formCase.style.display = 'none';
     clearEstResult();
+    gtag('event', 'estimate_tab_switch', { method: 'filing_date' });
   });
 
   document.getElementById('est-date-input').max = new Date().toISOString().split('T')[0];
@@ -1820,6 +1822,7 @@ const API_BASE = 'https://api.immilane.com';
       const resp = await fetch(url);
       const data = await resp.json();
       if (!resp.ok) { showEstError(data.error || 'Request failed'); return; }
+      gtag('event', 'estimate_result', { method: isLookup ? 'case_number' : 'filing_date' });
       renderEstResult(data, isLookup);
     } catch (err) {
       showEstError('Unable to reach the estimate API. Please try again later.');
@@ -1836,6 +1839,7 @@ const API_BASE = 'https://api.immilane.com';
       showEstError('Invalid case number format. Expected: G-100-XXXXX-XXXXXX');
       return;
     }
+    gtag('event', 'estimate_submit', { method: 'case_number' });
     fetchEstimate(API_BASE + '/api/lookup?case=' + encodeURIComponent(val), btnCase, true);
   });
   inputCase.addEventListener('keydown', e => { if (e.key === 'Enter') btnCase.click(); });
@@ -1845,6 +1849,7 @@ const API_BASE = 'https://api.immilane.com';
   btnDate.addEventListener('click', () => {
     const val = inputDate.value;
     if (!val) { showEstError('Please select a filing date.'); return; }
+    gtag('event', 'estimate_submit', { method: 'filing_date' });
     fetchEstimate(API_BASE + '/api/estimate?date=' + encodeURIComponent(val), btnDate, false);
   });
   inputDate.addEventListener('keydown', e => { if (e.key === 'Enter') btnDate.click(); });
