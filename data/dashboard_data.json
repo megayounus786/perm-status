@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-04-23T03:09:18-04:00",
+  "updatedAt": "2026-04-23T06:10:16-04:00",
   "backlog": {
-    "total": 139820,
-    "startOfMonth": 139820,
+    "total": 139813,
+    "startOfMonth": 139813,
     "thisMonth": {
       "name": "Apr 2026",
-      "processed": 10887,
+      "processed": 10894,
       "intake": 5492
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 27,
-    "certified": 18,
+    "total": 34,
+    "certified": 25,
     "rfi": 1,
     "denied": 8,
     "withdrawn": 0,
@@ -61,8 +61,8 @@
     {
       "label": "Dec '24",
       "total": 10512,
-      "certified": 8012,
-      "review": 1342,
+      "certified": 8019,
+      "review": 1335,
       "withdrawn": 524,
       "denied": 631,
       "status": "done"
@@ -449,8 +449,8 @@
     },
     {
       "date": "2026-04-23",
-      "total": 27,
-      "certified": 18,
+      "total": 34,
+      "certified": 25,
       "rfi": 1,
       "denied": 8,
       "withdrawn": 0
@@ -547,8 +547,8 @@
     },
     {
       "weekStart": "2026-04-20",
-      "total": 1723,
-      "certified": 1603,
+      "total": 1730,
+      "certified": 1610,
       "rfi": 32,
       "denied": 60,
       "withdrawn": 28,
@@ -560,8 +560,8 @@
       "tabKey": "active",
       "tabLabel": "Dec",
       "subtitle": "December 2024 filings \u00b7 10,509 total",
-      "certified": 8012,
-      "review": 1342,
+      "certified": 8019,
+      "review": 1335,
       "withdrawn": 524,
       "rfi": 234,
       "denied": 397
