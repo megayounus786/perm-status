@@ -20,8 +20,6 @@
 <meta name="twitter:description" content="Real-time PERM labor certification tracking with status breakdowns, monthly trends, and employer filing stats.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ImmiLane PERM Tracker","url":"https://immilane.com","description":"Real-time PERM labor certification processing tracker with DOL case data, status breakdowns, and monthly trends.","applicationCategory":"Government Data Tracker","operatingSystem":"Web","provider":{"@type":"Organization","name":"ImmiLane","url":"https://immilane.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are current PERM processing times in 2026?","acceptedAnswer":{"@type":"Answer","text":"ImmiLane tracks PERM labor certification processing times in real time using DOL FLAG data. Visit immilane.com for live status breakdowns and monthly trends."}},{"@type":"Question","name":"What is the PERM certification rate?","acceptedAnswer":{"@type":"Answer","text":"The PERM certification rate varies by filing month. ImmiLane provides real-time status distribution showing certified, analyst review, denied, RFI, and withdrawn cases."}}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
@@ -110,7 +108,7 @@
   .bar-label { font-size: 8px; color: #475569; font-weight: 500; text-align: center; line-height: 1.3; }
 
   /* ── DONUT ── */
-  .donut-container { display: flex; align-items: center; gap: 24px; }
+  .donut-container { display: flex; flex-direction: column; align-items: center; gap: 16px; }
   .donut-wrap { position: relative; width: 180px; height: 180px; flex-shrink: 0; }
   .donut-svg { width: 180px; height: 180px; transform: rotate(-90deg); }
   .donut-seg { cursor: pointer; transition: opacity 0.2s; }
@@ -118,10 +116,10 @@
   .donut-number { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: #f0f0f8; }
   .donut-label  { font-size: 10px; color: #64748b; font-weight: 500; }
   .donut-pct    { font-size: 10px; font-weight: 600; margin-top: 1px; }
-  .legend { display: flex; flex-direction: column; gap: 8px; }
-  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; white-space: nowrap; }
   .legend-dot   { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
-  .legend-value { margin-left: auto; font-weight: 600; color: #94a3b8; font-size: 12px; }
+  .legend-value { margin-left: 4px; font-weight: 600; color: #94a3b8; font-size: 12px; }
 
   /* ── TIMELINE + BACKLOG ── */
   .combo-section { margin: 16px 0; overflow: visible; }
@@ -186,16 +184,21 @@
     .logo { font-size: 18px; }
     .logo-icon { width: 28px; height: 28px; font-size: 14px; }
     .nav-links {
+      width: 100%;
+      order: 3;
       gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
     }
     .nav-links li { flex: 0 0 auto; }
     .nav-links a {
       display: inline-flex;
       align-items: center;
-      min-height: 36px;
-      padding: 0 8px;
+      min-height: 44px;
+      padding: 0 12px;
       border-radius: 8px;
-      font-size: 13px;
     }
     .hero { padding: 24px 0 14px; }
     .hero h2 { font-size: 24px; }
@@ -300,209 +303,6 @@
     .est-btn { font-size: 14px; padding: 12px; }
     .est-input-group label { font-size: 11px; }
   }
-
-  /* ── NAV SEARCH ── */
-  .nav-right { display: flex; align-items: center; gap: 24px; }
-  .nav-search { display: flex; align-items: center; position: relative; }
-  .nav-search-icon {
-    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-    color: #475569; pointer-events: none; display: flex; align-items: center;
-  }
-  .nav-search-input {
-    width: 260px; padding: 8px 14px 8px 34px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.04);
-    color: #f0f0f8; font-size: 13px; font-family: inherit;
-    border-radius: 10px; outline: none;
-    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-  }
-  .nav-search-input::placeholder { color: #475569; }
-  .nav-search-input:focus {
-    border-color: rgba(59,130,246,0.5);
-    background: rgba(255,255,255,0.06);
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
-  }
-
-  .nav-search-dropdown {
-    position: absolute; top: 100%; right: 24px; margin-top: 6px;
-    width: 360px; max-height: 400px; overflow-y: auto;
-    background: rgba(22,22,36,0.96);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-    z-index: 1000; display: none;
-  }
-  .nav-search-dropdown.open { display: block; }
-  .nav-search-item {
-    padding: 10px 14px; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center; gap: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    transition: background 0.12s;
-  }
-  .nav-search-item:last-child { border-bottom: none; }
-  .nav-search-item:hover, .nav-search-item.active { background: rgba(59,130,246,0.14); }
-  .nav-search-item-name {
-    font-size: 13px; color: #f0f0f8; font-weight: 500;
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    min-width: 0; flex: 1;
-  }
-  .nav-search-item-count {
-    font-size: 12px; color: #94a3b8; font-weight: 700; flex-shrink: 0;
-  }
-  .nav-search-empty {
-    padding: 18px 14px; color: #64748b; font-size: 13px; text-align: center;
-  }
-
-  /* ── EMPLOYER MODAL ── */
-  .emp-modal-backdrop {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.65);
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    z-index: 1500;
-    opacity: 0; visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-  }
-  .emp-modal-backdrop.open { opacity: 1; visibility: visible; transition: opacity 0.3s ease; }
-  .emp-modal {
-    position: fixed; top: 50%; left: 50%;
-    transform: translate(-50%, -48%);
-    width: calc(100% - 40px); max-width: 720px;
-    max-height: calc(100vh - 40px);
-    background: #0e0e1a;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
-    padding: 28px;
-    z-index: 1510;
-    overflow-y: auto;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-    opacity: 0; visibility: hidden; pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
-  }
-  .emp-modal.open {
-    opacity: 1; visibility: visible; pointer-events: auto;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .emp-modal-header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 16px; margin-bottom: 22px;
-  }
-  .emp-modal-title {
-    font-size: 20px; font-weight: 700; color: #f0f0f8;
-    letter-spacing: -0.3px; flex: 1; min-width: 0; line-height: 1.3;
-    margin: 0;
-  }
-  .emp-modal-close {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: #94a3b8;
-    width: 32px; height: 32px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; flex-shrink: 0;
-    transition: all 0.2s;
-  }
-  .emp-modal-close:hover { background: rgba(255,255,255,0.1); color: #f0f0f8; }
-
-  .emp-modal-grid {
-    display: grid; grid-template-columns: 280px 1fr;
-    gap: 14px; margin-bottom: 14px;
-  }
-  .emp-modal-cards {
-    display: flex; flex-direction: column; gap: 12px;
-  }
-  .emp-stat-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 16px 14px;
-    position: relative; overflow: hidden;
-  }
-  .emp-stat-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent);
-    opacity: 0.6;
-  }
-  .emp-stat-label {
-    font-size: 11px; color: #64748b; text-transform: uppercase;
-    letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 500;
-  }
-  .emp-stat-value {
-    font-size: 28px; font-weight: 800; letter-spacing: -1px;
-    line-height: 1.1; color: #f0f0f8;
-  }
-  .emp-stat-value.period { font-size: 16px; letter-spacing: -0.3px; }
-  .emp-stat-sub {
-    font-size: 11px; color: #94a3b8; margin-top: 8px; line-height: 1.55;
-    word-break: break-word;
-  }
-  .emp-stat-value.cr-good { color: #22c55e; }
-  .emp-stat-value.cr-med  { color: #f59e0b; }
-  .emp-stat-value.cr-bad  { color: #ef4444; }
-  .emp-stat-value.cr-na   { color: #64748b; }
-  .emp-stat-disclaimer {
-    font-size: 10px; color: #475569; margin-top: 10px;
-    font-style: italic; line-height: 1.4;
-  }
-  .emp-stat-card .stat-details {
-    margin-top: 10px; padding-top: 10px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .emp-stat-card .stat-detail-row {
-    display: flex; justify-content: space-between; font-size: 11px;
-  }
-  .emp-stat-card .stat-detail-label { color: #64748b; }
-  .emp-stat-card .stat-detail-value { color: #94a3b8; font-weight: 600; }
-
-  .emp-modal-section {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 12px;
-    padding: 18px;
-    margin-bottom: 14px;
-  }
-  .emp-modal-section-title {
-    font-size: 13px; font-weight: 600; color: #f0f0f8;
-    margin-bottom: 14px; letter-spacing: -0.2px;
-  }
-  .emp-modal .donut-container { gap: 24px; }
-  .emp-modal .legend { flex: 1; min-width: 0; }
-  .emp-modal .legend-item { word-break: break-word; }
-
-  .emp-loading {
-    padding: 60px 20px; text-align: center; color: #94a3b8; font-size: 13px;
-  }
-  .emp-loading-spinner {
-    width: 30px; height: 30px; margin: 0 auto 14px;
-    border: 3px solid rgba(255,255,255,0.08);
-    border-top-color: #3b82f6;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  .emp-error {
-    padding: 40px 20px; text-align: center; color: #fca5a5; font-size: 14px;
-  }
-
-  @media (max-width: 768px) {
-    .nav-right { gap: 12px; order: 2; margin-left: auto; }
-    .nav-search-input { width: 200px !important; }
-    .nav-search-dropdown { width: calc(100vw - 28px); right: 14px; max-height: 60vh; }
-    .emp-modal {
-      width: 100%; max-width: 100%;
-      height: 100%; max-height: 100%;
-      border-radius: 0;
-      top: 0; left: 0;
-      transform: translate(0,20px);
-      padding: 20px;
-    }
-    .emp-modal.open { transform: translate(0,0); }
-    .emp-modal-grid { grid-template-columns: 1fr; }
-    .emp-stat-value { font-size: 24px; }
-  }
-  @media (max-width: 480px) {
-    .nav-search-input { width: 150px !important; padding: 8px 10px 8px 30px !important; font-size: 12px; }
-  }
 </style>
 </head>
 <body>
@@ -518,24 +318,10 @@
 
 <nav>
   <div class="logo"><div class="logo-icon">🏛️</div>PERM Tracker</div>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="#" class="active">Dashboard</a></li>
-    </ul>
-    <div class="nav-search" id="nav-search">
-      <div class="nav-search-icon">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
-      <input type="text" class="nav-search-input" id="nav-search-input" placeholder="Search your employer" autocomplete="off" spellcheck="false" aria-label="Search your employer">
-    </div>
-  </div>
-  <div class="nav-search-dropdown" id="nav-search-dropdown"></div>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Dashboard</a></li>
+  </ul>
 </nav>
-
-<div class="emp-modal-backdrop" id="emp-modal-backdrop"></div>
-<div class="emp-modal" id="emp-modal" role="dialog" aria-modal="true" aria-labelledby="emp-modal-title">
-  <div id="emp-modal-body"></div>
-</div>
 
 <div class="container">
   <div class="hero">
@@ -640,14 +426,14 @@
 <script>
 /* ===== DASHBOARD_DATA START ===== */
 window.DASHBOARD_DATA = {
-  "updatedAt": "2026-04-24T15:07:56-04:00",
+  "updatedAt": "2026-04-23T15:08:42-04:00",
   "backlog": {
-    "total": 138836,
-    "startOfMonth": 138836,
+    "total": 139197,
+    "startOfMonth": 139197,
     "thisMonth": {
       "name": "Apr 2026",
-      "processed": 12124,
-      "intake": 5753
+      "processed": 11510,
+      "intake": 5492
     },
     "lastMonth": {
       "name": "Mar 2026",
@@ -656,67 +442,67 @@ window.DASHBOARD_DATA = {
     }
   },
   "avgDays": {
-    "current": 486,
+    "current": 487,
     "deltaFromLastMonth": 0,
-    "certified": 485,
+    "certified": 486,
     "rfi": 492,
-    "denied": 496,
+    "denied": 497,
     "trend90Day": 0
   },
   "today": {
-    "total": 415,
-    "certified": 377,
-    "rfi": 6,
-    "denied": 32,
+    "total": 650,
+    "certified": 567,
+    "rfi": 19,
+    "denied": 64,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 849,
-      "certified": 749,
-      "rfi": 35,
-      "denied": 65,
-      "withdrawn": 0
+      "total": 691,
+      "certified": 638,
+      "rfi": 4,
+      "denied": 22,
+      "withdrawn": 27
     }
   },
   "dol": {
     "label": "Jan '25",
     "monthFull": "January",
-    "day": 17,
+    "day": 11,
     "daysInMonth": 100,
-    "estFinish": "May 3",
-    "movementPerWeek": 18.9,
-    "casesRemaining": 5164,
-    "latestLetter": "V",
-    "pctProcessed": 17
+    "estFinish": "May 1",
+    "movementPerWeek": 24.6,
+    "casesRemaining": 5571,
+    "latestLetter": "W",
+    "pctProcessed": 11
   },
   "timeline": [
     {
       "label": "Nov '24",
       "total": 10623,
-      "certified": 9082,
-      "review": 148,
+      "certified": 9078,
+      "review": 155,
       "withdrawn": 508,
-      "denied": 855,
+      "denied": 852,
       "status": "done"
     },
     {
       "label": "Dec '24",
       "total": 10512,
-      "certified": 8492,
-      "review": 782,
+      "certified": 8323,
+      "review": 982,
       "withdrawn": 524,
-      "denied": 711,
+      "denied": 680,
       "status": "done"
     },
     {
       "label": "Jan '25",
       "total": 6699,
-      "certified": 1141,
-      "review": 5164,
+      "certified": 755,
+      "review": 5571,
       "withdrawn": 369,
-      "denied": 24,
+      "denied": 3,
       "status": "active",
-      "dolDay": 17,
+      "dolDay": 11,
       "dolDays": 100
     },
     {
@@ -847,15 +633,23 @@ window.DASHBOARD_DATA = {
     },
     {
       "label": "Apr '26",
-      "total": 5753,
+      "total": 5492,
       "certified": 0,
-      "review": 5707,
-      "withdrawn": 45,
+      "review": 5454,
+      "withdrawn": 37,
       "denied": 0,
       "status": "pending"
     }
   ],
   "rateDays": [
+    {
+      "date": "2026-03-25",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
     {
       "date": "2026-03-26",
       "total": 0,
@@ -1082,18 +876,10 @@ window.DASHBOARD_DATA = {
     },
     {
       "date": "2026-04-23",
-      "total": 849,
-      "certified": 749,
-      "rfi": 35,
-      "denied": 65,
-      "withdrawn": 0
-    },
-    {
-      "date": "2026-04-24",
-      "total": 415,
-      "certified": 377,
-      "rfi": 6,
-      "denied": 32,
+      "total": 650,
+      "certified": 567,
+      "rfi": 19,
+      "denied": 64,
       "withdrawn": 0
     }
   ],
@@ -1188,10 +974,10 @@ window.DASHBOARD_DATA = {
     },
     {
       "weekStart": "2026-04-20",
-      "total": 2960,
-      "certified": 2711,
-      "rfi": 72,
-      "denied": 149,
+      "total": 2346,
+      "certified": 2152,
+      "rfi": 50,
+      "denied": 116,
       "withdrawn": 28,
       "partial": true
     }
@@ -1201,21 +987,21 @@ window.DASHBOARD_DATA = {
       "tabKey": "active",
       "tabLabel": "Dec",
       "subtitle": "December 2024 filings \u00b7 10,509 total",
-      "certified": 8492,
-      "review": 782,
+      "certified": 8323,
+      "review": 982,
       "withdrawn": 524,
-      "rfi": 271,
-      "denied": 440
+      "rfi": 252,
+      "denied": 428
     },
     {
       "tabKey": "next",
       "tabLabel": "Jan",
       "subtitle": "January 2025 filings \u00b7 6,698 total",
-      "certified": 1141,
-      "review": 5164,
+      "certified": 755,
+      "review": 5571,
       "withdrawn": 369,
-      "rfi": 4,
-      "denied": 20
+      "rfi": 1,
+      "denied": 2
     }
   ],
   "employers": [
@@ -1891,7 +1677,6 @@ setupTabs('employer-tabs', t => renderEmployers(parseInt(t.dataset.ei)));
 const API_BASE = 'https://api.immilane.com';
 
 (function initEstimate() {
-  // Sub-tabs
   const tabCase = document.getElementById('est-tab-case');
   const tabDate = document.getElementById('est-tab-date');
   const formCase = document.getElementById('est-form-case');
@@ -1901,16 +1686,15 @@ const API_BASE = 'https://api.immilane.com';
     tabCase.classList.add('active'); tabDate.classList.remove('active');
     formCase.style.display = ''; formDate.style.display = 'none';
     clearEstResult();
-    if (typeof gtag === 'function') gtag('event', 'estimate_tab_switch', { method: 'case_number' });
+    gtag('event', 'estimate_tab_switch', { method: 'case_number' });
   });
   tabDate.addEventListener('click', () => {
     tabDate.classList.add('active'); tabCase.classList.remove('active');
     formDate.style.display = ''; formCase.style.display = 'none';
     clearEstResult();
-    if (typeof gtag === 'function') gtag('event', 'estimate_tab_switch', { method: 'filing_date' });
+    gtag('event', 'estimate_tab_switch', { method: 'filing_date' });
   });
 
-  // Set max date on date input
   document.getElementById('est-date-input').max = new Date().toISOString().split('T')[0];
 
   const errorEl  = document.getElementById('est-error');
@@ -1999,14 +1783,12 @@ const API_BASE = 'https://api.immilane.com';
       return;
     }
 
-    // Hero date
     html += '<div class="est-result-hero">';
     html += '<div class="est-result-label">Estimated Completion</div>';
     html += '<div class="est-result-date">' + fmtEstDate(est.estimated_date) + '</div>';
     html += '<div class="est-result-days">~' + n(est.days_remaining) + ' days remaining</div>';
     html += '</div>';
 
-    // Confidence range
     var totalRange = est.days_remaining * 0.3;
     var lowDays = Math.round(est.days_remaining * 0.85);
     var highDays = Math.round(est.days_remaining * 1.15);
@@ -2020,7 +1802,6 @@ const API_BASE = 'https://api.immilane.com';
     html += '<div class="est-conf-labels"><span>' + fmtShortDate(est.confidence_low) + '</span><span style="color:#94a3b8;font-weight:600;">' + fmtShortDate(est.estimated_date) + '</span><span>' + fmtShortDate(est.confidence_high) + '</span></div>';
     html += '</div>';
 
-    // Stats grid
     html += '<div class="est-stats">';
     html += '<div class="est-stat"><div class="est-stat-label">Filing Month</div><div class="est-stat-value">' + esc(est.filing_month) + '</div></div>';
     html += '<div class="est-stat"><div class="est-stat-label">DOL Position</div><div class="est-stat-value warning">' + esc(est.dol_current) + '</div></div>';
@@ -2041,7 +1822,7 @@ const API_BASE = 'https://api.immilane.com';
       const resp = await fetch(url);
       const data = await resp.json();
       if (!resp.ok) { showEstError(data.error || 'Request failed'); return; }
-      if (typeof gtag === 'function') gtag('event', 'estimate_result', { method: isLookup ? 'case_number' : 'filing_date' });
+      gtag('event', 'estimate_result', { method: isLookup ? 'case_number' : 'filing_date' });
       renderEstResult(data, isLookup);
     } catch (err) {
       showEstError('Unable to reach the estimate API. Please try again later.');
@@ -2050,7 +1831,6 @@ const API_BASE = 'https://api.immilane.com';
     }
   }
 
-  // Case lookup
   const btnCase = document.getElementById('est-btn-case');
   const inputCase = document.getElementById('est-case-input');
   btnCase.addEventListener('click', () => {
@@ -2059,18 +1839,17 @@ const API_BASE = 'https://api.immilane.com';
       showEstError('Invalid case number format. Expected: G-100-XXXXX-XXXXXX');
       return;
     }
-    if (typeof gtag === 'function') gtag('event', 'estimate_submit', { method: 'case_number' });
+    gtag('event', 'estimate_submit', { method: 'case_number' });
     fetchEstimate(API_BASE + '/api/lookup?case=' + encodeURIComponent(val), btnCase, true);
   });
   inputCase.addEventListener('keydown', e => { if (e.key === 'Enter') btnCase.click(); });
 
-  // Date estimate
   const btnDate = document.getElementById('est-btn-date');
   const inputDate = document.getElementById('est-date-input');
   btnDate.addEventListener('click', () => {
     const val = inputDate.value;
     if (!val) { showEstError('Please select a filing date.'); return; }
-    if (typeof gtag === 'function') gtag('event', 'estimate_submit', { method: 'filing_date' });
+    gtag('event', 'estimate_submit', { method: 'filing_date' });
     fetchEstimate(API_BASE + '/api/estimate?date=' + encodeURIComponent(val), btnDate, false);
   });
   inputDate.addEventListener('keydown', e => { if (e.key === 'Enter') btnDate.click(); });
@@ -2081,399 +1860,9 @@ const API_BASE = 'https://api.immilane.com';
 <footer>
   Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; &copy; 2026 ImmiLane
 </footer>
-
-<script>
-// ═══════════════════════════════════════════════════════
-// GA ENGAGEMENT TRACKING
-// ═══════════════════════════════════════════════════════
-(function() {
-  if (typeof gtag !== 'function') return;
-  var scrollFired = {};
-  window.addEventListener('scroll', function() {
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    if (max <= 0) return;
-    var pct = Math.round(100 * window.scrollY / max);
-    [25, 50, 75, 90].forEach(function(t) {
-      if (pct >= t && !scrollFired[t]) {
-        scrollFired[t] = true;
-        gtag('event', 'scroll_depth', { percent: t });
-      }
-    });
-  }, { passive: true });
-
-  [10, 30, 60, 180].forEach(function(s) {
-    setTimeout(function() {
-      if (!document.hidden) gtag('event', 'time_on_page', { seconds: s });
-    }, s * 1000);
-  });
-
-  var sections = ['est-form-case', 'combo-chart', 'employer-list', 'stats-grid'];
-  var seen = {};
-  if (window.IntersectionObserver) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting && !seen[e.target.id]) {
-          seen[e.target.id] = true;
-          gtag('event', 'section_view', { section: e.target.id });
-        }
-      });
-    }, { threshold: 0.3 });
-    sections.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-  }
-})();
-</script>
-
-<script>
-// ═══════════════════════════════════════════════════════
-// EMPLOYER SEARCH (nav icon + typeahead + modal overlay)
-// ═══════════════════════════════════════════════════════
-(function initEmployerSearch() {
-  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const STATUS_COLORS = {
-    'CERTIFIED':              '#22c55e',
-    'ANALYST REVIEW':         '#f59e0b',
-    'DENIED':                 '#ef4444',
-    'WITHDRAWN':              '#6b7280',
-    'RFI ISSUED':             '#f97316',
-    'AUDIT REVIEW':           '#dc2626',
-    'PENDING AUDIT RESPONSE': '#b91c1c',
-    'CERTIFIED - EXPIRED':    '#15803d',
-    'SUPERVISED RECRUITMENT': '#7c3aed'
-  };
-  const DEFAULT_COLOR = '#475569';
-  const PENDING_STATUSES = new Set([
-    'ANALYST REVIEW','AUDIT REVIEW','PENDING AUDIT RESPONSE','RFI ISSUED','SUPERVISED RECRUITMENT'
-  ]);
-
-  const navSearch     = document.getElementById('nav-search');
-  const searchInput   = document.getElementById('nav-search-input');
-  const dropdown      = document.getElementById('nav-search-dropdown');
-  const modal         = document.getElementById('emp-modal');
-  const modalBackdrop = document.getElementById('emp-modal-backdrop');
-  const modalBody     = document.getElementById('emp-modal-body');
-
-  if (!navSearch || !searchInput || !dropdown || !modal || !modalBackdrop || !modalBody) return;
-
-  let employerIndex = null;
-  let employerData  = null;
-  let dataPromise   = null;
-  let activeIdx     = -1;
-  let lastMatches   = [];
-  let debounceTimer = null;
-
-  // Load index on page load
-  fetch('data/employer_index.json')
-    .then(r => r.ok ? r.json() : Promise.reject(r.status))
-    .then(d => { employerIndex = d.employers || []; })
-    .catch(() => { employerIndex = []; });
-
-  function loadData() {
-    if (dataPromise) return dataPromise;
-    dataPromise = fetch('data/employer_data.json').then(r => r.json());
-    return dataPromise;
-  }
-
-  function titleCase(s) {
-    return s.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()).replace(/Rfi/g, 'RFI');
-  }
-
-  function closeDropdown() {
-    dropdown.classList.remove('open');
-    dropdown.innerHTML = '';
-    activeIdx = -1;
-    lastMatches = [];
-  }
-
-  document.addEventListener('click', (e) => {
-    if (!navSearch.contains(e.target) && !dropdown.contains(e.target)) {
-      closeDropdown();
-    }
-  });
-
-  searchInput.addEventListener('input', () => {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(runSearch, 200);
-  });
-
-  searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      closeDropdown();
-      searchInput.blur();
-      return;
-    }
-    if (!lastMatches.length) return;
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      activeIdx = Math.min(activeIdx + 1, lastMatches.length - 1);
-      updateActive();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      activeIdx = Math.max(activeIdx - 1, 0);
-      updateActive();
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      const pick = activeIdx >= 0 ? lastMatches[activeIdx] : lastMatches[0];
-      if (pick) selectEmployer(pick.n);
-    }
-  });
-
-  function updateActive() {
-    const items = dropdown.querySelectorAll('.nav-search-item');
-    items.forEach((el, i) => {
-      el.classList.toggle('active', i === activeIdx);
-      if (i === activeIdx) el.scrollIntoView({ block: 'nearest' });
-    });
-  }
-
-  function runSearch() {
-    const q = searchInput.value.trim().toLowerCase();
-    if (!q) {
-      closeDropdown();
-      return;
-    }
-    if (!employerIndex) {
-      dropdown.innerHTML = '<div class="nav-search-empty">Loading employer index…</div>';
-      dropdown.classList.add('open');
-      return;
-    }
-    const matches = [];
-    for (let i = 0; i < employerIndex.length && matches.length < 8; i++) {
-      const e = employerIndex[i];
-      if (e.n && e.n.toLowerCase().includes(q)) matches.push(e);
-    }
-    lastMatches = matches;
-    activeIdx = matches.length > 0 ? 0 : -1;
-    renderDropdown();
-  }
-
-  function renderDropdown() {
-    if (!lastMatches.length) {
-      dropdown.innerHTML = '<div class="nav-search-empty">No employers found.</div>';
-    } else {
-      dropdown.innerHTML = lastMatches.map((m, i) =>
-        '<div class="nav-search-item' + (i === activeIdx ? ' active' : '') + '" data-idx="' + i + '">' +
-          '<span class="nav-search-item-name">' + esc(m.n) + '</span>' +
-          '<span class="nav-search-item-count">' + n(m.t) + '</span>' +
-        '</div>'
-      ).join('');
-      dropdown.querySelectorAll('.nav-search-item').forEach((el) => {
-        el.addEventListener('mousedown', (ev) => { ev.preventDefault(); });
-        el.addEventListener('click', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          if (!isNaN(idx) && lastMatches[idx]) selectEmployer(lastMatches[idx].n);
-        });
-      });
-    }
-    dropdown.classList.add('open');
-  }
-
-  function selectEmployer(name) {
-    searchInput.value = name.trim();
-    closeDropdown();
-    searchInput.blur();
-    openModal(name);
-    if (typeof gtag === 'function') {
-      try { gtag('event', 'employer_selected', { employer_name: name }); } catch (e) {}
-    }
-  }
-
-  function openModal(name) {
-    modalBackdrop.classList.add('open');
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    modalBody.innerHTML = '<div class="emp-loading"><div class="emp-loading-spinner"></div>Loading employer data…</div>';
-
-    loadData().then(data => {
-      const list = (data && data.employers) || [];
-      const emp = list.find(e => e.name === name);
-      if (!emp) {
-        modalBody.innerHTML = '<div class="emp-error">Employer data not found.</div>';
-        return;
-      }
-      renderEmployerModal(emp);
-    }).catch(() => {
-      modalBody.innerHTML = '<div class="emp-error">Failed to load employer data. Please try again.</div>';
-    });
-  }
-
-  function closeModal() {
-    modalBackdrop.classList.remove('open');
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  modalBackdrop.addEventListener('click', closeModal);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-  });
-
-  function renderEmployerModal(emp) {
-    const statuses = emp.statuses || {};
-    const total = emp.total || Object.values(statuses).reduce((s,v) => s+v, 0);
-
-    // Filing period from employer data
-    const fmtDate = (d) => { if(!d) return ''; const p=d.split('-'); return MONTHS[parseInt(p[1],10)-1]+' '+p[0]; };
-    const firstStr = fmtDate(emp.firstFiling);
-    const lastStr = fmtDate(emp.lastFiling);
-    const filingPeriod = firstStr && lastStr ? (firstStr + ' → ' + lastStr) : (firstStr || lastStr || '—');
-
-    // Pending count
-    let pendingCount = 0;
-    Object.entries(statuses).forEach(([k, v]) => {
-      if (PENDING_STATUSES.has(k)) pendingCount += v;
-    });
-
-    // Resolved cases
-    const certCount = statuses['CERTIFIED'] || 0;
-    const deniedCount = statuses['DENIED'] || 0;
-    const withdrawnCount = statuses['WITHDRAWN'] || 0;
-    const adjudicated = certCount + deniedCount;
-    const resolved = adjudicated + withdrawnCount;
-
-    let certRateDisplay, certClass;
-    if (adjudicated > 0) {
-      const cr = certCount / adjudicated * 100;
-      certRateDisplay = cr.toFixed(1) + '%';
-      certClass = cr > 80 ? 'cr-good' : cr >= 60 ? 'cr-med' : 'cr-bad';
-    } else {
-      certRateDisplay = '—';
-      certClass = 'cr-na';
-    }
-
-    // Certification breakdown rows
-    const crRows = [];
-    if (certCount) crRows.push({label:'Certified', val:certCount, color:'#22c55e'});
-    if (deniedCount) crRows.push({label:'Denied', val:deniedCount, color:'#ef4444'});
-    if (withdrawnCount) crRows.push({label:'Withdrawn', val:withdrawnCount, color:'#6b7280'});
-    const crBreakdownHtml = crRows.map(r =>
-      '<div class="stat-detail-row">' +
-        '<span class="stat-detail-label" style="color:'+r.color+'">' + r.label + '</span>' +
-        '<span class="stat-detail-value">' + n(r.val) + '</span>' +
-      '</div>'
-    ).join('');
-
-    // Donut items
-    const donutItems = Object.entries(statuses)
-      .map(([k, v]) => ({ label: titleCase(k), value: v, color: STATUS_COLORS[k] || DEFAULT_COLOR }))
-      .sort((a, b) => b.value - a.value);
-    const donutTotal = donutItems.reduce((s, i) => s + i.value, 0);
-    donutItems.forEach(i => { i.pct = donutTotal ? +(i.value / donutTotal * 100).toFixed(1) : 0; });
-
-    // Donut SVG
-    const r = 70, circ = 2 * Math.PI * r;
-    let off = 0, segs = '';
-    donutItems.forEach((item, i) => {
-      const len = item.pct / 100 * circ;
-      segs += '<circle class="donut-seg" data-i="' + i + '" cx="90" cy="90" r="' + r +
-              '" fill="none" stroke="' + item.color + '" stroke-width="30" stroke-dasharray="' +
-              len + ' ' + (circ - len) + '" stroke-dashoffset="' + (-off) + '" />';
-      off += len;
-    });
-
-    const legend = donutItems.map(item =>
-      '<div class="legend-item"><div class="legend-dot" style="background:' + item.color +
-      ';"></div>' + esc(item.label) +
-      '<span class="legend-value">' + n(item.value) + ' (' + item.pct + '%)</span></div>'
-    ).join('');
-
-    // Top 10 titles
-    const titles = (emp.topTitles || []).slice(0, 10);
-    const maxTitle = titles.length ? titles[0].count : 1;
-    const titlesHtml = titles.map((t, i) =>
-      '<div class="employer-row">' +
-        '<span class="employer-rank">' + (i + 1) + '</span>' +
-        '<span class="employer-name">' + esc(t.title) + '</span>' +
-        '<span class="employer-count">' + n(t.count) + '</span>' +
-        '<div class="employer-bar"><div class="employer-bar-fill" style="width:' +
-          Math.round(t.count / maxTitle * 100) + '%;"></div></div>' +
-      '</div>'
-    ).join('');
-
-    modalBody.innerHTML =
-      '<div class="emp-modal-header">' +
-        '<h2 class="emp-modal-title" id="emp-modal-title">' + esc(emp.name) + '</h2>' +
-        '<button class="emp-modal-close" id="emp-modal-close-btn" aria-label="Close">' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
-        '</button>' +
-      '</div>' +
-      '<div class="emp-modal-grid">' +
-        '<div class="emp-modal-cards">' +
-          '<div class="emp-stat-card">' +
-            '<div class="emp-stat-label">Total Filings</div>' +
-            '<div class="emp-stat-value">' + n(total) + '</div>' +
-            '<div class="emp-stat-sub">' + esc(filingPeriod) + '</div>' +
-            '<div class="stat-details">' +
-              '<div class="stat-detail-row"><span class="stat-detail-label">Pending</span><span class="stat-detail-value">' + n(pendingCount) + '</span></div>' +
-              '<div class="stat-detail-row"><span class="stat-detail-label">Resolved</span><span class="stat-detail-value">' + n(resolved) + '</span></div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="emp-stat-card">' +
-            '<div class="emp-stat-label">Certification Rate</div>' +
-            '<div class="emp-stat-value ' + certClass + '">' + certRateDisplay + '</div>' +
-            '<div class="emp-stat-sub">' + (adjudicated > 0 ? n(certCount) + ' certified of ' + n(adjudicated) + ' adjudicated' : 'No cases adjudicated yet') + '</div>' +
-            (crRows.length ? '<div class="stat-details">' + crBreakdownHtml + '</div>' : '') +
-            '<div class="emp-stat-disclaimer">Based on filings since ' + esc(firstStr || '—') + '</div>' +
-          '</div>' +
-        '</div>' +
-        (donutTotal > 0 ?
-        '<div class="emp-modal-section" style="margin-bottom:0;">' +
-          '<div class="emp-modal-section-title">Status Distribution <span style="color:#475569;font-weight:400;font-size:11px;">· ' + esc(filingPeriod) + '</span></div>' +
-          '<div class="donut-container">' +
-            '<div class="donut-wrap">' +
-              '<svg class="donut-svg" viewBox="0 0 180 180" id="emp-donut-svg">' + segs + '</svg>' +
-              '<div class="donut-center">' +
-                '<div class="donut-number" id="emp-donut-num">' + n(donutTotal) + '</div>' +
-                '<div class="donut-label" id="emp-donut-lbl">Total Cases</div>' +
-                '<div class="donut-pct" id="emp-donut-pct" style="display:none;"></div>' +
-              '</div>' +
-            '</div>' +
-            '<div class="legend">' + legend + '</div>' +
-          '</div>' +
-        '</div>' : '') +
-      '</div>' +
-      (titles.length ?
-      '<div class="emp-modal-section">' +
-        '<div class="emp-modal-section-title">Top ' + Math.min(titles.length, 10) + ' Job Titles</div>' +
-        titlesHtml +
-      '</div>' : '');
-
-    const closeBtn = document.getElementById('emp-modal-close-btn');
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-    // Donut hover interactions
-    const svg = document.getElementById('emp-donut-svg');
-    if (svg) {
-      const numEl = document.getElementById('emp-donut-num');
-      const lblEl = document.getElementById('emp-donut-lbl');
-      const pctEl = document.getElementById('emp-donut-pct');
-      const origNum = n(donutTotal);
-      svg.querySelectorAll('.donut-seg').forEach(seg => {
-        seg.addEventListener('mouseenter', () => {
-          const item = donutItems[parseInt(seg.dataset.i, 10)];
-          svg.querySelectorAll('.donut-seg').forEach(s => { s.style.opacity = s === seg ? '1' : '0.2'; });
-          numEl.textContent = n(item.value);
-          numEl.style.color = item.color;
-          lblEl.textContent = item.label;
-          pctEl.textContent = item.pct + '%';
-          pctEl.style.color = item.color;
-          pctEl.style.display = '';
-        });
-        seg.addEventListener('mouseleave', () => {
-          svg.querySelectorAll('.donut-seg').forEach(s => { s.style.opacity = '1'; });
-          numEl.textContent = origNum;
-          numEl.style.color = '#f0f0f8';
-          lblEl.textContent = 'Total Cases';
-          pctEl.style.display = 'none';
-        });
-      });
-    }
-  }
-})();
-</script>
-
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "aa22dbee0e9b4144965de16be0ccbae4"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
