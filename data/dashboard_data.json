@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-04-23T18:08:29-04:00",
+  "updatedAt": "2026-04-23T21:09:20-04:00",
   "backlog": {
-    "total": 139055,
-    "startOfMonth": 139055,
+    "total": 138998,
+    "startOfMonth": 138998,
     "thisMonth": {
       "name": "Apr 2026",
-      "processed": 11652,
+      "processed": 11709,
       "intake": 5492
     },
     "lastMonth": {
@@ -23,9 +23,9 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 792,
-    "certified": 695,
-    "rfi": 32,
+    "total": 849,
+    "certified": 749,
+    "rfi": 35,
     "denied": 65,
     "withdrawn": 0,
     "stillUpdating": false,
@@ -42,9 +42,9 @@
     "monthFull": "January",
     "day": 12,
     "daysInMonth": 100,
-    "estFinish": "May 1",
-    "movementPerWeek": 23.1,
-    "casesRemaining": 5526,
+    "estFinish": "May 2",
+    "movementPerWeek": 21.6,
+    "casesRemaining": 5494,
     "latestLetter": "M",
     "pctProcessed": 12
   },
@@ -61,17 +61,17 @@
     {
       "label": "Dec '24",
       "total": 10512,
-      "certified": 8408,
-      "review": 885,
+      "certified": 8430,
+      "review": 860,
       "withdrawn": 524,
-      "denied": 692,
+      "denied": 695,
       "status": "done"
     },
     {
       "label": "Jan '25",
       "total": 6699,
-      "certified": 798,
-      "review": 5526,
+      "certified": 830,
+      "review": 5494,
       "withdrawn": 369,
       "denied": 5,
       "status": "active",
@@ -449,9 +449,9 @@
     },
     {
       "date": "2026-04-23",
-      "total": 792,
-      "certified": 695,
-      "rfi": 32,
+      "total": 849,
+      "certified": 749,
+      "rfi": 35,
       "denied": 65,
       "withdrawn": 0
     }
@@ -547,9 +547,9 @@
     },
     {
       "weekStart": "2026-04-20",
-      "total": 2488,
-      "certified": 2280,
-      "rfi": 63,
+      "total": 2545,
+      "certified": 2334,
+      "rfi": 66,
       "denied": 117,
       "withdrawn": 28,
       "partial": true
@@ -560,18 +560,18 @@
       "tabKey": "active",
       "tabLabel": "Dec",
       "subtitle": "December 2024 filings \u00b7 10,509 total",
-      "certified": 8408,
-      "review": 885,
+      "certified": 8430,
+      "review": 860,
       "withdrawn": 524,
-      "rfi": 263,
+      "rfi": 266,
       "denied": 429
     },
     {
       "tabKey": "next",
       "tabLabel": "Jan",
       "subtitle": "January 2025 filings \u00b7 6,698 total",
-      "certified": 798,
-      "review": 5526,
+      "certified": 830,
+      "review": 5494,
       "withdrawn": 369,
       "rfi": 3,
       "denied": 2
