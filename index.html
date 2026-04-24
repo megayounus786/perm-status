@@ -20,6 +20,9 @@
 <meta name="twitter:description" content="Real-time PERM labor certification tracking with status breakdowns, monthly trends, and employer filing stats.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ImmiLane PERM Tracker","url":"https://immilane.com","description":"Real-time PERM labor certification processing tracker with DOL case data, status breakdowns, and monthly trends.","applicationCategory":"Government Data Tracker","operatingSystem":"Web","provider":{"@type":"Organization","name":"ImmiLane","url":"https://immilane.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are current PERM processing times in 2026?","acceptedAnswer":{"@type":"Answer","text":"ImmiLane tracks PERM labor certification processing times in real time using DOL FLAG data. Visit immilane.com for live status breakdowns and monthly trends."}},{"@type":"Question","name":"What is the PERM certification rate?","acceptedAnswer":{"@type":"Answer","text":"The PERM certification rate varies by filing month. ImmiLane provides real-time status distribution showing certified, analyst review, denied, RFI, and withdrawn cases."}}]}</script>
+<!-- Google Analytics (GA4) — in <head> for early engagement tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
@@ -162,6 +165,56 @@
   .dol-radar-ring2 { position: absolute; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #f59e0b; animation: radar2 1.8s ease-out infinite 0.6s; }
   .dol-dot { width: 10px; height: 10px; background: #f59e0b; border-radius: 50%; box-shadow: 0 0 10px rgba(245,158,11,0.9); position: relative; z-index: 2; }
 
+  /* ── EMPLOYER SEARCH ── */
+  .es-search-wrap { position: relative; margin-bottom: 18px; }
+  #es-input { width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; color: #f0f0f8; font-size: 15px; font-family: inherit; outline: none; transition: all 0.2s; }
+  #es-input::placeholder { color: #475569; }
+  #es-input:focus { border-color: rgba(59,130,246,0.5); background: rgba(255,255,255,0.06); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+  .es-dropdown { position: absolute; top: 100%; left: 0; right: 0; margin-top: 6px; max-height: 340px; overflow-y: auto; background: #161624; border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; z-index: 50; box-shadow: 0 16px 48px rgba(0,0,0,0.6); display: none; }
+  .es-dropdown.open { display: block; }
+  .es-dropdown-item { padding: 10px 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.12s; }
+  .es-dropdown-item:last-child { border-bottom: none; }
+  .es-dropdown-item:hover, .es-dropdown-item.active { background: rgba(59,130,246,0.14); }
+  .es-dd-name { font-size: 13px; color: #f0f0f8; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .es-dd-count { font-size: 12px; color: #94a3b8; font-weight: 700; flex-shrink: 0; }
+  .es-dd-empty { padding: 16px 14px; color: #64748b; font-size: 13px; text-align: center; }
+  .es-empty { padding: 48px 20px; text-align: center; color: #64748b; font-size: 14px; }
+  .es-loading { padding: 48px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; color: #94a3b8; font-size: 13px; }
+  .es-spinner { width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.08); border-top-color: #3b82f6; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  .es-result-title { font-size: 20px; font-weight: 700; color: #f0f0f8; letter-spacing: -0.3px; }
+  .es-result-sub { color: #64748b; font-size: 13px; margin-bottom: 18px; margin-top: 4px; }
+  .es-overview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+  .es-stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 18px 16px; position: relative; overflow: hidden; }
+  .es-stat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--es-accent, #3b82f6), transparent); opacity: 0.6; }
+  .es-stat-label { font-size: 11px; color: #64748b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .es-stat-value { font-size: 30px; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+  .es-stat-sub { font-size: 11px; color: #94a3b8; margin-top: 6px; font-weight: 500; }
+  .es-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .es-inner-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 18px; }
+  .es-inner-title { font-size: 13px; font-weight: 600; color: #f0f0f8; margin-bottom: 14px; letter-spacing: -0.2px; }
+  .es-monthly-wrap { position: relative; height: 170px; }
+  .es-monthly-bars { display: flex; align-items: flex-end; gap: 4px; height: 100%; padding-bottom: 24px; position: relative; }
+  .es-monthly-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; min-width: 0; }
+  .es-monthly-bar { width: 100%; max-width: 22px; background: linear-gradient(180deg, #8b5cf6, #3b82f6); border-radius: 3px 3px 0 0; transition: opacity 0.18s, box-shadow 0.18s; cursor: pointer; }
+  .es-monthly-bar:hover { opacity: 0.92; box-shadow: 0 0 14px rgba(139,92,246,0.5); }
+  .es-monthly-label { position: absolute; bottom: 0; font-size: 9px; color: #475569; font-weight: 500; white-space: nowrap; text-align: center; transform: translateY(4px); }
+  .es-titles-list { display: flex; flex-direction: column; gap: 2px; }
+  .es-title-row { display: grid; grid-template-columns: 1fr 56px 70px; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .es-title-row:last-child { border-bottom: none; }
+  .es-title-name { font-size: 12px; font-weight: 500; color: #f0f0f8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .es-title-count { font-size: 12px; font-weight: 700; color: #94a3b8; text-align: right; }
+  .es-title-bar { height: 5px; border-radius: 3px; background: rgba(255,255,255,0.06); overflow: hidden; }
+  .es-title-bar-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #8b5cf6); border-radius: 3px; }
+  .es-audit-warning { background: linear-gradient(135deg, rgba(239,68,68,0.10), rgba(245,158,11,0.08)); border: 1px solid rgba(245,158,11,0.32); border-radius: 12px; padding: 16px 18px; margin-top: 4px; display: flex; gap: 14px; align-items: flex-start; }
+  .es-audit-icon { font-size: 22px; flex-shrink: 0; line-height: 1; }
+  .es-audit-body { flex: 1; min-width: 0; }
+  .es-audit-title { font-size: 13px; font-weight: 700; color: #f59e0b; margin-bottom: 4px; letter-spacing: 0.2px; }
+  .es-audit-subtitle { font-size: 11px; color: #94a3b8; margin-bottom: 10px; }
+  .es-audit-items { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px; }
+  .es-audit-item { display: flex; flex-direction: column; gap: 2px; }
+  .es-audit-item-label { color: #94a3b8; font-size: 10px; text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+  .es-audit-item-val { color: #f59e0b; font-weight: 800; font-size: 18px; }
+
   /* ── EMPLOYERS ── */
   .employer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
   .employer-row { display: grid; grid-template-columns: 24px 1fr 60px 80px; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
@@ -237,6 +290,14 @@
       gap: 16px;
     }
     .employer-grid { grid-template-columns: 1fr; }
+    .es-overview { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .es-stat { padding: 14px 12px; }
+    .es-stat-value { font-size: 24px; }
+    .es-charts { grid-template-columns: 1fr; gap: 12px; }
+    .es-inner-card { padding: 14px; }
+    .es-monthly-bar { max-width: 16px; }
+    #es-input { font-size: 16px; padding: 12px 14px; }
+    .es-title-row { grid-template-columns: 1fr 50px 60px; gap: 8px; }
   }
 
   @media (max-width: 480px) {
@@ -250,6 +311,12 @@
     .legend-item { font-size: 12px; }
     .employer-grid { grid-template-columns: 1fr; }
     .combo-col { min-width: 56px; }
+    .donut-number { font-size: 18px; }
+    .employer-row { grid-template-columns: 20px 1fr 54px 70px; }
+    .es-overview { grid-template-columns: 1fr 1fr; }
+    .es-result-title { font-size: 17px; }
+    .es-monthly-label { font-size: 8px; }
+    .es-audit-items { gap: 12px; }
   }
 
   /* ── ESTIMATE TAB ── */
@@ -320,6 +387,10 @@
   <div class="logo"><div class="logo-icon">🏛️</div>PERM Tracker</div>
   <ul class="nav-links">
     <li><a href="#" class="active">Dashboard</a></li>
+    <li><a href="#">Estimate</a></li>
+    <li><a href="#employer-search">Employer Search</a></li>
+    <li><a href="#">Case Lookup</a></li>
+    <li><a href="#">About</a></li>
   </ul>
 </nav>
 
@@ -409,6 +480,21 @@
 
       <div id="est-error" class="est-error" style="display:none;"></div>
       <div id="est-result" class="est-result" style="display:none;"></div>
+    </div>
+  </div>
+
+  <div id="employer-search" style="margin: 16px 0;">
+    <div class="card">
+      <div class="card-header">
+        <div><span class="card-title">Employer Search</span><div class="card-subtitle" id="es-subtitle">Loading employer index…</div></div>
+      </div>
+      <div class="es-search-wrap">
+        <input type="text" id="es-input" placeholder="Search employer name…" autocomplete="off" spellcheck="false" />
+        <div class="es-dropdown" id="es-dropdown"></div>
+      </div>
+      <div class="es-empty" id="es-empty">Search for an employer to see their PERM filing history</div>
+      <div class="es-loading" id="es-loading" style="display:none;"><div class="es-spinner"></div>Loading employer data…</div>
+      <div id="es-results" style="display:none;"></div>
     </div>
   </div>
 
@@ -1677,7 +1763,6 @@ setupTabs('employer-tabs', t => renderEmployers(parseInt(t.dataset.ei)));
 const API_BASE = 'https://api.immilane.com';
 
 (function initEstimate() {
-  // Sub-tabs
   const tabCase = document.getElementById('est-tab-case');
   const tabDate = document.getElementById('est-tab-date');
   const formCase = document.getElementById('est-form-case');
@@ -1687,14 +1772,15 @@ const API_BASE = 'https://api.immilane.com';
     tabCase.classList.add('active'); tabDate.classList.remove('active');
     formCase.style.display = ''; formDate.style.display = 'none';
     clearEstResult();
+    gtag('event', 'estimate_tab_switch', { method: 'case_number' });
   });
   tabDate.addEventListener('click', () => {
     tabDate.classList.add('active'); tabCase.classList.remove('active');
     formDate.style.display = ''; formCase.style.display = 'none';
     clearEstResult();
+    gtag('event', 'estimate_tab_switch', { method: 'filing_date' });
   });
 
-  // Set max date on date input
   document.getElementById('est-date-input').max = new Date().toISOString().split('T')[0];
 
   const errorEl  = document.getElementById('est-error');
@@ -1783,14 +1869,12 @@ const API_BASE = 'https://api.immilane.com';
       return;
     }
 
-    // Hero date
     html += '<div class="est-result-hero">';
     html += '<div class="est-result-label">Estimated Completion</div>';
     html += '<div class="est-result-date">' + fmtEstDate(est.estimated_date) + '</div>';
     html += '<div class="est-result-days">~' + n(est.days_remaining) + ' days remaining</div>';
     html += '</div>';
 
-    // Confidence range
     var totalRange = est.days_remaining * 0.3;
     var lowDays = Math.round(est.days_remaining * 0.85);
     var highDays = Math.round(est.days_remaining * 1.15);
@@ -1804,7 +1888,6 @@ const API_BASE = 'https://api.immilane.com';
     html += '<div class="est-conf-labels"><span>' + fmtShortDate(est.confidence_low) + '</span><span style="color:#94a3b8;font-weight:600;">' + fmtShortDate(est.estimated_date) + '</span><span>' + fmtShortDate(est.confidence_high) + '</span></div>';
     html += '</div>';
 
-    // Stats grid
     html += '<div class="est-stats">';
     html += '<div class="est-stat"><div class="est-stat-label">Filing Month</div><div class="est-stat-value">' + esc(est.filing_month) + '</div></div>';
     html += '<div class="est-stat"><div class="est-stat-label">DOL Position</div><div class="est-stat-value warning">' + esc(est.dol_current) + '</div></div>';
@@ -1825,6 +1908,7 @@ const API_BASE = 'https://api.immilane.com';
       const resp = await fetch(url);
       const data = await resp.json();
       if (!resp.ok) { showEstError(data.error || 'Request failed'); return; }
+      gtag('event', 'estimate_result', { method: isLookup ? 'case_number' : 'filing_date' });
       renderEstResult(data, isLookup);
     } catch (err) {
       showEstError('Unable to reach the estimate API. Please try again later.');
@@ -1833,7 +1917,6 @@ const API_BASE = 'https://api.immilane.com';
     }
   }
 
-  // Case lookup
   const btnCase = document.getElementById('est-btn-case');
   const inputCase = document.getElementById('est-case-input');
   btnCase.addEventListener('click', () => {
@@ -1842,16 +1925,17 @@ const API_BASE = 'https://api.immilane.com';
       showEstError('Invalid case number format. Expected: G-100-XXXXX-XXXXXX');
       return;
     }
+    gtag('event', 'estimate_submit', { method: 'case_number' });
     fetchEstimate(API_BASE + '/api/lookup?case=' + encodeURIComponent(val), btnCase, true);
   });
   inputCase.addEventListener('keydown', e => { if (e.key === 'Enter') btnCase.click(); });
 
-  // Date estimate
   const btnDate = document.getElementById('est-btn-date');
   const inputDate = document.getElementById('est-date-input');
   btnDate.addEventListener('click', () => {
     const val = inputDate.value;
     if (!val) { showEstError('Please select a filing date.'); return; }
+    gtag('event', 'estimate_submit', { method: 'filing_date' });
     fetchEstimate(API_BASE + '/api/estimate?date=' + encodeURIComponent(val), btnDate, false);
   });
   inputDate.addEventListener('keydown', e => { if (e.key === 'Enter') btnDate.click(); });
@@ -1862,5 +1946,429 @@ const API_BASE = 'https://api.immilane.com';
 <footer>
   Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; &copy; 2026 ImmiLane
 </footer>
+<script>
+(function(){
+  var scrollFired = {};
+  window.addEventListener('scroll', function() {
+    var pct = Math.round(100 * window.scrollY / (document.documentElement.scrollHeight - window.innerHeight));
+    [25, 50, 75, 90].forEach(function(t) {
+      if (pct >= t && !scrollFired[t]) {
+        scrollFired[t] = true;
+        gtag('event', 'scroll_depth', { percent: t });
+      }
+    });
+  }, { passive: true });
+
+  [10, 30, 60, 180].forEach(function(s) {
+    setTimeout(function() {
+      if (!document.hidden) gtag('event', 'time_on_page', { seconds: s });
+    }, s * 1000);
+  });
+
+  var sections = ['est-form-case', 'combo-chart', 'employer-list', 'stats-grid', 'employer-search'];
+  var seen = {};
+  if (window.IntersectionObserver) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !seen[e.target.id]) {
+          seen[e.target.id] = true;
+          gtag('event', 'section_view', { section: e.target.id });
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  }
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "aa22dbee0e9b4144965de16be0ccbae4"}'></script><!-- End Cloudflare Web Analytics -->
+<script>
+// ═══════════════════════════════════════════════════════
+// EMPLOYER SEARCH
+// ═══════════════════════════════════════════════════════
+(function initEmployerSearch() {
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const STATUS_COLORS = {
+    'CERTIFIED':              '#22c55e',
+    'ANALYST REVIEW':         '#f59e0b',
+    'DENIED':                 '#ef4444',
+    'WITHDRAWN':              '#6b7280',
+    'RFI ISSUED':             '#f97316',
+    'AUDIT REVIEW':           '#dc2626',
+    'PENDING AUDIT RESPONSE': '#b91c1c',
+    'CERTIFIED - EXPIRED':    '#15803d',
+    'SUPERVISED RECRUITMENT': '#7c3aed',
+    'RECONSIDERATION APPEALS':'#475569',
+    'REQUEST FOR REVIEW':     '#475569'
+  };
+  const ACTIVE_STATUSES = ['ANALYST REVIEW','AUDIT REVIEW','PENDING AUDIT RESPONSE','RFI ISSUED'];
+  const AUDIT_STATUSES  = ['AUDIT REVIEW','PENDING AUDIT RESPONSE','SUPERVISED RECRUITMENT'];
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function fmtNum(v) { return (v || 0).toLocaleString(); }
+  function fmtDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso + 'T12:00:00Z');
+    if (isNaN(d)) return iso;
+    return MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+  function fmtMonthShort(ym) {
+    const parts = (ym || '').split('-');
+    if (parts.length < 2) return ym;
+    const m = parseInt(parts[1], 10);
+    if (isNaN(m) || m < 1 || m > 12) return ym;
+    return MONTHS[m-1] + " '" + parts[0].slice(2);
+  }
+  function statusColor(s) { return STATUS_COLORS[s] || '#475569'; }
+
+  const input   = document.getElementById('es-input');
+  const dd      = document.getElementById('es-dropdown');
+  const empty   = document.getElementById('es-empty');
+  const loading = document.getElementById('es-loading');
+  const results = document.getElementById('es-results');
+  const subtitle = document.getElementById('es-subtitle');
+
+  let indexData = null;
+  let fullMap   = null;
+  let fullPromise = null;
+  let debounceTimer = null;
+  let activeDdIdx = -1;
+  let currentMatches = [];
+
+  // Load lightweight search index on init
+  fetch('data/employer_index.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      indexData = d.employers || [];
+      subtitle.textContent = 'Search ' + fmtNum(d.totalEmployers) + ' employers · ' + fmtNum(d.totalCases) + ' filings';
+    })
+    .catch(err => {
+      subtitle.textContent = 'Failed to load employer index';
+      empty.textContent = 'Failed to load employer search index.';
+      console.error('employer_index.json load failed:', err);
+    });
+
+  function loadFull() {
+    if (fullMap) return Promise.resolve(fullMap);
+    if (fullPromise) return fullPromise;
+    fullPromise = fetch('data/employer_data.json?t=' + Date.now())
+      .then(r => r.json())
+      .then(d => {
+        fullMap = {};
+        (d.employers || []).forEach(e => { fullMap[e.name] = e; });
+        return fullMap;
+      });
+    return fullPromise;
+  }
+
+  function search(q) {
+    if (!indexData) return [];
+    const needle = q.trim().toLowerCase();
+    if (!needle) return [];
+    const out = [];
+    for (let i = 0; i < indexData.length; i++) {
+      const e = indexData[i];
+      if (e.n.toLowerCase().indexOf(needle) !== -1) {
+        out.push(e);
+        if (out.length >= 10) break;
+      }
+    }
+    return out;
+  }
+
+  function renderDropdown(matches, q) {
+    activeDdIdx = -1;
+    currentMatches = matches;
+    if (!q.trim()) { dd.classList.remove('open'); dd.innerHTML = ''; return; }
+    if (!matches.length) {
+      dd.innerHTML = '<div class="es-dd-empty">No employers found</div>';
+      dd.classList.add('open');
+      return;
+    }
+    dd.innerHTML = matches.map((m, i) =>
+      '<div class="es-dropdown-item" data-di="' + i + '">' +
+        '<span class="es-dd-name">' + esc(m.n) + '</span>' +
+        '<span class="es-dd-count">' + fmtNum(m.t) + '</span>' +
+      '</div>'
+    ).join('');
+    dd.classList.add('open');
+    dd.querySelectorAll('.es-dropdown-item').forEach(el => {
+      el.addEventListener('mousedown', ev => {
+        ev.preventDefault();
+        select(matches[parseInt(el.dataset.di, 10)].n);
+      });
+    });
+  }
+
+  function select(name) {
+    input.value = name;
+    dd.classList.remove('open');
+    empty.style.display = 'none';
+    results.style.display = 'none';
+    loading.style.display = 'flex';
+    loadFull()
+      .then(map => {
+        const rec = map[name];
+        loading.style.display = 'none';
+        if (!rec) {
+          empty.style.display = 'block';
+          empty.textContent = 'Employer not found in full dataset.';
+          return;
+        }
+        renderResult(rec);
+      })
+      .catch(err => {
+        loading.style.display = 'none';
+        empty.style.display = 'block';
+        empty.textContent = 'Failed to load employer data.';
+        console.error('employer_data.json load failed:', err);
+      });
+  }
+
+  function renderResult(e) {
+    results.style.display = 'block';
+
+    const statuses = e.statuses || {};
+    let active = 0;
+    ACTIVE_STATUSES.forEach(s => { if (statuses[s]) active += statuses[s]; });
+
+    let crColor = '#64748b', crStr = '—', crSub = 'No decided cases yet';
+    if (e.certRate !== null && e.certRate !== undefined) {
+      crStr = (Math.round(e.certRate * 10) / 10) + '%';
+      if (e.certRate > 80)       crColor = '#22c55e';
+      else if (e.certRate >= 60) crColor = '#f59e0b';
+      else                       crColor = '#ef4444';
+      const decided = (e.certified || 0) + (e.denied || 0);
+      crSub = fmtNum(e.certified || 0) + ' of ' + fmtNum(decided) + ' decided';
+    }
+
+    const overview =
+      '<div class="es-overview">' +
+        '<div class="es-stat" style="--es-accent:#3b82f6;">' +
+          '<div class="es-stat-label">Total Filings</div>' +
+          '<div class="es-stat-value" style="color:#f0f0f8;">' + fmtNum(e.total) + '</div>' +
+          '<div class="es-stat-sub">' + fmtNum(e.certified || 0) + ' certified · ' + fmtNum(e.denied || 0) + ' denied</div>' +
+        '</div>' +
+        '<div class="es-stat" style="--es-accent:' + crColor + ';">' +
+          '<div class="es-stat-label">Certification Rate</div>' +
+          '<div class="es-stat-value" style="color:' + crColor + ';">' + crStr + '</div>' +
+          '<div class="es-stat-sub">' + crSub + '</div>' +
+        '</div>' +
+        '<div class="es-stat" style="--es-accent:#8b5cf6;">' +
+          '<div class="es-stat-label">Filing Period</div>' +
+          '<div class="es-stat-value" style="font-size:15px;color:#f0f0f8;line-height:1.35;font-weight:700;">' +
+            esc(fmtDate(e.firstFiling)) +
+            '<div style="color:#64748b;font-size:13px;font-weight:600;margin-top:2px;">→ ' + esc(fmtDate(e.lastFiling)) + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="es-stat" style="--es-accent:#f59e0b;">' +
+          '<div class="es-stat-label">Active Cases</div>' +
+          '<div class="es-stat-value" style="color:#f59e0b;">' + fmtNum(active) + '</div>' +
+          '<div class="es-stat-sub">Awaiting DOL decision</div>' +
+        '</div>' +
+      '</div>';
+
+    // Status donut
+    const sortedStatuses = Object.keys(statuses)
+      .map(k => [k, statuses[k]])
+      .filter(x => x[1] > 0)
+      .sort((a, b) => b[1] - a[1]);
+    const total = e.total || sortedStatuses.reduce((s, x) => s + x[1], 0);
+    const r = 70, circ = 2 * Math.PI * r;
+    let off = 0, donutSegs = '', legendHtml = '';
+    sortedStatuses.forEach(pair => {
+      const s = pair[0], v = pair[1];
+      const p = total ? v / total : 0;
+      const len = p * circ;
+      const color = statusColor(s);
+      donutSegs += '<circle cx="90" cy="90" r="' + r + '" fill="none" stroke="' + color +
+        '" stroke-width="30" stroke-dasharray="' + len + ' ' + (circ - len) +
+        '" stroke-dashoffset="' + (-off) + '" />';
+      off += len;
+      legendHtml +=
+        '<div class="legend-item">' +
+          '<div class="legend-dot" style="background:' + color + ';"></div>' +
+          esc(s) +
+          '<span class="legend-value">' + fmtNum(v) + ' · ' + (p * 100).toFixed(1) + '%</span>' +
+        '</div>';
+    });
+
+    const donutBlock =
+      '<div class="es-inner-card">' +
+        '<div class="es-inner-title">Status Breakdown</div>' +
+        '<div class="donut-container">' +
+          '<div class="donut-wrap">' +
+            '<svg class="donut-svg" viewBox="0 0 180 180">' + donutSegs + '</svg>' +
+            '<div class="donut-center">' +
+              '<div class="donut-number">' + fmtNum(total) + '</div>' +
+              '<div class="donut-label">Total Cases</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="legend">' + legendHtml + '</div>' +
+        '</div>' +
+      '</div>';
+
+    // Top titles
+    const titles = e.topTitles || [];
+    const maxT = titles.length ? titles[0].count : 0;
+    const titlesHtml = titles.map(t => {
+      const pctW = maxT ? Math.round(t.count / maxT * 100) : 0;
+      return '<div class="es-title-row">' +
+        '<span class="es-title-name">' + esc(t.title) + '</span>' +
+        '<span class="es-title-count">' + fmtNum(t.count) + '</span>' +
+        '<div class="es-title-bar"><div class="es-title-bar-fill" style="width:' + pctW + '%;"></div></div>' +
+      '</div>';
+    }).join('');
+
+    const titlesBlock =
+      '<div class="es-inner-card">' +
+        '<div class="es-inner-title">Top Job Titles</div>' +
+        '<div class="es-titles-list">' +
+          (titlesHtml || '<div style="color:#64748b;font-size:12px;padding:8px 0;">No job titles available</div>') +
+        '</div>' +
+      '</div>';
+
+    // Monthly filing chart
+    const monthly = (e.monthlyFilings || []).slice().sort((a, b) => a.month.localeCompare(b.month));
+    const maxM = monthly.length ? Math.max.apply(null, monthly.map(m => m.count)) : 0;
+    const mBars = monthly.map((m, i) => {
+      const h = maxM ? Math.max(2, Math.round(m.count / maxM * 120)) : 2;
+      return '<div class="es-monthly-bar-group">' +
+        '<div class="es-monthly-bar" style="height:' + h + 'px;" data-mi="' + i + '"></div>' +
+        '<div class="es-monthly-label">' + esc(fmtMonthShort(m.month)) + '</div>' +
+      '</div>';
+    }).join('');
+
+    const monthlyBlock =
+      '<div class="es-inner-card" style="margin-bottom:12px;">' +
+        '<div class="es-inner-title">Monthly Filings (' + monthly.length + ' month' + (monthly.length === 1 ? '' : 's') + ')</div>' +
+        '<div class="es-monthly-wrap">' +
+          '<div class="es-monthly-bars">' +
+            (mBars || '<div style="color:#64748b;font-size:12px;padding:20px;">No monthly data</div>') +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    // Audit warning
+    const auditCounts = AUDIT_STATUSES
+      .map(s => [s, statuses[s] || 0])
+      .filter(x => x[1] > 0);
+    let auditBlock = '';
+    if (auditCounts.length) {
+      auditBlock =
+        '<div class="es-audit-warning">' +
+          '<div class="es-audit-icon">⚠️</div>' +
+          '<div class="es-audit-body">' +
+            '<div class="es-audit-title">Audit Risk Indicator</div>' +
+            '<div class="es-audit-subtitle">This employer has cases flagged for extended DOL review</div>' +
+            '<div class="es-audit-items">' +
+              auditCounts.map(pair =>
+                '<div class="es-audit-item">' +
+                  '<span class="es-audit-item-label">' + esc(pair[0]) + '</span>' +
+                  '<span class="es-audit-item-val">' + fmtNum(pair[1]) + '</span>' +
+                '</div>'
+              ).join('') +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    }
+
+    results.innerHTML =
+      '<div class="es-result-title">' + esc(e.name) + '</div>' +
+      '<div class="es-result-sub">' + fmtNum(e.total) + ' PERM filing' + (e.total === 1 ? '' : 's') + ' tracked</div>' +
+      overview +
+      '<div class="es-charts">' + donutBlock + titlesBlock + '</div>' +
+      monthlyBlock +
+      auditBlock;
+
+    // Tooltip on monthly bars using global tooltip (if available)
+    const gtip = document.getElementById('gtip');
+    results.querySelectorAll('.es-monthly-bar').forEach(bar => {
+      const idx = parseInt(bar.dataset.mi, 10);
+      const m = monthly[idx];
+      bar.addEventListener('mouseenter', ev => {
+        if (!gtip) return;
+        gtip.innerHTML =
+          '<div class="gt-title">' + esc(fmtMonthShort(m.month)) + '</div>' +
+          '<div class="gt-row"><span class="gt-label">Filings</span><span class="gt-val">' + fmtNum(m.count) + '</span></div>';
+        gtip.style.display = 'block';
+        positionTip(ev);
+      });
+      bar.addEventListener('mousemove', positionTip);
+      bar.addEventListener('mouseleave', () => { if (gtip) gtip.style.display = 'none'; });
+    });
+    function positionTip(ev) {
+      if (!gtip || gtip.style.display === 'none') return;
+      const w = gtip.offsetWidth, h = gtip.offsetHeight;
+      let x = ev.clientX - w / 2, y = ev.clientY - h - 16;
+      if (x < 8) x = 8;
+      if (x + w > window.innerWidth - 8) x = window.innerWidth - w - 8;
+      if (y < 8) y = ev.clientY + 16;
+      gtip.style.left = x + 'px';
+      gtip.style.top  = y + 'px';
+    }
+  }
+
+  // Input handler
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    const q = input.value;
+    debounceTimer = setTimeout(() => {
+      const matches = search(q);
+      renderDropdown(matches, q);
+    }, 200);
+  });
+
+  // Keyboard navigation
+  input.addEventListener('keydown', ev => {
+    const items = dd.querySelectorAll('.es-dropdown-item');
+    if (ev.key === 'ArrowDown') {
+      if (!items.length) return;
+      ev.preventDefault();
+      activeDdIdx = Math.min(activeDdIdx + 1, items.length - 1);
+      items.forEach((el, i) => el.classList.toggle('active', i === activeDdIdx));
+      items[activeDdIdx].scrollIntoView({ block: 'nearest' });
+    } else if (ev.key === 'ArrowUp') {
+      if (!items.length) return;
+      ev.preventDefault();
+      activeDdIdx = Math.max(activeDdIdx - 1, 0);
+      items.forEach((el, i) => el.classList.toggle('active', i === activeDdIdx));
+      items[activeDdIdx].scrollIntoView({ block: 'nearest' });
+    } else if (ev.key === 'Enter') {
+      const idx = activeDdIdx >= 0 ? activeDdIdx : 0;
+      if (currentMatches[idx]) {
+        ev.preventDefault();
+        select(currentMatches[idx].n);
+      }
+    } else if (ev.key === 'Escape') {
+      dd.classList.remove('open');
+    }
+  });
+
+  input.addEventListener('focus', () => {
+    if (input.value.trim()) {
+      const matches = search(input.value);
+      renderDropdown(matches, input.value);
+    }
+  });
+
+  document.addEventListener('click', ev => {
+    if (!input.contains(ev.target) && !dd.contains(ev.target)) dd.classList.remove('open');
+  });
+
+  // Smooth scroll for nav link
+  document.querySelectorAll('a[href="#employer-search"]').forEach(a => {
+    a.addEventListener('click', ev => {
+      ev.preventDefault();
+      document.getElementById('employer-search').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => input.focus(), 400);
+    });
+  });
+})();
+</script>
 </body>
 </html>
