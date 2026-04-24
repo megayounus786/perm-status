@@ -2161,6 +2161,7 @@ const API_BASE = 'https://api.immilane.com';
   let employerIndex = null;
   let employerData  = null;
   let dataPromise   = null;
+  let globalLastFiling = null;
   let activeIdx     = -1;
   let lastMatches   = [];
   let debounceTimer = null;
@@ -2290,6 +2291,9 @@ const API_BASE = 'https://api.immilane.com';
 
     loadData().then(data => {
       const list = (data && data.employers) || [];
+      if (!globalLastFiling) {
+        globalLastFiling = list.reduce((max, e) => e.lastFiling && e.lastFiling > max ? e.lastFiling : max, '');
+      }
       const emp = list.find(e => e.name === name);
       if (!emp) {
         modalBody.innerHTML = '<div class="emp-error">Employer data not found.</div>';
@@ -2319,7 +2323,7 @@ const API_BASE = 'https://api.immilane.com';
     // Filing period from employer data
     const fmtDate = (d) => { if(!d) return ''; const p=d.split('-'); return MONTHS[parseInt(p[1],10)-1]+' '+p[0]; };
     const firstStr = fmtDate(emp.firstFiling);
-    const lastStr = fmtDate(emp.lastFiling);
+    const lastStr = fmtDate(globalLastFiling || emp.lastFiling);
     const filingPeriod = firstStr && lastStr ? (firstStr + ' → ' + lastStr) : (firstStr || lastStr || '—');
 
     // Pending count
