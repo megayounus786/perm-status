@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-04-26T09:07:32-04:00",
+  "updatedAt": "2026-04-26T12:07:24-04:00",
   "backlog": {
-    "total": 138829,
-    "startOfMonth": 138829,
+    "total": 138777,
+    "startOfMonth": 138777,
     "thisMonth": {
       "name": "Apr 2026",
-      "processed": 12513,
+      "processed": 12565,
       "intake": 6137
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 92,
-    "certified": 87,
+    "total": 144,
+    "certified": 139,
     "rfi": 0,
     "denied": 5,
     "withdrawn": 0,
@@ -40,13 +40,13 @@
   "dol": {
     "label": "Jan '25",
     "monthFull": "January",
-    "day": 22,
+    "day": 23,
     "daysInMonth": 100,
     "estFinish": "May 9",
-    "movementPerWeek": 12.7,
-    "casesRemaining": 4855,
-    "latestLetter": "T",
-    "pctProcessed": 22
+    "movementPerWeek": 12.8,
+    "casesRemaining": 4803,
+    "latestLetter": "I",
+    "pctProcessed": 23
   },
   "timeline": [
     {
@@ -70,12 +70,12 @@
     {
       "label": "Jan '25",
       "total": 6699,
-      "certified": 1440,
-      "review": 4855,
+      "certified": 1492,
+      "review": 4803,
       "withdrawn": 369,
       "denied": 34,
       "status": "active",
-      "dolDay": 22,
+      "dolDay": 23,
       "dolDays": 100
     },
     {
@@ -449,8 +449,8 @@
     },
     {
       "date": "2026-04-26",
-      "total": 92,
-      "certified": 87,
+      "total": 144,
+      "certified": 139,
       "rfi": 0,
       "denied": 5,
       "withdrawn": 0
@@ -547,8 +547,8 @@
     },
     {
       "weekStart": "2026-04-20",
-      "total": 3349,
-      "certified": 3078,
+      "total": 3401,
+      "certified": 3130,
       "rfi": 76,
       "denied": 167,
       "withdrawn": 28,
@@ -570,8 +570,8 @@
       "tabKey": "next",
       "tabLabel": "Jan",
       "subtitle": "January 2025 filings \u00b7 6,698 total",
-      "certified": 1440,
-      "review": 4855,
+      "certified": 1492,
+      "review": 4803,
       "withdrawn": 369,
       "rfi": 5,
       "denied": 29
