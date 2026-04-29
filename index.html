@@ -2046,14 +2046,18 @@ const API_BASE = 'https://api.immilane.com';
     resultEl.style.display = '';
   }
 
-  async function fetchEstimate(url, btn, isLookup) {
+  async function fetchEstimate(url, btn, isLookup, queryVal) {
     setLoading(btn, true);
     clearEstResult();
     try {
       const resp = await fetch(url);
       const data = await resp.json();
       if (!resp.ok) { showEstError(data.error || 'Request failed'); return; }
-      if (typeof gtag === 'function') gtag('event', 'estimate_result', { method: isLookup ? 'case_number' : 'filing_date' });
+      if (typeof gtag === 'function') {
+        const props = { method: isLookup ? 'case_number' : 'filing_date' };
+        if (isLookup) props.case_number = queryVal; else props.filing_date = queryVal;
+        gtag('event', 'estimate_result', props);
+      }
       renderEstResult(data, isLookup);
     } catch (err) {
       showEstError('Unable to reach the estimate API. Please try again later.');
@@ -2071,8 +2075,8 @@ const API_BASE = 'https://api.immilane.com';
       showEstError('Invalid case number format. Expected: G-100-XXXXX-XXXXXX');
       return;
     }
-    if (typeof gtag === 'function') gtag('event', 'estimate_submit', { method: 'case_number' });
-    fetchEstimate(API_BASE + '/api/lookup?case=' + encodeURIComponent(val), btnCase, true);
+    if (typeof gtag === 'function') gtag('event', 'estimate_submit', { method: 'case_number', case_number: val });
+    fetchEstimate(API_BASE + '/api/lookup?case=' + encodeURIComponent(val), btnCase, true, val);
   });
   inputCase.addEventListener('keydown', e => { if (e.key === 'Enter') btnCase.click(); });
 
@@ -2082,8 +2086,8 @@ const API_BASE = 'https://api.immilane.com';
   btnDate.addEventListener('click', () => {
     const val = inputDate.value;
     if (!val) { showEstError('Please select a filing date.'); return; }
-    if (typeof gtag === 'function') gtag('event', 'estimate_submit', { method: 'filing_date' });
-    fetchEstimate(API_BASE + '/api/estimate?date=' + encodeURIComponent(val), btnDate, false);
+    if (typeof gtag === 'function') gtag('event', 'estimate_submit', { method: 'filing_date', filing_date: val });
+    fetchEstimate(API_BASE + '/api/estimate?date=' + encodeURIComponent(val), btnDate, false, val);
   });
   inputDate.addEventListener('keydown', e => { if (e.key === 'Enter') btnDate.click(); });
 
@@ -2316,6 +2320,9 @@ function employerSlug(name) {
         lastMatches = results.map(r => ({ n: r.name, t: r.total }));
         activeIdx = lastMatches.length > 0 ? 0 : -1;
         renderDropdown();
+        if (typeof gtag === 'function') {
+          try { gtag('event', 'employer_search', { search_term: q, results_count: results.length }); } catch(e){}
+        }
       })
       .catch(() => {
         if (seq !== searchSeq) return;
