@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-04-30T21:03:45-04:00",
+  "updatedAt": "2026-05-01T00:48:23-04:00",
   "backlog": {
-    "total": 137232,
-    "startOfMonth": 145197,
+    "total": 137618,
+    "startOfMonth": 137618,
     "thisMonth": {
-      "name": "Apr 2026",
-      "processed": 15133,
-      "intake": 7168
+      "name": "May 2026",
+      "processed": 0,
+      "intake": 0
     },
     "lastMonth": {
-      "name": "Mar 2026",
-      "processed": 888,
-      "intake": 7128
+      "name": "Apr 2026",
+      "processed": 15133,
+      "intake": 7555
     }
   },
   "avgDays": {
@@ -23,17 +23,17 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 586,
-    "certified": 534,
-    "rfi": 34,
-    "denied": 18,
+    "total": 0,
+    "certified": 0,
+    "rfi": 0,
+    "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 589,
-      "certified": 540,
-      "rfi": 13,
-      "denied": 36,
+      "total": 586,
+      "certified": 534,
+      "rfi": 34,
+      "denied": 18,
       "withdrawn": 0
     }
   },
@@ -42,8 +42,8 @@
     "monthFull": "January",
     "day": 54,
     "daysInMonth": 100,
-    "estFinish": "May 7",
-    "movementPerWeek": 14.2,
+    "estFinish": "May 8",
+    "movementPerWeek": 13.9,
     "casesRemaining": 2718,
     "latestLetter": "Z",
     "pctProcessed": 54
@@ -206,23 +206,15 @@
     },
     {
       "label": "Apr '26",
-      "total": 7168,
+      "total": 7555,
       "certified": 0,
-      "review": 7112,
-      "withdrawn": 52,
+      "review": 7498,
+      "withdrawn": 53,
       "denied": 1,
       "status": "pending"
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-04-01",
-      "total": 992,
-      "certified": 843,
-      "rfi": 55,
-      "denied": 92,
-      "withdrawn": 2
-    },
     {
       "date": "2026-04-02",
       "total": 534,
@@ -453,6 +445,14 @@
       "certified": 534,
       "rfi": 34,
       "denied": 18,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-05-01",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
       "withdrawn": 0
     }
   ],
