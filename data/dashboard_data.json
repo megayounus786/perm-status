@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-05-02T21:03:11-04:00",
+  "updatedAt": "2026-05-03T00:28:39-04:00",
   "backlog": {
-    "total": 137412,
+    "total": 137515,
     "startOfMonth": 137613,
     "thisMonth": {
       "name": "May 2026",
       "processed": 592,
-      "intake": 391
+      "intake": 494
     },
     "lastMonth": {
       "name": "Apr 2026",
@@ -23,18 +23,18 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 71,
-    "certified": 71,
+    "total": 0,
+    "certified": 0,
     "rfi": 0,
     "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 521,
-      "certified": 482,
-      "rfi": 20,
-      "denied": 17,
-      "withdrawn": 2
+      "total": 71,
+      "certified": 71,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
     }
   },
   "dol": {
@@ -42,8 +42,8 @@
     "monthFull": "January",
     "day": 63,
     "daysInMonth": 100,
-    "estFinish": "May 8",
-    "movementPerWeek": 13.2,
+    "estFinish": "May 9",
+    "movementPerWeek": 13.1,
     "casesRemaining": 2138,
     "latestLetter": "U",
     "pctProcessed": 63
@@ -215,23 +215,15 @@
     },
     {
       "label": "May '26",
-      "total": 391,
+      "total": 494,
       "certified": 0,
-      "review": 386,
+      "review": 489,
       "withdrawn": 5,
       "denied": 0,
       "status": "pending"
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-04-03",
-      "total": 481,
-      "certified": 427,
-      "rfi": 7,
-      "denied": 47,
-      "withdrawn": 0
-    },
     {
       "date": "2026-04-04",
       "total": 106,
@@ -460,6 +452,14 @@
       "date": "2026-05-02",
       "total": 71,
       "certified": 71,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-05-03",
+      "total": 0,
+      "certified": 0,
       "rfi": 0,
       "denied": 0,
       "withdrawn": 0
