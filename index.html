@@ -2260,8 +2260,9 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
 
 <script>
 (function() {
-  var API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://127.0.0.1:8787'
+  var h = window.location.hostname;
+  var API = h === 'localhost' || h === '127.0.0.1' ? 'http://127.0.0.1:8787'
+    : h === 'immilane.com' || h === 'www.immilane.com' ? 'https://immilane-api.younusahamad.workers.dev'
     : 'https://immilane-api-staging.younusahamad.workers.dev';
 
   var trigger = document.getElementById('fb-trigger');
