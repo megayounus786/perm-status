@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>PERM Estimate — Predict Your Labor Certification Date | ImmiLane</title>
+<meta name="description" content="Estimate your PERM labor certification completion date based on live DOL processing data. Look up by case number or filing date.">
+<meta name="keywords" content="PERM estimate, PERM completion date, PERM case lookup, PERM filing date estimate, DOL processing estimate, ImmiLane">
+<link rel="canonical" href="https://immilane.com/estimate.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PERM Estimate — Predict Your Labor Certification Date | ImmiLane">
+<meta property="og:description" content="Estimate your PERM labor certification completion date based on live DOL processing data. Look up by case number or filing date.">
+<meta property="og:url" content="https://immilane.com/estimate.html">
+<meta property="og:site_name" content="ImmiLane">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PERM Estimate — Predict Your Labor Certification Date">
+<meta name="twitter:description" content="Estimate your PERM labor certification completion date based on live DOL processing data.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ImmiLane PERM Estimate","url":"https://immilane.com/estimate.html","description":"Estimate PERM labor certification completion dates based on live DOL processing data.","applicationCategory":"Government Data Tracker","operatingSystem":"Web","provider":{"@type":"Organization","name":"ImmiLane","url":"https://immilane.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-html: #0a0a12; --bg-body: #0a0a12; --text-primary: #f0f0f8; --text-secondary: #94a3b8; --text-muted: #64748b; --text-dim: #475569;
+    --card-bg: rgba(255,255,255,0.04); --card-border: rgba(255,255,255,0.06); --card-hover: rgba(255,255,255,0.07); --card-border-hover: rgba(255,255,255,0.1);
+    --nav-bg: rgba(255,255,255,0.03); --nav-border: rgba(255,255,255,0.06);
+    --input-bg: rgba(255,255,255,0.06); --input-border: rgba(255,255,255,0.1); --input-focus: rgba(59,130,246,0.5);
+    --tab-bg: rgba(255,255,255,0.05); --tab-active: rgba(255,255,255,0.1);
+    --sep: rgba(255,255,255,0.06);
+    --modal-bg: #0e0e1a; --modal-backdrop: rgba(0,0,0,0.65); --modal-border: rgba(255,255,255,0.08);
+    --bg-card: rgba(15,15,24,0.92);
+    --gradient-start: rgba(59,130,246,0.08); --gradient-end: rgba(139,92,246,0.06);
+    --noscript-bg: #0a0a12;
+  }
+
+  html.light {
+    --bg-html: #f5f7fa; --bg-body: #f5f7fa; --text-primary: #1a1a2e; --text-secondary: #475569; --text-muted: #64748b; --text-dim: #94a3b8;
+    --card-bg: rgba(255,255,255,0.85); --card-border: rgba(0,0,0,0.08); --card-hover: rgba(255,255,255,0.95); --card-border-hover: rgba(0,0,0,0.12);
+    --nav-bg: rgba(255,255,255,0.85); --nav-border: rgba(0,0,0,0.08);
+    --input-bg: rgba(0,0,0,0.04); --input-border: rgba(0,0,0,0.12); --input-focus: rgba(59,130,246,0.4);
+    --tab-bg: rgba(0,0,0,0.04); --tab-active: rgba(0,0,0,0.08);
+    --sep: rgba(0,0,0,0.08);
+    --modal-bg: #fff; --modal-backdrop: rgba(0,0,0,0.3); --modal-border: rgba(0,0,0,0.1);
+    --bg-card: rgba(245,247,250,0.95);
+    --gradient-start: transparent; --gradient-end: transparent;
+    --noscript-bg: #f5f7fa;
+  }
+
+  html { background: var(--bg-html); }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); color: var(--text-primary); min-height: 100vh; min-width: 100%; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; backdrop-filter: blur(20px); background: var(--nav-bg); border-bottom: 1px solid var(--nav-border); position: sticky; top: 0; z-index: 100; }
+  .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+  .logo a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a.active, .nav-links a:hover { color: var(--text-primary); }
+  footer { text-align: center; padding: 32px 24px; color: var(--text-dim); font-size: 12px; border-top: 1px solid var(--sep); margin-top: 0; }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--text-secondary); }
+  .hero { padding: 40px 0 20px; }
+  .hero h1 { font-size: 14px; font-weight: 500; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .hero h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--text-primary), var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p.lede { font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.6; max-width: 720px; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .card { background: var(--card-bg); backdrop-filter: blur(20px); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; position: relative; }
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .card-title { font-size: 16px; font-weight: 600; letter-spacing: -0.3px; }
+  .card-subtitle { font-size: 11px; color: var(--text-muted); }
+
+  /* ── ESTIMATE TAB ── */
+  .estimate-card { max-width: none; }
+  .est-subtabs { display: flex; gap: 4px; background: var(--tab-bg); border-radius: 8px; padding: 3px; margin-bottom: 20px; }
+  .est-subtab { flex: 1; padding: 10px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; color: var(--text-muted); cursor: pointer; border: none; background: none; transition: all 0.2s; text-align: center; }
+  .est-subtab:hover { color: var(--text-secondary); }
+  .est-subtab.active { background: var(--tab-active); color: var(--text-primary); }
+  .est-input-group { margin-bottom: 16px; }
+  .est-input-group label { display: block; font-size: 12px; color: var(--text-secondary); font-weight: 500; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .est-input { width: 100%; padding: 12px 16px; background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 10px; color: var(--text-primary); font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.2s; box-sizing: border-box; -webkit-appearance: none; appearance: none; max-width: 100%; }
+  .est-input:focus { border-color: #3b82f6; }
+  .est-input::placeholder { color: var(--text-dim); }
+  .est-btn { width: 100%; padding: 14px; border: none; border-radius: 10px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: opacity 0.2s, transform 0.1s; font-family: inherit; }
+  .est-btn:hover { opacity: 0.9; }
+  .est-btn:active { transform: scale(0.98); }
+  .est-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .est-spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 8px; }
+  .est-error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 12px 16px; color: #fca5a5; font-size: 13px; margin-top: 16px; }
+
+  .est-result { margin-top: 24px; }
+  .est-result-hero { text-align: center; padding: 28px 0 20px; border-bottom: 1px solid var(--sep); margin-bottom: 20px; }
+  .est-result-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .est-result-date { font-size: 32px; font-weight: 800; letter-spacing: -1px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .est-result-days { font-size: 14px; color: var(--text-secondary); margin-top: 4px; font-weight: 500; }
+
+  .est-confidence { margin: 20px 0; }
+  .est-conf-bar-track { height: 8px; background: var(--card-border); border-radius: 4px; position: relative; overflow: hidden; }
+  .est-conf-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); transition: width 0.6s ease; }
+  .est-conf-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+  .est-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .est-stat { background: var(--card-bg); border-radius: 10px; padding: 14px 16px; }
+  .est-stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .est-stat-value { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+  .est-stat-value.accent { color: #3b82f6; }
+  .est-stat-value.warning { color: #f59e0b; }
+  .est-stat-value.success { color: #22c55e; }
+
+  .est-case-info { background: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+  .est-case-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; }
+  .est-case-label { color: var(--text-muted); }
+  .est-case-value { color: var(--text-primary); font-weight: 500; }
+  .est-case-status { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    width: 40px; height: 22px; border-radius: 11px; border: none; cursor: pointer;
+    background: rgba(255,255,255,0.1); position: relative; transition: background 0.3s;
+    display: flex; align-items: center; padding: 0 3px; flex-shrink: 0;
+  }
+  .theme-toggle::after {
+    content: ''; width: 16px; height: 16px; border-radius: 50%;
+    background: #f0f0f8; transition: transform 0.3s, background 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  html.light .theme-toggle { background: rgba(0,0,0,0.1); }
+  html.light .theme-toggle::after { transform: translateX(18px); background: #1a1a2e; }
+  .theme-toggle-icon { position: absolute; font-size: 11px; top: 50%; transform: translateY(-50%); pointer-events: none; line-height: 1; }
+  .theme-toggle-icon.sun  { right: 5px; }
+  .theme-toggle-icon.moon { left: 5px; }
+  html:not(.light) .theme-toggle-icon.sun  { opacity: 0.4; }
+  html:not(.light) .theme-toggle-icon.moon { opacity: 0; }
+  html.light .theme-toggle-icon.sun  { opacity: 0; }
+  html.light .theme-toggle-icon.moon { opacity: 0.4; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 14px; }
+    nav {
+      padding: 12px 14px;
+      flex-wrap: wrap;
+      row-gap: 8px;
+    }
+    .logo { font-size: 18px; }
+    .logo-icon { width: 28px; height: 28px; font-size: 14px; }
+    .nav-links { gap: 8px; }
+    .nav-links li { flex: 0 0 auto; }
+    .nav-links a {
+      display: inline-flex; align-items: center;
+      min-height: 36px; padding: 0 8px;
+      border-radius: 8px; font-size: 13px;
+    }
+    .hero { padding: 24px 0 14px; }
+    .hero h2 { font-size: 24px; }
+    .card { padding: 18px; border-radius: 14px; }
+    .card-header {
+      align-items: flex-start; flex-wrap: wrap; gap: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 10px 10px; }
+    .hero h2 { font-size: 20px; }
+    .card { padding: 14px; }
+    .est-result-date { font-size: 26px; }
+    .est-stats { grid-template-columns: 1fr; }
+    .est-subtabs { flex-direction: column; }
+    .est-input[type="date"] { font-size: 16px; padding: 10px 12px; }
+    .est-btn { font-size: 14px; padding: 12px; }
+    .est-input-group label { font-size: 11px; }
+  }
+
+  /* ── FEEDBACK WIDGET ── */
+  .fb-trigger { position: fixed; bottom: 24px; right: 24px; z-index: 900; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 14px; padding: 12px 20px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; box-shadow: 0 4px 20px rgba(59,130,246,0.4); transition: transform 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 8px; }
+  .fb-trigger:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.5); }
+  .fb-trigger svg { width: 16px; height: 16px; }
+  .fb-backdrop { display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 950; }
+  .fb-backdrop.open { display: block; }
+  .fb-modal { display: none; position: fixed; bottom: 80px; right: 24px; z-index: 960; width: 380px; max-width: calc(100vw - 32px); background: var(--modal-bg); border: 1px solid var(--modal-border); border-radius: 16px; box-shadow: 0 16px 48px rgba(0,0,0,0.4); padding: 24px; }
+  .fb-modal.open { display: block; }
+  .fb-modal-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .fb-modal-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+  .fb-close { position: absolute; top: 14px; right: 14px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; line-height: 1; padding: 4px; }
+  .fb-close:hover { color: var(--text-primary); }
+  .fb-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+  .fb-field { margin-bottom: 14px; }
+  .fb-select, .fb-textarea, .fb-input { width: 100%; font-family: inherit; font-size: 13px; color: var(--text-primary); background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 10px; padding: 10px 12px; transition: border-color 0.2s; outline: none; }
+  .fb-select:focus, .fb-textarea:focus, .fb-input:focus { border-color: var(--input-focus); }
+  .fb-textarea { resize: vertical; min-height: 90px; max-height: 200px; }
+  .fb-select { cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+  .fb-select option { background: var(--modal-bg); color: var(--text-primary); }
+  .fb-hint { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+  .fb-submit { width: 100%; padding: 11px; border: none; border-radius: 10px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+  .fb-submit:hover { opacity: 0.9; }
+  .fb-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+  .fb-success { text-align: center; padding: 20px 0; }
+  .fb-success-icon { font-size: 36px; margin-bottom: 8px; }
+  .fb-success-msg { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .fb-success-sub { font-size: 12px; color: var(--text-muted); }
+  .fb-error { font-size: 12px; color: #ef4444; margin-bottom: 10px; display: none; }
+  @media (max-width: 480px) {
+    .fb-trigger { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 12px; border-radius: 12px; }
+    .fb-modal { bottom: 70px; right: 16px; padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<noscript>
+  <div style="padding:40px 20px;text-align:center;color:#f0f0f8;background:#0a0a12;min-height:100vh;font-family:sans-serif;">
+    <h1 style="margin-bottom:16px;">ImmiLane PERM Estimate</h1>
+    <p>This page requires JavaScript to compute estimates from live DOL data. Please enable JavaScript in your browser settings and reload the page.</p>
+  </div>
+</noscript>
+
+<nav>
+  <div class="logo"><a href="./"><div class="logo-icon">🏛️</div>PERM Tracker</a></div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="./">Dashboard</a></li>
+      <li><a href="estimate.html" class="active">Estimate</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <h1>PERM Estimate Tool</h1>
+    <h2>Predict Your Labor Certification Date</h2>
+    <p class="lede">Get an estimated completion date for your PERM case based on live DOL processing data. Look up by case number for the most accurate result, or by filing date if you don't have one yet.</p>
+  </div>
+
+  <div style="margin: 24px 0;">
+    <div class="card estimate-card">
+      <div class="card-header" style="padding-bottom: 12px;">
+        <div><span class="card-title">Estimate Processing Timeline</span><div class="card-subtitle">Based on live DOL processing data</div></div>
+      </div>
+      <div class="est-subtabs">
+        <button class="est-subtab active" id="est-tab-case">By Case Number</button>
+        <button class="est-subtab" id="est-tab-date">By Filing Date</button>
+      </div>
+
+      <div id="est-form-case">
+        <div class="est-input-group">
+          <label for="est-case-input">Case Number</label>
+          <input type="text" id="est-case-input" class="est-input" placeholder="G-100-XXXXX-XXXXXX" maxlength="20" autocomplete="off" spellcheck="false">
+        </div>
+        <button class="est-btn" id="est-btn-case">Estimate Timeline</button>
+      </div>
+
+      <div id="est-form-date" style="display:none;">
+        <div class="est-input-group">
+          <label for="est-date-input">Filing Date</label>
+          <input type="date" id="est-date-input" class="est-input" min="2024-11-01">
+        </div>
+        <button class="est-btn" id="est-btn-date">Estimate Timeline</button>
+      </div>
+
+      <div id="est-error" class="est-error" style="display:none;"></div>
+      <div id="est-result" class="est-result" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Feedback Widget -->
+<button class="fb-trigger" id="fb-trigger" aria-label="Send feedback">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  Feedback
+</button>
+<div class="fb-backdrop" id="fb-backdrop"></div>
+<div class="fb-modal" id="fb-modal" role="dialog" aria-modal="true">
+  <button class="fb-close" id="fb-close" aria-label="Close feedback">&times;</button>
+  <div id="fb-form-view">
+    <div class="fb-modal-title">Send Feedback</div>
+    <div class="fb-modal-sub">We value your feedback and will work on every suggestion to improve how we serve you.</div>
+    <div class="fb-error" id="fb-error"></div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-type">Category</label>
+      <select class="fb-select" id="fb-type">
+        <option value="">Select a category...</option>
+        <option value="feature_request">New Feature Request</option>
+        <option value="bug_report">Bug Report</option>
+        <option value="incorrect_data">Incorrect Data</option>
+        <option value="general">General Feedback</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-message">Your feedback</label>
+      <textarea class="fb-textarea" id="fb-message" placeholder="Tell us what's on your mind..." maxlength="2000"></textarea>
+    </div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-email">Email <span style="font-weight:400;color:var(--text-dim)">(optional)</span></label>
+      <input class="fb-input" id="fb-email" type="email" placeholder="you@example.com">
+      <div class="fb-hint">Only needed if you'd like us to follow up.</div>
+    </div>
+    <button class="fb-submit" id="fb-submit">Submit Feedback</button>
+  </div>
+  <div id="fb-success-view" class="fb-success" style="display:none">
+    <div class="fb-success-icon">&#10003;</div>
+    <div class="fb-success-msg">Thank you!</div>
+    <div class="fb-success-sub">Your feedback has been received.</div>
+  </div>
+</div>
+
+<footer>
+  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; &copy; 2026 ImmiLane
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// THEME TOGGLE
+// ═══════════════════════════════════════════════════════
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+});
+</script>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
+function esc(s) { var d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
+function n(v)  { return v.toLocaleString(); }
+</script>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// ESTIMATE
+// ═══════════════════════════════════════════════════════
+const API_BASE = 'https://api.immilane.com';
+const API_VERSION = '2';
+
+(function initEstimate() {
+  // Sub-tabs
+  const tabCase = document.getElementById('est-tab-case');
+  const tabDate = document.getElementById('est-tab-date');
+  const formCase = document.getElementById('est-form-case');
+  const formDate = document.getElementById('est-form-date');
+
+  tabCase.addEventListener('click', () => {
+    tabCase.classList.add('active'); tabDate.classList.remove('active');
+    formCase.style.display = ''; formDate.style.display = 'none';
+    clearEstResult();
+    if (typeof gtag === 'function') gtag('event', 'estimate_tab_switch', { method: 'case_number' });
+  });
+  tabDate.addEventListener('click', () => {
+    tabDate.classList.add('active'); tabCase.classList.remove('active');
+    formDate.style.display = ''; formCase.style.display = 'none';
+    clearEstResult();
+    if (typeof gtag === 'function') gtag('event', 'estimate_tab_switch', { method: 'filing_date' });
+  });
+
+  // Set max date on date input
+  document.getElementById('est-date-input').max = new Date().toISOString().split('T')[0];
+
+  const errorEl  = document.getElementById('est-error');
+  const resultEl = document.getElementById('est-result');
+
+  function clearEstResult() { errorEl.style.display = 'none'; resultEl.style.display = 'none'; }
+
+  function showEstError(msg) {
+    errorEl.textContent = msg;
+    errorEl.style.display = '';
+    resultEl.style.display = 'none';
+  }
+
+  function setLoading(btn, loading) {
+    if (loading) {
+      btn.disabled = true;
+      btn.innerHTML = '<span class="est-spinner"></span>Estimating…';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Estimate Timeline';
+    }
+  }
+
+  function fmtEstDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso + 'T12:00:00Z');
+    const mo = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return mo[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+
+  function fmtShortDate(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso + 'T12:00:00Z');
+    const mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return mo[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+
+  function statusColor(s) {
+    if (s === 'CERTIFIED') return { bg:'rgba(34,197,94,0.15)', color:'#22c55e' };
+    if (s === 'DENIED')    return { bg:'rgba(239,68,68,0.15)', color:'#ef4444' };
+    if (s === 'RFI ISSUED') return { bg:'rgba(245,158,11,0.15)', color:'#f59e0b' };
+    if (s === 'ANALYST REVIEW') return { bg:'rgba(59,130,246,0.15)', color:'#3b82f6' };
+    return { bg:'rgba(100,116,139,0.15)', color:'#94a3b8' };
+  }
+
+  function renderEstResult(data, isLookup) {
+    clearEstResult();
+    let html = '';
+
+    if (isLookup) {
+      const sc = statusColor(data.current_status);
+      html += '<div class="est-case-info">';
+      html += '<div class="est-case-row"><span class="est-case-label">Case Number</span><span class="est-case-value">' + esc(data.case_number) + '</span></div>';
+      html += '<div class="est-case-row"><span class="est-case-label">Employer</span><span class="est-case-value">' + esc(data.employer) + '</span></div>';
+      html += '<div class="est-case-row"><span class="est-case-label">Filed</span><span class="est-case-value">' + fmtShortDate(data.submitted_date.substring(0,10)) + '</span></div>';
+      html += '<div class="est-case-row"><span class="est-case-label">Status</span><span class="est-case-status" style="background:' + sc.bg + ';color:' + sc.color + ';">' + esc(data.current_status) + '</span></div>';
+      html += '</div>';
+
+      var terminalStatuses = ['CERTIFIED', 'DENIED', 'WITHDRAWN'];
+      if (terminalStatuses.indexOf(data.current_status.toUpperCase()) !== -1) {
+        html += '<div style="text-align:center;padding:20px 0;color:#94a3b8;font-size:14px;">This case has already been processed — no estimate needed.</div>';
+        resultEl.innerHTML = html;
+        resultEl.style.display = '';
+        return;
+      }
+    }
+
+    const est = isLookup ? data.estimate : data;
+
+    if (est.already_in_range) {
+      html += '<div style="text-align:center;padding:20px 0;">';
+      html += '<div style="font-size:14px;color:#f59e0b;font-weight:600;margin-bottom:8px;">DOL has already passed this filing month</div>';
+      html += '<div style="font-size:13px;color:#94a3b8;">Your case should be processed very soon, or may require additional review.</div>';
+      html += '<div class="est-stats" style="margin-top:16px;">';
+      html += '<div class="est-stat"><div class="est-stat-label">DOL Position</div><div class="est-stat-value warning">' + esc(est.dol_current) + '</div></div>';
+      html += '<div class="est-stat"><div class="est-stat-label">Filing Month</div><div class="est-stat-value">' + esc(est.filing_month) + '</div></div>';
+      html += '</div></div>';
+      resultEl.innerHTML = html;
+      resultEl.style.display = '';
+      return;
+    }
+
+    if (!est.estimated_date) {
+      html += '<div style="text-align:center;padding:20px 0;color:#94a3b8;font-size:14px;">Unable to calculate estimate — insufficient processing data.</div>';
+      resultEl.innerHTML = html;
+      resultEl.style.display = '';
+      return;
+    }
+
+    // Hero date
+    html += '<div class="est-result-hero">';
+    html += '<div class="est-result-label">Estimated Completion</div>';
+    html += '<div class="est-result-date">' + fmtEstDate(est.estimated_date) + '</div>';
+    html += '<div class="est-result-days">~' + n(est.days_remaining) + ' days remaining';
+    html += '</div>';
+    html += '</div>';
+
+    // Confidence range — use server-provided bands
+    var lowISO = est.confidence_low, highISO = est.confidence_high, midISO = est.estimated_date;
+    var midPct = 50;
+    if (lowISO && highISO && midISO) {
+      var lo = Date.parse(lowISO + 'T12:00:00Z');
+      var hi = Date.parse(highISO + 'T12:00:00Z');
+      var mi = Date.parse(midISO  + 'T12:00:00Z');
+      if (hi > lo) midPct = Math.max(0, Math.min(100, Math.round((mi - lo) / (hi - lo) * 100)));
+    }
+
+    html += '<div class="est-confidence">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">';
+    html += '<span style="font-size:12px;color:#64748b;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;">Confidence Range</span>';
+    html += '</div>';
+    html += '<div class="est-conf-bar-track"><div class="est-conf-bar-fill" style="width:' + midPct + '%;"></div></div>';
+    html += '<div class="est-conf-labels"><span>' + fmtShortDate(lowISO) + '</span><span style="color:#94a3b8;font-weight:600;">' + fmtShortDate(midISO) + '</span><span>' + fmtShortDate(highISO) + '</span></div>';
+    html += '</div>';
+
+    // Stats grid
+    html += '<div class="est-stats">';
+    html += '<div class="est-stat"><div class="est-stat-label">Filing Month</div><div class="est-stat-value">' + esc(est.filing_month) + '</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">DOL Position</div><div class="est-stat-value warning">' + esc(est.dol_current) + '</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Months Ahead</div><div class="est-stat-value accent">' + est.months_ahead + '</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Cases in Queue</div><div class="est-stat-value">' + n(est.cases_ahead) + '</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Processing Speed</div><div class="est-stat-value success">' + n(est.processing_speed_per_week) + '/wk</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Days Remaining</div><div class="est-stat-value accent">~' + n(est.days_remaining) + '</div></div>';
+    html += '</div>';
+
+    resultEl.innerHTML = html;
+    resultEl.style.display = '';
+  }
+
+  async function fetchEstimate(url, btn, isLookup, queryVal) {
+    setLoading(btn, true);
+    clearEstResult();
+    try {
+      const resp = await fetch(url);
+      const data = await resp.json();
+      if (!resp.ok) { showEstError(data.error || 'Request failed'); return; }
+      if (typeof gtag === 'function') {
+        const props = { method: isLookup ? 'case_number' : 'filing_date' };
+        if (isLookup) props.case_number = queryVal; else props.filing_date = queryVal;
+        gtag('event', 'estimate_result', props);
+      }
+      renderEstResult(data, isLookup);
+    } catch (err) {
+      showEstError('Unable to reach the estimate API. Please try again later.');
+    } finally {
+      setLoading(btn, false);
+    }
+  }
+
+  // Case lookup
+  const btnCase = document.getElementById('est-btn-case');
+  const inputCase = document.getElementById('est-case-input');
+  btnCase.addEventListener('click', () => {
+    const val = inputCase.value.trim().toUpperCase();
+    if (!/^G-\d{3}-\d{5}-\d{6}$/.test(val)) {
+      showEstError('Invalid case number format. Expected: G-100-XXXXX-XXXXXX');
+      return;
+    }
+    if (typeof gtag === 'function') gtag('event', 'estimate_submit', { method: 'case_number', case_number: val });
+    fetchEstimate(API_BASE + '/api/lookup?case=' + encodeURIComponent(val) + '&v=' + API_VERSION, btnCase, true, val);
+  });
+  inputCase.addEventListener('keydown', e => { if (e.key === 'Enter') btnCase.click(); });
+
+  // Date estimate
+  const btnDate = document.getElementById('est-btn-date');
+  const inputDate = document.getElementById('est-date-input');
+  btnDate.addEventListener('click', () => {
+    const val = inputDate.value;
+    if (!val) { showEstError('Please select a filing date.'); return; }
+    if (typeof gtag === 'function') gtag('event', 'estimate_submit', { method: 'filing_date', filing_date: val });
+    fetchEstimate(API_BASE + '/api/estimate?date=' + encodeURIComponent(val) + '&v=' + API_VERSION, btnDate, false, val);
+  });
+  inputDate.addEventListener('keydown', e => { if (e.key === 'Enter') btnDate.click(); });
+
+})();
+</script>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// FEEDBACK WIDGET
+// ═══════════════════════════════════════════════════════
+(function() {
+  var h = window.location.hostname;
+  var API = h === 'localhost' || h === '127.0.0.1' ? 'http://127.0.0.1:8787'
+    : h === 'immilane.com' || h === 'www.immilane.com' ? 'https://immilane-api.younusahamad.workers.dev'
+    : 'https://immilane-api-staging.younusahamad.workers.dev';
+
+  var trigger = document.getElementById('fb-trigger');
+  var backdrop = document.getElementById('fb-backdrop');
+  var modal = document.getElementById('fb-modal');
+  var closeBtn = document.getElementById('fb-close');
+  var submitBtn = document.getElementById('fb-submit');
+  var formView = document.getElementById('fb-form-view');
+  var successView = document.getElementById('fb-success-view');
+  var errorEl = document.getElementById('fb-error');
+
+  function open() { backdrop.classList.add('open'); modal.classList.add('open'); }
+  function close() { backdrop.classList.remove('open'); modal.classList.remove('open'); }
+  function reset() {
+    formView.style.display = '';
+    successView.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('fb-type').value = '';
+    document.getElementById('fb-message').value = '';
+    document.getElementById('fb-email').value = '';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Feedback';
+  }
+
+  trigger.addEventListener('click', function() { reset(); open(); });
+  backdrop.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+
+  submitBtn.addEventListener('click', function() {
+    errorEl.style.display = 'none';
+    var type = document.getElementById('fb-type').value;
+    var message = document.getElementById('fb-message').value.trim();
+    var email = document.getElementById('fb-email').value.trim();
+
+    if (!type) { showErr('Please select a category.'); return; }
+    if (!message) { showErr('Please enter your feedback.'); return; }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('Please enter a valid email.'); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    fetch(API + '/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: type, message: message, email: email || undefined })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (!res.ok) { showErr(res.data.error ? res.data.error.message : 'Something went wrong.'); submitBtn.disabled = false; submitBtn.textContent = 'Submit Feedback'; return; }
+      formView.style.display = 'none';
+      successView.style.display = '';
+      setTimeout(close, 2500);
+    })
+    .catch(function() {
+      showErr('Network error. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Feedback';
+    });
+  });
+
+  function showErr(msg) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
+})();
+</script>
+
+</body>
+</html>
