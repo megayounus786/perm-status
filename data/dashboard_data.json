@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-05-10T21:06:21-04:00",
+  "updatedAt": "2026-05-11T00:30:07-04:00",
   "backlog": {
-    "total": 135476,
-    "startOfMonth": 137598,
+    "total": 135496,
+    "startOfMonth": 137597,
     "thisMonth": {
       "name": "May 2026",
       "processed": 4654,
-      "intake": 2532
+      "intake": 2553
     },
     "lastMonth": {
       "name": "Apr 2026",
@@ -23,17 +23,17 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 232,
-    "certified": 226,
-    "rfi": 1,
-    "denied": 5,
+    "total": 0,
+    "certified": 0,
+    "rfi": 0,
+    "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 203,
-      "certified": 196,
-      "rfi": 3,
-      "denied": 4,
+      "total": 232,
+      "certified": 226,
+      "rfi": 1,
+      "denied": 5,
       "withdrawn": 0
     }
   },
@@ -42,8 +42,8 @@
     "monthFull": "February",
     "day": 38,
     "daysInMonth": 100,
-    "estFinish": "May 21",
-    "movementPerWeek": 10.7,
+    "estFinish": "May 23",
+    "movementPerWeek": 10.5,
     "casesRemaining": 3959,
     "latestLetter": "S",
     "pctProcessed": 38
@@ -215,23 +215,15 @@
     },
     {
       "label": "May '26",
-      "total": 2532,
+      "total": 2553,
       "certified": 0,
-      "review": 2512,
-      "withdrawn": 20,
+      "review": 2532,
+      "withdrawn": 21,
       "denied": 0,
       "status": "pending"
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-04-11",
-      "total": 153,
-      "certified": 140,
-      "rfi": 2,
-      "denied": 11,
-      "withdrawn": 0
-    },
     {
       "date": "2026-04-12",
       "total": 164,
@@ -463,17 +455,17 @@
       "rfi": 1,
       "denied": 5,
       "withdrawn": 0
-    }
-  ],
-  "rateWeeks": [
+    },
     {
-      "weekStart": "2026-02-16",
+      "date": "2026-05-11",
       "total": 0,
       "certified": 0,
       "rfi": 0,
       "denied": 0,
       "withdrawn": 0
-    },
+    }
+  ],
+  "rateWeeks": [
     {
       "weekStart": "2026-02-23",
       "total": 0,
@@ -560,7 +552,15 @@
       "certified": 3611,
       "rfi": 126,
       "denied": 175,
-      "withdrawn": 1,
+      "withdrawn": 1
+    },
+    {
+      "weekStart": "2026-05-11",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0,
       "partial": true
     }
   ],
