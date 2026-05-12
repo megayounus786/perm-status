@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-05-11T18:14:44-04:00",
+  "updatedAt": "2026-05-11T21:12:59-04:00",
   "backlog": {
-    "total": 134647,
+    "total": 134613,
     "startOfMonth": 137597,
     "thisMonth": {
       "name": "May 2026",
-      "processed": 5503,
+      "processed": 5537,
       "intake": 2553
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 849,
-    "certified": 773,
+    "total": 883,
+    "certified": 807,
     "rfi": 16,
     "denied": 35,
     "withdrawn": 25,
@@ -42,10 +42,10 @@
     "monthFull": "February",
     "day": 48,
     "daysInMonth": 100,
-    "estFinish": "May 19",
-    "movementPerWeek": 12.0,
-    "casesRemaining": 3266,
-    "latestLetter": "W",
+    "estFinish": "May 20",
+    "movementPerWeek": 11.8,
+    "casesRemaining": 3249,
+    "latestLetter": "M",
     "pctProcessed": 48
   },
   "timeline": [
@@ -70,8 +70,8 @@
     {
       "label": "Jan '25",
       "total": 6699,
-      "certified": 5251,
-      "review": 690,
+      "certified": 5268,
+      "review": 673,
       "withdrawn": 373,
       "denied": 384,
       "status": "done"
@@ -79,8 +79,8 @@
     {
       "label": "Feb '25",
       "total": 6929,
-      "certified": 3203,
-      "review": 3266,
+      "certified": 3220,
+      "review": 3249,
       "withdrawn": 326,
       "denied": 131,
       "status": "active",
@@ -458,8 +458,8 @@
     },
     {
       "date": "2026-05-11",
-      "total": 849,
-      "certified": 773,
+      "total": 883,
+      "certified": 807,
       "rfi": 16,
       "denied": 35,
       "withdrawn": 25
@@ -556,8 +556,8 @@
     },
     {
       "weekStart": "2026-05-11",
-      "total": 849,
-      "certified": 773,
+      "total": 883,
+      "certified": 807,
       "rfi": 16,
       "denied": 35,
       "withdrawn": 25,
@@ -569,8 +569,8 @@
       "tabKey": "active",
       "tabLabel": "Jan",
       "subtitle": "January 2025 filings \u00b7 6,698 total",
-      "certified": 5251,
-      "review": 690,
+      "certified": 5268,
+      "review": 673,
       "withdrawn": 373,
       "rfi": 138,
       "denied": 246
@@ -579,8 +579,8 @@
       "tabKey": "next",
       "tabLabel": "Feb",
       "subtitle": "February 2025 filings \u00b7 6,926 total",
-      "certified": 3203,
-      "review": 3266,
+      "certified": 3220,
+      "review": 3249,
       "withdrawn": 326,
       "rfi": 67,
       "denied": 64
