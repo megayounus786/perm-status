@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-05-12T15:12:45-04:00",
+  "updatedAt": "2026-05-12T18:12:21-04:00",
   "backlog": {
-    "total": 134426,
+    "total": 134251,
     "startOfMonth": 137594,
     "thisMonth": {
       "name": "May 2026",
-      "processed": 6086,
+      "processed": 6261,
       "intake": 2918
     },
     "lastMonth": {
@@ -23,10 +23,10 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 549,
-    "certified": 512,
-    "rfi": 15,
-    "denied": 22,
+    "total": 724,
+    "certified": 669,
+    "rfi": 26,
+    "denied": 29,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
@@ -38,22 +38,22 @@
     }
   },
   "dol": {
-    "label": "Feb '25",
-    "monthFull": "February",
-    "day": 54,
+    "label": "Mar '25",
+    "monthFull": "March",
+    "day": 0,
     "daysInMonth": 100,
-    "estFinish": "May 19",
-    "movementPerWeek": 12.2,
-    "casesRemaining": 2825,
-    "latestLetter": "Z",
-    "pctProcessed": 54
+    "estFinish": "Jan 7",
+    "movementPerWeek": 0.9,
+    "casesRemaining": 6965,
+    "latestLetter": "S",
+    "pctProcessed": 0
   },
   "timeline": [
     {
       "label": "Nov '24",
       "total": 10623,
-      "certified": 9150,
-      "review": 76,
+      "certified": 9155,
+      "review": 71,
       "withdrawn": 508,
       "denied": 859,
       "status": "done"
@@ -61,8 +61,8 @@
     {
       "label": "Dec '24",
       "total": 10512,
-      "certified": 8981,
-      "review": 88,
+      "certified": 8983,
+      "review": 86,
       "withdrawn": 524,
       "denied": 916,
       "status": "done"
@@ -70,31 +70,33 @@
     {
       "label": "Jan '25",
       "total": 6699,
-      "certified": 5304,
-      "review": 631,
+      "certified": 5305,
+      "review": 627,
       "withdrawn": 373,
-      "denied": 390,
+      "denied": 393,
       "status": "done"
     },
     {
       "label": "Feb '25",
       "total": 6929,
-      "certified": 3624,
-      "review": 2825,
+      "certified": 3766,
+      "review": 2668,
       "withdrawn": 326,
-      "denied": 151,
+      "denied": 166,
       "status": "active",
-      "dolDay": 54,
+      "dolDay": 100,
       "dolDays": 100
     },
     {
       "label": "Mar '25",
       "total": 7329,
-      "certified": 24,
-      "review": 6972,
+      "certified": 31,
+      "review": 6965,
       "withdrawn": 333,
       "denied": 0,
-      "status": "pending"
+      "status": "active",
+      "dolDay": 0,
+      "dolDays": 100
     },
     {
       "label": "Apr '25",
@@ -458,10 +460,10 @@
     },
     {
       "date": "2026-05-12",
-      "total": 549,
-      "certified": 512,
-      "rfi": 15,
-      "denied": 22,
+      "total": 724,
+      "certified": 669,
+      "rfi": 26,
+      "denied": 29,
       "withdrawn": 0
     }
   ],
@@ -556,10 +558,10 @@
     },
     {
       "weekStart": "2026-05-11",
-      "total": 1432,
-      "certified": 1319,
-      "rfi": 31,
-      "denied": 57,
+      "total": 1607,
+      "certified": 1476,
+      "rfi": 42,
+      "denied": 64,
       "withdrawn": 25,
       "partial": true
     }
@@ -567,115 +569,28 @@
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Jan",
-      "subtitle": "January 2025 filings \u00b7 6,698 total",
-      "certified": 5304,
-      "review": 631,
-      "withdrawn": 373,
-      "rfi": 139,
-      "denied": 251
+      "tabLabel": "Feb",
+      "subtitle": "February 2025 filings \u00b7 6,926 total",
+      "certified": 3766,
+      "review": 2668,
+      "withdrawn": 326,
+      "rfi": 89,
+      "denied": 77
     },
     {
       "tabKey": "next",
-      "tabLabel": "Feb",
-      "subtitle": "February 2025 filings \u00b7 6,926 total",
-      "certified": 3624,
-      "review": 2825,
-      "withdrawn": 326,
-      "rfi": 78,
-      "denied": 73
+      "tabLabel": "Mar",
+      "subtitle": "March 2025 filings \u00b7 7,329 total",
+      "certified": 31,
+      "review": 6965,
+      "withdrawn": 333,
+      "rfi": 0,
+      "denied": 0
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Jan '25",
-      "subtitle": "January 2025",
-      "list": [
-        {
-          "name": "Management Health Systems, LLC",
-          "count": 130
-        },
-        {
-          "name": "Microsoft Corporation",
-          "count": 106
-        },
-        {
-          "name": "Dakota Provisions LLC",
-          "count": 99
-        },
-        {
-          "name": "JCG Foods of Georgia, LLC",
-          "count": 97
-        },
-        {
-          "name": "FH Miami Operations LLC",
-          "count": 76
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 58
-        },
-        {
-          "name": "Case Farms Processing, Inc",
-          "count": 51
-        },
-        {
-          "name": "Salesforce, Inc.",
-          "count": 49
-        },
-        {
-          "name": "Deloitte Consulting LLP",
-          "count": 47
-        },
-        {
-          "name": "Ernst & Young U.S. LLP",
-          "count": 45
-        },
-        {
-          "name": "WAL-MART ASSOCIATES, INC.",
-          "count": 44
-        },
-        {
-          "name": "TW Services, Inc",
-          "count": 43
-        },
-        {
-          "name": "LinkedIn Corporation",
-          "count": 37
-        },
-        {
-          "name": "FMR LLC",
-          "count": 33
-        },
-        {
-          "name": "America West Medical Transportation Inc.",
-          "count": 30
-        },
-        {
-          "name": "Intel Corporation",
-          "count": 29
-        },
-        {
-          "name": "Rotolo Consultants, INC.",
-          "count": 28
-        },
-        {
-          "name": "MCKINSEY & COMPANY, INC. UNITED STATES",
-          "count": 28
-        },
-        {
-          "name": "Loyet Landscape Maintenance, Inc.",
-          "count": 27
-        },
-        {
-          "name": "Labor Guys, LLC",
-          "count": 27
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Feb '25",
       "subtitle": "February 2025",
       "list": [
@@ -758,6 +673,93 @@
         {
           "name": "MCKINSEY & COMPANY, INC. UNITED STATES",
           "count": 34
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Mar '25",
+      "subtitle": "March 2025",
+      "list": [
+        {
+          "name": "PRESTIGIOUS PLACEMENT, INC",
+          "count": 216
+        },
+        {
+          "name": "Microsoft Corporation",
+          "count": 132
+        },
+        {
+          "name": " Koch Foods of Gadsden, LLC",
+          "count": 98
+        },
+        {
+          "name": "Management Health Systems, LLC",
+          "count": 96
+        },
+        {
+          "name": "Deloitte Consulting LLP",
+          "count": 79
+        },
+        {
+          "name": "BH Acquisition Company, LLC",
+          "count": 79
+        },
+        {
+          "name": "Stoughton Trailers, LLC",
+          "count": 75
+        },
+        {
+          "name": "WAL-MART ASSOCIATES, INC.",
+          "count": 73
+        },
+        {
+          "name": "Tesla, Inc.",
+          "count": 65
+        },
+        {
+          "name": "All Phase Landscape Construction, Inc.",
+          "count": 61
+        },
+        {
+          "name": "NVIDIA Corporation",
+          "count": 58
+        },
+        {
+          "name": "JCG Foods of Georgia, LLC",
+          "count": 57
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 55
+        },
+        {
+          "name": "Louisiana Pride Catfish, Inc.",
+          "count": 52
+        },
+        {
+          "name": "Juniper Networks, Inc.",
+          "count": 49
+        },
+        {
+          "name": "ServiceNow, Inc.",
+          "count": 48
+        },
+        {
+          "name": "SWEET VIRGINIA CARE, LLC",
+          "count": 47
+        },
+        {
+          "name": "MCKINSEY & COMPANY, INC. UNITED STATES",
+          "count": 45
+        },
+        {
+          "name": "Christian Foods II, LC",
+          "count": 43
+        },
+        {
+          "name": "Labor Guys, LLC",
+          "count": 42
         }
       ]
     }
