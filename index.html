@@ -172,7 +172,7 @@
   .tl-dot  { width: 16px; height: 16px; border-radius: 50%; border: 3px solid; z-index: 4; position: relative; flex-shrink: 0; }
   .tl-dot.done    { border-color: #22c55e; background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,0.5); }
   .tl-dot.processing { border-color: #f59e0b; background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.5); animation: procpulse 2.5s ease-in-out infinite; }
-  .tl-dot.active  { border-color: #f59e0b; background: var(--dot-pending-bg); animation: dotpulse 2s infinite; }
+  .tl-dot.active  { border-color: #f59e0b; background: var(--dot-pending-bg); }
   .tl-dot.pending { border-color: #2d3748; background: var(--dot-pending-bg); }
   .tl-dot-wrap { position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .tl-spin-ring { position: absolute; width: 28px; height: 28px; border-radius: 50%; border: 2.5px solid transparent; border-top-color: #22c55e; border-right-color: #f59e0b; animation: spin 1.2s linear infinite; }
@@ -1711,7 +1711,13 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
     html += '<div class="tl-left"  style="background:'+lc+';"></div>';
     html += '<div class="tl-right" style="background:'+rc+';"></div>';
     if (m.status==='active' || m.status==='processing') {
-      html += '<div class="tl-dot-wrap"><div class="tl-spin-ring"></div><div class="tl-dot active"></div></div>';
+      var pPct = Math.min(100, Math.max(0, m.processedPct||0)) / 100;
+      var r = Math.round(245 + (34 - 245) * pPct);
+      var g = Math.round(158 + (197 - 158) * pPct);
+      var b = Math.round(11 + (94 - 11) * pPct);
+      var blendColor = 'rgb('+r+','+g+','+b+')';
+      var dotStyle = 'background:'+blendColor+';border-color:'+blendColor+';box-shadow:0 0 8px rgba('+r+','+g+','+b+',0.5);';
+      html += '<div class="tl-dot-wrap"><div class="tl-spin-ring"></div><div class="tl-dot active" style="'+dotStyle+'"></div></div>';
     } else {
       html += '<div class="tl-dot '+m.status+'"></div>';
     }
