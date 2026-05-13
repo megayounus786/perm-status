@@ -85,6 +85,7 @@
   @keyframes pulse    { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
   @keyframes dotpulse { 0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.6),0 0 12px rgba(245,158,11,0.4)} 50%{box-shadow:0 0 0 6px rgba(245,158,11,0),0 0 20px rgba(245,158,11,0.6)} }
   @keyframes spin     { to { transform: rotate(360deg); } }
+  @keyframes procpulse { 0%,100%{opacity:1;box-shadow:0 0 8px rgba(245,158,11,0.5)} 50%{opacity:0.65;box-shadow:0 0 14px rgba(245,158,11,0.7)} }
   @keyframes radar1   { 0%{transform:scale(1);opacity:0.7} 100%{transform:scale(3.5);opacity:0} }
   @keyframes radar2   { 0%{transform:scale(1);opacity:0.5} 100%{transform:scale(2.8);opacity:0} }
 
@@ -170,6 +171,7 @@
   .tl-row  { height: 52px; display: flex; align-items: center; justify-content: center; position: relative; width: 100%; }
   .tl-dot  { width: 16px; height: 16px; border-radius: 50%; border: 3px solid; z-index: 4; position: relative; flex-shrink: 0; }
   .tl-dot.done    { border-color: #22c55e; background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,0.5); }
+  .tl-dot.processing { border-color: #f59e0b; background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.5); animation: procpulse 2.5s ease-in-out infinite; }
   .tl-dot.active  { border-color: #f59e0b; background: var(--dot-pending-bg); animation: dotpulse 2s infinite; }
   .tl-dot.pending { border-color: #2d3748; background: var(--dot-pending-bg); }
   .tl-dot-wrap { position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -579,6 +581,7 @@
     <ul class="nav-links">
       <li><a href="./" class="active">Dashboard</a></li>
       <li><a href="estimate.html">Estimate</a></li>
+      <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
     </ul>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button>
     <div class="nav-search" id="nav-search">
@@ -1662,7 +1665,7 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
   // Show only 2 most recent completed months + active + pending
   const allMonths = D.timeline;
   const activeIdx = allMonths.findIndex(m => m.status === 'active');
-  const doneMonths = allMonths.filter(m => m.status === 'done');
+  const doneMonths = allMonths.filter(m => m.status === 'done' || m.status === 'processing');
   const keep2Done = doneMonths.slice(-2);
   const cutoff = keep2Done.length ? allMonths.indexOf(keep2Done[0]) : 0;
   const months = allMonths.slice(cutoff);
@@ -1681,8 +1684,8 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
     h += tipRow('Withdrawn',  n(m.withdrawn)+' ('+wdPct  +'%)', '#64748b');
     h += tipRow('Denied/RFI', n(m.denied)   +' ('+denPct +'%)', '#ef4444');
     h += '<div class="gt-sep"></div>';
-    h += tipRow('Status', m.status==='done'?'✅ Complete':m.status==='active'?'🔶 Processing':'⏳ Pending');
-    if (m.status==='active') h += tipRow('Progress', Math.round(m.dolDay/m.dolDays*100)+'%');
+    h += tipRow('Status', m.status==='done'?'✅ Complete':(m.status==='processing'||m.status==='active')?'🔶 Processing':'⏳ Pending');
+    if (m.status==='active' || m.status==='processing') h += tipRow('Processed', Math.round(m.processedPct||0)+'%');
     return h;
   }
 
@@ -1697,16 +1700,17 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
     const pctLbl  = certPct > 0 ? certPct+'%' : '';
 
     let lc = 'rgba(255,255,255,0.07)', rc = 'rgba(255,255,255,0.07)';
-    if (m.status==='done')   { lc = '#22c55e'; rc = '#22c55e'; }
-    if (m.status==='active') { lc = '#22c55e'; rc = 'rgba(255,255,255,0.07)'; }
+    if (m.status==='done')       { lc = '#22c55e'; rc = '#22c55e'; }
+    if (m.status==='processing') { lc = '#22c55e'; rc = '#22c55e'; }
+    if (m.status==='active')     { lc = '#22c55e'; rc = 'rgba(255,255,255,0.07)'; }
     if (i === 0)     lc = 'transparent';
     if (i === n2-1)  rc = 'transparent';
 
-    html += '<div class="combo-col'+(m.status==='active'?' active-month':'')+'" data-ci="'+i+'">';
+    html += '<div class="combo-col'+((m.status==='active'||m.status==='processing')?' active-month':'')+'" data-ci="'+i+'">';
     html += '<div class="tl-row">';
     html += '<div class="tl-left"  style="background:'+lc+';"></div>';
     html += '<div class="tl-right" style="background:'+rc+';"></div>';
-    if (m.status==='active') {
+    if (m.status==='active' || m.status==='processing') {
       html += '<div class="tl-dot-wrap"><div class="tl-spin-ring"></div><div class="tl-dot active"></div></div>';
     } else {
       html += '<div class="tl-dot '+m.status+'"></div>';
@@ -1725,7 +1729,7 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
     html += '<div class="ml-row"><span class="ml-label">'+m.label+'</span></div>';
     if (m.status !== 'pending') {
       const pctColor = m.status==='done' ? '#22c55e' : '#f59e0b';
-      const pctTxt   = m.status==='done' ? certPct+'%' : Math.round(m.dolDay/m.dolDays*100)+'%';
+      const pctTxt   = m.status==='done' ? certPct+'%' : m.status==='processing' ? Math.round(m.processedPct)+'%' : Math.round(m.dolDay/m.dolDays*100)+'%';
       html += '<div style="font-size:8px;color:'+pctColor+';font-weight:600;">'+pctTxt+'</div>';
     }
     html += '</div>';
