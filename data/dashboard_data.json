@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-13T07:44:31-04:00",
+  "updatedAt": "2026-05-13T07:52:55-04:00",
   "backlog": {
     "total": 134633,
     "startOfMonth": 137591,
@@ -89,7 +89,7 @@
       "review": 2607,
       "withdrawn": 326,
       "denied": 175,
-      "status": "pending",
+      "status": "processing",
       "processedPct": 57.6,
       "stable": true
     },
