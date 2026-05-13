@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-13T08:16:15-04:00",
+  "updatedAt": "2026-05-13T08:33:22-04:00",
   "backlog": {
     "total": 134633,
     "startOfMonth": 137591,
@@ -57,8 +57,8 @@
       "withdrawn": 508,
       "denied": 859,
       "status": "done",
-      "processedPct": 96.0,
-      "stable": false
+      "processedPct": 94.3,
+      "stable": true
     },
     {
       "label": "Dec '24",
@@ -68,8 +68,8 @@
       "withdrawn": 524,
       "denied": 916,
       "status": "done",
-      "processedPct": 95.8,
-      "stable": false
+      "processedPct": 94.2,
+      "stable": true
     },
     {
       "label": "Jan '25",
@@ -79,8 +79,8 @@
       "withdrawn": 373,
       "denied": 393,
       "status": "done",
-      "processedPct": 88.6,
-      "stable": false
+      "processedPct": 85.1,
+      "stable": true
     },
     {
       "label": "Feb '25",
@@ -89,9 +89,9 @@
       "review": 2607,
       "withdrawn": 326,
       "denied": 175,
-      "status": "done",
-      "processedPct": 61.0,
-      "stable": false
+      "status": "processing",
+      "processedPct": 57.6,
+      "stable": true
     },
     {
       "label": "Mar '25",
@@ -101,7 +101,7 @@
       "withdrawn": 333,
       "denied": 0,
       "status": "active",
-      "processedPct": 5.1,
+      "processedPct": 0.6,
       "dolDay": 1,
       "dolDays": 100
     },
@@ -113,7 +113,7 @@
       "withdrawn": 400,
       "denied": 0,
       "status": "pending",
-      "processedPct": 5.0
+      "processedPct": 0.2
     },
     {
       "label": "May '25",
@@ -123,7 +123,7 @@
       "withdrawn": 361,
       "denied": 3,
       "status": "pending",
-      "processedPct": 4.3
+      "processedPct": 0.2
     },
     {
       "label": "Jun '25",
@@ -133,7 +133,7 @@
       "withdrawn": 472,
       "denied": 1,
       "status": "pending",
-      "processedPct": 4.7
+      "processedPct": 0.3
     },
     {
       "label": "Jul '25",
@@ -143,7 +143,7 @@
       "withdrawn": 313,
       "denied": 7,
       "status": "pending",
-      "processedPct": 3.2
+      "processedPct": 0.1
     },
     {
       "label": "Aug '25",
@@ -153,7 +153,7 @@
       "withdrawn": 316,
       "denied": 3,
       "status": "pending",
-      "processedPct": 3.2
+      "processedPct": 0.0
     },
     {
       "label": "Sep '25",
@@ -163,7 +163,7 @@
       "withdrawn": 380,
       "denied": 5,
       "status": "pending",
-      "processedPct": 2.8
+      "processedPct": 0.0
     },
     {
       "label": "Oct '25",
@@ -173,7 +173,7 @@
       "withdrawn": 23,
       "denied": 0,
       "status": "pending",
-      "processedPct": 4.5
+      "processedPct": 0.0
     },
     {
       "label": "Nov '25",
@@ -183,7 +183,7 @@
       "withdrawn": 428,
       "denied": 1,
       "status": "pending",
-      "processedPct": 2.8
+      "processedPct": 0.0
     },
     {
       "label": "Dec '25",
@@ -193,7 +193,7 @@
       "withdrawn": 323,
       "denied": 1,
       "status": "pending",
-      "processedPct": 2.1
+      "processedPct": 0.0
     },
     {
       "label": "Jan '26",
@@ -203,7 +203,7 @@
       "withdrawn": 234,
       "denied": 1,
       "status": "pending",
-      "processedPct": 2.0
+      "processedPct": 0.0
     },
     {
       "label": "Feb '26",
@@ -213,7 +213,7 @@
       "withdrawn": 122,
       "denied": 2,
       "status": "pending",
-      "processedPct": 2.2
+      "processedPct": 0.0
     },
     {
       "label": "Mar '26",
@@ -223,7 +223,7 @@
       "withdrawn": 119,
       "denied": 0,
       "status": "pending",
-      "processedPct": 1.7
+      "processedPct": 0.0
     },
     {
       "label": "Apr '26",
@@ -233,7 +233,7 @@
       "withdrawn": 53,
       "denied": 1,
       "status": "pending",
-      "processedPct": 0.7
+      "processedPct": 0.0
     },
     {
       "label": "May '26",
@@ -243,7 +243,7 @@
       "withdrawn": 27,
       "denied": 0,
       "status": "pending",
-      "processedPct": 0.8
+      "processedPct": 0.0
     }
   ],
   "rateDays": [
