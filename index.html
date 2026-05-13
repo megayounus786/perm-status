@@ -5,20 +5,35 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>PERM Processing Times 2026 — DOL Labor Certification Tracker | ImmiLane</title>
-<meta name="description" content="Track PERM labor certification processing times in real time. Live DOL case status data — certified, analyst review, denied, RFI, and withdrawn. Updated daily from FLAG.DOL.GOV.">
-<meta name="keywords" content="PERM processing times, PERM tracker, DOL labor certification, PERM status, PERM case tracker, green card PERM, PERM processing time 2026, PERM audit, immigration tracker">
+<title>PERM Tracker 2026 — DOL Processing Times &amp; Labor Certification Dashboard | ImmiLane</title>
+<meta name="description" content="Track PERM processing times in real-time. Free DOL labor certification tracker with monthly backlog data, processing rates, status distribution, and timeline estimates for employment-based green card applications.">
+<meta name="keywords" content="PERM tracker, PERM processing times, DOL labor certification, PERM status, green card processing, PERM backlog, PERM processing times 2026, perm track, track perm application">
 <link rel="canonical" href="https://immilane.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="PERM Processing Times 2026 — Live DOL Tracker | ImmiLane">
-<meta property="og:description" content="Real-time PERM labor certification tracking with status breakdowns, monthly trends, and employer filing stats.">
-<meta property="og:url" content="https://immilane.com/">
+<meta property="og:title" content="PERM Tracker 2026 — DOL Processing Times Dashboard">
+<meta property="og:description" content="Real-time PERM processing tracker with DOL labor certification data, monthly backlogs, and processing rate analytics.">
+<meta property="og:url" content="https://immilane.com">
 <meta property="og:site_name" content="ImmiLane">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PERM Processing Times 2026 — Live DOL Tracker">
 <meta name="twitter:description" content="Real-time PERM labor certification tracking with status breakdowns, monthly trends, and employer filing stats.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ImmiLane PERM Tracker","url":"https://immilane.com","description":"Real-time PERM labor certification processing tracker with DOL case data, status breakdowns, and monthly trends.","applicationCategory":"Government Data Tracker","operatingSystem":"Web","provider":{"@type":"Organization","name":"ImmiLane","url":"https://immilane.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ImmiLane PERM Tracker",
+  "url": "https://immilane.com",
+  "description": "Real-time PERM processing times tracker with DOL labor certification data, monthly backlogs, and processing analytics.",
+  "applicationCategory": "Immigration Tool",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are current PERM processing times in 2026?","acceptedAnswer":{"@type":"Answer","text":"ImmiLane tracks PERM labor certification processing times in real time using DOL FLAG data. Visit immilane.com for live status breakdowns and monthly trends."}},{"@type":"Question","name":"What is the PERM certification rate?","acceptedAnswer":{"@type":"Answer","text":"The PERM certification rate varies by filing month. ImmiLane provides real-time status distribution showing certified, analyst review, denied, RFI, and withdrawn cases."}}]}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9676532944307230" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
@@ -64,7 +79,7 @@
     --avg-color: #b45309;
   }
 
-  html { background: var(--bg-html); }
+  html { background: var(--bg-html); overflow-x: hidden; }
   body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); color: var(--text-primary); min-height: 100vh; min-width: 100%; overflow-x: hidden; }
   body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; }
   .container { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px; }
@@ -581,6 +596,7 @@
     <ul class="nav-links">
       <li><a href="./" class="active">Dashboard</a></li>
       <li><a href="estimate.html">Estimate</a></li>
+      <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
     </ul>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button>
     <div class="nav-search" id="nav-search">
@@ -1854,10 +1870,13 @@ function renderRate(range) {
     h += '<div class="bar-group"><div class="bar'+wk+'" data-ri="'+i+'" style="height:'+bH+'px;"></div></div>';
   });
   h += '</div><div class="bar-labels">';
-  bars.forEach(b => {
+  const isMobile = window.innerWidth < 768;
+  const labelStep = isMobile ? (bars.length > 20 ? 4 : 3) : 1;
+  bars.forEach((b, i) => {
+    const show = (i % labelStep === 0) || !isMobile;
     const lbl = range==='day' ? fmtDayLabel(b.date) : fmtWeekLabel(b.weekStart);
     const lines = lbl.split('\n');
-    h += '<div class="bar-label-slot"><span class="bar-label">'+lines.map(l=>'<span>'+l+'</span>').join('<br>')+'</span></div>';
+    h += '<div class="bar-label-slot"><span class="bar-label" style="'+(show?'':'visibility:hidden')+'">'+lines.map(l=>'<span>'+l+'</span>').join('<br>')+'</span></div>';
   });
   h += '</div></div>';
   wrap.innerHTML = h;
@@ -2026,6 +2045,43 @@ setupTabs('employer-tabs', t => renderEmployers(parseInt(t.dataset.ei)));
     <div class="fb-success-sub">Your feedback has been received.</div>
   </div>
 </div>
+
+
+<section id="seo-content" style="max-width:900px;margin:3rem auto;padding:0 1.5rem;color:#cbd5e1;font-size:15px;line-height:1.7;">
+  <h2 style="color:#e2e8f0;font-size:1.5rem;margin-bottom:1rem;">Understanding PERM Processing Times</h2>
+  <p>The Program Electronic Review Management (PERM) system is the process used by the U.S. Department of Labor (DOL) to handle applications for permanent labor certification. Employers must obtain this certification before sponsoring a foreign worker for an employment-based green card, demonstrating that no qualified U.S. workers are available for the position at the prevailing wage.</p>
+  
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">How Long Does PERM Processing Take?</h3>
+  <p>PERM processing times vary based on filing month, case complexity, and DOL workload. As of 2026, most PERM applications take between 12 to 16 months from submission to certification. The DOL does not process cases in strict chronological order. Multiple filing months may be processed simultaneously, and within each month, cases across all employer name letters can move forward at the same time. Processing progress varies by month based on backlog size and DOL resource allocation.</p>
+  
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">What Affects PERM Processing Speed?</h3>
+  <p>Several factors influence how quickly a PERM case is processed:</p>
+  <ul style="margin:0.5rem 0 1rem 1.5rem;">
+    <li><strong style="color:#e2e8f0;">Filing month backlog:</strong> Months with more filings take longer for DOL to clear.</li>
+    <li><strong style="color:#e2e8f0;">Non-linear processing:</strong> DOL may process multiple filing months simultaneously, and all employer name letters within a month can move forward at once.</li>
+    <li><strong style="color:#e2e8f0;">Audit selection:</strong> Cases selected for audit face additional review and significant delays.</li>
+    <li><strong style="color:#e2e8f0;">Supervised recruitment:</strong> If DOL requires supervised recruitment, processing can extend by several months.</li>
+    <li><strong style="color:#e2e8f0;">Request for Information (RFI):</strong> Incomplete applications trigger RFIs, adding weeks to months of delay.</li>
+  </ul>
+  
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">How to Track Your PERM Application</h3>
+  <p>ImmiLane's PERM tracker provides real-time data sourced directly from DOL case status updates. The dashboard displays monthly backlog levels, certification rates, processing progress by filing month, and status distribution across all active cases. Use the timeline chart to see which filing months are currently being processed and estimate when your case may reach review.</p>
+  
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">PERM Case Status Categories</h3>
+  <p>Each PERM application moves through several possible statuses:</p>
+  <ul style="margin:0.5rem 0 1rem 1.5rem;">
+    <li><strong style="color:#e2e8f0;">Certified:</strong> The application has been approved by DOL.</li>
+    <li><strong style="color:#e2e8f0;">Analyst Review:</strong> The case is currently under review by a DOL analyst.</li>
+    <li><strong style="color:#e2e8f0;">Denied:</strong> The application was not approved, often due to recruitment or documentation issues.</li>
+    <li><strong style="color:#e2e8f0;">Withdrawn:</strong> The employer withdrew the application before a decision was made.</li>
+    <li><strong style="color:#e2e8f0;">RFI (Request for Information):</strong> DOL has requested additional documentation before making a decision.</li>
+  </ul>
+  
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">About This Tracker</h3>
+  <p>ImmiLane scans DOL PERM case statuses multiple times daily to provide the most current processing data available. Unlike static reports, our dashboard updates automatically as new certifications, denials, and status changes are detected. The data powers the processing timeline, backlog charts, and status distribution analytics shown above.</p>
+  
+  <p style="margin-top:1.5rem;font-size:13px;color:#64748b;"><em>Disclaimer: This tracker is for informational purposes only and does not constitute legal advice. Processing times are estimates based on observed DOL data patterns. Consult a qualified immigration attorney for guidance specific to your PERM application.</em></p>
+</section>
 
 <!-- Ad: Footer banner -->
 <div class="ad-container ad-footer">
