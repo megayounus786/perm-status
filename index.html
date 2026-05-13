@@ -1742,6 +1742,9 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
       const pctTxt   = m.status==='done' ? certPct+'%' : m.status==='processing' ? Math.round(m.processedPct)+'%' : Math.round(m.dolDay/m.dolDays*100)+'%';
       html += '<div style="font-size:8px;color:'+pctColor+';font-weight:600;">'+pctTxt+'</div>';
     }
+    if (m.todayProcessed > 0) {
+      html += '<div style="font-size:9px;color:#86efac;font-weight:600;margin-top:2px;" title="Processed today">+'+m.todayProcessed+' today</div>';
+    }
     html += '</div>';
   });
   el.innerHTML = html;
