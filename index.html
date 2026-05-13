@@ -1665,7 +1665,7 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
   // Show only 2 most recent completed months + active + pending
   const allMonths = D.timeline;
   const activeIdx = allMonths.findIndex(m => m.status === 'active');
-  const doneMonths = allMonths.filter(m => m.status === 'done' || m.status === 'processing');
+  const doneMonths = allMonths.filter(m => m.status === 'done');
   const keep2Done = doneMonths.slice(-2);
   const cutoff = keep2Done.length ? allMonths.indexOf(keep2Done[0]) : 0;
   const months = allMonths.slice(cutoff);
