@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-14T01:00:53-04:00",
+  "updatedAt": "2026-05-14T03:10:25-04:00",
   "backlog": {
     "total": 133460,
     "startOfMonth": 137584,
@@ -42,8 +42,8 @@
     "monthFull": "March",
     "day": 4,
     "daysInMonth": 100,
-    "estFinish": "Jun 18",
-    "movementPerWeek": 5.9,
+    "estFinish": "Jun 21",
+    "movementPerWeek": 5.5,
     "casesRemaining": 6736,
     "latestLetter": "S",
     "pctProcessed": 4
