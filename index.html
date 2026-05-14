@@ -1707,7 +1707,8 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
     h += tipRow('Withdrawn',  n(m.withdrawn)+' ('+wdPct  +'%)', '#64748b');
     h += tipRow('Denied/RFI', n(m.denied)   +' ('+denPct +'%)', '#ef4444');
     h += '<div class="gt-sep"></div>';
-    h += tipRow('Status', m.status==='done'?'✅ Complete':(m.status==='processing'||m.status==='active')?'🔶 Processing':'⏳ Pending');
+    var arPct = m.total > 0 ? m.review / m.total : 0;
+    h += tipRow('Status', m.status==='done'?(arPct < 0.01 ? '✅ Complete' : '🟢 Finalizing'):(m.status==='processing'||m.status==='active')?'🔶 Processing':'⏳ Pending');
     if (m.status==='active' || m.status==='processing') h += tipRow('Processed', Math.round(m.processedPct||0)+'%');
     return h;
   }
@@ -1741,6 +1742,13 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
       var blendColor = 'rgb('+r+','+g+','+b+')';
       var dotStyle = 'background:'+blendColor+';border-color:'+blendColor+';box-shadow:0 0 8px rgba('+r+','+g+','+b+',0.5);';
       html += '<div class="tl-dot-wrap"><div class="tl-spin-ring"></div><div class="tl-dot active" style="'+dotStyle+'"></div></div>';
+    } else if (m.status==='done') {
+      var pPct2 = Math.min(100, Math.max(0, m.processedPct||0)) / 100;
+      var r2 = Math.round(245 + (34 - 245) * pPct2);
+      var g2 = Math.round(158 + (197 - 158) * pPct2);
+      var b2 = Math.round(11 + (94 - 11) * pPct2);
+      var doneColor = 'rgb('+r2+','+g2+','+b2+')';
+      html += '<div class="tl-dot done" style="background:'+doneColor+';border-color:'+doneColor+';box-shadow:0 0 8px rgba('+r2+','+g2+','+b2+',0.5);"></div>';
     } else {
       html += '<div class="tl-dot '+m.status+'"></div>';
     }
