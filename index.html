@@ -241,16 +241,17 @@
     .logo { font-size: 18px; }
     .logo-icon { width: 28px; height: 28px; font-size: 14px; }
     .nav-links {
-      gap: 8px;
+      gap: 4px;
     }
     .nav-links li { flex: 0 0 auto; }
     .nav-links a {
       display: inline-flex;
       align-items: center;
       min-height: 36px;
-      padding: 0 8px;
+      padding: 0 6px;
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 12px;
+      white-space: nowrap;
     }
     .hero { padding: 24px 0 14px; }
     .hero h2 { font-size: 24px; }
@@ -498,8 +499,8 @@
   }
 
   @media (max-width: 768px) {
-    .nav-right { gap: 12px; order: 2; margin-left: auto; }
-    .nav-search-input { width: 200px !important; }
+    .nav-right { gap: 6px; order: 2; margin-left: auto; }
+    .nav-search-input { width: 120px !important; }
     .nav-search-dropdown { width: calc(100vw - 28px); right: 14px; max-height: 60vh; }
     .emp-modal {
       width: 100%; max-width: 100%;
@@ -514,7 +515,9 @@
     .emp-stat-value { font-size: 24px; }
   }
   @media (max-width: 480px) {
-    .nav-search-input { width: 150px !important; padding: 8px 10px 8px 30px !important; font-size: 12px; }
+    .nav-search-input { width: 100px !important; padding: 8px 10px 8px 30px !important; font-size: 12px; }
+    .nav-links a { font-size: 11px; padding: 0 4px; }
+    .nav-links { gap: 2px; }
   }
 
   /* ── THEME TOGGLE ── */
