@@ -642,7 +642,8 @@
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#22c55e;"></div>Certified</div>
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#f59e0b;"></div>Analyst Review</div>
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#64748b;"></div>Withdrawn</div>
-      <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#ef4444;"></div>Denied/RFI</div>
+      <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#3b82f6;"></div>RFI</div>
+      <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#ef4444;"></div>Denied</div>
     </div>
   </div>
 
@@ -1711,15 +1712,19 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
   const ai = months.findIndex(m => m.status === 'active');
 
   function comboTip(m) {
+    const rfiCount = (typeof m.rfi === 'number') ? m.rfi : 0;
+    const denCount = (typeof m.rfi === 'number') ? Math.max(0, m.denied - m.rfi) : m.denied;
     const certPct = pct(m.certified, m.total);
     const revPct  = pct(m.review,    m.total);
     const wdPct   = pct(m.withdrawn, m.total);
-    const denPct  = pct(m.denied,    m.total);
+    const rfiPct  = pct(rfiCount,    m.total);
+    const denPct  = pct(denCount,    m.total);
     let h = '<div class="gt-title">'+m.label+' — '+n(m.total)+' cases</div>';
-    h += tipRow('Certified',  n(m.certified)+' ('+certPct+'%)', '#22c55e');
-    h += tipRow('Review',     n(m.review)   +' ('+revPct +'%)', '#f59e0b');
-    h += tipRow('Withdrawn',  n(m.withdrawn)+' ('+wdPct  +'%)', '#64748b');
-    h += tipRow('Denied/RFI', n(m.denied)   +' ('+denPct +'%)', '#ef4444');
+    h += tipRow('Certified',      n(m.certified)+' ('+certPct+'%)', '#22c55e');
+    h += tipRow('Analyst Review', n(m.review)   +' ('+revPct +'%)', '#f59e0b');
+    h += tipRow('Withdrawn',      n(m.withdrawn)+' ('+wdPct  +'%)', '#64748b');
+    h += tipRow('RFI',            n(rfiCount)   +' ('+rfiPct +'%)', '#3b82f6');
+    h += tipRow('Denied',         n(denCount)   +' ('+denPct +'%)', '#ef4444');
     h += '<div class="gt-sep"></div>';
     var arPct = m.total > 0 ? m.review / m.total : 0;
     h += tipRow('Status', m.status==='done'?(arPct < 0.01 ? '✅ Complete' : '🟢 Finalizing'):(m.status==='processing'||m.status==='active')?'🔶 Processing':'⏳ Pending');
@@ -1729,11 +1734,14 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
 
   let html = '';
   months.forEach((m, i) => {
+    const rfiCount = (typeof m.rfi === 'number') ? m.rfi : 0;
+    const denCount = (typeof m.rfi === 'number') ? Math.max(0, m.denied - m.rfi) : m.denied;
     const barH  = Math.round(m.total / maxT * maxH);
     const certH = Math.round(barH * m.certified / m.total);
     const revH  = Math.round(barH * m.review    / m.total);
     const wdH   = Math.round(barH * m.withdrawn / m.total);
-    const denH  = Math.max(0, barH - certH - revH - wdH);
+    const rfiH  = Math.round(barH * rfiCount    / m.total);
+    const denH  = Math.max(0, barH - certH - revH - wdH - rfiH);
     const certPct = pct(m.certified, m.total);
     const pctLbl  = certPct > 0 ? certPct+'%' : '';
 
@@ -1772,6 +1780,7 @@ document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdat
     if (pctLbl) html += '<div class="bl-pct">'+pctLbl+'</div>';
     html += '<div class="bl-bar" data-ci="'+i+'" style="height:'+barH+'px;">';
     if (denH  > 0) html += '<div class="bl-seg" style="height:'+denH +'px;background:#ef4444;"></div>';
+    if (rfiH  > 0) html += '<div class="bl-seg" style="height:'+rfiH +'px;background:#3b82f6;"></div>';
     if (wdH   > 0) html += '<div class="bl-seg" style="height:'+wdH  +'px;background:#64748b;"></div>';
     if (revH  > 0) html += '<div class="bl-seg" style="height:'+revH +'px;background:#f59e0b;"></div>';
     if (certH > 0) html += '<div class="bl-seg" style="height:'+certH+'px;background:#22c55e;"></div>';
