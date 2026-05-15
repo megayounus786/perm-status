@@ -5,13 +5,13 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Privacy Policy | ImmiLane</title>
-<meta name="description" content="ImmiLane privacy policy — how we collect, use, and protect your data.">
-<link rel="canonical" href="https://immilane.com/privacy.html">
+<title>Terms of Service | ImmiLane</title>
+<meta name="description" content="ImmiLane terms of service — rules governing the use of the PERM labor certification tracker at immilane.com.">
+<link rel="canonical" href="https://immilane.com/terms.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Privacy Policy | ImmiLane">
-<meta property="og:description" content="ImmiLane privacy policy — how we collect, use, and protect your data.">
-<meta property="og:url" content="https://immilane.com/privacy.html">
+<meta property="og:title" content="Terms of Service | ImmiLane">
+<meta property="og:description" content="Terms of service governing the use of ImmiLane's PERM labor certification tracker.">
+<meta property="og:url" content="https://immilane.com/terms.html">
 <meta property="og:site_name" content="ImmiLane">
 <meta property="og:locale" content="en_US">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9676532944307230" crossorigin="anonymous"></script>
@@ -51,23 +51,18 @@
   .nav-right { display: flex; align-items: center; gap: 24px; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a.active, .nav-links a:hover { color: var(--text-primary); }
   .nav-toggle { display: none; background: none; border: 1px solid var(--card-border); border-radius: 8px; color: var(--text-primary); font-size: 22px; cursor: pointer; padding: 4px 8px; line-height: 1; }
   @media (max-width: 768px) {
     .nav-toggle { display: flex; align-items: center; justify-content: center; order: -1; }
     nav .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: #0f172a; border-bottom: 1px solid rgba(59, 130, 246, 0.2); padding: 8px 0; z-index: 1000; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
     nav .nav-links li { width: 100%; }
     nav .nav-links a { display: block; padding: 14px 24px; font-size: 15px; border-radius: 0; min-height: 44px; white-space: normal; box-sizing: border-box; }
-    nav .nav-links a:hover { background: rgba(59,130,246,0.1); }
+    nav .nav-links a:hover, nav .nav-links a.active { background: rgba(59,130,246,0.1); }
     nav.nav-open .nav-links { display: flex; }
     .light nav .nav-links { background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .hero h1 { font-size: 12px; letter-spacing: 1px; }
     .hero h2 { font-size: 20px; }
-    .logo { font-size: 18px; }
-    .logo-icon { width: 28px; height: 28px; font-size: 14px; }
-    .container { padding: 0 14px; }
-    nav { padding: 12px 14px; }
-    .hero { padding: 24px 0 14px; }
   }
   footer { text-align: center; padding: 32px 24px; color: var(--text-dim); font-size: 12px; border-top: 1px solid var(--sep); margin-top: 0; }
   footer a { color: var(--text-muted); text-decoration: none; }
@@ -83,15 +78,24 @@
   html.light .theme-toggle-icon.moon { display: none; }
   html.light .theme-toggle-icon.sun { display: inline; }
 
-  .privacy-content { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; margin: 24px 0 40px; line-height: 1.8; }
-  .privacy-content h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; color: var(--text-primary); }
-  .privacy-content h3:first-child { margin-top: 0; }
-  .privacy-content p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
-  .privacy-content ul { padding-left: 24px; margin-bottom: 12px; }
-  .privacy-content li { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
-  .privacy-content a { color: #3b82f6; text-decoration: none; }
-  .privacy-content a:hover { text-decoration: underline; }
-  .privacy-date { font-size: 12px; color: var(--text-dim); margin-top: 24px; }
+  .content { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; margin: 24px 0 40px; line-height: 1.8; }
+  .content h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; color: var(--text-primary); }
+  .content h3:first-child { margin-top: 0; }
+  .content p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
+  .content ul { padding-left: 24px; margin-bottom: 12px; }
+  .content li { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
+  .content a { color: #3b82f6; text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .last-updated { font-size: 12px; color: var(--text-dim); margin-top: 24px; }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 14px; }
+    nav { padding: 12px 14px; flex-wrap: wrap; row-gap: 8px; }
+    .logo { font-size: 18px; }
+    .logo-icon { width: 28px; height: 28px; font-size: 14px; }
+    .hero { padding: 24px 0 14px; }
+    .content { padding: 24px 18px; }
+  }
 </style>
 </head>
 <body>
@@ -114,59 +118,56 @@
 <div class="container">
   <div class="hero">
     <h1>Legal</h1>
-    <h2>Privacy Policy</h2>
+    <h2>Terms of Service</h2>
   </div>
 
-  <div class="privacy-content">
-    <h3>Overview</h3>
-    <p>ImmiLane ("we," "us," or "our") operates the website immilane.com. This Privacy Policy explains how we collect, use, and protect information when you visit our site.</p>
+  <div class="content">
+    <h3>Acceptance of Terms</h3>
+    <p>By accessing and using ImmiLane (immilane.com), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you should not use the site. We reserve the right to modify these terms at any time, and your continued use of the site constitutes acceptance of any changes.</p>
 
-    <h3>Information We Collect</h3>
-    <p>We do not require account creation or login. We do not collect personally identifiable information unless you voluntarily provide it through our feedback form (optional email address and message).</p>
+    <h3>Description of Service</h3>
+    <p>ImmiLane is a free, publicly accessible web application that tracks PERM labor certification processing data from the U.S. Department of Labor. The site provides dashboards, processing trend visualizations, employer filing statistics, timeline estimates, and visa bulletin data for informational purposes.</p>
 
-    <h3>Analytics &amp; Cookies</h3>
-    <p>We use the following third-party services that may place cookies or collect anonymized usage data:</p>
+    <h3>Use License</h3>
+    <p>You are granted a limited, non-exclusive, non-transferable license to access and use ImmiLane for personal, non-commercial informational purposes. You may not:</p>
     <ul>
-      <li><strong>Google Analytics 4 (GA4)</strong> &mdash; Collects anonymized data about page views, scroll depth, time on page, and feature usage to help us improve the site. Google's privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
-      <li><strong>Cloudflare Web Analytics</strong> &mdash; Privacy-focused analytics that do not use client-side state (cookies) to collect metrics. Cloudflare's privacy policy: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></li>
+      <li>Systematically scrape, harvest, or extract data from the site using automated tools without prior written permission</li>
+      <li>Reproduce, distribute, or create derivative works based on the site's design, code, or proprietary visualizations</li>
+      <li>Use the site or its data for any unlawful purpose or in violation of any applicable laws or regulations</li>
+      <li>Attempt to interfere with the site's operation, security, or infrastructure</li>
+      <li>Misrepresent the source of data or present ImmiLane's analysis as your own without attribution</li>
     </ul>
 
-    <h3>Advertising</h3>
-    <p>We use <strong>Google AdSense</strong> to display advertisements. Google AdSense may use cookies and web beacons to serve ads based on your prior visits to this and other websites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info/choices</a>.</p>
-    <p>Third-party vendors, including Google, use cookies to serve ads based on your visit to this site and/or other sites on the Internet. You may opt out of the use of the DART cookie by visiting the <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google advertising privacy page</a>.</p>
+    <h3>Data Sources and Accuracy</h3>
+    <p>The PERM case data displayed on ImmiLane is sourced from publicly available records at the DOL's <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG (Foreign Labor Application Gateway)</a> system. While we strive to present this data accurately and update it multiple times daily, we make no guarantees regarding the completeness, accuracy, or timeliness of the information displayed.</p>
+    <p>Processing time estimates are generated algorithmically based on historical trends and current processing rates. These estimates are projections, not guarantees, and should not be the sole basis for any immigration-related decisions.</p>
 
-    <h3>Feedback Form</h3>
-    <p>Our optional feedback form collects:</p>
-    <ul>
-      <li>Feedback category and message (required)</li>
-      <li>Email address (optional, only if you want us to follow up)</li>
-    </ul>
-    <p>This data is stored securely and used solely to improve ImmiLane. We do not sell, share, or distribute your feedback data to third parties.</p>
+    <h3>Disclaimer of Warranties</h3>
+    <p>ImmiLane is provided on an "as is" and "as available" basis without warranties of any kind, whether express or implied. We do not warrant that the site will be uninterrupted, error-free, or free of harmful components. We disclaim all warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
 
-    <h3>Data Sources</h3>
-    <p>All PERM case data displayed on ImmiLane is sourced from publicly available records at <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a>. We do not collect or store individual immigration case details beyond what is publicly available.</p>
+    <h3>Not Legal Advice</h3>
+    <p>Nothing on ImmiLane constitutes legal advice. The site is an informational tool, not a law firm or immigration consultancy. For legal guidance on your specific immigration case, consult a qualified immigration attorney. See our full <a href="disclaimer.html">Disclaimer</a> for additional details.</p>
 
-    <h3>Data Retention</h3>
-    <p>Analytics data is retained according to the respective third-party service policies. Feedback submissions are retained indefinitely to help us improve the site, unless you request deletion.</p>
+    <h3>Limitation of Liability</h3>
+    <p>To the fullest extent permitted by applicable law, ImmiLane and its operators shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the site, including but not limited to damages for lost profits, data loss, or any decisions made based on information provided by the site.</p>
+    <p>In no event shall our total liability exceed the amount you paid to use the service, which, given that ImmiLane is a free tool, is zero dollars ($0).</p>
 
-    <h3>Your Rights</h3>
-    <p>You may:</p>
-    <ul>
-      <li>Disable cookies in your browser settings</li>
-      <li>Opt out of Google personalized ads via <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a></li>
-      <li>Request deletion of any feedback data you've submitted by contacting us</li>
-    </ul>
+    <h3>Third-Party Services</h3>
+    <p>ImmiLane uses third-party services including Google Analytics, Google AdSense, and Cloudflare. Your use of ImmiLane is also subject to the terms and privacy policies of these third-party providers. We are not responsible for the practices or content of any third-party services.</p>
 
-    <h3>Children's Privacy</h3>
-    <p>ImmiLane is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+    <h3>Intellectual Property</h3>
+    <p>The ImmiLane name, logo, site design, visualizations, and original content are the property of ImmiLane's operators. The underlying PERM case data is sourced from public government records and is not owned by ImmiLane. Our original analysis, presentation, and tools built on top of that data are proprietary.</p>
 
-    <h3>Changes to This Policy</h3>
-    <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.</p>
+    <h3>Termination</h3>
+    <p>We reserve the right to restrict or terminate access to ImmiLane for any user who violates these terms, abuses the service, or engages in activity that could harm the site or its users.</p>
+
+    <h3>Governing Law</h3>
+    <p>These Terms of Service shall be governed by and construed in accordance with the laws of the United States. Any disputes arising from the use of ImmiLane shall be resolved in the appropriate courts within the United States.</p>
 
     <h3>Contact</h3>
-    <p>If you have questions about this Privacy Policy, you can reach us through the feedback form on our site.</p>
+    <p>If you have questions about these Terms of Service, you can reach us through the feedback form available on the <a href="./">ImmiLane Dashboard</a>.</p>
 
-    <div class="privacy-date">Effective date: May 6, 2026</div>
+    <div class="last-updated">Last updated: May 2026</div>
   </div>
 </div>
 
