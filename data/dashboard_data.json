@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-16T18:08:08-04:00",
+  "updatedAt": "2026-05-16T21:09:14-04:00",
   "backlog": {
     "total": 132612,
     "startOfMonth": 137577,
@@ -42,8 +42,8 @@
     "monthFull": "March",
     "day": 17,
     "daysInMonth": 100,
-    "estFinish": "Jun 5",
-    "movementPerWeek": 9.0,
+    "estFinish": "Jun 6",
+    "movementPerWeek": 8.8,
     "casesRemaining": 5770,
     "latestLetter": "M",
     "pctProcessed": 17
@@ -92,7 +92,7 @@
       "withdrawn": 328,
       "denied": 180,
       "rfi": 159,
-      "status": "processing",
+      "status": "done",
       "processedPct": 81.1,
       "todayProcessed": 39
     },
