@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-05-20T15:05:44-04:00",
+  "updatedAt": "2026-05-20T18:14:34-04:00",
   "backlog": {
-    "total": 131178,
+    "total": 130897,
     "startOfMonth": 137571,
     "thisMonth": {
       "name": "May 2026",
-      "processed": 12143,
+      "processed": 12424,
       "intake": 5750
     },
     "lastMonth": {
@@ -23,11 +23,11 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 529,
-    "certified": 482,
-    "rfi": 34,
-    "denied": 11,
-    "withdrawn": 2,
+    "total": 810,
+    "certified": 737,
+    "rfi": 37,
+    "denied": 12,
+    "withdrawn": 24,
     "stillUpdating": false,
     "yesterday": {
       "total": 936,
@@ -38,15 +38,15 @@
     }
   },
   "dol": {
-    "label": "Mar '25",
-    "monthFull": "March",
-    "day": 42,
+    "label": "Apr '25",
+    "monthFull": "April",
+    "day": 1,
     "daysInMonth": 100,
-    "estFinish": "May 31",
-    "movementPerWeek": 11.6,
-    "casesRemaining": 3896,
+    "estFinish": "Sep 1",
+    "movementPerWeek": 2.0,
+    "casesRemaining": 7932,
     "latestLetter": "W",
-    "pctProcessed": 42
+    "pctProcessed": 1
   },
   "timeline": [
     {
@@ -86,39 +86,40 @@
     {
       "label": "Feb '25",
       "total": 6929,
-      "certified": 5601,
-      "review": 556,
+      "certified": 5628,
+      "review": 528,
       "withdrawn": 328,
-      "denied": 244,
+      "denied": 245,
       "rfi": 197,
       "status": "done",
-      "processedPct": 87.2,
-      "todayProcessed": 56
+      "processedPct": 87.6,
+      "todayProcessed": 84
     },
     {
       "label": "Mar '25",
       "total": 7329,
-      "certified": 3019,
-      "review": 3896,
+      "certified": 3187,
+      "review": 3725,
       "withdrawn": 343,
       "denied": 3,
-      "rfi": 68,
-      "status": "active",
-      "processedPct": 42.2,
-      "dolDay": 42,
-      "dolDays": 100,
-      "todayProcessed": 438
+      "rfi": 71,
+      "status": "processing",
+      "processedPct": 44.5,
+      "todayProcessed": 609
     },
     {
       "label": "Apr '25",
       "total": 8434,
-      "certified": 20,
-      "review": 8014,
-      "withdrawn": 400,
+      "certified": 80,
+      "review": 7932,
+      "withdrawn": 422,
       "denied": 0,
       "rfi": 0,
-      "status": "pending",
-      "processedPct": 0.2
+      "status": "active",
+      "processedPct": 0.9,
+      "dolDay": 1,
+      "dolDays": 100,
+      "todayProcessed": 60
     },
     {
       "label": "May '25",
@@ -499,11 +500,11 @@
     },
     {
       "date": "2026-05-20",
-      "total": 529,
-      "certified": 482,
-      "rfi": 34,
-      "denied": 11,
-      "withdrawn": 2
+      "total": 810,
+      "certified": 737,
+      "rfi": 37,
+      "denied": 12,
+      "withdrawn": 24
     }
   ],
   "rateWeeks": [
@@ -597,126 +598,39 @@
     },
     {
       "weekStart": "2026-05-18",
-      "total": 2345,
-      "certified": 2152,
-      "rfi": 97,
-      "denied": 89,
-      "withdrawn": 7,
+      "total": 2626,
+      "certified": 2407,
+      "rfi": 100,
+      "denied": 90,
+      "withdrawn": 29,
       "partial": true
     }
   ],
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Feb",
-      "subtitle": "February 2025 filings \u00b7 6,926 total",
-      "certified": 5601,
-      "review": 556,
-      "withdrawn": 328,
-      "rfi": 197,
-      "denied": 244
+      "tabLabel": "Mar",
+      "subtitle": "March 2025 filings \u00b7 7,329 total",
+      "certified": 3187,
+      "review": 3725,
+      "withdrawn": 343,
+      "rfi": 71,
+      "denied": 3
     },
     {
       "tabKey": "next",
-      "tabLabel": "Mar",
-      "subtitle": "March 2025 filings \u00b7 7,329 total",
-      "certified": 3019,
-      "review": 3896,
-      "withdrawn": 343,
-      "rfi": 68,
-      "denied": 3
+      "tabLabel": "Apr",
+      "subtitle": "April 2025 filings \u00b7 8,434 total",
+      "certified": 80,
+      "review": 7932,
+      "withdrawn": 422,
+      "rfi": 0,
+      "denied": 0
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Feb '25",
-      "subtitle": "February 2025",
-      "list": [
-        {
-          "name": "Management Health Systems, LLC",
-          "count": 137
-        },
-        {
-          "name": "Abbyland Foods, Inc",
-          "count": 108
-        },
-        {
-          "name": "JCG Foods of Georgia, LLC",
-          "count": 97
-        },
-        {
-          "name": "Stoughton Trailers, LLC",
-          "count": 84
-        },
-        {
-          "name": "Microsoft Corporation",
-          "count": 70
-        },
-        {
-          "name": "WAL-MART ASSOCIATES, INC.",
-          "count": 69
-        },
-        {
-          "name": " Koch Foods of Gadsden, LLC",
-          "count": 65
-        },
-        {
-          "name": "NATURE'S WAY FARMS, LLC",
-          "count": 62
-        },
-        {
-          "name": "North Cape Post Acute Nursing and Rehabilitation, Inc.",
-          "count": 59
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 58
-        },
-        {
-          "name": "Deloitte Consulting LLP",
-          "count": 53
-        },
-        {
-          "name": "Tesla, Inc.",
-          "count": 50
-        },
-        {
-          "name": "Dallas Independent School District",
-          "count": 45
-        },
-        {
-          "name": "Case Farms Processing, Inc",
-          "count": 39
-        },
-        {
-          "name": "ByteDance Inc.",
-          "count": 39
-        },
-        {
-          "name": "NEW CANEY INC",
-          "count": 37
-        },
-        {
-          "name": "Expedia, Inc. ",
-          "count": 36
-        },
-        {
-          "name": "Cummins Inc.",
-          "count": 35
-        },
-        {
-          "name": "Salesforce, Inc.",
-          "count": 34
-        },
-        {
-          "name": "MCKINSEY & COMPANY, INC. UNITED STATES",
-          "count": 34
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Mar '25",
       "subtitle": "March 2025",
       "list": [
@@ -799,6 +713,93 @@
         {
           "name": "Labor Guys, LLC",
           "count": 42
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Apr '25",
+      "subtitle": "April 2025",
+      "list": [
+        {
+          "name": "Labor Guys, LLC",
+          "count": 274
+        },
+        {
+          "name": "Microsoft Corporation",
+          "count": 175
+        },
+        {
+          "name": "Omnipotent Brands ESO, LLC",
+          "count": 132
+        },
+        {
+          "name": "Management Health Systems, LLC",
+          "count": 114
+        },
+        {
+          "name": "Tesla, Inc.",
+          "count": 112
+        },
+        {
+          "name": "LLS, Inc",
+          "count": 102
+        },
+        {
+          "name": "MAS, Inc",
+          "count": 96
+        },
+        {
+          "name": "WAL-MART ASSOCIATES, INC.",
+          "count": 87
+        },
+        {
+          "name": " Koch Foods of Gadsden, LLC",
+          "count": 87
+        },
+        {
+          "name": "Stoughton Trailers, LLC",
+          "count": 80
+        },
+        {
+          "name": "Deloitte Consulting LLP",
+          "count": 79
+        },
+        {
+          "name": "Saylor Management Group, Inc.",
+          "count": 78
+        },
+        {
+          "name": "Microsoft Corporation ",
+          "count": 73
+        },
+        {
+          "name": "NORMAN W. FRIES, INC.",
+          "count": 70
+        },
+        {
+          "name": "O'Keefe Restaurant Systems, Inc.",
+          "count": 65
+        },
+        {
+          "name": "SEJ Services, LLC",
+          "count": 58
+        },
+        {
+          "name": "Fana Fana International",
+          "count": 58
+        },
+        {
+          "name": "United Methodist Homes & Services",
+          "count": 56
+        },
+        {
+          "name": "FMR LLC",
+          "count": 56
+        },
+        {
+          "name": "GDI Services Inc.",
+          "count": 53
         }
       ]
     }
