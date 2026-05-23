@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-05-23T12:12:41-04:00",
+  "updatedAt": "2026-05-23T15:12:46-04:00",
   "backlog": {
-    "total": 130512,
+    "total": 130436,
     "startOfMonth": 137564,
     "thisMonth": {
       "name": "May 2026",
-      "processed": 13732,
+      "processed": 13808,
       "intake": 6680
     },
     "lastMonth": {
@@ -23,10 +23,10 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 90,
-    "certified": 87,
-    "rfi": 0,
-    "denied": 3,
+    "total": 166,
+    "certified": 147,
+    "rfi": 9,
+    "denied": 10,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
@@ -42,8 +42,8 @@
     "monthFull": "April",
     "day": 1,
     "daysInMonth": 100,
-    "estFinish": "Feb 7",
-    "movementPerWeek": 0.8,
+    "estFinish": "Mar 16",
+    "movementPerWeek": 0.7,
     "casesRemaining": 7928,
     "latestLetter": "L",
     "pctProcessed": 1
@@ -98,14 +98,14 @@
     {
       "label": "Mar '25",
       "total": 7329,
-      "certified": 4282,
-      "review": 2595,
+      "certified": 4342,
+      "review": 2519,
       "withdrawn": 343,
-      "denied": 17,
-      "rfi": 91,
+      "denied": 24,
+      "rfi": 100,
       "status": "processing",
-      "processedPct": 59.9,
-      "todayProcessed": 82
+      "processedPct": 60.9,
+      "todayProcessed": 158
     },
     {
       "label": "Apr '25",
@@ -500,10 +500,10 @@
     },
     {
       "date": "2026-05-23",
-      "total": 90,
-      "certified": 87,
-      "rfi": 0,
-      "denied": 3,
+      "total": 166,
+      "certified": 147,
+      "rfi": 9,
+      "denied": 10,
       "withdrawn": 0
     }
   ],
@@ -598,10 +598,10 @@
     },
     {
       "weekStart": "2026-05-18",
-      "total": 3934,
-      "certified": 3624,
-      "rfi": 138,
-      "denied": 141,
+      "total": 4010,
+      "certified": 3684,
+      "rfi": 147,
+      "denied": 148,
       "withdrawn": 30,
       "partial": true
     }
@@ -611,11 +611,11 @@
       "tabKey": "active",
       "tabLabel": "Mar",
       "subtitle": "March 2025 filings \u00b7 7,328 total",
-      "certified": 4282,
-      "review": 2595,
+      "certified": 4342,
+      "review": 2519,
       "withdrawn": 343,
-      "rfi": 91,
-      "denied": 17
+      "rfi": 100,
+      "denied": 24
     },
     {
       "tabKey": "next",
