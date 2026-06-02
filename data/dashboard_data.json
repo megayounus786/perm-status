@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-02T03:07:22-04:00",
+  "updatedAt": "2026-06-02T06:07:20-04:00",
   "backlog": {
-    "total": 127174,
+    "total": 127171,
     "startOfMonth": 128010,
     "thisMonth": {
       "name": "Jun 2026",
-      "processed": 903,
+      "processed": 906,
       "intake": 67
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 33,
-    "certified": 32,
+    "total": 36,
+    "certified": 35,
     "rfi": 0,
     "denied": 1,
     "withdrawn": 0,
@@ -40,13 +40,13 @@
   "dol": {
     "label": "Apr '25",
     "monthFull": "April",
-    "day": 34,
+    "day": 35,
     "daysInMonth": 100,
-    "estFinish": "Jun 25",
-    "movementPerWeek": 5.9,
-    "casesRemaining": 5098,
-    "latestLetter": "S",
-    "pctProcessed": 34
+    "estFinish": "Jun 26",
+    "movementPerWeek": 5.8,
+    "casesRemaining": 5095,
+    "latestLetter": "I",
+    "pctProcessed": 35
   },
   "timeline": [
     {
@@ -108,16 +108,16 @@
     {
       "label": "Apr '25",
       "total": 8434,
-      "certified": 2819,
-      "review": 5098,
+      "certified": 2822,
+      "review": 5095,
       "withdrawn": 429,
       "denied": 20,
       "rfi": 68,
       "status": "active",
       "processedPct": 34.5,
-      "dolDay": 34,
+      "dolDay": 35,
       "dolDays": 100,
-      "todayProcessed": 30
+      "todayProcessed": 33
     },
     {
       "label": "May '25",
@@ -509,8 +509,8 @@
     },
     {
       "date": "2026-06-02",
-      "total": 33,
-      "certified": 32,
+      "total": 36,
+      "certified": 35,
       "rfi": 0,
       "denied": 1,
       "withdrawn": 0
@@ -607,8 +607,8 @@
     },
     {
       "weekStart": "2026-06-01",
-      "total": 903,
-      "certified": 866,
+      "total": 906,
+      "certified": 869,
       "rfi": 17,
       "denied": 20,
       "withdrawn": 0,
@@ -630,8 +630,8 @@
       "tabKey": "next",
       "tabLabel": "Apr",
       "subtitle": "April 2025 filings \u00b7 8,434 total",
-      "certified": 2819,
-      "review": 5098,
+      "certified": 2822,
+      "review": 5095,
       "withdrawn": 429,
       "rfi": 68,
       "denied": 20
