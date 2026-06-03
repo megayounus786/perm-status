@@ -56,7 +56,7 @@
 
   html { background: var(--bg-html); }
   body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); color: var(--text-primary); min-height: 100vh; min-width: 100%; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; pointer-events: none; }
   .container { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; backdrop-filter: blur(20px); background: var(--nav-bg); border-bottom: 1px solid var(--nav-border); position: sticky; top: 0; z-index: 100; }
   .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
@@ -385,6 +385,7 @@
       <li><a href="./">Dashboard</a></li>
       <li><a href="estimate.html">Estimate</a></li>
       <li><a href="visa-bulletin.html" class="active">Visa Bulletin</a></li>
+      <li><a href="guides.html">Guides</a></li>
       <li><a href="about-perm.html">About PERM</a></li>
       <li><a href="faq.html">FAQ</a></li>
     </ul>
@@ -549,7 +550,7 @@
 </div>
 
 <footer>
-  Data sourced from <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" target="_blank" rel="noopener">travel.state.gov</a> &middot; Updated monthly &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
+  Data sourced from <a href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" target="_blank" rel="noopener">travel.state.gov</a> &middot; Updated monthly &middot; <a href="guides.html">Guides</a> &middot; <a href="about-us.html">About</a> &middot; <a href="support.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
 </footer>
 
 <script>

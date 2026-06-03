@@ -81,7 +81,7 @@
 
   html { background: var(--bg-html); overflow-x: hidden; }
   body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); color: var(--text-primary); min-height: 100vh; min-width: 100%; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; pointer-events: none; }
   .container { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 24px; }
   nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; backdrop-filter: blur(20px); background: var(--nav-bg); border-bottom: 1px solid var(--nav-border); position: sticky; top: 0; z-index: 100; }
   .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
@@ -633,6 +633,7 @@
       <li><a href="./" class="active">Dashboard</a></li>
       <li><a href="estimate.html">Estimate</a></li>
       <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
+      <li><a href="guides.html">Guides</a></li>
       <li><a href="about-perm.html">About PERM</a></li>
       <li><a href="faq.html">FAQ</a></li>
     </ul>
@@ -2150,39 +2151,29 @@ setupTabs('employer-tabs', t => renderEmployers(parseInt(t.dataset.ei)));
 
 
 <section id="seo-content" style="max-width:900px;margin:3rem auto;padding:0 1.5rem;color:#cbd5e1;font-size:15px;line-height:1.7;">
-  <h2 style="color:#e2e8f0;font-size:1.5rem;margin-bottom:1rem;">Understanding PERM Processing Times</h2>
-  <p>The Program Electronic Review Management (PERM) system is the process used by the U.S. Department of Labor (DOL) to handle applications for permanent labor certification. Employers must obtain this certification before sponsoring a foreign worker for an employment-based green card, demonstrating that no qualified U.S. workers are available for the position at the prevailing wage.</p>
-  
-  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">How Long Does PERM Processing Take?</h3>
-  <p>PERM processing times vary based on filing month, case complexity, and DOL workload. As of 2026, most PERM applications take between 12 to 16 months from submission to certification. The DOL does not process cases in strict chronological order. Multiple filing months may be processed simultaneously, and within each month, cases across all employer name letters can move forward at the same time. Processing progress varies by month based on backlog size and DOL resource allocation.</p>
-  
-  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">What Affects PERM Processing Speed?</h3>
-  <p>Several factors influence how quickly a PERM case is processed:</p>
+  <h2 style="color:#e2e8f0;font-size:1.5rem;margin-bottom:1rem;">What ImmiLane Measures &mdash; and Where the Numbers Come From</h2>
+  <p>Most PERM "processing time" figures you will find online are quarterly averages the Department of Labor publishes weeks after the fact. ImmiLane takes a different approach. We re-scan the DOL's public labor-certification dataset several times every day, recording the exact moment each case flips from analyst review to certified, denied, or withdrawn. That lets the charts above answer a sharper question than "what is the average?" &mdash; namely, <strong style="color:#e2e8f0;">which specific filing months the DOL is actively clearing right now</strong>, and how fast the frontier is moving week over week.</p>
+
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">Reading the processing frontier by filing month</h3>
+  <p>The DOL works through PERM applications grouped by the month they were filed, but it does not finish one month before starting the next. In practice several adjacent filing months are "open" at the same time, and within any open month the certifying officers pull cases without regard to the employer's name &mdash; the old assumption that adjudication runs alphabetically by company no longer holds. Because ImmiLane timestamps every status change, the dashboard can show how much of each filing month has already cleared and how the share certified climbs as that month matures. When a brand-new filing month suddenly shows its first certifications, that is a leading signal the frontier has advanced, and you will see it here days before it appears in any official summary.</p>
+
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">Employer-level detail, not just national totals</h3>
+  <p>Aggregate counts hide a lot. A filing month can look "half done" nationally while a single large sponsor &mdash; a consulting firm or a big tech employer with thousands of cases &mdash; skews the picture. ImmiLane keeps the data resolved down to the individual employer, so you can search the company sponsoring your case and see how its filings specifically are moving, what fraction have certified, and whether its cases are drawing an unusual number of audits. This employer-level view is the part of ImmiLane you will not find in a generic processing-time chart, and it is what powers the per-company pages and the search box in the navigation bar.</p>
+
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">How the certification estimate is built</h3>
+  <p>The <a href="estimate.html" style="color:#60a5fa;">Estimate tool</a> does not quote a one-size-fits-all "12 to 16 months." Instead it takes your filing month, measures the DOL's observed clearance pace for the months immediately ahead of yours, and projects when the frontier is likely to reach your filing date at the current rate &mdash; then widens that into a range to account for audits and month-to-month variation in DOL output. As fresh scans change the underlying pace, the estimate moves with it. The full methodology, including how we treat audited cases and recruiting-delayed filings, is written up in our <a href="guide-estimate-methodology.html" style="color:#60a5fa;">estimate methodology guide</a>.</p>
+
+  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">What the status labels mean</h3>
   <ul style="margin:0.5rem 0 1rem 1.5rem;">
-    <li><strong style="color:#e2e8f0;">Filing month backlog:</strong> Months with more filings take longer for DOL to clear.</li>
-    <li><strong style="color:#e2e8f0;">Non-linear processing:</strong> DOL may process multiple filing months simultaneously, and all employer name letters within a month can move forward at once.</li>
-    <li><strong style="color:#e2e8f0;">Audit selection:</strong> Cases selected for audit face additional review and significant delays.</li>
-    <li><strong style="color:#e2e8f0;">Supervised recruitment:</strong> If DOL requires supervised recruitment, processing can extend by several months.</li>
-    <li><strong style="color:#e2e8f0;">Request for Information (RFI):</strong> Incomplete applications trigger RFIs, adding weeks to months of delay.</li>
+    <li><strong style="color:#e2e8f0;">Analyst Review:</strong> the case is in the DOL queue or actively being adjudicated by a certifying officer.</li>
+    <li><strong style="color:#e2e8f0;">Certified:</strong> labor certification approved; the employer has 180 days to file the I-140 with USCIS.</li>
+    <li><strong style="color:#e2e8f0;">Audit:</strong> the DOL has asked for supporting documentation before deciding, which adds months to the timeline.</li>
+    <li><strong style="color:#e2e8f0;">Denied:</strong> the application was not approved; the employer may request reconsideration or appeal to BALCA.</li>
+    <li><strong style="color:#e2e8f0;">Withdrawn:</strong> the employer or its representative pulled the application before a decision.</li>
   </ul>
-  
-  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">How to Track Your PERM Application</h3>
-  <p>ImmiLane's PERM tracker provides real-time data sourced directly from DOL case status updates. The dashboard displays monthly backlog levels, certification rates, processing progress by filing month, and status distribution across all active cases. Use the timeline chart to see which filing months are currently being processed and estimate when your case may reach review.</p>
-  
-  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">PERM Case Status Categories</h3>
-  <p>Each PERM application moves through several possible statuses:</p>
-  <ul style="margin:0.5rem 0 1rem 1.5rem;">
-    <li><strong style="color:#e2e8f0;">Certified:</strong> The application has been approved by DOL.</li>
-    <li><strong style="color:#e2e8f0;">Analyst Review:</strong> The case is currently under review by a DOL analyst.</li>
-    <li><strong style="color:#e2e8f0;">Denied:</strong> The application was not approved, often due to recruitment or documentation issues.</li>
-    <li><strong style="color:#e2e8f0;">Withdrawn:</strong> The employer withdrew the application before a decision was made.</li>
-    <li><strong style="color:#e2e8f0;">RFI (Request for Information):</strong> DOL has requested additional documentation before making a decision.</li>
-  </ul>
-  
-  <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">About This Tracker</h3>
-  <p>ImmiLane scans DOL PERM case statuses multiple times daily to provide the most current processing data available. Unlike static reports, our dashboard updates automatically as new certifications, denials, and status changes are detected. The data powers the processing timeline, backlog charts, and status distribution analytics shown above.</p>
-  
-  <p style="margin-top:1.5rem;font-size:13px;color:#64748b;"><em>Disclaimer: This tracker is for informational purposes only and does not constitute legal advice. Processing times are estimates based on observed DOL data patterns. Consult a qualified immigration attorney for guidance specific to your PERM application.</em></p>
+  <p>New to the process? Start with our plain-English <a href="about-perm.html" style="color:#60a5fa;">overview of PERM</a>, then dig into the <a href="guides.html" style="color:#60a5fa;">guides library</a> for deeper explainers on DOL ordering, the visa bulletin, EB categories, and audits.</p>
+
+  <p style="margin-top:1.5rem;font-size:13px;color:#64748b;"><em>Disclaimer: ImmiLane is an independent data tool for informational purposes only and is not affiliated with or endorsed by the U.S. Department of Labor. Nothing here is legal advice. Figures are estimates derived from observed DOL data and will not match every individual case. Consult a qualified immigration attorney for guidance on your specific PERM application.</em></p>
 </section>
 
 <!-- Ad: Footer banner -->
@@ -2192,7 +2183,7 @@ setupTabs('employer-tabs', t => renderEmployers(parseInt(t.dataset.ei)));
 </div>
 
 <footer>
-  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
+  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; <a href="guides.html">Guides</a> &middot; <a href="about-us.html">About</a> &middot; <a href="support.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
 </footer>
 
 <script>
