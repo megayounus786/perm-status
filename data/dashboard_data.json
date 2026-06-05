@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-05T15:13:25-04:00",
+  "updatedAt": "2026-06-05T18:12:51-04:00",
   "backlog": {
-    "total": 125123,
+    "total": 124970,
     "startOfMonth": 127994,
     "thisMonth": {
       "name": "Jun 2026",
-      "processed": 4335,
+      "processed": 4488,
       "intake": 1464
     },
     "lastMonth": {
@@ -15,19 +15,19 @@
     }
   },
   "avgDays": {
-    "current": 458,
+    "current": 457,
     "deltaFromLastMonth": 0,
-    "certified": 457,
+    "certified": 456,
     "rfi": 462,
     "denied": 476,
     "trend90Day": 0
   },
   "today": {
-    "total": 544,
-    "certified": 462,
-    "rfi": 52,
-    "denied": 29,
-    "withdrawn": 1,
+    "total": 697,
+    "certified": 604,
+    "rfi": 60,
+    "denied": 31,
+    "withdrawn": 2,
     "stillUpdating": false,
     "yesterday": {
       "total": 984,
@@ -38,15 +38,15 @@
     }
   },
   "dol": {
-    "label": "Apr '25",
-    "monthFull": "April",
-    "day": 69,
+    "label": "May '25",
+    "monthFull": "May",
+    "day": 0,
     "daysInMonth": 100,
-    "estFinish": "Jun 12",
-    "movementPerWeek": 9.2,
-    "casesRemaining": 2145,
-    "latestLetter": "Z",
-    "pctProcessed": 69
+    "estFinish": "Nov 27",
+    "movementPerWeek": 0.4,
+    "casesRemaining": 8528,
+    "latestLetter": "O",
+    "pctProcessed": 0
   },
   "timeline": [
     {
@@ -85,51 +85,52 @@
     {
       "label": "Feb '25",
       "total": 6929,
-      "certified": 5964,
-      "review": 41,
+      "certified": 5968,
+      "review": 37,
       "withdrawn": 328,
       "denied": 357,
       "rfi": 236,
       "status": "done",
-      "processedPct": 94.6,
-      "todayProcessed": 4
+      "processedPct": 94.7,
+      "todayProcessed": 8
     },
     {
       "label": "Mar '25",
       "total": 7329,
-      "certified": 6085,
-      "review": 490,
+      "certified": 6090,
+      "review": 483,
       "withdrawn": 343,
-      "denied": 209,
-      "rfi": 201,
+      "denied": 210,
+      "rfi": 202,
       "status": "done",
-      "processedPct": 88.6,
-      "todayProcessed": 55
+      "processedPct": 88.7,
+      "todayProcessed": 62
     },
     {
       "label": "Apr '25",
       "total": 8434,
-      "certified": 5487,
-      "review": 2145,
+      "certified": 5620,
+      "review": 2004,
       "withdrawn": 432,
-      "denied": 131,
-      "rfi": 239,
-      "status": "active",
-      "processedPct": 69.4,
-      "dolDay": 69,
-      "dolDays": 100,
-      "todayProcessed": 483
+      "denied": 132,
+      "rfi": 246,
+      "status": "processing",
+      "processedPct": 71.1,
+      "todayProcessed": 624
     },
     {
       "label": "May '25",
       "total": 8960,
-      "certified": 0,
-      "review": 8529,
-      "withdrawn": 394,
-      "denied": 0,
+      "certified": 33,
+      "review": 8528,
+      "withdrawn": 395,
+      "denied": 3,
       "rfi": 0,
-      "status": "pending",
-      "processedPct": 0
+      "status": "active",
+      "processedPct": 0.4,
+      "dolDay": 0,
+      "dolDays": 100,
+      "todayProcessed": 1
     },
     {
       "label": "Jun '25",
@@ -510,11 +511,11 @@
     },
     {
       "date": "2026-06-05",
-      "total": 544,
-      "certified": 462,
-      "rfi": 52,
-      "denied": 29,
-      "withdrawn": 1
+      "total": 697,
+      "certified": 604,
+      "rfi": 60,
+      "denied": 31,
+      "withdrawn": 2
     }
   ],
   "rateWeeks": [
@@ -608,126 +609,39 @@
     },
     {
       "weekStart": "2026-06-01",
-      "total": 4335,
-      "certified": 3857,
-      "rfi": 225,
-      "denied": 217,
-      "withdrawn": 36,
+      "total": 4488,
+      "certified": 3999,
+      "rfi": 233,
+      "denied": 219,
+      "withdrawn": 37,
       "partial": true
     }
   ],
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Mar",
-      "subtitle": "March 2025 filings \u00b7 7,328 total",
-      "certified": 6085,
-      "review": 490,
-      "withdrawn": 343,
-      "rfi": 201,
-      "denied": 209
+      "tabLabel": "Apr",
+      "subtitle": "April 2025 filings \u00b7 8,434 total",
+      "certified": 5620,
+      "review": 2004,
+      "withdrawn": 432,
+      "rfi": 246,
+      "denied": 132
     },
     {
       "tabKey": "next",
-      "tabLabel": "Apr",
-      "subtitle": "April 2025 filings \u00b7 8,434 total",
-      "certified": 5487,
-      "review": 2145,
-      "withdrawn": 432,
-      "rfi": 239,
-      "denied": 131
+      "tabLabel": "May",
+      "subtitle": "May 2025 filings \u00b7 8,959 total",
+      "certified": 33,
+      "review": 8528,
+      "withdrawn": 395,
+      "rfi": 0,
+      "denied": 3
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Mar '25",
-      "subtitle": "March 2025",
-      "list": [
-        {
-          "name": "PRESTIGIOUS PLACEMENT, INC",
-          "count": 216
-        },
-        {
-          "name": "Microsoft Corporation",
-          "count": 132
-        },
-        {
-          "name": " Koch Foods of Gadsden, LLC",
-          "count": 98
-        },
-        {
-          "name": "Management Health Systems, LLC",
-          "count": 96
-        },
-        {
-          "name": "Deloitte Consulting LLP",
-          "count": 79
-        },
-        {
-          "name": "BH Acquisition Company, LLC",
-          "count": 79
-        },
-        {
-          "name": "Stoughton Trailers, LLC",
-          "count": 75
-        },
-        {
-          "name": "WAL-MART ASSOCIATES, INC.",
-          "count": 73
-        },
-        {
-          "name": "Tesla, Inc.",
-          "count": 65
-        },
-        {
-          "name": "All Phase Landscape Construction, Inc.",
-          "count": 61
-        },
-        {
-          "name": "NVIDIA Corporation",
-          "count": 58
-        },
-        {
-          "name": "JCG Foods of Georgia, LLC",
-          "count": 57
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 55
-        },
-        {
-          "name": "Louisiana Pride Catfish, Inc.",
-          "count": 52
-        },
-        {
-          "name": "Juniper Networks, Inc.",
-          "count": 49
-        },
-        {
-          "name": "ServiceNow, Inc.",
-          "count": 48
-        },
-        {
-          "name": "SWEET VIRGINIA CARE, LLC",
-          "count": 47
-        },
-        {
-          "name": "MCKINSEY & COMPANY, INC. UNITED STATES",
-          "count": 45
-        },
-        {
-          "name": "Christian Foods II, LC",
-          "count": 43
-        },
-        {
-          "name": "Labor Guys, LLC",
-          "count": 42
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Apr '25",
       "subtitle": "April 2025",
       "list": [
@@ -810,6 +724,93 @@
         {
           "name": "GDI Services Inc.",
           "count": 53
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "May '25",
+      "subtitle": "May 2025",
+      "list": [
+        {
+          "name": "Microsoft Corporation",
+          "count": 412
+        },
+        {
+          "name": "Tesla, Inc.",
+          "count": 150
+        },
+        {
+          "name": "NATURE'S WAY FARMS, LLC",
+          "count": 120
+        },
+        {
+          "name": "NORMAN W. FRIES, INC.",
+          "count": 118
+        },
+        {
+          "name": "Management Health Systems, LLC",
+          "count": 112
+        },
+        {
+          "name": "Stoughton Trailers, LLC",
+          "count": 87
+        },
+        {
+          "name": "SAVANNAH CHATHAM COUNTY PUBLIC SCHOOL SYSTEM",
+          "count": 73
+        },
+        {
+          "name": "WAL-MART ASSOCIATES, INC.",
+          "count": 72
+        },
+        {
+          "name": "Labor Guys, LLC",
+          "count": 68
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 53
+        },
+        {
+          "name": "Omega Compliance Solutions LLC",
+          "count": 45
+        },
+        {
+          "name": "BAM Management, LLC",
+          "count": 45
+        },
+        {
+          "name": " Koch Foods of Gadsden, LLC",
+          "count": 44
+        },
+        {
+          "name": "HAMAN LEGACY LLC",
+          "count": 42
+        },
+        {
+          "name": "Compassionate Care Services LLC",
+          "count": 42
+        },
+        {
+          "name": "Quest Diagnostics Incorporated",
+          "count": 39
+        },
+        {
+          "name": "JSA Georgia, Inc.",
+          "count": 37
+        },
+        {
+          "name": "Case Farms Processing, Inc",
+          "count": 33
+        },
+        {
+          "name": "O'Keefe Restaurant Systems, Inc.",
+          "count": 31
+        },
+        {
+          "name": "Cititurf, LLC",
+          "count": 30
         }
       ]
     }
