@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-06-07T21:27:42-04:00",
+  "updatedAt": "2026-06-08T01:13:00-04:00",
   "backlog": {
-    "total": 125236,
+    "total": 125286,
     "startOfMonth": 127991,
     "thisMonth": {
       "name": "Jun 2026",
       "processed": 4756,
-      "intake": 2001
+      "intake": 2051
     },
     "lastMonth": {
       "name": "May 2026",
@@ -23,18 +23,18 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 134,
-    "certified": 124,
-    "rfi": 6,
-    "denied": 4,
+    "total": 0,
+    "certified": 0,
+    "rfi": 0,
+    "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 116,
-      "certified": 92,
-      "rfi": 2,
-      "denied": 21,
-      "withdrawn": 1
+      "total": 134,
+      "certified": 124,
+      "rfi": 6,
+      "denied": 4,
+      "withdrawn": 0
     }
   },
   "dol": {
@@ -42,7 +42,7 @@
     "monthFull": "May",
     "day": 1,
     "daysInMonth": 100,
-    "estFinish": "Aug 10",
+    "estFinish": "Aug 11",
     "movementPerWeek": 0.5,
     "casesRemaining": 8468,
     "latestLetter": "M",
@@ -102,8 +102,7 @@
       "denied": 229,
       "rfi": 202,
       "status": "done",
-      "processedPct": 89.0,
-      "todayProcessed": 1
+      "processedPct": 89.0
     },
     {
       "label": "Apr '25",
@@ -114,8 +113,7 @@
       "denied": 138,
       "rfi": 253,
       "status": "processing",
-      "processedPct": 73.3,
-      "todayProcessed": 106
+      "processedPct": 73.3
     },
     {
       "label": "May '25",
@@ -128,8 +126,7 @@
       "status": "active",
       "processedPct": 1.1,
       "dolDay": 1,
-      "dolDays": 100,
-      "todayProcessed": 27
+      "dolDays": 100
     },
     {
       "label": "Jun '25",
@@ -265,9 +262,9 @@
     },
     {
       "label": "Jun '26",
-      "total": 2001,
+      "total": 2051,
       "certified": 0,
-      "review": 1982,
+      "review": 2032,
       "withdrawn": 17,
       "denied": 0,
       "rfi": 0,
@@ -276,14 +273,6 @@
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-05-09",
-      "total": 203,
-      "certified": 196,
-      "rfi": 3,
-      "denied": 4,
-      "withdrawn": 0
-    },
     {
       "date": "2026-05-10",
       "total": 232,
@@ -515,17 +504,17 @@
       "rfi": 6,
       "denied": 4,
       "withdrawn": 0
-    }
-  ],
-  "rateWeeks": [
+    },
     {
-      "weekStart": "2026-03-16",
+      "date": "2026-06-08",
       "total": 0,
       "certified": 0,
       "rfi": 0,
       "denied": 0,
       "withdrawn": 0
-    },
+    }
+  ],
+  "rateWeeks": [
     {
       "weekStart": "2026-03-23",
       "total": 61,
@@ -612,7 +601,15 @@
       "certified": 4231,
       "rfi": 243,
       "denied": 244,
-      "withdrawn": 38,
+      "withdrawn": 38
+    },
+    {
+      "weekStart": "2026-06-08",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0,
       "partial": true
     }
   ],
