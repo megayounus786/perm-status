@@ -36,6 +36,7 @@
     --input-bg: rgba(255,255,255,0.06); --input-border: rgba(255,255,255,0.1); --input-focus: rgba(59,130,246,0.5);
     --tab-bg: rgba(255,255,255,0.05); --tab-active: rgba(255,255,255,0.1);
     --sep: rgba(255,255,255,0.06);
+    --tooltip-bg: #1e293b; --tooltip-border: rgba(255,255,255,0.1);
     --modal-bg: #0e0e1a; --modal-backdrop: rgba(0,0,0,0.65); --modal-border: rgba(255,255,255,0.08);
     --bg-card: rgba(15,15,24,0.92);
     --gradient-start: rgba(59,130,246,0.08); --gradient-end: rgba(139,92,246,0.06);
@@ -49,6 +50,7 @@
     --input-bg: rgba(0,0,0,0.04); --input-border: rgba(0,0,0,0.12); --input-focus: rgba(59,130,246,0.4);
     --tab-bg: rgba(0,0,0,0.04); --tab-active: rgba(0,0,0,0.08);
     --sep: rgba(0,0,0,0.08);
+    --tooltip-bg: #fff; --tooltip-border: rgba(0,0,0,0.12);
     --modal-bg: #fff; --modal-backdrop: rgba(0,0,0,0.3); --modal-border: rgba(0,0,0,0.1);
     --bg-card: rgba(245,247,250,0.95);
     --gradient-start: transparent; --gradient-end: transparent;
@@ -122,6 +124,15 @@
   .est-conf-bar-track { height: 8px; background: var(--card-border); border-radius: 4px; position: relative; overflow: hidden; }
   .est-conf-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); transition: width 0.6s ease; }
   .est-conf-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+  /* ── INFO ICON + TOOLTIP (matches dashboard) ── */
+  .info-icon { display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--text-dim); font-size: 9px; color: var(--text-dim); cursor: help; position: relative; vertical-align: middle; margin-left: 5px; flex-shrink: 0; }
+  .info-icon:hover .tooltip, .info-icon:focus .tooltip, .info-icon:focus-within .tooltip { display: block; }
+  .tooltip { display: none; position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--tooltip-bg); color: var(--text-primary); font-size: 11px; padding: 10px 14px; border-radius: 8px; z-index: 200; border: 1px solid var(--tooltip-border); line-height: 1.5; width: max-content; max-width: min(260px, calc(100vw - 48px)); white-space: normal; box-shadow: 0 8px 24px rgba(0,0,0,0.3); pointer-events: none; text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .tooltip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--tooltip-bg); }
+
+  /* ── ESTIMATE DISCLAIMER ── */
+  .est-disclaimer { margin-top: 18px; padding: 12px 14px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; font-size: 11.5px; line-height: 1.6; color: var(--text-muted); }
 
   .est-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .est-stat { background: var(--card-bg); border-radius: 10px; padding: 14px 16px; }
@@ -384,7 +395,7 @@ function n(v)  { return v.toLocaleString(); }
 // ESTIMATE
 // ═══════════════════════════════════════════════════════
 const API_BASE = 'https://api.immilane.com';
-const API_VERSION = '2';
+const API_VERSION = '3';
 
 (function initEstimate() {
   // Sub-tabs
@@ -516,7 +527,7 @@ const API_VERSION = '2';
 
     html += '<div class="est-confidence">';
     html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">';
-    html += '<span style="font-size:12px;color:#64748b;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;">Confidence Range</span>';
+    html += '<span style="font-size:12px;color:#64748b;font-weight:500;text-transform:uppercase;letter-spacing:0.5px;display:inline-flex;align-items:center;">Confidence Range<span class="info-icon" tabindex="0" role="img" aria-label="What the confidence range means">?<span class="tooltip">Optimistic end = DOL&#39;s faster recent weekly pace; pessimistic end = its slower recent weekly pace. Your actual date can fall outside this range.</span></span></span>';
     html += '</div>';
     html += '<div class="est-conf-bar-track"><div class="est-conf-bar-fill" style="width:' + midPct + '%;"></div></div>';
     html += '<div class="est-conf-labels"><span>' + fmtShortDate(lowISO) + '</span><span style="color:#94a3b8;font-weight:600;">' + fmtShortDate(midISO) + '</span><span>' + fmtShortDate(highISO) + '</span></div>';
@@ -531,6 +542,9 @@ const API_VERSION = '2';
     html += '<div class="est-stat"><div class="est-stat-label">Processing Speed</div><div class="est-stat-value success">' + n(est.processing_speed_per_week) + '/wk</div></div>';
     html += '<div class="est-stat"><div class="est-stat-label">Days Remaining</div><div class="est-stat-value accent">~' + n(est.days_remaining) + '</div></div>';
     html += '</div>';
+
+    // Plain-English disclaimer so users understand what the estimate/range mean
+    html += '<div class="est-disclaimer">This is a projection based on DOL&#39;s recent processing pace — not a guarantee. The estimated date assumes DOL keeps clearing cases at its pace over the last 6 weeks. The range reflects DOL&#39;s faster vs. slower recent weekly pace (based on the last ~10 weeks of actual processing). It does not account for case-specific factors such as audits/RFIs, your employer&#39;s first-letter processing cohort, or policy and seasonal changes. Estimates update automatically as new DOL data comes in.</div>';
 
     resultEl.innerHTML = html;
     resultEl.style.display = '';
