@@ -414,10 +414,71 @@
     z-index: 1000; display: none; text-align: left;
   }
   .hero-search-dropdown.open { display: block; }
+
+  /* ===== Dismissible announcement banner (homepage) ===== */
+  .announce {
+    position: relative;
+    max-width: 720px;
+    margin: 22px auto 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 44px 16px 18px;
+    background:
+      linear-gradient(135deg, rgba(59,130,246,0.14), rgba(139,92,246,0.12)),
+      var(--card-bg);
+    border: 1px solid var(--card-border-hover);
+    border-radius: 16px;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 34px rgba(59,130,246,0.10);
+    text-align: left;
+    animation: announce-in 0.5s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .announce[hidden] { display: none; }
+  @keyframes announce-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .announce-icon {
+    flex-shrink: 0;
+    font-size: 20px;
+    line-height: 1.3;
+    filter: drop-shadow(0 0 10px rgba(139,92,246,0.45));
+  }
+  .announce-body { flex: 1; min-width: 0; }
+  .announce-text {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .announce-text b { color: var(--text-primary); font-weight: 700; }
+  .announce-close {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 18px; line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .announce-close:hover { background: var(--card-border-hover); color: var(--text-primary); border-color: var(--card-border); }
+  .announce-close:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+
   @media (max-width: 768px) {
     .hero-search { max-width: 100%; margin: 4px auto 16px; }
     .hero-search-input { font-size: 16px; padding: 15px 46px 15px 46px; border-radius: 14px; }
     .hero-search-icon { left: 15px; }
+    .announce { margin: 14px auto 4px; padding: 14px 40px 14px 14px; gap: 11px; border-radius: 14px; }
+    .announce-text { font-size: 13px; }
+    .announce-icon { font-size: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .announce { animation: none; }
   }
 
   /* ── EMPLOYER MODAL ── */
@@ -715,6 +776,16 @@
 </div>
 
 <div class="container">
+
+  <!-- Dismissible announcement banner (hidden by default; shown via JS unless dismissed in localStorage) -->
+  <aside class="announce" id="announce-banner" role="region" aria-label="Product announcement" hidden>
+    <span class="announce-icon" aria-hidden="true">✨</span>
+    <div class="announce-body">
+      <p class="announce-text"><b>New:</b> our employer search just got a big upgrade — search any company to see its PERM (green-card) and H-1B LCA filing history, salaries, and trends. We're continuously adding more valuable data based on your feedback. Give it a try.</p>
+    </div>
+    <button type="button" class="announce-close" id="announce-close" aria-label="Dismiss announcement">&times;</button>
+  </aside>
+
   <div class="hero">
     <div class="hero-search" id="hero-search">
       <div class="hero-search-box">
@@ -2715,6 +2786,26 @@ document.querySelectorAll('.ad-container').forEach(function(c){
     if(c.querySelector('ins.adsbygoogle[data-ad-status="filled"]')) c.classList.add('ad-loaded');
   }).observe(c,{attributes:true,subtree:true,attributeFilter:['data-ad-status']});
 });
+</script>
+<script>
+// Dismissible announcement banner: show unless dismissed; persist dismissal.
+(function(){
+  var KEY = 'announce_employer_search_v1';
+  var banner = document.getElementById('announce-banner');
+  if (!banner) return;
+  var dismissed = false;
+  try { dismissed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  if (dismissed) return; // returning dismissed users never see it
+
+  banner.hidden = false;
+
+  var closeBtn = document.getElementById('announce-close');
+
+  if (closeBtn) closeBtn.addEventListener('click', function(){
+    banner.hidden = true;
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  });
+})();
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "aa22dbee0e9b4144965de16be0ccbae4"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
