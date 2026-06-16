@@ -1,54 +1,54 @@
 {
-  "bulletin_date": "June 2026",
-  "last_updated": "2026-05-14T01:38:40Z",
-  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-june-2026.html",
+  "bulletin_date": "July 2026",
+  "last_updated": "2026-06-16T16:26:36Z",
+  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",
   "final_action_dates": {
     "1st": {
       "all_other": "C",
-      "china": "01APR23",
-      "india": "15DEC22",
+      "china": "01JUN23",
+      "india": "15OCT22",
       "mexico": "C",
       "philippines": "C"
     },
     "2nd": {
       "all_other": "C",
       "china": "01SEP21",
-      "india": "01SEP13",
+      "india": "U",
       "mexico": "C",
       "philippines": "C"
     },
     "3rd": {
-      "all_other": "01JUN24",
-      "china": "01AUG21",
-      "india": "15DEC13",
-      "mexico": "01JUN24",
+      "all_other": "01AUG24",
+      "china": "22DEC21",
+      "india": "01JAN14",
+      "mexico": "01AUG24",
       "philippines": "01AUG23"
     },
     "Other Workers": {
-      "all_other": "01FEB22",
+      "all_other": "01MAR22",
       "china": "01APR19",
-      "india": "15DEC13",
-      "mexico": "01FEB22",
-      "philippines": "01NOV21"
+      "india": "01JAN14",
+      "mexico": "01MAR22",
+      "philippines": "01DEC21"
     },
     "4th": {
-      "all_other": "15JUL22",
-      "china": "15JUL22",
-      "india": "15JUL22",
-      "mexico": "15JUL22",
-      "philippines": "15JUL22"
+      "all_other": "15SEP22",
+      "china": "15SEP22",
+      "india": "15SEP22",
+      "mexico": "15SEP22",
+      "philippines": "15SEP22"
     },
     "Certain Religious Workers": {
-      "all_other": "15JUL22",
-      "china": "15JUL22",
-      "india": "15JUL22",
-      "mexico": "15JUL22",
-      "philippines": "15JUL22"
+      "all_other": "15SEP22",
+      "china": "15SEP22",
+      "india": "15SEP22",
+      "mexico": "15SEP22",
+      "philippines": "15SEP22"
     },
     "5th Unreserved": {
       "all_other": "C",
-      "china": "22SEP16",
-      "india": "01MAY22",
+      "china": "01DEC16",
+      "india": "U",
       "mexico": "C",
       "philippines": "C"
     },
