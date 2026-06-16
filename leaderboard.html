@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Top Employers by PERM Filing Volume | ImmiLane</title>
+<meta name="description" content="Leaderboard of U.S. employers ranked by PERM (green card) labor certification filing volume. Search and browse all employers in the ImmiLane dataset, sorted from highest to lowest filing count.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://immilane.com/leaderboard.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Top Employers by PERM Filing Volume | ImmiLane">
+<meta property="og:description" content="Employers ranked by PERM green card filing volume.">
+<meta property="og:site_name" content="ImmiLane">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9676532944307230" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-html: #0a0a12; --bg-body: #0a0a12; --text-primary: #f0f0f8; --text-secondary: #94a3b8; --text-muted: #64748b; --text-dim: #475569;
+    --card-bg: rgba(255,255,255,0.04); --card-border: rgba(255,255,255,0.06); --card-hover: rgba(255,255,255,0.07); --card-border-hover: rgba(255,255,255,0.1);
+    --nav-bg: rgba(255,255,255,0.03); --nav-border: rgba(255,255,255,0.06);
+    --input-bg: rgba(255,255,255,0.06); --input-border: rgba(255,255,255,0.1); --input-focus: rgba(59,130,246,0.5);
+    --tab-bg: rgba(255,255,255,0.05); --tab-active: rgba(255,255,255,0.1);
+    --scrollbar-thumb: rgba(255,255,255,0.1); --sep: rgba(255,255,255,0.06);
+    --bg-card: rgba(15,15,24,0.92);
+    --gradient-start: rgba(59,130,246,0.08); --gradient-end: rgba(139,92,246,0.06);
+    --accent: #3b82f6; --accent-2: #8b5cf6;
+  }
+
+  html.light {
+    --bg-html: #f5f7fa; --bg-body: #f5f7fa; --text-primary: #1a1a2e; --text-secondary: #475569; --text-muted: #64748b; --text-dim: #94a3b8;
+    --card-bg: rgba(255,255,255,0.85); --card-border: rgba(0,0,0,0.08); --card-hover: rgba(255,255,255,0.95); --card-border-hover: rgba(0,0,0,0.12);
+    --nav-bg: rgba(255,255,255,0.85); --nav-border: rgba(0,0,0,0.08);
+    --input-bg: rgba(0,0,0,0.04); --input-border: rgba(0,0,0,0.12); --input-focus: rgba(59,130,246,0.4);
+    --tab-bg: rgba(0,0,0,0.04); --tab-active: rgba(0,0,0,0.08);
+    --scrollbar-thumb: rgba(0,0,0,0.12); --sep: rgba(0,0,0,0.08);
+    --bg-card: rgba(245,247,250,0.95);
+    --gradient-start: transparent; --gradient-end: transparent;
+  }
+
+  html { background: var(--bg-html); overflow-x: hidden; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); color: var(--text-primary); min-height: 100vh; min-width: 100%; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; pointer-events: none; }
+  a { color: inherit; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; backdrop-filter: blur(20px); background: var(--nav-bg); border-bottom: 1px solid var(--nav-border); position: sticky; top: 0; z-index: 100; }
+  .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; color: var(--text-primary); }
+  .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a.active, .nav-links a:hover { color: var(--text-primary); }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--card-border); border-radius: 8px; color: var(--text-primary); font-size: 22px; cursor: pointer; padding: 4px 8px; line-height: 1; }
+  .theme-toggle { width: 40px; height: 22px; border-radius: 11px; border: none; cursor: pointer; background: rgba(255,255,255,0.1); position: relative; transition: background 0.3s; display: flex; align-items: center; padding: 0 3px; flex-shrink: 0; }
+  .theme-toggle::after { content: ''; width: 16px; height: 16px; border-radius: 50%; background: #f0f0f8; transition: transform 0.3s, background 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+  html.light .theme-toggle { background: rgba(0,0,0,0.1); }
+  html.light .theme-toggle::after { transform: translateX(18px); background: #1a1a2e; }
+  .theme-toggle-icon { position: absolute; font-size: 11px; top: 50%; transform: translateY(-50%); pointer-events: none; line-height: 1; }
+  .theme-toggle-icon.sun { right: 5px; }
+  .theme-toggle-icon.moon { left: 5px; }
+  html:not(.light) .theme-toggle-icon.sun { opacity: 0.4; }
+  html:not(.light) .theme-toggle-icon.moon { opacity: 0; }
+  html.light .theme-toggle-icon.sun { opacity: 0; }
+  html.light .theme-toggle-icon.moon { opacity: 0.4; }
+  @media (max-width: 768px) {
+    .nav-toggle { display: flex; align-items: center; justify-content: center; order: -1; }
+    .nav-right { gap: 6px; order: 2; margin-left: auto; }
+    nav .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: #0f172a; border-bottom: 1px solid rgba(59, 130, 246, 0.2); padding: 8px 0; z-index: 1000; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    nav .nav-links li { width: 100%; }
+    nav .nav-links a { display: block; padding: 14px 24px; font-size: 15px; border-radius: 0; min-height: 44px; white-space: normal; box-sizing: border-box; }
+    nav .nav-links a:hover, nav .nav-links a.active { background: rgba(59,130,246,0.1); }
+    nav.nav-open .nav-links { display: flex; }
+    .light nav .nav-links { background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  }
+  footer { text-align: center; padding: 32px 24px; color: var(--text-dim); font-size: 12px; border-top: 1px solid var(--sep); margin-top: 0; position: relative; z-index: 1; }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--text-secondary); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes lb-flash { 0% { background: rgba(59,130,246,0.30); } 100% { background: transparent; } }
+
+  /* ── PAGE LAYOUT ── */
+  .lb-page { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 26px 24px 72px; }
+  .lb-breadcrumb { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+  .lb-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+  .lb-breadcrumb a:hover { color: var(--text-primary); }
+
+  /* ── HERO ── */
+  .lb-hero { background: linear-gradient(135deg, rgba(59,130,246,0.10), rgba(139,92,246,0.06)); border: 1px solid var(--card-border); border-radius: 18px; padding: 26px 26px 22px; margin-bottom: 22px; position: relative; overflow: hidden; }
+  .lb-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  .lb-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .lb-title { font-size: 30px; font-weight: 800; letter-spacing: -0.7px; line-height: 1.18; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lb-blurb { font-size: 13px; color: var(--text-secondary); line-height: 1.6; max-width: 760px; }
+  .lb-blurb b { color: var(--text-primary); }
+
+  /* ── CONTROLS ── */
+  .lb-controls { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .lb-search { position: relative; flex: 1; min-width: 220px; }
+  .lb-search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-dim); pointer-events: none; display: flex; }
+  .lb-search-input { width: 100%; padding: 11px 36px 11px 38px; border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-primary); font-size: 14px; font-family: inherit; border-radius: 12px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  .lb-search-input::placeholder { color: var(--text-dim); }
+  .lb-search-input:focus { border-color: var(--input-focus); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+  .lb-search-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border: none; background: var(--tab-active); color: var(--text-secondary); font-size: 15px; line-height: 1; cursor: pointer; border-radius: 50%; display: none; align-items: center; justify-content: center; }
+  .lb-search-clear.visible { display: flex; }
+  .lb-count { font-size: 12.5px; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
+
+  /* ── TABLE ── */
+  .lb-tablewrap { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; }
+  .lb-table { width: 100%; border-collapse: collapse; }
+  .lb-table thead th { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); font-weight: 700; text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--sep); background: var(--tab-bg); position: sticky; top: 0; z-index: 2; }
+  .lb-table th.num, .lb-table td.num { text-align: right; }
+  /* Sortable column headers */
+  .lb-table th.sortable { cursor: pointer; user-select: none; white-space: nowrap; transition: color 0.15s; }
+  .lb-table th.sortable:hover { color: var(--text-secondary); }
+  .lb-table th.sortable.sort-active { color: var(--accent); }
+  .lb-sort-ind { display: inline-block; width: 10px; margin-left: 3px; font-size: 9px; opacity: 0.45; }
+  .lb-table th.sort-active .lb-sort-ind { opacity: 1; }
+  /* Live tracker module — visually distinct from the historical columns. Fed by
+     the 3h realtime scanner (data/dashboard_data.json), NOT the historical data. */
+  .lb-livebar { display: none; align-items: center; gap: 12px; flex-wrap: wrap;
+    margin: 0 0 18px; padding: 12px 16px; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(34,197,94,0.10), rgba(16,185,129,0.06));
+    border: 1px solid rgba(34,197,94,0.30); }
+  .lb-livebar.show { display: flex; }
+  .lb-live-dot { width: 9px; height: 9px; border-radius: 50%; background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34,197,94,0.55); animation: lbpulse 2s infinite; flex: 0 0 auto; }
+  @keyframes lbpulse { 0%{box-shadow:0 0 0 0 rgba(34,197,94,0.5);} 70%{box-shadow:0 0 0 7px rgba(34,197,94,0);} 100%{box-shadow:0 0 0 0 rgba(34,197,94,0);} }
+  @media (prefers-reduced-motion: reduce){ .lb-live-dot { animation: none; } }
+  .lb-live-tag { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #22c55e; }
+  .lb-live-txt { font-size: 13.5px; color: var(--text-primary); }
+  .lb-live-txt b { font-weight: 800; }
+  .lb-live-link { margin-left: auto; font-size: 12.5px; font-weight: 700; color: var(--accent); text-decoration: none; white-space: nowrap; }
+  .lb-live-link:hover { text-decoration: underline; }
+  .lb-live-sub { font-size: 11.5px; color: var(--text-dim); width: 100%; }
+  /* Numeric cell emphasis: PERM is the headline (default sort), LCA/Total lighter */
+  .lb-table td.lb-lca, .lb-table td.lb-total { font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+  .lb-table td.lb-perm { font-variant-numeric: tabular-nums; font-weight: 800; }
+  .lb-table tbody tr { border-bottom: 1px solid var(--sep); transition: background 0.12s; }
+  .lb-table tbody tr:last-child { border-bottom: none; }
+  .lb-table tbody tr:hover { background: var(--card-hover); }
+  .lb-table td { padding: 13px 16px; font-size: 14px; vertical-align: middle; }
+  .lb-rank { font-weight: 800; font-size: 14px; color: var(--text-secondary); width: 64px; }
+  .lb-rank.top1 { color: #fbbf24; } .lb-rank.top2 { color: #cbd5e1; } .lb-rank.top3 { color: #f59e0b; }
+  .lb-medal { margin-right: 2px; }
+  .lb-name { display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+  .lb-mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0; }
+  .lb-namelink { color: var(--text-primary); text-decoration: none; font-weight: 600; }
+  .lb-namelink:hover { color: var(--accent); text-decoration: underline; }
+  .lb-count-cell { font-weight: 800; font-variant-numeric: tabular-nums; }
+  .lb-bar { height: 5px; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); margin-top: 5px; min-width: 2px; opacity: 0.85; }
+  .lb-barcell { width: 160px; }
+  tr.lb-highlight td { animation: lb-flash 2.4s ease-out; }
+  tr.lb-self { background: rgba(59,130,246,0.10); }
+  tr.lb-self:hover { background: rgba(59,130,246,0.16); }
+
+  .lb-more { display: flex; justify-content: center; padding: 18px; }
+  .lb-more button { background: var(--tab-active); color: var(--text-primary); border: 1px solid var(--card-border); border-radius: 10px; padding: 11px 22px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+  .lb-more button:hover { background: var(--card-hover); border-color: var(--card-border-hover); }
+  .lb-empty { padding: 40px 16px; text-align: center; color: var(--text-muted); font-size: 14px; }
+  .lb-loading { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 60px 16px; color: var(--text-secondary); font-size: 14px; }
+  .lb-spinner { width: 22px; height: 22px; border: 3px solid var(--card-border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  .lb-note { font-size: 11.5px; color: var(--text-dim); margin-top: 14px; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .lb-page { padding: 20px 14px 60px; }
+    .lb-title { font-size: 24px; }
+    .lb-table thead th { top: 0; }
+    .lb-barcell, .lb-table td.lb-barcell { display: none; }
+    .lb-table td { padding: 12px 12px; font-size: 13.5px; }
+    .lb-table thead th { padding: 12px 12px; }
+    .lb-rank { width: 48px; }
+    .lb-mark { display: none; }
+  }
+  @media (max-width: 420px) {
+    .lb-count-head, td.lb-count-cell { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="./"><div class="logo-icon">🏛️</div>PERM Tracker</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">&#9776;</button>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="./">Dashboard</a></li>
+      <li><a href="estimate.html">Estimate</a></li>
+      <li><a href="leaderboard.html" class="active">Top Employers</a></li>
+      <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
+      <li><a href="guides.html">Guides</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button>
+  </div>
+</nav>
+
+<main class="lb-page">
+  <div class="lb-breadcrumb"><a href="./">Dashboard</a> &rsaquo; Top Employers</div>
+
+  <section class="lb-hero">
+    <div class="lb-eyebrow">Leaderboard</div>
+    <h1 class="lb-title">🏅 Top Employers by PERM Filing Volume</h1>
+    <p class="lb-blurb">U.S. employers ranked by <b>PERM</b> (green&nbsp;card labor certification) filing volume from DOL OFLC disclosure data, <b>FY2008–FY2026</b> (FY2026 year-to-date). Each row also shows <b>H-1B&nbsp;LCA</b> (ETA-9035) filings and the combined <b>Total</b>. Showing <b id="lb-total">…</b> employers across <b id="lb-cases">…</b> historical filings. <b>Sorted by PERM by default — click any column header to re-sort.</b> Click a name for its full profile.</p>
+  </section>
+
+  <!-- Live tracker module: real-time PERM case-status scanner, kept visually
+       distinct from the historical disclosure columns below. -->
+  <div class="lb-livebar" id="lb-livebar">
+    <span class="lb-live-dot"></span>
+    <span class="lb-live-tag">Live tracker</span>
+    <span class="lb-live-txt" id="lb-live-txt">…</span>
+    <a class="lb-live-link" href="./">View live dashboard →</a>
+    <span class="lb-live-sub" id="lb-live-sub"></span>
+  </div>
+
+  <div class="lb-controls">
+    <div class="lb-search">
+      <span class="lb-search-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input type="text" class="lb-search-input" id="lb-search" placeholder="Search employers (e.g. Microsoft, Amazon, Cognizant)…" autocomplete="off" spellcheck="false" aria-label="Search employers">
+      <button type="button" class="lb-search-clear" id="lb-search-clear" aria-label="Clear search">&times;</button>
+    </div>
+    <div class="lb-count" id="lb-shown"></div>
+  </div>
+
+  <div class="lb-tablewrap">
+    <div class="lb-loading" id="lb-loading"><div class="lb-spinner"></div>Loading leaderboard…</div>
+    <table class="lb-table" id="lb-table" style="display:none">
+      <thead>
+        <tr>
+          <th class="lb-rank-head">Rank</th>
+          <th>Employer</th>
+          <th class="num sortable lb-col-perm sort-active" data-sort="perm" title="Sort by PERM (green-card labor certification) filings">PERM<span class="lb-sort-ind" data-ind="perm">▼</span></th>
+          <th class="num sortable lb-col-lca"   data-sort="lca"   title="Sort by H-1B LCA (ETA-9035) filings">H-1B&nbsp;LCA<span class="lb-sort-ind" data-ind="lca"></span></th>
+          <th class="num sortable lb-col-total" data-sort="total" title="Sort by total (PERM + H-1B LCA) filings">Total<span class="lb-sort-ind" data-ind="total"></span></th>
+          <th class="lb-barcell">Share</th>
+        </tr>
+      </thead>
+      <tbody id="lb-body"></tbody>
+    </table>
+    <div class="lb-more" id="lb-more" style="display:none"><button id="lb-more-btn" type="button">Load more</button></div>
+  </div>
+
+  <p class="lb-note"><b>PERM</b> = green-card labor certifications filed FY2008–FY2026 (FY2026 year-to-date), all dispositions — certified, denied &amp; withdrawn — as published in U.S. DOL OFLC disclosure data. <b>H-1B&nbsp;LCA</b> = ETA-9035 Labor Condition Application filings on record, FY2008–FY2026 (FLAG.DOL.GOV / OFLC disclosure). <b>Total</b> = PERM + H-1B&nbsp;LCA. Default sort is <b>PERM</b> (descending); click any column header to re-sort. These are historical disclosure totals, not the live case-status scanner — the green "Live tracker" bar above shows recent real-time activity. An employer's profile page shows an "approximate" rank that may differ by a position or two from this snapshot.</p>
+</main>
+
+<footer>
+  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> (OFLC disclosure) &middot; <a href="guides.html">Guides</a> &middot; <a href="about-us.html">About</a> &middot; <a href="support.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
+</footer>
+
+<script>
+// THEME + NAV TOGGLE
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+});
+document.getElementById('nav-toggle').addEventListener('click', function() {
+  document.querySelector('nav').classList.toggle('nav-open');
+});
+</script>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// TOP EMPLOYERS LEADERBOARD
+// Data source: data/employer_index.json — each row carries THREE numbers:
+//   perm  = PERM (green-card labor cert) filings
+//   lca   = H-1B LCA (ETA-9035) filings
+//   total = perm + lca
+// (`t` mirrors total for backward-compat.) Universe = the full DOL OFLC
+// disclosure store (FY2008–FY2026, ~97K employers), the SAME source the profile
+// /h1b endpoint reads, so leaderboard row = profile headline = rank. The table
+// renders all three numbers and lets the user sort by any of them;
+// default sort = PERM desc.
+// ═══════════════════════════════════════════════════════
+(function () {
+  var PAGE = 100;            // rows per "page" / load-more chunk
+  var rows = [];             // [{n, perm, lca, total, idx, rank, _l}]
+  var view = [];             // current filtered view (rank already assigned on rows)
+  var shown = 0;             // how many of `view` are rendered
+  var deepTarget = -1;       // row idx to scroll/highlight to
+  var sortKey = 'perm';      // active sort column: perm | lca | total (default PERM)
+  var sortDir = 'desc';      // asc | desc
+  var maxBar = 1;            // max of active column, for the share bar
+
+  var elBody    = document.getElementById('lb-body');
+  var elTable   = document.getElementById('lb-table');
+  var elLoading = document.getElementById('lb-loading');
+  var elMore    = document.getElementById('lb-more');
+  var elMoreBtn = document.getElementById('lb-more-btn');
+  var elShown   = document.getElementById('lb-shown');
+  var elSearch  = document.getElementById('lb-search');
+  var elClear   = document.getElementById('lb-search-clear');
+
+  function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':s); return d.innerHTML; }
+  function n(v){ return (v==null||isNaN(v))?'—':Number(v).toLocaleString(); }
+  function val(e,k){ var v = e[k]; return (v==null||isNaN(v)) ? 0 : v; }
+
+  function employerSlug(name){
+    if(!name) return '';
+    return String(name).toLowerCase().normalize('NFKD')
+      .replace(/[̀-ͯ]/g,'').replace(/&/g,' and ')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,200);
+  }
+  function initials(name){
+    var w=String(name||'').replace(/[^A-Za-z0-9 ]/g,' ').trim().split(/\s+/).filter(Boolean);
+    if(!w.length) return '—';
+    if(w.length===1) return w[0].slice(0,2).toUpperCase();
+    return (w[0][0]+w[1][0]).toUpperCase();
+  }
+  function getParam(k){ try{ return new URLSearchParams(window.location.search).get(k)||''; }catch(e){ return ''; } }
+
+  function rowHTML(item){
+    var rank = item.rank;
+    var medal = rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':'';
+    var rankCls = rank===1?'top1':rank===2?'top2':rank===3?'top3':'';
+    var pct = maxBar>0 ? Math.max(2, Math.round(val(item,sortKey)/maxBar*100)) : 0;
+    var selfCls = item.idx===deepTarget ? ' lb-self' : '';
+    var href = 'employer.html?e=' + encodeURIComponent(item.n);
+    return '<tr data-idx="'+item.idx+'"class="'+ (selfCls?selfCls.trim():'') +'">'
+      + '<td class="lb-rank '+rankCls+'">'+(medal?'<span class="lb-medal">'+medal+'</span>':'')+'#'+n(rank)+'</td>'
+      + '<td><span class="lb-name"><span class="lb-mark">'+esc(initials(item.n))+'</span>'
+        + '<a class="lb-namelink" href="'+href+'">'+esc(item.n)+'</a></span></td>'
+      + '<td class="num lb-perm">'+n(item.perm)+'</td>'
+      + '<td class="num lb-lca">'+n(item.lca)+'</td>'
+      + '<td class="num lb-total">'+n(item.total)+'</td>'
+      + '<td class="lb-barcell"><div class="lb-bar" style="width:'+pct+'%"></div></td>'
+      + '</tr>';
+  }
+
+  function renderMore(){
+    var end = Math.min(view.length, shown + PAGE);
+    var html = '';
+    for (var i=shown; i<end; i++) html += rowHTML(view[i]);
+    elBody.insertAdjacentHTML('beforeend', html);
+    shown = end;
+    elMore.style.display = shown < view.length ? 'flex' : 'none';
+    updateShown();
+  }
+
+  function resetRender(){
+    elBody.innerHTML = '';
+    shown = 0;
+    renderMore();
+  }
+
+  function updateShown(){
+    if (!view.length){ elShown.textContent = ''; return; }
+    elShown.textContent = 'Showing ' + n(Math.min(shown, view.length)) + ' of ' + n(view.length)
+      + (view.length !== rows.length ? ' matches' : ' employers');
+  }
+
+  // Sort the full `rows` array by the active column, (re)assign global ranks,
+  // update the active column's bar scale, and refresh the header indicators.
+  function applySort(){
+    var dir = sortDir === 'asc' ? 1 : -1;
+    rows.sort(function(a,b){
+      var d = (val(a,sortKey) - val(b,sortKey)) * dir;
+      if (d) return d;
+      return a.n < b.n ? -1 : a.n > b.n ? 1 : 0;  // stable tiebreak: name asc
+    });
+    for (var i=0;i<rows.length;i++) rows[i].rank = i+1;
+    maxBar = rows.length ? val(rows[0], sortKey) || 1 : 1;
+    // header UI
+    var ths = document.querySelectorAll('.lb-table th.sortable');
+    for (var j=0;j<ths.length;j++){
+      var th = ths[j];
+      var key = th.getAttribute('data-sort');
+      var ind = th.querySelector('.lb-sort-ind');
+      if (key === sortKey){
+        th.classList.add('sort-active');
+        if (ind) ind.textContent = sortDir === 'asc' ? '▲' : '▼';
+      } else {
+        th.classList.remove('sort-active');
+        if (ind) ind.textContent = '';
+      }
+    }
+  }
+
+  function currentQuery(){ return (elSearch.value||'').trim().toLowerCase(); }
+
+  function applyFilter(q){
+    q = (q||'').trim().toLowerCase();
+    elClear.classList.toggle('visible', !!q);
+    view = q ? rows.filter(function(r){ return r._l.indexOf(q) !== -1; }) : rows;
+    deepTarget = -1;
+    resetRender();
+    if (!view.length){
+      elBody.innerHTML = '<tr><td colspan="6"><div class="lb-empty">No employers match “'+esc(q)+'”.</div></td></tr>';
+      elMore.style.display = 'none';
+    }
+  }
+
+  // Re-sort then re-render keeping the current search filter.
+  function sortAndRender(){
+    applySort();
+    applyFilter(currentQuery());
+  }
+
+  // Render enough pages to include the row with stable id `targetIdx`, then
+  // scroll+highlight. Works against the currently sorted+filtered view.
+  function jumpTo(targetIdx){
+    deepTarget = targetIdx;
+    function pos(){ for (var i=0;i<view.length;i++){ if (view[i].idx===targetIdx) return i; } return -1; }
+    var p = pos();
+    if (p === -1) return;
+    while (shown <= p && shown < view.length) renderMore();
+    resetRender();
+    while (shown <= p && shown < view.length) renderMore();
+    var tr = elBody.querySelector('tr[data-idx="'+targetIdx+'"]');
+    if (tr){
+      tr.classList.add('lb-highlight');
+      tr.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+  }
+
+  function init(idx){
+    var emps = (idx && Array.isArray(idx.employers)) ? idx.employers : [];
+    // `idx` is the stable identity (used by deep-link/self highlight); rank is
+    // assigned dynamically per sort. total falls back to perm+lca / t.
+    rows = emps.map(function(e, i){
+      var perm  = (e.perm  != null) ? e.perm  : 0;
+      var lca   = (e.lca   != null) ? e.lca   : 0;
+      var total = (e.total != null) ? e.total : (e.t != null ? e.t : perm + lca);
+      return { n: e.n, perm: perm, lca: lca, total: total, idx: i, rank: i+1,
+               _l: (String(e.n||'') + ' ' + String(e.a||'')).toLowerCase() };
+    });
+
+    document.getElementById('lb-total').textContent = n(idx.totalEmployers || rows.length);
+    document.getElementById('lb-cases').textContent = n(idx.totalCases || 0);
+
+    elLoading.style.display = 'none';
+    elTable.style.display = '';
+    sortAndRender();   // default: PERM desc
+
+    // Deep link: ?e=<name> → scroll to that employer's row & highlight.
+    var target = getParam('e') || getParam('employer') || getParam('slug');
+    if (target){
+      var slug = employerSlug(target.trim());
+      var nameL = target.trim().toLowerCase();
+      var hit = -1;
+      for (var i=0;i<rows.length;i++){
+        if (rows[i]._l === nameL || employerSlug(rows[i].n) === slug){ hit = rows[i].idx; break; }
+      }
+      if (hit !== -1) jumpTo(hit);
+    }
+  }
+
+  // Wire column-header sorting. Clicking the active column toggles asc/desc;
+  // clicking a new column selects it (counts → default to desc).
+  var ths = document.querySelectorAll('.lb-table th.sortable');
+  for (var k=0;k<ths.length;k++){
+    ths[k].addEventListener('click', function(){
+      var key = this.getAttribute('data-sort');
+      if (key === sortKey){ sortDir = sortDir === 'asc' ? 'desc' : 'asc'; }
+      else { sortKey = key; sortDir = 'desc'; }
+      sortAndRender();
+    });
+  }
+
+  // Wire controls
+  var t;
+  elSearch.addEventListener('input', function(){
+    clearTimeout(t);
+    var q = this.value;
+    t = setTimeout(function(){ applyFilter(q); }, 120);
+  });
+  elClear.addEventListener('click', function(){
+    elSearch.value=''; applyFilter(''); elSearch.focus();
+  });
+  elMoreBtn.addEventListener('click', renderMore);
+
+  fetch('data/employer_index.json')
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(init)
+    .catch(function(){
+      elLoading.innerHTML = '<div class="lb-empty">Couldn’t load the leaderboard data. Please try again later.</div>';
+    });
+
+  // ── Live tracker (separate from the historical columns) ──────────────────
+  // Fed by the 3h realtime PERM case-status scanner (data/dashboard_data.json,
+  // refreshed every few hours). Summed over the last 30 calendar days from
+  // rateDays[]. This is recent ACTIVITY, NOT the historical disclosure totals
+  // in the table — kept in its own green bar to preserve the real-time promise.
+  (function loadLiveTracker(){
+    fetch('data/dashboard_data.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){
+        var days = Array.isArray(d.rateDays) ? d.rateDays : [];
+        if (!days.length) return;
+        var window = days.slice(-30);
+        var sum = 0; for (var i=0;i<window.length;i++){ sum += (window[i].total||0); }
+        if (sum <= 0) return;
+        var first = window[0].date, last = window[window.length-1].date;
+        var spanDays = window.length;
+        var txt = document.getElementById('lb-live-txt');
+        var sub = document.getElementById('lb-live-sub');
+        txt.innerHTML = '<b>'+n(sum)+'</b> PERM case-status updates in the last '+spanDays+' days';
+        var upd = (d.updatedAt||'').slice(0,10);
+        sub.textContent = 'Real-time scanner · '+ (first||'') +' → '+ (last||'') + (upd ? ' · updated '+upd : '');
+        document.getElementById('lb-livebar').classList.add('show');
+      })
+      .catch(function(){ /* live bar stays hidden on failure — historical table is unaffected */ });
+  })();
+})();
+</script>
+
+
+<!-- Feedback Widget (shared across all pages) -->
+<style>
+  /* Theme vars the feedback widget relies on — values match the site design
+     system; redefining is a harmless no-op on pages that already set them. */
+  :root { --modal-bg: #0e0e1a; --modal-backdrop: rgba(0,0,0,0.65); --modal-border: rgba(255,255,255,0.08); --input-bg: rgba(255,255,255,0.06); --input-border: rgba(255,255,255,0.1); --input-focus: rgba(59,130,246,0.5); }
+  html.light { --modal-bg: #fff; --modal-backdrop: rgba(0,0,0,0.3); --modal-border: rgba(0,0,0,0.1); --input-bg: rgba(0,0,0,0.04); --input-border: rgba(0,0,0,0.12); --input-focus: rgba(59,130,246,0.4); }
+  .fb-trigger { position: fixed; bottom: 24px; right: 24px; z-index: 900; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 14px; padding: 12px 20px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; box-shadow: 0 4px 20px rgba(59,130,246,0.4); transition: transform 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 8px; }
+  .fb-trigger:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.5); }
+  .fb-trigger svg { width: 16px; height: 16px; }
+  .fb-backdrop { display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 950; }
+  .fb-backdrop.open { display: block; }
+  .fb-modal { display: none; position: fixed; bottom: 80px; right: 24px; z-index: 960; width: 380px; max-width: calc(100vw - 32px); background: var(--modal-bg); border: 1px solid var(--modal-border); border-radius: 16px; box-shadow: 0 16px 48px rgba(0,0,0,0.4); padding: 24px; }
+  .fb-modal.open { display: block; }
+  .fb-modal-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .fb-modal-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+  .fb-close { position: absolute; top: 14px; right: 14px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; line-height: 1; padding: 4px; }
+  .fb-close:hover { color: var(--text-primary); }
+  .fb-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+  .fb-field { margin-bottom: 14px; }
+  .fb-select, .fb-textarea, .fb-input { width: 100%; font-family: inherit; font-size: 13px; color: var(--text-primary); background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 10px; padding: 10px 12px; transition: border-color 0.2s; outline: none; }
+  .fb-select:focus, .fb-textarea:focus, .fb-input:focus { border-color: var(--input-focus); }
+  .fb-textarea { resize: vertical; min-height: 90px; max-height: 200px; }
+  .fb-select { cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+  .fb-select option { background: var(--modal-bg); color: var(--text-primary); }
+  .fb-hint { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+  .fb-submit { width: 100%; padding: 11px; border: none; border-radius: 10px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+  .fb-submit:hover { opacity: 0.9; }
+  .fb-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+  .fb-success { text-align: center; padding: 20px 0; }
+  .fb-success-icon { font-size: 36px; margin-bottom: 8px; }
+  .fb-success-msg { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .fb-success-sub { font-size: 12px; color: var(--text-muted); }
+  .fb-error { font-size: 12px; color: #ef4444; margin-bottom: 10px; display: none; }
+  @media (max-width: 480px) {
+    .fb-trigger { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 12px; border-radius: 12px; }
+    .fb-modal { bottom: 70px; right: 16px; padding: 20px; }
+  }
+</style>
+
+<!-- Feedback Widget -->
+<button class="fb-trigger" id="fb-trigger" aria-label="Send feedback">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  Feedback
+</button>
+<div class="fb-backdrop" id="fb-backdrop"></div>
+<div class="fb-modal" id="fb-modal" role="dialog" aria-modal="true">
+  <button class="fb-close" id="fb-close" aria-label="Close feedback">&times;</button>
+  <div id="fb-form-view">
+    <div class="fb-modal-title">Send Feedback</div>
+    <div class="fb-modal-sub">We value your feedback and will work on every suggestion to improve how we serve you.</div>
+    <div class="fb-error" id="fb-error"></div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-type">Category</label>
+      <select class="fb-select" id="fb-type">
+        <option value="">Select a category...</option>
+        <option value="feature_request">New Feature Request</option>
+        <option value="bug_report">Bug Report</option>
+        <option value="incorrect_data">Incorrect Data</option>
+        <option value="general">General Feedback</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-message">Your feedback</label>
+      <textarea class="fb-textarea" id="fb-message" placeholder="Tell us what's on your mind..." maxlength="2000"></textarea>
+    </div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-email">Email <span style="font-weight:400;color:var(--text-dim)">(optional)</span></label>
+      <input class="fb-input" id="fb-email" type="email" placeholder="you@example.com">
+      <div class="fb-hint">Only needed if you'd like us to follow up.</div>
+    </div>
+    <button class="fb-submit" id="fb-submit">Submit Feedback</button>
+  </div>
+  <div id="fb-success-view" class="fb-success" style="display:none">
+    <div class="fb-success-icon">&#10003;</div>
+    <div class="fb-success-msg">Thank you!</div>
+    <div class="fb-success-sub">Your feedback has been received.</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var h = window.location.hostname;
+  var API = h === 'localhost' || h === '127.0.0.1' ? 'http://127.0.0.1:8787'
+    : h === 'immilane.com' || h === 'www.immilane.com' ? 'https://immilane-api.younusahamad.workers.dev'
+    : 'https://immilane-api-staging.younusahamad.workers.dev';
+
+  var trigger = document.getElementById('fb-trigger');
+  var backdrop = document.getElementById('fb-backdrop');
+  var modal = document.getElementById('fb-modal');
+  var closeBtn = document.getElementById('fb-close');
+  var submitBtn = document.getElementById('fb-submit');
+  var formView = document.getElementById('fb-form-view');
+  var successView = document.getElementById('fb-success-view');
+  var errorEl = document.getElementById('fb-error');
+
+  function open() { backdrop.classList.add('open'); modal.classList.add('open'); }
+  function close() { backdrop.classList.remove('open'); modal.classList.remove('open'); }
+  function reset() {
+    formView.style.display = '';
+    successView.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('fb-type').value = '';
+    document.getElementById('fb-message').value = '';
+    document.getElementById('fb-email').value = '';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Feedback';
+  }
+
+  trigger.addEventListener('click', function() { reset(); open(); });
+  backdrop.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+
+  submitBtn.addEventListener('click', function() {
+    errorEl.style.display = 'none';
+    var type = document.getElementById('fb-type').value;
+    var message = document.getElementById('fb-message').value.trim();
+    var email = document.getElementById('fb-email').value.trim();
+
+    if (!type) { showErr('Please select a category.'); return; }
+    if (!message) { showErr('Please enter your feedback.'); return; }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('Please enter a valid email.'); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    fetch(API + '/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: type, message: message, email: email || undefined })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (!res.ok) { showErr(res.data.error ? res.data.error.message : 'Something went wrong.'); submitBtn.disabled = false; submitBtn.textContent = 'Submit Feedback'; return; }
+      formView.style.display = 'none';
+      successView.style.display = '';
+      setTimeout(close, 2500);
+    })
+    .catch(function() {
+      showErr('Network error. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Feedback';
+    });
+  });
+
+  function showErr(msg) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
+})();
+</script>
+
+</body>
+</html>
