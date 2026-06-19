@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-06-18T21:24:34-04:00",
+  "updatedAt": "2026-06-19T01:08:42-04:00",
   "backlog": {
-    "total": 120101,
-    "startOfMonth": 127972,
+    "total": 120489,
+    "startOfMonth": 127959,
     "thisMonth": {
       "name": "Jun 2026",
-      "processed": 13041,
-      "intake": 5170
+      "processed": 13046,
+      "intake": 5576
     },
     "lastMonth": {
       "name": "May 2026",
@@ -23,18 +23,18 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 676,
-    "certified": 572,
-    "rfi": 61,
-    "denied": 39,
-    "withdrawn": 4,
+    "total": 5,
+    "certified": 5,
+    "rfi": 0,
+    "denied": 0,
+    "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 956,
-      "certified": 893,
-      "rfi": 30,
-      "denied": 31,
-      "withdrawn": 0
+      "total": 676,
+      "certified": 572,
+      "rfi": 61,
+      "denied": 39,
+      "withdrawn": 4
     }
   },
   "dol": {
@@ -42,10 +42,10 @@
     "monthFull": "June",
     "day": 1,
     "daysInMonth": 100,
-    "estFinish": "Feb 4",
+    "estFinish": "Feb 5",
     "movementPerWeek": 0.9,
-    "casesRemaining": 10284,
-    "latestLetter": "U",
+    "casesRemaining": 10279,
+    "latestLetter": "P",
     "pctProcessed": 1
   },
   "timeline": [
@@ -80,8 +80,7 @@
       "denied": 361,
       "rfi": 183,
       "status": "done",
-      "processedPct": 94.1,
-      "todayProcessed": 10
+      "processedPct": 94.1
     },
     {
       "label": "Feb '25",
@@ -92,8 +91,7 @@
       "denied": 374,
       "rfi": 236,
       "status": "done",
-      "processedPct": 95.1,
-      "todayProcessed": 4
+      "processedPct": 95.1
     },
     {
       "label": "Mar '25",
@@ -104,8 +102,7 @@
       "denied": 283,
       "rfi": 242,
       "status": "done",
-      "processedPct": 94.1,
-      "todayProcessed": 29
+      "processedPct": 94.1
     },
     {
       "label": "Apr '25",
@@ -116,8 +113,7 @@
       "denied": 336,
       "rfi": 358,
       "status": "done",
-      "processedPct": 90.6,
-      "todayProcessed": 21
+      "processedPct": 90.6
     },
     {
       "label": "May '25",
@@ -128,22 +124,21 @@
       "denied": 134,
       "rfi": 223,
       "status": "processing",
-      "processedPct": 71.0,
-      "todayProcessed": 538
+      "processedPct": 71.0
     },
     {
       "label": "Jun '25",
       "total": 10922,
-      "certified": 111,
-      "review": 10284,
+      "certified": 116,
+      "review": 10279,
       "withdrawn": 526,
       "denied": 1,
       "rfi": 0,
       "status": "active",
-      "processedPct": 1.0,
+      "processedPct": 1.1,
       "dolDay": 1,
       "dolDays": 100,
-      "todayProcessed": 70
+      "todayProcessed": 5
     },
     {
       "label": "Jul '25",
@@ -268,10 +263,10 @@
     },
     {
       "label": "Jun '26",
-      "total": 5170,
+      "total": 5576,
       "certified": 0,
-      "review": 5132,
-      "withdrawn": 34,
+      "review": 5525,
+      "withdrawn": 47,
       "denied": 0,
       "rfi": 0,
       "status": "pending",
@@ -279,14 +274,6 @@
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-05-20",
-      "total": 899,
-      "certified": 814,
-      "rfi": 42,
-      "denied": 18,
-      "withdrawn": 25
-    },
     {
       "date": "2026-05-21",
       "total": 782,
@@ -518,6 +505,14 @@
       "rfi": 61,
       "denied": 39,
       "withdrawn": 4
+    },
+    {
+      "date": "2026-06-19",
+      "total": 5,
+      "certified": 5,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
     }
   ],
   "rateWeeks": [
@@ -611,8 +606,8 @@
     },
     {
       "weekStart": "2026-06-15",
-      "total": 3460,
-      "certified": 3074,
+      "total": 3465,
+      "certified": 3079,
       "rfi": 166,
       "denied": 162,
       "withdrawn": 56,
@@ -634,8 +629,8 @@
       "tabKey": "next",
       "tabLabel": "Jun",
       "subtitle": "June 2025 filings \u00b7 10,922 total",
-      "certified": 111,
-      "review": 10284,
+      "certified": 116,
+      "review": 10279,
       "withdrawn": 526,
       "rfi": 0,
       "denied": 1
