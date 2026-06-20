@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-06-19T21:23:22-04:00",
+  "updatedAt": "2026-06-20T00:59:32-04:00",
   "backlog": {
-    "total": 120488,
-    "startOfMonth": 127959,
+    "total": 120744,
+    "startOfMonth": 127957,
     "thisMonth": {
       "name": "Jun 2026",
       "processed": 13047,
-      "intake": 5576
+      "intake": 5834
     },
     "lastMonth": {
       "name": "May 2026",
@@ -23,18 +23,18 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 6,
-    "certified": 5,
+    "total": 0,
+    "certified": 0,
     "rfi": 0,
     "denied": 0,
-    "withdrawn": 1,
+    "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 676,
-      "certified": 572,
-      "rfi": 61,
-      "denied": 39,
-      "withdrawn": 4
+      "total": 6,
+      "certified": 5,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 1
     }
   },
   "dol": {
@@ -42,8 +42,8 @@
     "monthFull": "June",
     "day": 1,
     "daysInMonth": 100,
-    "estFinish": "Apr 12",
-    "movementPerWeek": 0.7,
+    "estFinish": "Jun 1",
+    "movementPerWeek": 0.6,
     "casesRemaining": 10278,
     "latestLetter": "P",
     "pctProcessed": 1
@@ -137,8 +137,7 @@
       "status": "active",
       "processedPct": 1.1,
       "dolDay": 1,
-      "dolDays": 100,
-      "todayProcessed": 5
+      "dolDays": 100
     },
     {
       "label": "Jul '25",
@@ -263,10 +262,10 @@
     },
     {
       "label": "Jun '26",
-      "total": 5576,
+      "total": 5834,
       "certified": 0,
-      "review": 5525,
-      "withdrawn": 47,
+      "review": 5781,
+      "withdrawn": 49,
       "denied": 0,
       "rfi": 0,
       "status": "pending",
@@ -274,14 +273,6 @@
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-05-21",
-      "total": 782,
-      "certified": 730,
-      "rfi": 28,
-      "denied": 24,
-      "withdrawn": 0
-    },
     {
       "date": "2026-05-22",
       "total": 347,
@@ -513,6 +504,14 @@
       "rfi": 0,
       "denied": 0,
       "withdrawn": 1
+    },
+    {
+      "date": "2026-06-20",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
     }
   ],
   "rateWeeks": [
