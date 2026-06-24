@@ -2,6 +2,45 @@
 <html lang="en">
 <head>
 <script type="text/javascript" src="//monu.delivery/site/6/7/24ec8e-ce2f-4a85-ba1a-e1a4ecaea496.js" data-cfasync="false"></script>
+<!-- ImmiLane: collapse EMPTY Monumetric ad slots until a real ad fills them (added 2026-06-24). Removes blank reserved gaps while ads are unfilled; reveals each slot at its reserved size the moment a creative loads. Does not touch the loader or ad-unit ids. -->
+<style id="mmt-empty-collapse-css">div[id^="mmt-"]:not([data-mmt-filled]){min-height:0}</style>
+<script id="mmt-empty-collapse">
+(function(){
+  var SEL='div[id^="mmt-"][id$="_zone"], div[id^="mmt-"][id$="_placeholder"]';
+  function realAd(z){
+    var f=z.getElementsByTagName('iframe');
+    for(var i=0;i<f.length;i++){var r=f[i].getBoundingClientRect();if(r.height>1&&r.width>1)return true;}
+    return false;
+  }
+  function sweep(){
+    var z=document.querySelectorAll(SEL);
+    for(var i=0;i<z.length;i++){
+      var el=z[i];
+      if(el.getAttribute('data-mmt-filled')==='1')continue;
+      if(realAd(el)){
+        el.setAttribute('data-mmt-filled','1');
+        var o=el.getAttribute('data-mmt-orig-mh');
+        if(o)el.style.setProperty('min-height',o,'important');
+        else el.style.removeProperty('min-height');
+        continue;
+      }
+      if(el.getAttribute('data-mmt-collapsed')!=='1'){
+        el.setAttribute('data-mmt-orig-mh',el.style.getPropertyValue('min-height'));
+        el.setAttribute('data-mmt-collapsed','1');
+      }
+      var cur=el.style.getPropertyValue('min-height');
+      if(cur!=='0px'&&cur!=='0')el.style.setProperty('min-height','0','important');
+    }
+  }
+  function start(){
+    sweep();
+    try{new MutationObserver(sweep).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['style','id']});}catch(e){}
+    var n=0,iv=setInterval(function(){sweep();if(++n>120)clearInterval(iv);},1000);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);
+  else start();
+})();
+</script>
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
