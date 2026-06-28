@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-06-28T15:09:33-04:00",
+  "updatedAt": "2026-06-28T18:10:04-04:00",
   "backlog": {
-    "total": 118570,
+    "total": 118513,
     "startOfMonth": 127931,
     "thisMonth": {
       "name": "Jun 2026",
-      "processed": 17856,
+      "processed": 17913,
       "intake": 8495
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 135,
-    "certified": 125,
+    "total": 192,
+    "certified": 182,
     "rfi": 0,
     "denied": 5,
     "withdrawn": 5,
@@ -40,13 +40,13 @@
   "dol": {
     "label": "Jun '25",
     "monthFull": "June",
-    "day": 27,
+    "day": 28,
     "daysInMonth": 100,
     "estFinish": "Jul 30",
-    "movementPerWeek": 4.7,
-    "casesRemaining": 7413,
-    "latestLetter": "U",
-    "pctProcessed": 27
+    "movementPerWeek": 4.8,
+    "casesRemaining": 7358,
+    "latestLetter": "S",
+    "pctProcessed": 28
   },
   "timeline": [
     {
@@ -118,28 +118,28 @@
     {
       "label": "May '25",
       "total": 8960,
-      "certified": 7445,
-      "review": 526,
+      "certified": 7447,
+      "review": 524,
       "withdrawn": 405,
       "denied": 269,
       "rfi": 312,
       "status": "done",
       "processedPct": 89.6,
-      "todayProcessed": 9
+      "todayProcessed": 11
     },
     {
       "label": "Jun '25",
       "total": 10922,
-      "certified": 2868,
-      "review": 7413,
+      "certified": 2923,
+      "review": 7358,
       "withdrawn": 531,
       "denied": 59,
       "rfi": 51,
       "status": "active",
-      "processedPct": 27.3,
-      "dolDay": 27,
+      "processedPct": 27.8,
+      "dolDay": 28,
       "dolDays": 100,
-      "todayProcessed": 121
+      "todayProcessed": 176
     },
     {
       "label": "Jul '25",
@@ -509,8 +509,8 @@
     },
     {
       "date": "2026-06-28",
-      "total": 135,
-      "certified": 125,
+      "total": 192,
+      "certified": 182,
       "rfi": 0,
       "denied": 5,
       "withdrawn": 5
@@ -607,8 +607,8 @@
     },
     {
       "weekStart": "2026-06-22",
-      "total": 4585,
-      "certified": 4166,
+      "total": 4642,
+      "certified": 4223,
       "rfi": 145,
       "denied": 266,
       "withdrawn": 7,
@@ -620,8 +620,8 @@
       "tabKey": "active",
       "tabLabel": "May",
       "subtitle": "May 2025 filings \u00b7 8,957 total",
-      "certified": 7445,
-      "review": 526,
+      "certified": 7447,
+      "review": 524,
       "withdrawn": 405,
       "rfi": 312,
       "denied": 269
@@ -630,8 +630,8 @@
       "tabKey": "next",
       "tabLabel": "Jun",
       "subtitle": "June 2025 filings \u00b7 10,922 total",
-      "certified": 2868,
-      "review": 7413,
+      "certified": 2923,
+      "review": 7358,
       "withdrawn": 531,
       "rfi": 51,
       "denied": 59
