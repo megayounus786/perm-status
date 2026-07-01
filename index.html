@@ -827,14 +827,7 @@
 
 <div class="container">
 
-  <!-- Dismissible announcement banner (hidden by default; shown via JS unless dismissed in localStorage) -->
-  <aside class="announce" id="announce-banner" role="region" aria-label="Product announcement" hidden>
-    <span class="announce-icon" aria-hidden="true">✨</span>
-    <div class="announce-body">
-      <p class="announce-text"><b>New:</b> our employer search just got a big upgrade — search any company to see its PERM (green-card) and H-1B LCA filing history, salaries, and trends. We're continuously adding more valuable data based on your feedback. Give it a try.</p>
-    </div>
-    <button type="button" class="announce-close" id="announce-close" aria-label="Dismiss announcement">&times;</button>
-  </aside>
+  <!-- Employer-search "New" announcement banner removed per Younus (2026-07-01). -->
 
   <div class="hero">
     <div class="hero-search" id="hero-search">
@@ -2360,30 +2353,7 @@ setupTabs('employer-tabs', t => renderEmployers(parseInt(t.dataset.ei)));
   Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; <a href="guides.html">Guides</a> &middot; <a href="about-us.html">About</a> &middot; <a href="support.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
 </footer>
 
-<!-- ImmiLane Mobile app promo — relocated to below the footer (renders as the last element on the page). -->
-<div class="container">
-  <section class="app-promo" aria-label="ImmiLane mobile app">
-    <div class="app-promo-text">
-      <div class="app-promo-eyebrow"><span class="pulse-dot"></span>New · ImmiLane Mobile</div>
-      <h3>Track your PERM case on the go</h3>
-      <p>Real-time DOL labor certification tracking, employer search, and processing estimates — right on your phone. iOS is live today.</p>
-      <div class="app-promo-badges">
-        <a class="app-badge app-badge-ios" href="https://apps.apple.com/us/app/immilane/id6771046716" target="_blank" rel="noopener" aria-label="Download ImmiLane on the App Store">
-          <svg class="app-badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-          <span class="app-badge-text"><span class="small">Download on the</span><span class="big">App Store</span></span>
-        </a>
-        <span class="app-badge app-badge-android" aria-disabled="true" role="img" aria-label="Android app coming soon">
-          <svg class="app-badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.4.4 0 00-.69-.4L16.9 9.12A11.43 11.43 0 0012 8.05c-1.7 0-3.3.38-4.9 1.07L5.25 5.9a.4.4 0 00-.69.4L6.4 9.48A10.83 10.83 0 001 18.05h22a10.83 10.83 0 00-5.4-8.57zM7 15.25a1 1 0 110-2 1 1 0 010 2zm10 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
-          <span class="app-badge-text"><span class="small">Coming soon to</span><span class="big">Google Play <span class="coming-soon-pill">Soon</span></span></span>
-        </span>
-      </div>
-    </div>
-    <a class="app-promo-qr" href="https://apps.apple.com/us/app/immilane/id6771046716" target="_blank" rel="noopener" aria-label="Scan QR code to open ImmiLane on the App Store">
-      <img src="assets/appstore-qr.svg" alt="QR code linking to the ImmiLane iOS app on the App Store" width="128" height="128">
-      <span class="app-promo-qr-label">Scan to download</span>
-    </a>
-  </section>
-</div>
+<!-- ImmiLane Mobile app promo banner removed per Younus (2026-07-01). -->
 
 <script>
 // ═══════════════════════════════════════════════════════
@@ -2843,26 +2813,6 @@ document.querySelectorAll('.ad-container').forEach(function(c){
     if(c.querySelector('ins.adsbygoogle[data-ad-status="filled"]')) c.classList.add('ad-loaded');
   }).observe(c,{attributes:true,subtree:true,attributeFilter:['data-ad-status']});
 });
-</script>
-<script>
-// Dismissible announcement banner: show unless dismissed; persist dismissal.
-(function(){
-  var KEY = 'announce_employer_search_v1';
-  var banner = document.getElementById('announce-banner');
-  if (!banner) return;
-  var dismissed = false;
-  try { dismissed = localStorage.getItem(KEY) === '1'; } catch (e) {}
-  if (dismissed) return; // returning dismissed users never see it
-
-  banner.hidden = false;
-
-  var closeBtn = document.getElementById('announce-close');
-
-  if (closeBtn) closeBtn.addEventListener('click', function(){
-    banner.hidden = true;
-    try { localStorage.setItem(KEY, '1'); } catch (e) {}
-  });
-})();
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "aa22dbee0e9b4144965de16be0ccbae4"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
