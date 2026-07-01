@@ -223,6 +223,38 @@
   @media (max-width: 420px) {
     .lb-count-head, td.lb-count-cell { font-size: 13px; }
   }
+
+  /* Most Searched Employers — content-discovery quick-links to popular sponsor profiles
+     (relocated here from the main dashboard; lives on the Top Employers / search page). */
+  .lb-mostsearched { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 18px 20px; margin-bottom: 18px; }
+  .lb-ms-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .lb-ms-title { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+  .lb-ms-sub { font-size: 12px; color: var(--text-dim); }
+  .lb-ms-list { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; counter-reset: ms; }
+  .lb-ms-list li { counter-increment: ms; }
+  .lb-ms-list a { display: inline-flex; align-items: baseline; gap: 6px; padding: 7px 12px; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card-bg); color: var(--text-secondary); text-decoration: none; font-size: 13px; font-weight: 500; line-height: 1.2; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+  .lb-ms-list a::before { content: counter(ms); font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text-dim); }
+  .lb-ms-list a:hover { color: var(--text-primary); border-color: var(--card-border-hover); background: var(--card-hover); }
+  .lb-ms-note { margin: 12px 0 0; font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+
+  /* Right-side pillar layout: table (left) + Most Searched widget as an in-flow
+     sticky right rail. The rail lives INSIDE the .lb-page content column (max 1080px),
+     so it never enters the browser gutter where the Monumetric "Pillar-Right" anchored
+     ad self-positions — no fixed/pinned positioning here, so the two cannot overlap. */
+  .lb-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 22px; align-items: start; }
+  .lb-grid-main { grid-column: 1; grid-row: 1; min-width: 0; }
+  .lb-grid .lb-mostsearched { grid-column: 2; grid-row: 1; position: sticky; top: 84px; margin-bottom: 0; }
+  .lb-grid .lb-ms-list { flex-direction: column; align-items: stretch; gap: 6px; }
+  .lb-grid .lb-ms-list a { justify-content: flex-start; }
+  @media (max-width: 900px) {
+    /* Right pillar collapses on narrower screens: widget stacks above the table,
+       full width — graceful single-column fallback, no layout break. */
+    .lb-grid { grid-template-columns: 1fr; gap: 0; }
+    .lb-grid-main { grid-column: auto; grid-row: auto; }
+    .lb-grid .lb-mostsearched { grid-column: auto; grid-row: auto; position: static; top: auto; margin-bottom: 18px; }
+    .lb-grid .lb-ms-list { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+    .lb-grid .lb-ms-list a { justify-content: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -285,6 +317,35 @@
     <div class="lb-count" id="lb-shown"></div>
   </div>
 
+  <!-- Right-pillar layout wrapper: table (left) + Most Searched widget (right rail). -->
+  <div class="lb-grid">
+
+  <!-- Most Searched Employers: content-discovery quick-links to popular sponsor profiles.
+       Placed in the right-side rail of the Top Employers page (in-flow sticky sidebar,
+       inside the content column — does not collide with the Monumetric Pillar-Right ad). -->
+  <section class="lb-mostsearched" aria-label="Most searched employers">
+    <div class="lb-ms-head">
+      <span class="lb-ms-title">Most Searched Employers</span>
+      <span class="lb-ms-sub">Explore the most-viewed PERM sponsors</span>
+    </div>
+    <ol class="lb-ms-list">
+      <li><a href="employer.html?e=Microsoft%20Corporation">Microsoft Corporation</a></li>
+      <li><a href="employer.html?e=Amazon.com%20Services%20LLC">Amazon.com Services LLC</a></li>
+      <li><a href="employer.html?e=GOOGLE%20INC.">Google Inc.</a></li>
+      <li><a href="employer.html?e=Cognizant%20Technology%20Solutions%20US%20Corporation">Cognizant Technology Solutions</a></li>
+      <li><a href="employer.html?e=Intel%20Corporation">Intel Corporation</a></li>
+      <li><a href="employer.html?e=APPLE%20INC.">Apple Inc.</a></li>
+      <li><a href="employer.html?e=FACEBOOK%2C%20INC.">Meta Platforms (Facebook, Inc.)</a></li>
+      <li><a href="employer.html?e=TATA%20CONSULTANCY%20SERVICES%20LIMITED">Tata Consultancy Services</a></li>
+      <li><a href="employer.html?e=INFOSYS%20LIMITED">Infosys Limited</a></li>
+      <li><a href="employer.html?e=Oracle%20America%2C%20Inc.">Oracle America, Inc.</a></li>
+      <li><a href="employer.html?e=Deloitte%20Consulting%20LLP">Deloitte Consulting LLP</a></li>
+      <li><a href="employer.html?e=Cisco%20Systems%2C%20Inc.%20(acquired%20Splunk%20Inc.)">Cisco Systems, Inc.</a></li>
+    </ol>
+    <p class="lb-ms-note">Ranked by all-time PERM filing volume.</p>
+  </section>
+
+  <div class="lb-grid-main">
   <div class="lb-tablewrap">
     <div class="lb-loading" id="lb-loading"><div class="lb-spinner"></div>Loading leaderboard…</div>
     <table class="lb-table" id="lb-table" style="display:none">
@@ -304,6 +365,9 @@
   </div>
 
   <p class="lb-note"><b>PERM</b> = green-card labor certifications filed FY2008–FY2026 (FY2026 year-to-date), all dispositions — certified, denied &amp; withdrawn — as published in U.S. DOL OFLC disclosure data. <b>H-1B&nbsp;LCA</b> = ETA-9035 Labor Condition Application filings on record, FY2008–FY2026 (FLAG.DOL.GOV / OFLC disclosure). <b>Total</b> = PERM + H-1B&nbsp;LCA. Default sort is <b>PERM</b> (descending); click any column header to re-sort. These are historical disclosure totals, not the live case-status scanner — the green "Live tracker" bar above shows recent real-time activity. An employer's profile page shows an "approximate" rank that may differ by a position or two from this snapshot.</p>
+  </div><!-- /.lb-grid-main -->
+
+  </div><!-- /.lb-grid -->
 </main>
 
 <footer>
