@@ -1,0 +1,30 @@
+<!-- Monumetric anchored ad units (self-positioning via loader) — BEGIN -->
+<!-- Pillar side rails are gated: the slot divs are only created (and only then
+     registered with Monumetric) when the viewport is at least PILLAR_MIN_WIDTH px
+     wide. Below that the divs never exist, so no ad is requested — laptops get a
+     clean full-width dashboard, wide monitors serve pillars exactly as before. -->
+<script type="text/javascript" data-cfasync="false">
+(function () {
+  var PILLAR_MIN_WIDTH = 1840; // px — pillars need ~300px per side; only fits on wide external monitors
+  if (window.innerWidth < PILLAR_MIN_WIDTH) return;
+  var pillars = [
+    "b49d4117-779e-4093-bc4b-04a427fc102d", /* Pillar - Right */
+    "1de40a31-0af3-4522-be14-84d8900c57b0"  /* Pillar - Left */
+  ];
+  var here = document.currentScript;
+  $MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || [];
+  pillars.forEach(function (uuid) {
+    var d = document.createElement("div");
+    d.id = "mmt-" + uuid;
+    here.parentNode.insertBefore(d, here);
+    $MMT.cmd.push(function () { $MMT.display.slots.push([uuid]); });
+  });
+})();
+</script>
+<div id="mmt-2ebba6a6-83c2-44c0-9ad4-9c1ded6e4511"></div>
+<script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || []; $MMT.cmd.push(function(){ $MMT.display.slots.push(["2ebba6a6-83c2-44c0-9ad4-9c1ded6e4511"]); })</script>
+<div id="mmt-d33dabc7-369a-4126-8a86-ff0f346c42ea"></div>
+<script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || []; $MMT.cmd.push(function(){ $MMT.display.slots.push(["d33dabc7-369a-4126-8a86-ff0f346c42ea"]); })</script>
+<div id="mmt-4b3cdef0-e13a-48ab-bff9-b996ba62c869"></div>
+<script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || []; $MMT.cmd.push(function(){ $MMT.display.slots.push(["4b3cdef0-e13a-48ab-bff9-b996ba62c869"]); })</script>
+<!-- Monumetric anchored ad units — END -->
