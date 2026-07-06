@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-05T18:06:32-04:00",
+  "updatedAt": "2026-07-05T23:36:28-04:00",
   "backlog": {
-    "total": 118428,
+    "total": 118420,
     "startOfMonth": 118873,
     "thisMonth": {
       "name": "Jul 2026",
-      "processed": 1476,
+      "processed": 1484,
       "intake": 1031
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 116,
-    "certified": 103,
+    "total": 124,
+    "certified": 111,
     "rfi": 4,
     "denied": 9,
     "withdrawn": 0,
@@ -43,9 +43,9 @@
     "day": 53,
     "daysInMonth": 100,
     "estFinish": "Jul 22",
-    "movementPerWeek": 5.8,
-    "casesRemaining": 4629,
-    "latestLetter": "E",
+    "movementPerWeek": 5.7,
+    "casesRemaining": 4621,
+    "latestLetter": "W",
     "pctProcessed": 53
   },
   "timeline": [
@@ -130,16 +130,16 @@
     {
       "label": "Jun '25",
       "total": 10922,
-      "certified": 5365,
-      "review": 4629,
+      "certified": 5373,
+      "review": 4621,
       "withdrawn": 534,
       "denied": 275,
       "rfi": 119,
       "status": "active",
-      "processedPct": 52.7,
+      "processedPct": 52.8,
       "dolDay": 53,
       "dolDays": 100,
-      "todayProcessed": 111
+      "todayProcessed": 119
     },
     {
       "label": "Jul '25",
@@ -520,8 +520,8 @@
     },
     {
       "date": "2026-07-05",
-      "total": 116,
-      "certified": 103,
+      "total": 124,
+      "certified": 111,
       "rfi": 4,
       "denied": 9,
       "withdrawn": 0
@@ -618,8 +618,8 @@
     },
     {
       "weekStart": "2026-06-29",
-      "total": 3009,
-      "certified": 2564,
+      "total": 3017,
+      "certified": 2572,
       "rfi": 133,
       "denied": 308,
       "withdrawn": 4,
@@ -641,8 +641,8 @@
       "tabKey": "next",
       "tabLabel": "Jun",
       "subtitle": "June 2025 filings \u00b7 10,922 total",
-      "certified": 5365,
-      "review": 4629,
+      "certified": 5373,
+      "review": 4621,
       "withdrawn": 534,
       "rfi": 119,
       "denied": 275
