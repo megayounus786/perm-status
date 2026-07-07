@@ -670,6 +670,14 @@ loopme.com, 11479, RESELLER, 6c8d5f95897a5a3b
 # ALL CUSTOM RECORDS MUST BE BELOW THIS LINE
 
 sharethrough.com, 4537, RESELLER, 060d053dcf45cbf3
+conversantmedia.com, 40967, DIRECT, 03113cd04947736d
+e-planning.net, 1bf7b5d803f178c4, RESELLER, c1ba615865ed87b2
+pubmatic.com, 161891, RESELLER
+video.unrulymedia.com, 645663965, RESELLER
+smartyads.com, 300045, RESELLER, fd2bde0ff2e62c5d
+admanmedia.com, 2050, RESELLER
+tritondigital.com, 7943, RESELLER, 19b4454d0b87b58b
+themediagrid.com, 7h3qas, RESELLER
 
 INVENTORYPARTNERDOMAIN=monumetric.com
 
