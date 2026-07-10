@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-10T09:13:31-04:00",
+  "updatedAt": "2026-07-10T12:13:18-04:00",
   "backlog": {
-    "total": 116646,
+    "total": 116397,
     "startOfMonth": 118858,
     "thisMonth": {
       "name": "Jul 2026",
-      "processed": 4810,
+      "processed": 5059,
       "intake": 2598
     },
     "lastMonth": {
@@ -19,15 +19,15 @@
     "deltaFromLastMonth": 0,
     "certified": 435,
     "rfi": 439,
-    "denied": 449,
+    "denied": 448,
     "trend90Day": 0
   },
   "today": {
-    "total": 79,
-    "certified": 74,
-    "rfi": 1,
-    "denied": 4,
-    "withdrawn": 0,
+    "total": 328,
+    "certified": 262,
+    "rfi": 22,
+    "denied": 43,
+    "withdrawn": 1,
     "stillUpdating": false,
     "yesterday": {
       "total": 713,
@@ -38,15 +38,15 @@
     }
   },
   "dol": {
-    "label": "Jun '25",
-    "monthFull": "June",
-    "day": 80,
+    "label": "Jul '25",
+    "monthFull": "July",
+    "day": 2,
     "daysInMonth": 100,
-    "estFinish": "Jul 16",
-    "movementPerWeek": 7.1,
-    "casesRemaining": 1599,
-    "latestLetter": "W",
-    "pctProcessed": 80
+    "estFinish": "Jan 3",
+    "movementPerWeek": 1.2,
+    "casesRemaining": 9180,
+    "latestLetter": "Y",
+    "pctProcessed": 2
   },
   "timeline": [
     {
@@ -86,12 +86,13 @@
       "label": "Feb '25",
       "total": 6929,
       "certified": 5981,
-      "review": 3,
+      "review": 2,
       "withdrawn": 328,
-      "denied": 377,
+      "denied": 378,
       "rfi": 237,
       "status": "done",
-      "processedPct": 95.2
+      "processedPct": 95.2,
+      "todayProcessed": 1
     },
     {
       "label": "Mar '25",
@@ -119,37 +120,39 @@
       "label": "May '25",
       "total": 8960,
       "certified": 7575,
-      "review": 178,
+      "review": 172,
       "withdrawn": 405,
-      "denied": 404,
+      "denied": 410,
       "rfi": 393,
       "status": "done",
-      "processedPct": 93.4
+      "processedPct": 93.5,
+      "todayProcessed": 6
     },
     {
       "label": "Jun '25",
       "total": 10922,
-      "certified": 8038,
-      "review": 1599,
-      "withdrawn": 541,
-      "denied": 478,
-      "rfi": 263,
-      "status": "active",
-      "processedPct": 80.4,
-      "dolDay": 80,
-      "dolDays": 100,
-      "todayProcessed": 53
+      "certified": 8105,
+      "review": 1486,
+      "withdrawn": 542,
+      "denied": 510,
+      "rfi": 276,
+      "status": "processing",
+      "processedPct": 81.4,
+      "todayProcessed": 165
     },
     {
       "label": "Jul '25",
       "total": 9779,
-      "certified": 0,
-      "review": 9309,
+      "certified": 199,
+      "review": 9180,
       "withdrawn": 378,
-      "denied": 0,
-      "rfi": 0,
-      "status": "pending",
-      "processedPct": 0
+      "denied": 3,
+      "rfi": 15,
+      "status": "active",
+      "processedPct": 2.2,
+      "dolDay": 2,
+      "dolDays": 100,
+      "todayProcessed": 155
     },
     {
       "label": "Aug '25",
@@ -519,11 +522,11 @@
     },
     {
       "date": "2026-07-10",
-      "total": 79,
-      "certified": 74,
-      "rfi": 1,
-      "denied": 4,
-      "withdrawn": 0
+      "total": 328,
+      "certified": 262,
+      "rfi": 22,
+      "denied": 43,
+      "withdrawn": 1
     }
   ],
   "rateWeeks": [
@@ -617,126 +620,39 @@
     },
     {
       "weekStart": "2026-07-06",
-      "total": 3326,
-      "certified": 2785,
-      "rfi": 182,
-      "denied": 278,
-      "withdrawn": 72,
+      "total": 3575,
+      "certified": 2973,
+      "rfi": 203,
+      "denied": 317,
+      "withdrawn": 73,
       "partial": true
     }
   ],
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "May",
-      "subtitle": "May 2025 filings \u00b7 8,955 total",
-      "certified": 7575,
-      "review": 178,
-      "withdrawn": 405,
-      "rfi": 393,
-      "denied": 404
+      "tabLabel": "Jun",
+      "subtitle": "June 2025 filings \u00b7 10,919 total",
+      "certified": 8105,
+      "review": 1486,
+      "withdrawn": 542,
+      "rfi": 276,
+      "denied": 510
     },
     {
       "tabKey": "next",
-      "tabLabel": "Jun",
-      "subtitle": "June 2025 filings \u00b7 10,919 total",
-      "certified": 8038,
-      "review": 1599,
-      "withdrawn": 541,
-      "rfi": 263,
-      "denied": 478
+      "tabLabel": "Jul",
+      "subtitle": "July 2025 filings \u00b7 9,775 total",
+      "certified": 199,
+      "review": 9180,
+      "withdrawn": 378,
+      "rfi": 15,
+      "denied": 3
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "May '25",
-      "subtitle": "May 2025",
-      "list": [
-        {
-          "name": "Microsoft Corporation",
-          "count": 412
-        },
-        {
-          "name": "Tesla, Inc.",
-          "count": 150
-        },
-        {
-          "name": "NATURE'S WAY FARMS, LLC",
-          "count": 120
-        },
-        {
-          "name": "NORMAN W. FRIES, INC.",
-          "count": 118
-        },
-        {
-          "name": "Management Health Systems, LLC",
-          "count": 112
-        },
-        {
-          "name": "Stoughton Trailers, LLC",
-          "count": 87
-        },
-        {
-          "name": "SAVANNAH CHATHAM COUNTY PUBLIC SCHOOL SYSTEM",
-          "count": 73
-        },
-        {
-          "name": "WAL-MART ASSOCIATES, INC.",
-          "count": 72
-        },
-        {
-          "name": "Labor Guys, LLC",
-          "count": 68
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 53
-        },
-        {
-          "name": "Omega Compliance Solutions LLC",
-          "count": 45
-        },
-        {
-          "name": "BAM Management, LLC",
-          "count": 45
-        },
-        {
-          "name": " Koch Foods of Gadsden, LLC",
-          "count": 44
-        },
-        {
-          "name": "HAMAN LEGACY LLC",
-          "count": 42
-        },
-        {
-          "name": "Compassionate Care Services LLC",
-          "count": 42
-        },
-        {
-          "name": "Quest Diagnostics Incorporated",
-          "count": 39
-        },
-        {
-          "name": "JSA Georgia, Inc.",
-          "count": 37
-        },
-        {
-          "name": "Case Farms Processing, Inc",
-          "count": 33
-        },
-        {
-          "name": "O'Keefe Restaurant Systems, Inc.",
-          "count": 31
-        },
-        {
-          "name": "Cititurf, LLC",
-          "count": 30
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Jun '25",
       "subtitle": "June 2025",
       "list": [
@@ -819,6 +735,93 @@
         {
           "name": "TikTok Inc.",
           "count": 27
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Jul '25",
+      "subtitle": "July 2025",
+      "list": [
+        {
+          "name": "JCG Foods of Georgia, LLC",
+          "count": 106
+        },
+        {
+          "name": "Cisco Systems, Inc.",
+          "count": 85
+        },
+        {
+          "name": "COMPUNNEL SOFTWARE GROUP INC.",
+          "count": 71
+        },
+        {
+          "name": "ARIZONA RESTAURANT COMPANY, LLC",
+          "count": 64
+        },
+        {
+          "name": "Tesla, Inc.",
+          "count": 63
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 47
+        },
+        {
+          "name": "U.S. Bank National Association",
+          "count": 45
+        },
+        {
+          "name": "Management Health Systems, LLC",
+          "count": 45
+        },
+        {
+          "name": "ADP Technology Services, Inc. ",
+          "count": 45
+        },
+        {
+          "name": "NVIDIA Corporation",
+          "count": 41
+        },
+        {
+          "name": "MCKINSEY & COMPANY, INC. UNITED STATES",
+          "count": 40
+        },
+        {
+          "name": "Labor Guys, LLC",
+          "count": 39
+        },
+        {
+          "name": "OMEGA COMPLIANCE SOLUTIONS LLC",
+          "count": 38
+        },
+        {
+          "name": "JPMN Hospitality LLC",
+          "count": 37
+        },
+        {
+          "name": "Amazon.com Services LLC",
+          "count": 37
+        },
+        {
+          "name": "Adobe Inc. ",
+          "count": 36
+        },
+        {
+          "name": "ByteDance Inc.",
+          "count": 35
+        },
+        {
+          "name": "Citibank, N.A.",
+          "count": 34
+        },
+        {
+          "name": "Saylor Management Group, Inc.",
+          "count": 32
+        },
+        {
+          "name": "Uber Technologies, Inc.",
+          "count": 29
         }
       ]
     }
