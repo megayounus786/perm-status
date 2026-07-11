@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-10T21:12:07-04:00",
+  "updatedAt": "2026-07-10T23:43:20-04:00",
   "backlog": {
-    "total": 115780,
+    "total": 115753,
     "startOfMonth": 118858,
     "thisMonth": {
       "name": "Jul 2026",
-      "processed": 5676,
+      "processed": 5703,
       "intake": 2598
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 945,
-    "certified": 817,
+    "total": 972,
+    "certified": 844,
     "rfi": 40,
     "denied": 79,
     "withdrawn": 9,
@@ -42,10 +42,10 @@
     "monthFull": "July",
     "day": 7,
     "daysInMonth": 100,
-    "estFinish": "Sep 6",
+    "estFinish": "Sep 5",
     "movementPerWeek": 3.5,
-    "casesRemaining": 8713,
-    "latestLetter": "V",
+    "casesRemaining": 8686,
+    "latestLetter": "N",
     "pctProcessed": 7
   },
   "timeline": [
@@ -144,16 +144,16 @@
     {
       "label": "Jul '25",
       "total": 9779,
-      "certified": 656,
-      "review": 8713,
+      "certified": 683,
+      "review": 8686,
       "withdrawn": 378,
       "denied": 3,
       "rfi": 25,
       "status": "active",
-      "processedPct": 7.0,
+      "processedPct": 7.3,
       "dolDay": 7,
       "dolDays": 100,
-      "todayProcessed": 622
+      "todayProcessed": 649
     },
     {
       "label": "Aug '25",
@@ -523,8 +523,8 @@
     },
     {
       "date": "2026-07-10",
-      "total": 945,
-      "certified": 817,
+      "total": 972,
+      "certified": 844,
       "rfi": 40,
       "denied": 79,
       "withdrawn": 9
@@ -621,8 +621,8 @@
     },
     {
       "weekStart": "2026-07-06",
-      "total": 4192,
-      "certified": 3528,
+      "total": 4219,
+      "certified": 3555,
       "rfi": 221,
       "denied": 353,
       "withdrawn": 81,
@@ -644,8 +644,8 @@
       "tabKey": "next",
       "tabLabel": "Jul",
       "subtitle": "July 2025 filings \u00b7 9,775 total",
-      "certified": 656,
-      "review": 8713,
+      "certified": 683,
+      "review": 8686,
       "withdrawn": 378,
       "rfi": 25,
       "denied": 3
