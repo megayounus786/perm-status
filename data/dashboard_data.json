@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-19T08:04:54-04:00",
+  "updatedAt": "2026-07-19T09:06:55-04:00",
   "backlog": {
-    "total": 113193,
+    "total": 113186,
     "startOfMonth": 118836,
     "thisMonth": {
       "name": "Jul 2026",
-      "processed": 10312,
+      "processed": 10319,
       "intake": 4669
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 57,
-    "certified": 51,
+    "total": 64,
+    "certified": 58,
     "rfi": 2,
     "denied": 4,
     "withdrawn": 0,
@@ -44,8 +44,8 @@
     "daysInMonth": 100,
     "estFinish": "Aug 2",
     "movementPerWeek": 8.2,
-    "casesRemaining": 4623,
-    "latestLetter": "S",
+    "casesRemaining": 4616,
+    "latestLetter": "N",
     "pctProcessed": 49
   },
   "timeline": [
@@ -140,16 +140,16 @@
     {
       "label": "Jul '25",
       "total": 9779,
-      "certified": 4635,
-      "review": 4623,
+      "certified": 4642,
+      "review": 4616,
       "withdrawn": 386,
       "denied": 42,
       "rfi": 89,
       "status": "active",
-      "processedPct": 48.7,
+      "processedPct": 48.8,
       "dolDay": 49,
       "dolDays": 100,
-      "todayProcessed": 57
+      "todayProcessed": 64
     },
     {
       "label": "Aug '25",
@@ -519,8 +519,8 @@
     },
     {
       "date": "2026-07-19",
-      "total": 57,
-      "certified": 51,
+      "total": 64,
+      "certified": 58,
       "rfi": 2,
       "denied": 4,
       "withdrawn": 0
@@ -617,8 +617,8 @@
     },
     {
       "weekStart": "2026-07-13",
-      "total": 4260,
-      "certified": 3952,
+      "total": 4267,
+      "certified": 3959,
       "rfi": 97,
       "denied": 195,
       "withdrawn": 16,
@@ -640,8 +640,8 @@
       "tabKey": "next",
       "tabLabel": "Jul",
       "subtitle": "July 2025 filings \u00b7 9,775 total",
-      "certified": 4635,
-      "review": 4623,
+      "certified": 4642,
+      "review": 4616,
       "withdrawn": 386,
       "rfi": 89,
       "denied": 42
