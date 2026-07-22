@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-22T06:51:11-04:00",
+  "updatedAt": "2026-07-22T09:17:13-04:00",
   "backlog": {
-    "total": 112485,
+    "total": 112397,
     "startOfMonth": 118821,
     "thisMonth": {
       "name": "Jul 2026",
-      "processed": 12278,
+      "processed": 12366,
       "intake": 5942
     },
     "lastMonth": {
@@ -23,11 +23,11 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 51,
-    "certified": 11,
-    "rfi": 16,
-    "denied": 0,
-    "withdrawn": 24,
+    "total": 139,
+    "certified": 51,
+    "rfi": 24,
+    "denied": 16,
+    "withdrawn": 48,
     "stillUpdating": false,
     "yesterday": {
       "total": 926,
@@ -38,15 +38,15 @@
     }
   },
   "dol": {
-    "label": "Jul '25",
-    "monthFull": "July",
-    "day": 64,
+    "label": "Aug '25",
+    "monthFull": "August",
+    "day": 1,
     "daysInMonth": 100,
-    "estFinish": "Jul 31",
-    "movementPerWeek": 8.9,
-    "casesRemaining": 2994,
-    "latestLetter": "V",
-    "pctProcessed": 64
+    "estFinish": "Apr 18",
+    "movementPerWeek": 0.8,
+    "casesRemaining": 9414,
+    "latestLetter": "W",
+    "pctProcessed": 1
   },
   "timeline": [
     {
@@ -119,50 +119,51 @@
       "label": "May '25",
       "total": 8960,
       "certified": 7595,
-      "review": 82,
+      "review": 81,
       "withdrawn": 423,
-      "denied": 447,
+      "denied": 448,
       "rfi": 408,
       "status": "done",
       "processedPct": 94.3,
-      "todayProcessed": 4
+      "todayProcessed": 5
     },
     {
       "label": "Jun '25",
       "total": 10922,
-      "certified": 8524,
-      "review": 740,
+      "certified": 8529,
+      "review": 715,
       "withdrawn": 561,
-      "denied": 725,
-      "rfi": 369,
+      "denied": 738,
+      "rfi": 376,
       "status": "done",
-      "processedPct": 88.1,
-      "todayProcessed": 12
+      "processedPct": 88.3,
+      "todayProcessed": 37
     },
     {
       "label": "Jul '25",
       "total": 9779,
-      "certified": 6122,
-      "review": 2994,
+      "certified": 6151,
+      "review": 2963,
       "withdrawn": 475,
-      "denied": 73,
-      "rfi": 111,
-      "status": "active",
-      "processedPct": 64.5,
-      "dolDay": 64,
-      "dolDays": 100,
-      "todayProcessed": 11
+      "denied": 74,
+      "rfi": 112,
+      "status": "processing",
+      "processedPct": 64.8,
+      "todayProcessed": 42
     },
     {
       "label": "Aug '25",
       "total": 9946,
-      "certified": 0,
-      "review": 9445,
-      "withdrawn": 430,
-      "denied": 0,
-      "rfi": 0,
-      "status": "pending",
-      "processedPct": 0
+      "certified": 45,
+      "review": 9414,
+      "withdrawn": 454,
+      "denied": 8,
+      "rfi": 4,
+      "status": "active",
+      "processedPct": 0.6,
+      "dolDay": 1,
+      "dolDays": 100,
+      "todayProcessed": 7
     },
     {
       "label": "Sep '25",
@@ -521,11 +522,11 @@
     },
     {
       "date": "2026-07-22",
-      "total": 51,
-      "certified": 11,
-      "rfi": 16,
-      "denied": 0,
-      "withdrawn": 24
+      "total": 139,
+      "certified": 51,
+      "rfi": 24,
+      "denied": 16,
+      "withdrawn": 48
     }
   ],
   "rateWeeks": [
@@ -619,126 +620,39 @@
     },
     {
       "weekStart": "2026-07-20",
-      "total": 1937,
-      "certified": 1566,
-      "rfi": 80,
-      "denied": 83,
-      "withdrawn": 204,
+      "total": 2025,
+      "certified": 1606,
+      "rfi": 88,
+      "denied": 99,
+      "withdrawn": 228,
       "partial": true
     }
   ],
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Jun",
-      "subtitle": "June 2025 filings \u00b7 10,919 total",
-      "certified": 8524,
-      "review": 740,
-      "withdrawn": 561,
-      "rfi": 369,
-      "denied": 725
+      "tabLabel": "Jul",
+      "subtitle": "July 2025 filings \u00b7 9,775 total",
+      "certified": 6151,
+      "review": 2963,
+      "withdrawn": 475,
+      "rfi": 112,
+      "denied": 74
     },
     {
       "tabKey": "next",
-      "tabLabel": "Jul",
-      "subtitle": "July 2025 filings \u00b7 9,775 total",
-      "certified": 6122,
-      "review": 2994,
-      "withdrawn": 475,
-      "rfi": 111,
-      "denied": 73
+      "tabLabel": "Aug",
+      "subtitle": "August 2025 filings \u00b7 9,925 total",
+      "certified": 45,
+      "review": 9414,
+      "withdrawn": 454,
+      "rfi": 4,
+      "denied": 8
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Jun '25",
-      "subtitle": "June 2025",
-      "list": [
-        {
-          "name": "Cypress Truck Lines, Inc.",
-          "count": 218
-        },
-        {
-          "name": "Management Health Systems, LLC",
-          "count": 126
-        },
-        {
-          "name": "Stoughton Trailers, LLC",
-          "count": 86
-        },
-        {
-          "name": "Labor Guys, LLC",
-          "count": 74
-        },
-        {
-          "name": "SPACE COAST SERVICES MANAGEMENT, INC.",
-          "count": 56
-        },
-        {
-          "name": "JCG Foods of Georgia, LLC",
-          "count": 52
-        },
-        {
-          "name": "Pecan Deluxe Candy Company",
-          "count": 49
-        },
-        {
-          "name": "Tesla, Inc.",
-          "count": 47
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 47
-        },
-        {
-          "name": "ALLEN HARIM FOODS, LLC",
-          "count": 46
-        },
-        {
-          "name": "DR Allen & Son INC",
-          "count": 43
-        },
-        {
-          "name": "Humetis Technologies, Inc.",
-          "count": 42
-        },
-        {
-          "name": "LTIMindtree Limited",
-          "count": 40
-        },
-        {
-          "name": "WAL-MART ASSOCIATES, INC.",
-          "count": 37
-        },
-        {
-          "name": "Sentech Services, Inc",
-          "count": 36
-        },
-        {
-          "name": "NVIDIA Corporation",
-          "count": 34
-        },
-        {
-          "name": "Voyager Express Inc",
-          "count": 33
-        },
-        {
-          "name": "Florida Plastering & Pool Remodeling, LLC",
-          "count": 31
-        },
-        {
-          "name": "U.S. Bank National Association",
-          "count": 28
-        },
-        {
-          "name": "TikTok Inc.",
-          "count": 27
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Jul '25",
       "subtitle": "July 2025",
       "list": [
@@ -821,6 +735,93 @@
         {
           "name": "Uber Technologies, Inc.",
           "count": 29
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Aug '25",
+      "subtitle": "August 2025",
+      "list": [
+        {
+          "name": "Stoughton Trailers, LLC",
+          "count": 186
+        },
+        {
+          "name": "JCG Foods of Georgia, LLC",
+          "count": 99
+        },
+        {
+          "name": "SDC Restaurants LLC",
+          "count": 87
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 87
+        },
+        {
+          "name": "Management Health Systems, LLC",
+          "count": 79
+        },
+        {
+          "name": "Salesforce, Inc.",
+          "count": 59
+        },
+        {
+          "name": "Tesla, Inc.",
+          "count": 50
+        },
+        {
+          "name": "ByteDance Inc.",
+          "count": 44
+        },
+        {
+          "name": "Hoosier Care Inc.",
+          "count": 43
+        },
+        {
+          "name": "ARIZONA RESTAURANT COMPANY, LLC",
+          "count": 41
+        },
+        {
+          "name": "WEN NEW MEXICO, LLC",
+          "count": 40
+        },
+        {
+          "name": "Ernst & Young U.S. LLP",
+          "count": 40
+        },
+        {
+          "name": "Citibank, N.A.",
+          "count": 38
+        },
+        {
+          "name": "Synsus Private Label Partners, LLC",
+          "count": 35
+        },
+        {
+          "name": "TikTok Inc.",
+          "count": 34
+        },
+        {
+          "name": "Snowflake Inc.",
+          "count": 34
+        },
+        {
+          "name": "Adobe Inc. ",
+          "count": 34
+        },
+        {
+          "name": "Hexaware Technologies, Inc.",
+          "count": 33
+        },
+        {
+          "name": "Cadence Design Systems, Inc.",
+          "count": 33
+        },
+        {
+          "name": "Uber Technologies, Inc.",
+          "count": 32
         }
       ]
     }
