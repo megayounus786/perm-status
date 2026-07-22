@@ -1,6 +1,157 @@
 {
-  "last_updated": "2026-06-16T16:26:36Z",
+  "last_updated": "2026-07-22T17:41:00Z",
   "months": [
+    {
+      "bulletin_date": "August 2026",
+      "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-august-2026.html",
+      "source": "dos_live",
+      "fetch_method": "nodriver",
+      "fetched_at": "2026-07-22T17:41:00Z",
+      "final_action_dates": {
+        "1st": {
+          "all_other": "C",
+          "china": "01JUL23",
+          "india": "15OCT22",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "2nd": {
+          "all_other": "C",
+          "china": "01SEP21",
+          "india": "U",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "3rd": {
+          "all_other": "01SEP24",
+          "china": "01JAN22",
+          "india": "01JAN14",
+          "mexico": "01SEP24",
+          "philippines": "01AUG23"
+        },
+        "Other Workers": {
+          "all_other": "01APR22",
+          "china": "01MAY19",
+          "india": "01JAN14",
+          "mexico": "01APR22",
+          "philippines": "01DEC21"
+        },
+        "4th": {
+          "all_other": "15OCT22",
+          "china": "15OCT22",
+          "india": "15OCT22",
+          "mexico": "15OCT22",
+          "philippines": "15OCT22"
+        },
+        "Certain Religious Workers": {
+          "all_other": "15OCT22",
+          "china": "15OCT22",
+          "india": "15OCT22",
+          "mexico": "15OCT22",
+          "philippines": "15OCT22"
+        },
+        "5th Unreserved": {
+          "all_other": "C",
+          "china": "01DEC16",
+          "india": "U",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "5th Set Aside Rural": {
+          "all_other": "C",
+          "china": "C",
+          "india": "C",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "5th Set Aside High Unemployment": {
+          "all_other": "C",
+          "china": "C",
+          "india": "C",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "5th Set Aside Infrastructure": {
+          "all_other": "C",
+          "china": "C",
+          "india": "C",
+          "mexico": "C",
+          "philippines": "C"
+        }
+      },
+      "dates_for_filing": {
+        "1st": {
+          "all_other": "C",
+          "china": "01DEC23",
+          "india": "01DEC23",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "2nd": {
+          "all_other": "C",
+          "china": "01JAN22",
+          "india": "15JAN15",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "3rd": {
+          "all_other": "C",
+          "china": "08JAN22",
+          "india": "15JAN15",
+          "mexico": "C",
+          "philippines": "01JAN24"
+        },
+        "Other Workers": {
+          "all_other": "01AUG22",
+          "china": "01OCT19",
+          "india": "15JAN15",
+          "mexico": "01AUG22",
+          "philippines": "01AUG22"
+        },
+        "4th": {
+          "all_other": "01JAN23",
+          "china": "01JAN23",
+          "india": "01JAN23",
+          "mexico": "01JAN23",
+          "philippines": "01JAN23"
+        },
+        "Certain Religious Workers": {
+          "all_other": "01JAN23",
+          "china": "01JAN23",
+          "india": "01JAN23",
+          "mexico": "01JAN23",
+          "philippines": "01JAN23"
+        },
+        "5th Unreserved": {
+          "all_other": "C",
+          "china": "01MAR17",
+          "india": "01MAY24",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "5th Set Aside Rural": {
+          "all_other": "C",
+          "china": "C",
+          "india": "C",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "5th Set Aside High Unemployment": {
+          "all_other": "C",
+          "china": "C",
+          "india": "C",
+          "mexico": "C",
+          "philippines": "C"
+        },
+        "5th Set Aside Infrastructure": {
+          "all_other": "C",
+          "china": "C",
+          "india": "C",
+          "mexico": "C",
+          "philippines": "C"
+        }
+      }
+    },
     {
       "bulletin_date": "July 2026",
       "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",

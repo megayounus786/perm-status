@@ -1,11 +1,11 @@
 {
-  "bulletin_date": "July 2026",
-  "last_updated": "2026-06-16T16:26:36Z",
-  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-july-2026.html",
+  "bulletin_date": "August 2026",
+  "last_updated": "2026-07-22T17:41:00Z",
+  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2026/visa-bulletin-for-august-2026.html",
   "final_action_dates": {
     "1st": {
       "all_other": "C",
-      "china": "01JUN23",
+      "china": "01JUL23",
       "india": "15OCT22",
       "mexico": "C",
       "philippines": "C"
@@ -18,32 +18,32 @@
       "philippines": "C"
     },
     "3rd": {
-      "all_other": "01AUG24",
-      "china": "22DEC21",
+      "all_other": "01SEP24",
+      "china": "01JAN22",
       "india": "01JAN14",
-      "mexico": "01AUG24",
+      "mexico": "01SEP24",
       "philippines": "01AUG23"
     },
     "Other Workers": {
-      "all_other": "01MAR22",
-      "china": "01APR19",
+      "all_other": "01APR22",
+      "china": "01MAY19",
       "india": "01JAN14",
-      "mexico": "01MAR22",
+      "mexico": "01APR22",
       "philippines": "01DEC21"
     },
     "4th": {
-      "all_other": "15SEP22",
-      "china": "15SEP22",
-      "india": "15SEP22",
-      "mexico": "15SEP22",
-      "philippines": "15SEP22"
+      "all_other": "15OCT22",
+      "china": "15OCT22",
+      "india": "15OCT22",
+      "mexico": "15OCT22",
+      "philippines": "15OCT22"
     },
     "Certain Religious Workers": {
-      "all_other": "15SEP22",
-      "china": "15SEP22",
-      "india": "15SEP22",
-      "mexico": "15SEP22",
-      "philippines": "15SEP22"
+      "all_other": "15OCT22",
+      "china": "15OCT22",
+      "india": "15OCT22",
+      "mexico": "15OCT22",
+      "philippines": "15OCT22"
     },
     "5th Unreserved": {
       "all_other": "C",
@@ -91,7 +91,7 @@
     },
     "3rd": {
       "all_other": "C",
-      "china": "01JAN22",
+      "china": "08JAN22",
       "india": "15JAN15",
       "mexico": "C",
       "philippines": "01JAN24"
