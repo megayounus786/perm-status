@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-07-25T23:42:59-04:00",
+  "updatedAt": "2026-07-26T06:37:24-04:00",
   "backlog": {
-    "total": 111111,
+    "total": 111163,
     "startOfMonth": 118815,
     "thisMonth": {
       "name": "Jul 2026",
       "processed": 14767,
-      "intake": 7063
+      "intake": 7115
     },
     "lastMonth": {
       "name": "Jun 2026",
@@ -23,18 +23,18 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 178,
-    "certified": 170,
-    "rfi": 6,
-    "denied": 2,
+    "total": 0,
+    "certified": 0,
+    "rfi": 0,
+    "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 783,
-      "certified": 732,
-      "rfi": 35,
-      "denied": 14,
-      "withdrawn": 2
+      "total": 178,
+      "certified": 170,
+      "rfi": 6,
+      "denied": 2,
+      "withdrawn": 0
     }
   },
   "dol": {
@@ -42,8 +42,8 @@
     "monthFull": "August",
     "day": 9,
     "daysInMonth": 100,
-    "estFinish": "Sep 17",
-    "movementPerWeek": 3.7,
+    "estFinish": "Sep 21",
+    "movementPerWeek": 3.5,
     "casesRemaining": 8604,
     "latestLetter": "T",
     "pctProcessed": 9
@@ -146,8 +146,7 @@
       "denied": 124,
       "rfi": 145,
       "status": "processing",
-      "processedPct": 78.9,
-      "todayProcessed": 22
+      "processedPct": 78.9
     },
     {
       "label": "Aug '25",
@@ -160,8 +159,7 @@
       "status": "active",
       "processedPct": 8.7,
       "dolDay": 9,
-      "dolDays": 100,
-      "todayProcessed": 156
+      "dolDays": 100
     },
     {
       "label": "Sep '25",
@@ -275,9 +273,9 @@
     },
     {
       "label": "Jul '26",
-      "total": 7063,
+      "total": 7115,
       "certified": 0,
-      "review": 6987,
+      "review": 7039,
       "withdrawn": 73,
       "denied": 0,
       "rfi": 0,
@@ -286,14 +284,6 @@
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-06-26",
-      "total": 783,
-      "certified": 699,
-      "rfi": 33,
-      "denied": 50,
-      "withdrawn": 1
-    },
     {
       "date": "2026-06-27",
       "total": 218,
@@ -524,6 +514,14 @@
       "certified": 170,
       "rfi": 6,
       "denied": 2,
+      "withdrawn": 0
+    },
+    {
+      "date": "2026-07-26",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
       "withdrawn": 0
     }
   ],
