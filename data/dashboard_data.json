@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-07-31T21:08:03-04:00",
+  "updatedAt": "2026-07-31T23:38:00-04:00",
   "backlog": {
-    "total": 108623,
+    "total": 108620,
     "startOfMonth": 118733,
     "thisMonth": {
       "name": "Jul 2026",
-      "processed": 18798,
+      "processed": 18801,
       "intake": 8688
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 685,
-    "certified": 659,
+    "total": 688,
+    "certified": 662,
     "rfi": 14,
     "denied": 11,
     "withdrawn": 1,
@@ -129,14 +129,14 @@
     {
       "label": "Jun '25",
       "total": 10922,
-      "certified": 8695,
-      "review": 440,
+      "certified": 8698,
+      "review": 437,
       "withdrawn": 571,
       "denied": 797,
       "rfi": 416,
       "status": "done",
       "processedPct": 90.7,
-      "todayProcessed": 12
+      "todayProcessed": 15
     },
     {
       "label": "Jul '25",
@@ -521,8 +521,8 @@
     },
     {
       "date": "2026-07-31",
-      "total": 685,
-      "certified": 659,
+      "total": 688,
+      "certified": 662,
       "rfi": 14,
       "denied": 11,
       "withdrawn": 1
@@ -619,8 +619,8 @@
     },
     {
       "weekStart": "2026-07-27",
-      "total": 3900,
-      "certified": 3668,
+      "total": 3903,
+      "certified": 3671,
       "rfi": 97,
       "denied": 121,
       "withdrawn": 14,
