@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-09T15:16:45-04:00",
+  "updatedAt": "2026-08-09T18:16:43-04:00",
   "backlog": {
-    "total": 105610,
+    "total": 105606,
     "startOfMonth": 109078,
     "thisMonth": {
       "name": "Aug 2026",
-      "processed": 5527,
+      "processed": 5531,
       "intake": 2059
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 207,
-    "certified": 200,
+    "total": 211,
+    "certified": 204,
     "rfi": 2,
     "denied": 5,
     "withdrawn": 0,
@@ -42,10 +42,10 @@
     "monthFull": "September",
     "day": 7,
     "daysInMonth": 100,
-    "estFinish": "Oct 16",
+    "estFinish": "Oct 15",
     "movementPerWeek": 2.9,
-    "casesRemaining": 12183,
-    "latestLetter": "U",
+    "casesRemaining": 12179,
+    "latestLetter": "P",
     "pctProcessed": 7
   },
   "timeline": [
@@ -163,8 +163,8 @@
     {
       "label": "Sep '25",
       "total": 13643,
-      "certified": 897,
-      "review": 12183,
+      "certified": 901,
+      "review": 12179,
       "withdrawn": 515,
       "denied": 4,
       "rfi": 21,
@@ -172,7 +172,7 @@
       "processedPct": 6.8,
       "dolDay": 7,
       "dolDays": 100,
-      "todayProcessed": 122
+      "todayProcessed": 126
     },
     {
       "label": "Oct '25",
@@ -531,8 +531,8 @@
     },
     {
       "date": "2026-08-09",
-      "total": 207,
-      "certified": 200,
+      "total": 211,
+      "certified": 204,
       "rfi": 2,
       "denied": 5,
       "withdrawn": 0
@@ -629,8 +629,8 @@
     },
     {
       "weekStart": "2026-08-03",
-      "total": 5149,
-      "certified": 4585,
+      "total": 5153,
+      "certified": 4589,
       "rfi": 228,
       "denied": 196,
       "withdrawn": 139,
@@ -652,8 +652,8 @@
       "tabKey": "next",
       "tabLabel": "Sep",
       "subtitle": "September 2025 filings \u00b7 13,620 total",
-      "certified": 897,
-      "review": 12183,
+      "certified": 901,
+      "review": 12179,
       "withdrawn": 515,
       "rfi": 21,
       "denied": 4
