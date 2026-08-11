@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-11T09:15:30-04:00",
+  "updatedAt": "2026-08-11T12:15:19-04:00",
   "backlog": {
-    "total": 104828,
+    "total": 104479,
     "startOfMonth": 109076,
     "thisMonth": {
       "name": "Aug 2026",
-      "processed": 6657,
+      "processed": 7006,
       "intake": 2409
     },
     "lastMonth": {
@@ -17,16 +17,16 @@
   "avgDays": {
     "current": 416,
     "deltaFromLastMonth": 0,
-    "certified": 415,
+    "certified": 414,
     "rfi": 423,
     "denied": 437,
     "trend90Day": 0
   },
   "today": {
-    "total": 259,
-    "certified": 222,
-    "rfi": 10,
-    "denied": 27,
+    "total": 608,
+    "certified": 551,
+    "rfi": 20,
+    "denied": 37,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
@@ -40,13 +40,13 @@
   "dol": {
     "label": "Sep '25",
     "monthFull": "September",
-    "day": 13,
+    "day": 15,
     "daysInMonth": 100,
-    "estFinish": "Sep 26",
-    "movementPerWeek": 4.0,
-    "casesRemaining": 11370,
+    "estFinish": "Sep 19",
+    "movementPerWeek": 4.6,
+    "casesRemaining": 11096,
     "latestLetter": "Z",
-    "pctProcessed": 13
+    "pctProcessed": 15
   },
   "timeline": [
     {
@@ -129,52 +129,52 @@
     {
       "label": "Jun '25",
       "total": 10922,
-      "certified": 8782,
-      "review": 196,
+      "certified": 8784,
+      "review": 194,
       "withdrawn": 571,
       "denied": 912,
       "rfi": 458,
       "status": "done",
       "processedPct": 93.0,
-      "todayProcessed": 22
+      "todayProcessed": 24
     },
     {
       "label": "Jul '25",
       "total": 9779,
-      "certified": 8309,
-      "review": 522,
+      "certified": 8313,
+      "review": 508,
       "withdrawn": 476,
-      "denied": 233,
-      "rfi": 235,
+      "denied": 240,
+      "rfi": 238,
       "status": "done",
-      "processedPct": 89.8,
-      "todayProcessed": 9
+      "processedPct": 89.9,
+      "todayProcessed": 23
     },
     {
       "label": "Aug '25",
       "total": 9946,
-      "certified": 7887,
-      "review": 1209,
+      "certified": 7944,
+      "review": 1150,
       "withdrawn": 468,
-      "denied": 100,
+      "denied": 102,
       "rfi": 260,
       "status": "processing",
-      "processedPct": 82.9,
-      "todayProcessed": 22
+      "processedPct": 83.5,
+      "todayProcessed": 81
     },
     {
       "label": "Sep '25",
       "total": 13643,
-      "certified": 1685,
-      "review": 11370,
+      "certified": 1951,
+      "review": 11096,
       "withdrawn": 516,
-      "denied": 11,
-      "rfi": 38,
+      "denied": 12,
+      "rfi": 45,
       "status": "active",
-      "processedPct": 12.7,
-      "dolDay": 13,
+      "processedPct": 14.7,
+      "dolDay": 15,
       "dolDays": 100,
-      "todayProcessed": 206
+      "todayProcessed": 480
     },
     {
       "label": "Oct '25",
@@ -533,10 +533,10 @@
     },
     {
       "date": "2026-08-11",
-      "total": 259,
-      "certified": 222,
-      "rfi": 10,
-      "denied": 27,
+      "total": 608,
+      "certified": 551,
+      "rfi": 20,
+      "denied": 37,
       "withdrawn": 0
     }
   ],
@@ -631,10 +631,10 @@
     },
     {
       "weekStart": "2026-08-10",
-      "total": 1123,
-      "certified": 1024,
-      "rfi": 44,
-      "denied": 54,
+      "total": 1472,
+      "certified": 1353,
+      "rfi": 54,
+      "denied": 64,
       "withdrawn": 1,
       "partial": true
     }
@@ -644,21 +644,21 @@
       "tabKey": "active",
       "tabLabel": "Aug",
       "subtitle": "August 2025 filings \u00b7 9,924 total",
-      "certified": 7887,
-      "review": 1209,
+      "certified": 7944,
+      "review": 1150,
       "withdrawn": 468,
       "rfi": 260,
-      "denied": 100
+      "denied": 102
     },
     {
       "tabKey": "next",
       "tabLabel": "Sep",
       "subtitle": "September 2025 filings \u00b7 13,620 total",
-      "certified": 1685,
-      "review": 11370,
+      "certified": 1951,
+      "review": 11096,
       "withdrawn": 516,
-      "rfi": 38,
-      "denied": 11
+      "rfi": 45,
+      "denied": 12
     }
   ],
   "employers": [
