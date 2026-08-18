@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Manage Subscriptions — Case Watch | ImmiLane</title>
+<meta name="robots" content="noindex"><!-- keep: token-gated private page -->
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-html: #0a0a12; --bg-body: #0a0a12; --text-primary: #f0f0f8; --text-secondary: #94a3b8; --text-muted: #64748b; --text-dim: #475569;
+    --card-bg: rgba(255,255,255,0.04); --card-border: rgba(255,255,255,0.06);
+    --nav-bg: rgba(255,255,255,0.03); --nav-border: rgba(255,255,255,0.06);
+    --sep: rgba(255,255,255,0.06);
+    --gradient-start: rgba(59,130,246,0.08); --gradient-end: rgba(139,92,246,0.06);
+    --input-bg: rgba(255,255,255,0.06); --input-border: rgba(255,255,255,0.1);
+  }
+  html.light {
+    --bg-html: #f5f7fa; --bg-body: #f5f7fa; --text-primary: #1a1a2e; --text-secondary: #475569; --text-muted: #64748b; --text-dim: #94a3b8;
+    --card-bg: rgba(255,255,255,0.85); --card-border: rgba(0,0,0,0.08);
+    --nav-bg: rgba(255,255,255,0.85); --nav-border: rgba(0,0,0,0.08);
+    --sep: rgba(0,0,0,0.08);
+    --gradient-start: transparent; --gradient-end: transparent;
+    --input-bg: rgba(0,0,0,0.04); --input-border: rgba(0,0,0,0.12);
+  }
+  html { background: var(--bg-html); }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; pointer-events: none; }
+  .container { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; backdrop-filter: blur(20px); background: var(--nav-bg); border-bottom: 1px solid var(--nav-border); position: sticky; top: 0; z-index: 100; }
+  .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+  .logo a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .theme-toggle { background: none; border: 1px solid var(--card-border); border-radius: 10px; padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+  .theme-toggle-icon { font-size: 16px; line-height: 1; }
+  .theme-toggle-icon.sun { display: none; }
+  html.light .theme-toggle-icon.moon { display: none; }
+  html.light .theme-toggle-icon.sun { display: inline; }
+  .hero { padding: 40px 0 10px; }
+  .hero h1 { font-size: 14px; font-weight: 500; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .hero h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+  .hero p { margin-top: 10px; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+  .hero p strong { color: var(--text-primary); }
+
+  .sub-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 22px 24px; margin: 18px 0; }
+  .sub-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+  .case-no { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 15px; font-weight: 700; color: #60a5fa; }
+  html.light .case-no { color: #2563eb; }
+  .sub-meta { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; }
+  .case-details { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--sep); display: grid; grid-template-columns: auto 1fr; gap: 7px 16px; font-size: 13px; line-height: 1.55; }
+  .cd-label { color: var(--text-muted); white-space: nowrap; }
+  .cd-value { color: var(--text-primary); font-weight: 500; overflow-wrap: anywhere; }
+  .cd-note { grid-column: 1 / -1; color: var(--text-muted); font-weight: 400; }
+  .status-pill { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; background: rgba(59,130,246,0.12); color: #60a5fa; }
+  html.light .status-pill { color: #2563eb; }
+  .status-pill.inactive { background: rgba(148,163,184,0.15); color: var(--text-muted); }
+  .sub-controls { display: flex; gap: 10px; align-items: center; margin-top: 18px; flex-wrap: wrap; }
+  .sub-controls select { background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 10px; color: var(--text-primary); font-family: inherit; font-size: 13.5px; padding: 10px 12px; outline: none; flex: 1; min-width: 220px; }
+  .btn { border-radius: 10px; font-family: inherit; font-size: 13px; font-weight: 600; padding: 10px 16px; cursor: pointer; transition: all 0.2s; }
+  .btn-primary { background: linear-gradient(135deg, #3b82f6, #8b5cf6); border: none; color: #fff; }
+  .btn-primary:hover { box-shadow: 0 4px 18px rgba(59,130,246,0.4); }
+  .btn-danger { background: none; border: 1px solid rgba(239,68,68,0.4); color: #f87171; }
+  .btn-danger:hover { background: rgba(239,68,68,0.1); }
+  .btn:disabled { opacity: 0.5; cursor: wait; }
+  .row-msg { font-size: 12.5px; margin-top: 10px; display: none; }
+  .row-msg.ok { display: block; color: #4ade80; }
+  .row-msg.err { display: block; color: #f87171; }
+
+  .panel { border-radius: 12px; padding: 18px 20px; margin: 24px 0; font-size: 14px; line-height: 1.7; display: none; }
+  .panel.err { display: block; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); }
+  .panel.info { display: block; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); color: var(--text-secondary); }
+  .panel a { color: #60a5fa; }
+  footer { text-align: center; padding: 32px 24px; color: var(--text-dim); font-size: 12px; border-top: 1px solid var(--sep); margin-top: 48px; position: relative; z-index: 1; }
+  footer a { color: var(--text-muted); text-decoration: none; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo"><a href="./"><div class="logo-icon">&#127963;&#65039;</div>PERM Tracker</a></div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">&#127769;</span><span class="theme-toggle-icon sun">&#9728;&#65039;</span></button>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <h1>ImmiLane Case Watch</h1>
+    <h2>Manage your subscriptions</h2>
+    <p id="who"></p>
+  </div>
+
+  <div class="panel" id="panel"></div>
+  <div id="subs"></div>
+</div>
+
+<footer>
+  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; <a href="guides.html">Guides</a> &middot; <a href="about-us.html">About</a> &middot; <a href="support.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="refund.html">Refund</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
+</footer>
+
+<script>
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+});
+
+const API_BASE = 'https://api.immilane.com';
+const TOKEN = new URLSearchParams(location.search).get('token') || '';
+const PLAN_LABELS = {
+  daily: 'Daily Digest — $8.99/mo',
+  weekly: 'Weekly Digest — $4.99/mo',
+  alerts: 'Change Alerts Only — $2.99/mo'
+};
+const panel = document.getElementById('panel');
+const subsEl = document.getElementById('subs');
+let BILLING_ENABLED = false;
+
+// billing_status → footer line under each case (staging: 'beta' = free)
+function planPrice(cadence) {
+  const lab = PLAN_LABELS[cadence] || '';
+  return lab.includes('— ') ? lab.split('— ')[1] : '';
+}
+
+function billingLine(s) {
+  const bs = s.billing_status || 'beta';
+  if (bs === 'beta') return 'Free beta subscription';
+  if (bs === 'active') {
+    const renews = fmtDate(s.current_period_end);
+    const price = planPrice(s.cadence);
+    if (renews) return 'Renews ' + renews + (price ? ' · ' + price : '');
+    return 'Paid via Stripe' + (price ? ' · ' + price : '');
+  }
+  if (bs === 'checkout_pending') return '⚠ Payment not completed — emails start after checkout';
+  if (bs === 'past_due') return '⚠ Payment issue — we’ll keep emailing during a short grace period';
+  if (bs === 'canceled') return 'Paid plan ended';
+  return bs;
+}
+
+function fail(msg) {
+  panel.className = 'panel err';
+  panel.innerHTML = msg + '<br><a href="subscribe.html#manage">Request a new sign-in link</a>';
+}
+
+function esc(s) {
+  const d = document.createElement('div'); d.textContent = s == null ? '' : String(s);
+  return d.innerHTML;
+}
+
+function fmtDate(iso) {
+  if (!iso) return null;
+  const d = new Date(iso.slice(0, 10) + 'T00:00:00');
+  return isNaN(d) ? iso : d.toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'});
+}
+
+// Case details come from our local scanner data (no live DOL lookup here).
+function caseDetailsHTML(s) {
+  const c = s.case || {};
+  const rows = [];
+  if (c.found) {
+    rows.push(['Employer', esc(c.employer) || '—']);
+    rows.push(['Filed', esc(fmtDate(c.filed_date)) || '—']);
+    const est = c.estimate;
+    if (est && est.already_in_range) {
+      rows.push(['Queue', 'Your filing date is inside the range DOL is already certifying — a decision could come any scan now']);
+    } else if (est && est.cases_ahead != null) {
+      rows.push(['Queue', '~' + Number(est.cases_ahead).toLocaleString() + ' pending cases ahead' +
+        (est.dol_current ? ' · DOL now certifying ' + esc(est.dol_current) + ' filings' : '')]);
+      if (est.estimated_date) {
+        let v = 'Around ' + esc(fmtDate(est.estimated_date));
+        if (est.confidence_low && est.confidence_high) {
+          v += ' (likely ' + esc(fmtDate(est.confidence_low)) + ' – ' + esc(fmtDate(est.confidence_high)) + ')';
+        }
+        rows.push(['Est. decision', v]);
+      }
+    }
+  } else {
+    rows.push(['Employer', '—']);
+    rows.push(['Filed', '—']);
+    rows.push(['', '<span class="cd-note">Case details aren’t in our scan data yet — they’ll appear here automatically once this case shows up in DOL’s public records.</span>']);
+  }
+  return '<div class="case-details">' + rows.map(([k, v]) =>
+    k ? '<span class="cd-label">' + k + '</span><span class="cd-value">' + v + '</span>' : v
+  ).join('') + '</div>';
+}
+
+function renderSub(s) {
+  const card = document.createElement('div');
+  card.className = 'sub-card';
+  const liveStatus = (s.case && s.case.found && s.case.status) || s.status;
+  const statusPill = s.active
+    ? '<span class="status-pill">' + esc(liveStatus || 'watching') + '</span>'
+    : '<span class="status-pill inactive">unsubscribed</span>';
+  card.innerHTML =
+    '<div class="sub-head"><div><div class="case-no">' + esc(s.case_number) + '</div>' +
+    '<div class="sub-meta">Subscribed ' + esc((s.created_at || '').slice(0, 10)) +
+    (s.verified ? ' · verified' : ' · <span style="color:#fbbf24">email not verified yet</span>') +
+    '</div><div class="sub-meta">' + billingLine(s) + '</div></div>' + statusPill + '</div>' +
+    caseDetailsHTML(s);
+
+  if (s.active) {
+    const controls = document.createElement('div');
+    controls.className = 'sub-controls';
+    const sel = document.createElement('select');
+    for (const [val, lab] of Object.entries(PLAN_LABELS)) {
+      const o = document.createElement('option');
+      o.value = val; o.textContent = lab; o.selected = val === s.cadence;
+      sel.appendChild(o);
+    }
+    const save = document.createElement('button');
+    save.className = 'btn btn-primary'; save.textContent = 'Save plan';
+    const unsub = document.createElement('button');
+    unsub.className = 'btn btn-danger'; unsub.textContent = 'Unsubscribe';
+    const msg = document.createElement('div');
+    msg.className = 'row-msg';
+    controls.append(sel, save, unsub);
+    card.append(controls, msg);
+
+    save.addEventListener('click', async () => {
+      save.disabled = true;
+      try {
+        const r = await fetch(API_BASE + '/subs/manage/update', {
+          method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({token: TOKEN, sub_id: s.id, cadence: sel.value})
+        });
+        const data = await r.json();
+        if (!r.ok || !data.ok) throw new Error((data.errors || ['update failed']).join(', '));
+        msg.className = 'row-msg ok';
+        msg.textContent = 'Plan updated to ' + PLAN_LABELS[sel.value] + '.' +
+          (BILLING_ENABLED && (s.billing_status === 'active' || s.billing_status === 'past_due')
+            ? ' The new rate applies from your next renewal — no mid-cycle charges.' : '');
+      } catch (e) {
+        msg.className = 'row-msg err';
+        msg.textContent = 'Could not update: ' + e.message;
+      } finally { save.disabled = false; }
+    });
+
+    unsub.addEventListener('click', async () => {
+      if (!confirm('Stop watching ' + s.case_number + '? Emails stop immediately, any paid plan '
+                   + 'simply won’t renew (no further charges), and you can re-subscribe anytime.')) return;
+      unsub.disabled = true;
+      try {
+        const r = await fetch(API_BASE + '/subs/manage/unsubscribe', {
+          method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({token: TOKEN, sub_id: s.id})
+        });
+        const data = await r.json();
+        if (!r.ok || !data.ok) throw new Error((data.errors || ['unsubscribe failed']).join(', '));
+        load();
+      } catch (e) {
+        msg.className = 'row-msg err';
+        msg.textContent = 'Could not unsubscribe: ' + e.message;
+        unsub.disabled = false;
+      }
+    });
+  }
+  return card;
+}
+
+async function load() {
+  if (!TOKEN) return fail('This page needs a sign-in link.');
+  try {
+    const r = await fetch(API_BASE + '/subs/manage/list?token=' + encodeURIComponent(TOKEN));
+    const data = await r.json();
+    if (r.status === 401) return fail('This sign-in link is invalid or has expired (links last 30 minutes).');
+    if (!r.ok || !data.ok) throw new Error((data.errors || ['load failed']).join(', '));
+    BILLING_ENABLED = !!data.billing_enabled;
+    document.getElementById('who').innerHTML =
+      'Signed in as <strong>' + esc(data.email) + '</strong>. Each subscription watches one PERM case.';
+    subsEl.innerHTML = '';
+    if (!data.subscriptions.length) {
+      panel.className = 'panel info';
+      panel.innerHTML = 'No Case Watch subscriptions for this address yet. ' +
+        '<a href="subscribe.html">Start watching a case →</a>';
+      return;
+    }
+    panel.className = 'panel';
+    for (const s of data.subscriptions) subsEl.appendChild(renderSub(s));
+  } catch (e) {
+    fail('Something went wrong loading your subscriptions: ' + esc(e.message));
+  }
+}
+load();
+</script>
+</body>
+</html>
