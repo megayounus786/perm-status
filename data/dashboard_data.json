@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-17T21:10:10-04:00",
+  "updatedAt": "2026-08-17T23:40:33-04:00",
   "backlog": {
-    "total": 101500,
+    "total": 101481,
     "startOfMonth": 109064,
     "thisMonth": {
       "name": "Aug 2026",
-      "processed": 11535,
+      "processed": 11554,
       "intake": 3971
     },
     "lastMonth": {
@@ -23,9 +23,9 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 825,
-    "certified": 709,
-    "rfi": 76,
+    "total": 844,
+    "certified": 727,
+    "rfi": 77,
     "denied": 39,
     "withdrawn": 1,
     "stillUpdating": false,
@@ -42,10 +42,10 @@
     "monthFull": "September",
     "day": 44,
     "daysInMonth": 100,
-    "estFinish": "Sep 2",
-    "movementPerWeek": 7.1,
-    "casesRemaining": 7064,
-    "latestLetter": "Z",
+    "estFinish": "Sep 3",
+    "movementPerWeek": 7.0,
+    "casesRemaining": 7045,
+    "latestLetter": "V",
     "pctProcessed": 44
   },
   "timeline": [
@@ -165,16 +165,16 @@
     {
       "label": "Sep '25",
       "total": 13643,
-      "certified": 5771,
-      "review": 7064,
+      "certified": 5789,
+      "review": 7045,
       "withdrawn": 523,
       "denied": 41,
-      "rfi": 221,
+      "rfi": 222,
       "status": "active",
-      "processedPct": 44.2,
+      "processedPct": 44.4,
       "dolDay": 44,
       "dolDays": 100,
-      "todayProcessed": 708
+      "todayProcessed": 727
     },
     {
       "label": "Oct '25",
@@ -533,9 +533,9 @@
     },
     {
       "date": "2026-08-17",
-      "total": 825,
-      "certified": 709,
-      "rfi": 76,
+      "total": 844,
+      "certified": 727,
+      "rfi": 77,
       "denied": 39,
       "withdrawn": 1
     }
@@ -631,9 +631,9 @@
     },
     {
       "weekStart": "2026-08-17",
-      "total": 825,
-      "certified": 709,
-      "rfi": 76,
+      "total": 844,
+      "certified": 727,
+      "rfi": 77,
       "denied": 39,
       "withdrawn": 1,
       "partial": true
@@ -654,10 +654,10 @@
       "tabKey": "next",
       "tabLabel": "Sep",
       "subtitle": "September 2025 filings \u00b7 13,620 total",
-      "certified": 5771,
-      "review": 7064,
+      "certified": 5789,
+      "review": 7045,
       "withdrawn": 523,
-      "rfi": 221,
+      "rfi": 222,
       "denied": 41
     }
   ],
