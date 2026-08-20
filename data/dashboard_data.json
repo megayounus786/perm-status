@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-20T12:08:27-04:00",
+  "updatedAt": "2026-08-20T15:07:55-04:00",
   "backlog": {
-    "total": 100716,
+    "total": 100520,
     "startOfMonth": 109044,
     "thisMonth": {
       "name": "Aug 2026",
-      "processed": 13628,
+      "processed": 13824,
       "intake": 5300
     },
     "lastMonth": {
@@ -23,11 +23,11 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 403,
-    "certified": 382,
-    "rfi": 16,
-    "denied": 5,
-    "withdrawn": 0,
+    "total": 599,
+    "certified": 565,
+    "rfi": 23,
+    "denied": 10,
+    "withdrawn": 1,
     "stillUpdating": false,
     "yesterday": {
       "total": 695,
@@ -40,13 +40,13 @@
   "dol": {
     "label": "Sep '25",
     "monthFull": "September",
-    "day": 57,
+    "day": 59,
     "daysInMonth": 100,
-    "estFinish": "Sep 1",
-    "movementPerWeek": 7.7,
-    "casesRemaining": 5265,
+    "estFinish": "Aug 31",
+    "movementPerWeek": 7.8,
+    "casesRemaining": 5079,
     "latestLetter": "Z",
-    "pctProcessed": 57
+    "pctProcessed": 59
   },
   "timeline": [
     {
@@ -130,51 +130,51 @@
       "label": "Jun '25",
       "total": 10922,
       "certified": 8820,
-      "review": 101,
+      "review": 100,
       "withdrawn": 571,
-      "denied": 941,
+      "denied": 942,
       "rfi": 486,
       "status": "done",
       "processedPct": 93.8,
-      "todayProcessed": 8
+      "todayProcessed": 9
     },
     {
       "label": "Jul '25",
       "total": 9779,
-      "certified": 8369,
-      "review": 208,
+      "certified": 8370,
+      "review": 206,
       "withdrawn": 476,
-      "denied": 378,
+      "denied": 379,
       "rfi": 344,
       "status": "done",
       "processedPct": 93.0,
-      "todayProcessed": 6
+      "todayProcessed": 8
     },
     {
       "label": "Aug '25",
       "total": 9946,
-      "certified": 8265,
-      "review": 781,
+      "certified": 8266,
+      "review": 774,
       "withdrawn": 468,
-      "denied": 127,
-      "rfi": 283,
+      "denied": 129,
+      "rfi": 287,
       "status": "done",
-      "processedPct": 87.2,
-      "todayProcessed": 20
+      "processedPct": 87.3,
+      "todayProcessed": 27
     },
     {
       "label": "Sep '25",
       "total": 13643,
-      "certified": 7519,
-      "review": 5265,
-      "withdrawn": 523,
-      "denied": 61,
-      "rfi": 252,
+      "certified": 7700,
+      "review": 5079,
+      "withdrawn": 524,
+      "denied": 62,
+      "rfi": 255,
       "status": "active",
-      "processedPct": 57.4,
-      "dolDay": 57,
+      "processedPct": 58.8,
+      "dolDay": 59,
       "dolDays": 100,
-      "todayProcessed": 369
+      "todayProcessed": 554
     },
     {
       "label": "Oct '25",
@@ -533,11 +533,11 @@
     },
     {
       "date": "2026-08-20",
-      "total": 403,
-      "certified": 382,
-      "rfi": 16,
-      "denied": 5,
-      "withdrawn": 0
+      "total": 599,
+      "certified": 565,
+      "rfi": 23,
+      "denied": 10,
+      "withdrawn": 1
     }
   ],
   "rateWeeks": [
@@ -631,11 +631,11 @@
     },
     {
       "weekStart": "2026-08-17",
-      "total": 2918,
-      "certified": 2625,
-      "rfi": 169,
-      "denied": 123,
-      "withdrawn": 1,
+      "total": 3114,
+      "certified": 2808,
+      "rfi": 176,
+      "denied": 128,
+      "withdrawn": 2,
       "partial": true
     }
   ],
@@ -644,21 +644,21 @@
       "tabKey": "active",
       "tabLabel": "Aug",
       "subtitle": "August 2025 filings \u00b7 9,924 total",
-      "certified": 8265,
-      "review": 781,
+      "certified": 8266,
+      "review": 774,
       "withdrawn": 468,
-      "rfi": 283,
-      "denied": 127
+      "rfi": 287,
+      "denied": 129
     },
     {
       "tabKey": "next",
       "tabLabel": "Sep",
       "subtitle": "September 2025 filings \u00b7 13,620 total",
-      "certified": 7519,
-      "review": 5265,
-      "withdrawn": 523,
-      "rfi": 252,
-      "denied": 61
+      "certified": 7700,
+      "review": 5079,
+      "withdrawn": 524,
+      "rfi": 255,
+      "denied": 62
     }
   ],
   "employers": [
