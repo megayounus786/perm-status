@@ -93,13 +93,15 @@
   a { color: inherit; }
 
   nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; backdrop-filter: blur(20px); background: var(--nav-bg); border-bottom: 1px solid var(--nav-border); position: sticky; top: 0; z-index: 100; }
-  .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; color: var(--text-primary); }
+  .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; letter-spacing: -0.5px; white-space: nowrap; flex-shrink: 0; text-decoration: none; color: var(--text-primary); }
   .logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-  .nav-right { display: flex; align-items: center; gap: 24px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-right { display: flex; align-items: center; gap: 16px; min-width: 0; }
+  .nav-links { display: flex; gap: clamp(12px, 1.4vw, 24px); list-style: none; min-width: 0; }
+  .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
   .nav-links a.active, .nav-links a:hover { color: var(--text-primary); }
   .nav-toggle { display: none; background: none; border: 1px solid var(--card-border); border-radius: 8px; color: var(--text-primary); font-size: 22px; cursor: pointer; padding: 4px 8px; line-height: 1; }
+  .nav-utils { display: flex; align-items: center; gap: 12px; padding-left: 16px; border-left: 1px solid var(--nav-border); flex-shrink: 0; }
+  @media (max-width: 1140px) { .nav-utils { border-left: none; padding-left: 0; gap: 10px; } }
   .theme-toggle { width: 40px; height: 22px; border-radius: 11px; border: none; cursor: pointer; background: rgba(255,255,255,0.1); position: relative; transition: background 0.3s; display: flex; align-items: center; padding: 0 3px; flex-shrink: 0; }
   .theme-toggle::after { content: ''; width: 16px; height: 16px; border-radius: 50%; background: #f0f0f8; transition: transform 0.3s, background 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
   html.light .theme-toggle { background: rgba(0,0,0,0.1); }
@@ -111,7 +113,7 @@
   html:not(.light) .theme-toggle-icon.moon { opacity: 0; }
   html.light .theme-toggle-icon.sun { opacity: 0; }
   html.light .theme-toggle-icon.moon { opacity: 0.4; }
-  @media (max-width: 768px) {
+  @media (max-width: 1140px) {
     .nav-toggle { display: flex; align-items: center; justify-content: center; order: -1; }
     .nav-right { gap: 6px; order: 2; margin-left: auto; }
     nav .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: #0f172a; border-bottom: 1px solid rgba(59, 130, 246, 0.2); padding: 8px 0; z-index: 1000; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
@@ -269,7 +271,7 @@
       <li><a href="subscribe.html">Case Watch</a></li>
       <li><a href="faq.html">FAQ</a></li>
     </ul>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button>
+    <div class="nav-utils"><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button></div>
   </div>
 </nav>
 
@@ -927,8 +929,8 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
 <!-- il-fresh-banner END -->
 <!-- il-cw-announce START -->
 <style id="il-cw-announce-css">
-  .il-cw { position: relative; z-index: 91; display: none; background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(139,92,246,0.14)); border-bottom: 1px solid rgba(139,92,246,0.28); backdrop-filter: blur(12px); }
-  .il-cw-inner { max-width: 1200px; margin: 0 auto; padding: 9px 44px 9px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); text-decoration: none; cursor: pointer; }
+  .il-cw { position: relative; z-index: 91; display: none; background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(139,92,246,0.14)); border-bottom: 1px solid rgba(139,92,246,0.36); backdrop-filter: blur(12px); }
+  .il-cw-inner { max-width: 1200px; margin: 0 auto; padding: 11px 44px 11px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); text-decoration: none; cursor: pointer; }
   .il-cw-badge { flex: none; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 999px; padding: 2px 9px; }
   .il-cw-text strong { color: var(--text-primary); font-weight: 600; }
   .il-cw-cta { flex: none; font-weight: 600; color: #8b5cf6; white-space: nowrap; }
@@ -938,7 +940,7 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
   .il-cw-close:hover { color: var(--text-primary); background: var(--tab-bg); }
   .il-cw-close:focus-visible { outline: 2px solid var(--input-focus); outline-offset: 1px; }
   @media (max-width: 768px) {
-    .il-cw-inner { font-size: 12.5px; gap: 8px; padding: 8px 40px 8px 16px; }
+    .il-cw-inner { font-size: 12.5px; gap: 8px; padding: 9px 40px 9px 16px; }
   }
 </style>
 <script id="il-cw-announce-js">
