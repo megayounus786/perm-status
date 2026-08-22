@@ -172,6 +172,11 @@
 
   /* ── ESTIMATE DISCLAIMER ── */
   .est-disclaimer { margin-top: 18px; padding: 12px 14px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; font-size: 11.5px; line-height: 1.6; color: var(--text-muted); }
+  .est-watch-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 18px; padding: 16px 18px; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.06)); border: 1px solid rgba(59,130,246,0.25); border-radius: 12px; }
+  .est-watch-cta-text { flex: 1 1 260px; font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); }
+  .est-watch-cta-text strong { color: var(--text-primary); }
+  .est-watch-cta-btn { flex: none; display: inline-block; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 10px; color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 10px 18px; transition: transform 0.2s, box-shadow 0.2s; }
+  .est-watch-cta-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,130,246,0.4); }
 
   .est-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .est-stat { background: var(--card-bg); border-radius: 10px; padding: 14px 16px; }
@@ -323,6 +328,7 @@
     <ul class="nav-links">
       <li><a href="./">Dashboard</a></li>
       <li><a href="estimate.html" class="active">Estimate</a></li>
+      <li><a href="leaderboard.html">Top Employers</a></li>
       <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
       <li><a href="guides.html">Guides</a></li>
       <li><a href="subscribe.html">Case Watch</a></li>
@@ -567,6 +573,23 @@ const API_VERSION = '3';
     });
   }
 
+  // Case Watch cross-sell shown under every non-terminal estimate result.
+  // Links into subscribe.html, pre-filling the case number when we have one.
+  function watchCtaHtml(caseNumber, imminent) {
+    var href = 'subscribe.html?src=estimate' +
+      (caseNumber ? '&case=' + encodeURIComponent(caseNumber) : '');
+    var pitch = imminent
+      ? '<strong>Your decision could land any day.</strong> Want an email when DOL moves your case?'
+      : '<strong>Estimates change as DOL moves.</strong> Want ImmiLane to watch ' +
+        (caseNumber ? 'this case' : 'your case') +
+        ' and email you when DOL updates it?';
+    return '<div class="est-watch-cta"><div class="est-watch-cta-text">' + pitch +
+      ' Daily or weekly digests with your updated estimate, plus status-change alerts within hours of a change.</div>' +
+      '<a class="est-watch-cta-btn" href="' + href + '" ' +
+      'onclick="if(typeof gtag===\'function\')gtag(\'event\',\'case_watch_cta_click\',{source:\'estimate\'})">' +
+      'Watch this case &rarr;</a></div>';
+  }
+
   function renderEstResult(data, isLookup) {
     clearEstResult();
     let html = '';
@@ -600,6 +623,7 @@ const API_VERSION = '3';
       html += '<div class="est-stat"><div class="est-stat-label">DOL Position</div><div class="est-stat-value warning">' + esc(est.dol_current) + '</div></div>';
       html += '<div class="est-stat"><div class="est-stat-label">Filing Month</div><div class="est-stat-value">' + esc(est.filing_month) + '</div></div>';
       html += '</div></div>';
+      html += watchCtaHtml(isLookup ? data.case_number : null, true);
       resultEl.innerHTML = html;
       resultEl.style.display = '';
       if (isLookup) upgradeEmployerLink();
@@ -608,6 +632,7 @@ const API_VERSION = '3';
 
     if (!est.estimated_date) {
       html += '<div style="text-align:center;padding:20px 0;color:#94a3b8;font-size:14px;">Unable to calculate estimate — insufficient processing data.</div>';
+      if (isLookup) html += watchCtaHtml(data.case_number, false);
       resultEl.innerHTML = html;
       resultEl.style.display = '';
       if (isLookup) upgradeEmployerLink();
@@ -651,6 +676,8 @@ const API_VERSION = '3';
     html += '</div>';
 
     // Plain-English disclaimer so users understand what the estimate/range mean
+    html += watchCtaHtml(isLookup ? data.case_number : null, false);
+
     html += '<div class="est-disclaimer">This is a projection based on DOL&#39;s recent processing pace — not a guarantee. The estimated date assumes DOL keeps clearing cases at its pace over the last 6 weeks. The range reflects DOL&#39;s faster vs. slower recent weekly pace (based on the last ~10 weeks of actual processing). It does not account for case-specific factors such as audits/RFIs, your employer&#39;s first-letter processing cohort, or policy and seasonal changes. Estimates update automatically as new DOL data comes in.</div>';
 
     resultEl.innerHTML = html;
@@ -779,5 +806,151 @@ const API_VERSION = '3';
 </script>
 
 
+<!-- il-session-check -->
+<script>
+/* Anonymous content-filter measurement: one yes/no beacon per pageview
+   (did ad content render), daily aggregate counters only. No cookies, no
+   identifiers, no IP storage — consistent with the Privacy Policy. */
+(function () {
+  'use strict';
+  try {
+    if (window.__ilSessionCheck) return;
+    window.__ilSessionCheck = 1;
+    var h = location.hostname;
+    var API = (h === 'immilane.com' || h === 'www.immilane.com')
+      ? 'https://immilane-api.younusahamad.workers.dev'
+      : 'https://immilane-api-staging.younusahamad.workers.dev';
+    var DECOY = h.slice(-9) === 'github.io'
+      ? '/perm-status-staging/ad_header.js'
+      : '/ad_header.js';
+    var sent = false;
+    var tripped = {};
+    function send() {
+      if (sent) return;
+      sent = true;
+      try {
+        var s = [];
+        for (var k in tripped) { if (tripped[k]) s.push(k); }
+        var payload = JSON.stringify({
+          b: s.length ? 1 : 0,
+          s: s,
+          p: (location.pathname || '/').slice(0, 64),
+          dv: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'm' : 'd'
+        });
+        var url = API + '/api/session-check';
+        if (!(navigator.sendBeacon && navigator.sendBeacon(url, payload))) {
+          fetch(url, { method: 'POST', body: payload, keepalive: true }).catch(function () {});
+        }
+      } catch (e) {}
+    }
+    function run() {
+      try {
+        var pending = 3;
+        function done() { pending -= 1; if (pending <= 0) send(); }
+        // Signal d: bait element using ids/classes generic filter lists hide.
+        var bait = document.createElement('div');
+        bait.id = 'adsbox';
+        bait.className = 'ad_slot sponsored-ad textAd';
+        bait.setAttribute('aria-hidden', 'true');
+        bait.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;';
+        bait.innerHTML = '&nbsp;';
+        document.body.appendChild(bait);
+        setTimeout(function () {
+          try {
+            var cs = window.getComputedStyle ? getComputedStyle(bait) : null;
+            tripped.d = !bait.offsetParent || bait.offsetHeight === 0 ||
+              !!(cs && (cs.display === 'none' || cs.visibility === 'hidden'));
+            if (bait.parentNode) { bait.parentNode.removeChild(bait); }
+          } catch (e) {}
+          done();
+        }, 350);
+        // Signal s: same-origin decoy script with a filter-listed filename.
+        var decDone = false;
+        var dec = document.createElement('script');
+        dec.async = true;
+        dec.onload = function () { if (!decDone) { decDone = true; done(); } };
+        dec.onerror = function () { if (!decDone) { decDone = true; tripped.s = true; done(); } };
+        dec.src = DECOY;
+        (document.head || document.documentElement).appendChild(dec);
+        setTimeout(function () { if (!decDone) { decDone = true; done(); } }, 2000);
+        // Signal f: the real ad-script host (also catches DNS-level filtering).
+        var fDone = false;
+        try {
+          fetch('https://monu.delivery/site/6/7/24ec8e-ce2f-4a85-ba1a-e1a4ecaea496.js', { mode: 'no-cors' })
+            .then(function () { if (!fDone) { fDone = true; done(); } },
+                  function () { if (!fDone) { fDone = true; tripped.f = true; done(); } });
+        } catch (e) { if (!fDone) { fDone = true; done(); } }
+        setTimeout(function () { if (!fDone) { fDone = true; done(); } }, 2000);
+        // Backstop: exactly one beacon per pageview no matter what.
+        setTimeout(send, 3000);
+      } catch (e) {}
+    }
+    function kick() { setTimeout(run, 200); }
+    if (document.readyState === 'complete' || document.readyState === 'interactive') { kick(); }
+    else { document.addEventListener('DOMContentLoaded', kick); }
+  } catch (e) {}
+})();
+</script>
+<!-- /il-session-check -->
+<!-- il-cw-announce START -->
+<style id="il-cw-announce-css">
+  .il-cw { position: relative; z-index: 91; display: none; background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(139,92,246,0.14)); border-bottom: 1px solid rgba(139,92,246,0.28); backdrop-filter: blur(12px); }
+  .il-cw-inner { max-width: 1200px; margin: 0 auto; padding: 9px 44px 9px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); text-decoration: none; cursor: pointer; }
+  .il-cw-badge { flex: none; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 999px; padding: 2px 9px; }
+  .il-cw-text strong { color: var(--text-primary); font-weight: 600; }
+  .il-cw-cta { flex: none; font-weight: 600; color: #8b5cf6; white-space: nowrap; }
+  .il-cw-inner:hover .il-cw-cta { text-decoration: underline; }
+  .il-cw-inner:focus-visible { outline: 2px solid var(--input-focus); outline-offset: -2px; }
+  .il-cw-close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: 1px solid transparent; border-radius: 8px; color: var(--text-muted); font-size: 16px; line-height: 1; padding: 4px 8px; cursor: pointer; }
+  .il-cw-close:hover { color: var(--text-primary); background: var(--tab-bg); }
+  .il-cw-close:focus-visible { outline: 2px solid var(--input-focus); outline-offset: 1px; }
+  @media (max-width: 768px) {
+    .il-cw-inner { font-size: 12.5px; gap: 8px; padding: 8px 40px 8px 16px; }
+  }
+</style>
+<script id="il-cw-announce-js">
+/* Case Watch announcement strip. Pure DOM + localStorage: no data dependency,
+   so the failure mode is simply "no banner". Dismissal persists for 30 days.
+   Sets window.__ilAnnounce so the data-freshness banner stands down while
+   this strip is showing (no stacked banners under the nav). */
+(function () {
+  'use strict';
+  try {
+    var KEY = 'il-cw-announce-dismissed';
+    var TTL = 30 * 24 * 60 * 60 * 1000;
+    try {
+      var ts = parseInt(localStorage.getItem(KEY), 10);
+      if (ts && (Date.now() - ts) < TTL) return;
+    } catch (e) {}
+    window.__ilAnnounce = true;
+    function dismiss(el) {
+      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+      el.remove();
+    }
+    function insert() {
+      try {
+        var nav = document.querySelector('nav');
+        if (!nav || !nav.parentNode) { window.__ilAnnounce = false; return; }
+        var el = document.createElement('div');
+        el.className = 'il-cw';
+        el.innerHTML = '<a class="il-cw-inner" href="subscribe.html">' +
+          '<span class="il-cw-badge">New</span>' +
+          '<span class="il-cw-text"><strong>Case Watch</strong> — get an email the moment your PERM case status changes.</span>' +
+          '<span class="il-cw-cta">Track my case →</span>' +
+          '</a><button type="button" class="il-cw-close" aria-label="Dismiss Case Watch announcement">&#10005;</button>';
+        el.querySelector('.il-cw-close').addEventListener('click', function (ev) {
+          ev.preventDefault(); ev.stopPropagation(); dismiss(el);
+        });
+        el.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') dismiss(el); });
+        nav.insertAdjacentElement('afterend', el);
+        el.style.display = 'block';
+      } catch (e) {}
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', insert);
+    else insert();
+  } catch (e) {}
+})();
+</script>
+<!-- il-cw-announce END -->
 </body>
 </html>

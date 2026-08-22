@@ -216,6 +216,7 @@
     <ul class="nav-links">
       <li><a href="./">Dashboard</a></li>
       <li><a href="estimate.html">Estimate</a></li>
+      <li><a href="leaderboard.html">Top Employers</a></li>
       <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
       <li><a href="guides.html" class="active">Guides</a></li>
       <li><a href="subscribe.html">Case Watch</a></li>
@@ -241,6 +242,7 @@
     <div id="mmt-a0e6cd6c-321d-4e87-97a2-f2eb855508e5"></div>
     <script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || []; $MMT.cmd.push(function(){ $MMT.display.slots.push(["a0e6cd6c-321d-4e87-97a2-f2eb855508e5"]); })</script>
     <!-- Monumetric In-Content Repeatable ad unit — END -->
+
     <h3>A quick terminology note</h3>
     <p>People often say "RFI" (Request for Information) when talking about PERM, borrowing the term from the USCIS world (where the equivalent is an RFE, Request for Evidence). In the PERM/DOL context, the formal pre-decision documentation request is the <strong>audit</strong>. Whatever label you've seen, the mechanism that matters at the labor-certification stage is the audit and its heavier cousin, supervised recruitment.</p>
 
@@ -302,5 +304,301 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
 });
 </script>
 
+
+<!-- Feedback Widget (shared across all pages) -->
+<style>
+  /* Theme vars the feedback widget relies on — values match the site design
+     system; redefining is a harmless no-op on pages that already set them. */
+  :root { --modal-bg: #0e0e1a; --modal-backdrop: rgba(0,0,0,0.65); --modal-border: rgba(255,255,255,0.08); --input-bg: rgba(255,255,255,0.06); --input-border: rgba(255,255,255,0.1); --input-focus: rgba(59,130,246,0.5); }
+  html.light { --modal-bg: #fff; --modal-backdrop: rgba(0,0,0,0.3); --modal-border: rgba(0,0,0,0.1); --input-bg: rgba(0,0,0,0.04); --input-border: rgba(0,0,0,0.12); --input-focus: rgba(59,130,246,0.4); }
+  .fb-trigger { position: fixed; bottom: 24px; right: 24px; z-index: 900; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; border-radius: 14px; padding: 12px 20px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; box-shadow: 0 4px 20px rgba(59,130,246,0.4); transition: transform 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 8px; }
+  .fb-trigger:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(59,130,246,0.5); }
+  .fb-trigger svg { width: 16px; height: 16px; }
+  .fb-backdrop { display: none; position: fixed; inset: 0; background: var(--modal-backdrop); z-index: 950; }
+  .fb-backdrop.open { display: block; }
+  .fb-modal { display: none; position: fixed; bottom: 80px; right: 24px; z-index: 960; width: 380px; max-width: calc(100vw - 32px); background: var(--modal-bg); border: 1px solid var(--modal-border); border-radius: 16px; box-shadow: 0 16px 48px rgba(0,0,0,0.4); padding: 24px; }
+  .fb-modal.open { display: block; }
+  .fb-modal-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .fb-modal-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+  .fb-close { position: absolute; top: 14px; right: 14px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; line-height: 1; padding: 4px; }
+  .fb-close:hover { color: var(--text-primary); }
+  .fb-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+  .fb-field { margin-bottom: 14px; }
+  .fb-select, .fb-textarea, .fb-input { width: 100%; font-family: inherit; font-size: 13px; color: var(--text-primary); background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 10px; padding: 10px 12px; transition: border-color 0.2s; outline: none; }
+  .fb-select:focus, .fb-textarea:focus, .fb-input:focus { border-color: var(--input-focus); }
+  .fb-textarea { resize: vertical; min-height: 90px; max-height: 200px; }
+  .fb-select { cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+  .fb-select option { background: var(--modal-bg); color: var(--text-primary); }
+  .fb-hint { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+  .fb-submit { width: 100%; padding: 11px; border: none; border-radius: 10px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+  .fb-submit:hover { opacity: 0.9; }
+  .fb-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+  .fb-success { text-align: center; padding: 20px 0; }
+  .fb-success-icon { font-size: 36px; margin-bottom: 8px; }
+  .fb-success-msg { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .fb-success-sub { font-size: 12px; color: var(--text-muted); }
+  .fb-error { font-size: 12px; color: #ef4444; margin-bottom: 10px; display: none; }
+  @media (max-width: 480px) {
+    .fb-trigger { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 12px; border-radius: 12px; }
+    .fb-modal { bottom: 70px; right: 16px; padding: 20px; }
+  }
+</style>
+
+<!-- Feedback Widget -->
+<button class="fb-trigger" id="fb-trigger" aria-label="Send feedback">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  Feedback
+</button>
+<div class="fb-backdrop" id="fb-backdrop"></div>
+<div class="fb-modal" id="fb-modal" role="dialog" aria-modal="true">
+  <button class="fb-close" id="fb-close" aria-label="Close feedback">&times;</button>
+  <div id="fb-form-view">
+    <div class="fb-modal-title">Send Feedback</div>
+    <div class="fb-modal-sub">We value your feedback and will work on every suggestion to improve how we serve you.</div>
+    <div class="fb-error" id="fb-error"></div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-type">Category</label>
+      <select class="fb-select" id="fb-type">
+        <option value="">Select a category...</option>
+        <option value="feature_request">New Feature Request</option>
+        <option value="bug_report">Bug Report</option>
+        <option value="incorrect_data">Incorrect Data</option>
+        <option value="general">General Feedback</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-message">Your feedback</label>
+      <textarea class="fb-textarea" id="fb-message" placeholder="Tell us what's on your mind..." maxlength="2000"></textarea>
+    </div>
+    <div class="fb-field">
+      <label class="fb-label" for="fb-email">Email <span style="font-weight:400;color:var(--text-dim)">(optional)</span></label>
+      <input class="fb-input" id="fb-email" type="email" placeholder="you@example.com">
+      <div class="fb-hint">Only needed if you'd like us to follow up.</div>
+    </div>
+    <button class="fb-submit" id="fb-submit">Submit Feedback</button>
+  </div>
+  <div id="fb-success-view" class="fb-success" style="display:none">
+    <div class="fb-success-icon">&#10003;</div>
+    <div class="fb-success-msg">Thank you!</div>
+    <div class="fb-success-sub">Your feedback has been received.</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var h = window.location.hostname;
+  var API = h === 'localhost' || h === '127.0.0.1' ? 'http://127.0.0.1:8787'
+    : h === 'immilane.com' || h === 'www.immilane.com' ? 'https://immilane-api.younusahamad.workers.dev'
+    : 'https://immilane-api-staging.younusahamad.workers.dev';
+
+  var trigger = document.getElementById('fb-trigger');
+  var backdrop = document.getElementById('fb-backdrop');
+  var modal = document.getElementById('fb-modal');
+  var closeBtn = document.getElementById('fb-close');
+  var submitBtn = document.getElementById('fb-submit');
+  var formView = document.getElementById('fb-form-view');
+  var successView = document.getElementById('fb-success-view');
+  var errorEl = document.getElementById('fb-error');
+
+  function open() { backdrop.classList.add('open'); modal.classList.add('open'); }
+  function close() { backdrop.classList.remove('open'); modal.classList.remove('open'); }
+  function reset() {
+    formView.style.display = '';
+    successView.style.display = 'none';
+    errorEl.style.display = 'none';
+    document.getElementById('fb-type').value = '';
+    document.getElementById('fb-message').value = '';
+    document.getElementById('fb-email').value = '';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Feedback';
+  }
+
+  trigger.addEventListener('click', function() { reset(); open(); });
+  backdrop.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+
+  submitBtn.addEventListener('click', function() {
+    errorEl.style.display = 'none';
+    var type = document.getElementById('fb-type').value;
+    var message = document.getElementById('fb-message').value.trim();
+    var email = document.getElementById('fb-email').value.trim();
+
+    if (!type) { showErr('Please select a category.'); return; }
+    if (!message) { showErr('Please enter your feedback.'); return; }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('Please enter a valid email.'); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    fetch(API + '/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: type, message: message, email: email || undefined })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (!res.ok) { showErr(res.data.error ? res.data.error.message : 'Something went wrong.'); submitBtn.disabled = false; submitBtn.textContent = 'Submit Feedback'; return; }
+      formView.style.display = 'none';
+      successView.style.display = '';
+      setTimeout(close, 2500);
+    })
+    .catch(function() {
+      showErr('Network error. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Feedback';
+    });
+  });
+
+  function showErr(msg) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
+})();
+</script>
+
+<!-- il-session-check -->
+<script>
+/* Anonymous content-filter measurement: one yes/no beacon per pageview
+   (did ad content render), daily aggregate counters only. No cookies, no
+   identifiers, no IP storage — consistent with the Privacy Policy. */
+(function () {
+  'use strict';
+  try {
+    if (window.__ilSessionCheck) return;
+    window.__ilSessionCheck = 1;
+    var h = location.hostname;
+    var API = (h === 'immilane.com' || h === 'www.immilane.com')
+      ? 'https://immilane-api.younusahamad.workers.dev'
+      : 'https://immilane-api-staging.younusahamad.workers.dev';
+    var DECOY = h.slice(-9) === 'github.io'
+      ? '/perm-status-staging/ad_header.js'
+      : '/ad_header.js';
+    var sent = false;
+    var tripped = {};
+    function send() {
+      if (sent) return;
+      sent = true;
+      try {
+        var s = [];
+        for (var k in tripped) { if (tripped[k]) s.push(k); }
+        var payload = JSON.stringify({
+          b: s.length ? 1 : 0,
+          s: s,
+          p: (location.pathname || '/').slice(0, 64),
+          dv: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'm' : 'd'
+        });
+        var url = API + '/api/session-check';
+        if (!(navigator.sendBeacon && navigator.sendBeacon(url, payload))) {
+          fetch(url, { method: 'POST', body: payload, keepalive: true }).catch(function () {});
+        }
+      } catch (e) {}
+    }
+    function run() {
+      try {
+        var pending = 3;
+        function done() { pending -= 1; if (pending <= 0) send(); }
+        // Signal d: bait element using ids/classes generic filter lists hide.
+        var bait = document.createElement('div');
+        bait.id = 'adsbox';
+        bait.className = 'ad_slot sponsored-ad textAd';
+        bait.setAttribute('aria-hidden', 'true');
+        bait.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;';
+        bait.innerHTML = '&nbsp;';
+        document.body.appendChild(bait);
+        setTimeout(function () {
+          try {
+            var cs = window.getComputedStyle ? getComputedStyle(bait) : null;
+            tripped.d = !bait.offsetParent || bait.offsetHeight === 0 ||
+              !!(cs && (cs.display === 'none' || cs.visibility === 'hidden'));
+            if (bait.parentNode) { bait.parentNode.removeChild(bait); }
+          } catch (e) {}
+          done();
+        }, 350);
+        // Signal s: same-origin decoy script with a filter-listed filename.
+        var decDone = false;
+        var dec = document.createElement('script');
+        dec.async = true;
+        dec.onload = function () { if (!decDone) { decDone = true; done(); } };
+        dec.onerror = function () { if (!decDone) { decDone = true; tripped.s = true; done(); } };
+        dec.src = DECOY;
+        (document.head || document.documentElement).appendChild(dec);
+        setTimeout(function () { if (!decDone) { decDone = true; done(); } }, 2000);
+        // Signal f: the real ad-script host (also catches DNS-level filtering).
+        var fDone = false;
+        try {
+          fetch('https://monu.delivery/site/6/7/24ec8e-ce2f-4a85-ba1a-e1a4ecaea496.js', { mode: 'no-cors' })
+            .then(function () { if (!fDone) { fDone = true; done(); } },
+                  function () { if (!fDone) { fDone = true; tripped.f = true; done(); } });
+        } catch (e) { if (!fDone) { fDone = true; done(); } }
+        setTimeout(function () { if (!fDone) { fDone = true; done(); } }, 2000);
+        // Backstop: exactly one beacon per pageview no matter what.
+        setTimeout(send, 3000);
+      } catch (e) {}
+    }
+    function kick() { setTimeout(run, 200); }
+    if (document.readyState === 'complete' || document.readyState === 'interactive') { kick(); }
+    else { document.addEventListener('DOMContentLoaded', kick); }
+  } catch (e) {}
+})();
+</script>
+<!-- /il-session-check -->
+<!-- il-cw-announce START -->
+<style id="il-cw-announce-css">
+  .il-cw { position: relative; z-index: 91; display: none; background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(139,92,246,0.14)); border-bottom: 1px solid rgba(139,92,246,0.28); backdrop-filter: blur(12px); }
+  .il-cw-inner { max-width: 1200px; margin: 0 auto; padding: 9px 44px 9px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); text-decoration: none; cursor: pointer; }
+  .il-cw-badge { flex: none; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 999px; padding: 2px 9px; }
+  .il-cw-text strong { color: var(--text-primary); font-weight: 600; }
+  .il-cw-cta { flex: none; font-weight: 600; color: #8b5cf6; white-space: nowrap; }
+  .il-cw-inner:hover .il-cw-cta { text-decoration: underline; }
+  .il-cw-inner:focus-visible { outline: 2px solid var(--input-focus); outline-offset: -2px; }
+  .il-cw-close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: 1px solid transparent; border-radius: 8px; color: var(--text-muted); font-size: 16px; line-height: 1; padding: 4px 8px; cursor: pointer; }
+  .il-cw-close:hover { color: var(--text-primary); background: var(--tab-bg); }
+  .il-cw-close:focus-visible { outline: 2px solid var(--input-focus); outline-offset: 1px; }
+  @media (max-width: 768px) {
+    .il-cw-inner { font-size: 12.5px; gap: 8px; padding: 8px 40px 8px 16px; }
+  }
+</style>
+<script id="il-cw-announce-js">
+/* Case Watch announcement strip. Pure DOM + localStorage: no data dependency,
+   so the failure mode is simply "no banner". Dismissal persists for 30 days.
+   Sets window.__ilAnnounce so the data-freshness banner stands down while
+   this strip is showing (no stacked banners under the nav). */
+(function () {
+  'use strict';
+  try {
+    var KEY = 'il-cw-announce-dismissed';
+    var TTL = 30 * 24 * 60 * 60 * 1000;
+    try {
+      var ts = parseInt(localStorage.getItem(KEY), 10);
+      if (ts && (Date.now() - ts) < TTL) return;
+    } catch (e) {}
+    window.__ilAnnounce = true;
+    function dismiss(el) {
+      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+      el.remove();
+    }
+    function insert() {
+      try {
+        var nav = document.querySelector('nav');
+        if (!nav || !nav.parentNode) { window.__ilAnnounce = false; return; }
+        var el = document.createElement('div');
+        el.className = 'il-cw';
+        el.innerHTML = '<a class="il-cw-inner" href="subscribe.html">' +
+          '<span class="il-cw-badge">New</span>' +
+          '<span class="il-cw-text"><strong>Case Watch</strong> — get an email the moment your PERM case status changes.</span>' +
+          '<span class="il-cw-cta">Track my case →</span>' +
+          '</a><button type="button" class="il-cw-close" aria-label="Dismiss Case Watch announcement">&#10005;</button>';
+        el.querySelector('.il-cw-close').addEventListener('click', function (ev) {
+          ev.preventDefault(); ev.stopPropagation(); dismiss(el);
+        });
+        el.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') dismiss(el); });
+        nav.insertAdjacentElement('afterend', el);
+        el.style.display = 'block';
+      } catch (e) {}
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', insert);
+    else insert();
+  } catch (e) {}
+})();
+</script>
+<!-- il-cw-announce END -->
 </body>
 </html>
