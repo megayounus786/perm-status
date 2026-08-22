@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-22T09:06:37-04:00",
+  "updatedAt": "2026-08-22T12:06:37-04:00",
   "backlog": {
-    "total": 99916,
+    "total": 99814,
     "startOfMonth": 109034,
     "thisMonth": {
       "name": "Aug 2026",
-      "processed": 15139,
+      "processed": 15241,
       "intake": 6021
     },
     "lastMonth": {
@@ -23,10 +23,10 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 87,
-    "certified": 79,
-    "rfi": 0,
-    "denied": 0,
+    "total": 189,
+    "certified": 166,
+    "rfi": 12,
+    "denied": 3,
     "withdrawn": 8,
     "stillUpdating": false,
     "yesterday": {
@@ -38,15 +38,15 @@
     }
   },
   "dol": {
-    "label": "Sep '25",
-    "monthFull": "September",
-    "day": 67,
+    "label": "Oct '25",
+    "monthFull": "October",
+    "day": 14,
     "daysInMonth": 100,
-    "estFinish": "Aug 31",
-    "movementPerWeek": 8.0,
-    "casesRemaining": 3970,
-    "latestLetter": "V",
-    "pctProcessed": 67
+    "estFinish": "Aug 28",
+    "movementPerWeek": 30.1,
+    "casesRemaining": 410,
+    "latestLetter": "T",
+    "pctProcessed": 14
   },
   "timeline": [
     {
@@ -151,38 +151,40 @@
     {
       "label": "Aug '25",
       "total": 9946,
-      "certified": 8324,
-      "review": 684,
+      "certified": 8355,
+      "review": 653,
       "withdrawn": 468,
       "denied": 151,
       "rfi": 297,
       "status": "done",
-      "processedPct": 88.2
+      "processedPct": 88.5,
+      "todayProcessed": 31
     },
     {
       "label": "Sep '25",
       "total": 13643,
-      "certified": 8778,
-      "review": 3970,
+      "certified": 8827,
+      "review": 3906,
       "withdrawn": 525,
-      "denied": 68,
-      "rfi": 279,
-      "status": "active",
-      "processedPct": 66.9,
-      "dolDay": 67,
-      "dolDays": 100,
-      "todayProcessed": 15
+      "denied": 71,
+      "rfi": 291,
+      "status": "processing",
+      "processedPct": 67.4,
+      "todayProcessed": 79
     },
     {
       "label": "Oct '25",
       "total": 512,
-      "certified": 0,
-      "review": 417,
+      "certified": 71,
+      "review": 410,
       "withdrawn": 31,
       "denied": 0,
       "rfi": 0,
-      "status": "pending",
-      "processedPct": 0
+      "status": "active",
+      "processedPct": 13.9,
+      "dolDay": 14,
+      "dolDays": 100,
+      "todayProcessed": 71
     },
     {
       "label": "Nov '25",
@@ -530,10 +532,10 @@
     },
     {
       "date": "2026-08-22",
-      "total": 87,
-      "certified": 79,
-      "rfi": 0,
-      "denied": 0,
+      "total": 189,
+      "certified": 166,
+      "rfi": 12,
+      "denied": 3,
       "withdrawn": 8
     }
   ],
@@ -628,10 +630,10 @@
     },
     {
       "weekStart": "2026-08-17",
-      "total": 4429,
-      "certified": 4034,
-      "rfi": 213,
-      "denied": 170,
+      "total": 4531,
+      "certified": 4121,
+      "rfi": 225,
+      "denied": 173,
       "withdrawn": 12,
       "partial": true
     }
@@ -639,115 +641,28 @@
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Aug",
-      "subtitle": "August 2025 filings \u00b7 9,924 total",
-      "certified": 8324,
-      "review": 684,
-      "withdrawn": 468,
-      "rfi": 297,
-      "denied": 151
+      "tabLabel": "Sep",
+      "subtitle": "September 2025 filings \u00b7 13,620 total",
+      "certified": 8827,
+      "review": 3906,
+      "withdrawn": 525,
+      "rfi": 291,
+      "denied": 71
     },
     {
       "tabKey": "next",
-      "tabLabel": "Sep",
-      "subtitle": "September 2025 filings \u00b7 13,620 total",
-      "certified": 8778,
-      "review": 3970,
-      "withdrawn": 525,
-      "rfi": 279,
-      "denied": 68
+      "tabLabel": "Oct",
+      "subtitle": "October 2025 filings \u00b7 512 total",
+      "certified": 71,
+      "review": 410,
+      "withdrawn": 31,
+      "rfi": 0,
+      "denied": 0
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Aug '25",
-      "subtitle": "August 2025",
-      "list": [
-        {
-          "name": "Stoughton Trailers, LLC",
-          "count": 186
-        },
-        {
-          "name": "JCG Foods of Georgia, LLC",
-          "count": 99
-        },
-        {
-          "name": "SDC Restaurants LLC",
-          "count": 87
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 87
-        },
-        {
-          "name": "Management Health Systems, LLC",
-          "count": 79
-        },
-        {
-          "name": "Salesforce, Inc.",
-          "count": 59
-        },
-        {
-          "name": "Tesla, Inc.",
-          "count": 50
-        },
-        {
-          "name": "ByteDance Inc.",
-          "count": 44
-        },
-        {
-          "name": "Hoosier Care Inc.",
-          "count": 43
-        },
-        {
-          "name": "ARIZONA RESTAURANT COMPANY, LLC",
-          "count": 41
-        },
-        {
-          "name": "WEN NEW MEXICO, LLC",
-          "count": 40
-        },
-        {
-          "name": "Ernst & Young U.S. LLP",
-          "count": 40
-        },
-        {
-          "name": "Citibank, N.A.",
-          "count": 38
-        },
-        {
-          "name": "Synsus Private Label Partners, LLC",
-          "count": 35
-        },
-        {
-          "name": "TikTok Inc.",
-          "count": 34
-        },
-        {
-          "name": "Snowflake Inc.",
-          "count": 34
-        },
-        {
-          "name": "Adobe Inc. ",
-          "count": 34
-        },
-        {
-          "name": "Hexaware Technologies, Inc.",
-          "count": 33
-        },
-        {
-          "name": "Cadence Design Systems, Inc.",
-          "count": 33
-        },
-        {
-          "name": "Uber Technologies, Inc.",
-          "count": 32
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Sep '25",
       "subtitle": "September 2025",
       "list": [
@@ -830,6 +745,93 @@
         {
           "name": "ServiceNow, Inc.",
           "count": 44
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Oct '25",
+      "subtitle": "October 2025",
+      "list": [
+        {
+          "name": "Amazon Development Center U.S., Inc.",
+          "count": 13
+        },
+        {
+          "name": "Intuit Inc.",
+          "count": 11
+        },
+        {
+          "name": "Roblox Corporation",
+          "count": 10
+        },
+        {
+          "name": "Northwestern Memorial HealthCare",
+          "count": 10
+        },
+        {
+          "name": "The Kroger Company",
+          "count": 6
+        },
+        {
+          "name": "NVIDIA Corporation",
+          "count": 6
+        },
+        {
+          "name": "FPT USA Corporation",
+          "count": 6
+        },
+        {
+          "name": "Century Site Services, LLC",
+          "count": 6
+        },
+        {
+          "name": "Amazon.com Services LLC",
+          "count": 6
+        },
+        {
+          "name": "ServiceNow, Inc.",
+          "count": 5
+        },
+        {
+          "name": "Palo Alto Networks, Inc.",
+          "count": 5
+        },
+        {
+          "name": "JG Complete Landscaping Services, Inc.",
+          "count": 5
+        },
+        {
+          "name": "Coastal Greenery, Inc.",
+          "count": 5
+        },
+        {
+          "name": "Caterpillar Inc.",
+          "count": 5
+        },
+        {
+          "name": "Siemens Energy Inc ",
+          "count": 4
+        },
+        {
+          "name": "HSTechnologies LLC",
+          "count": 4
+        },
+        {
+          "name": "iBrain Technologies, Inc.",
+          "count": 3
+        },
+        {
+          "name": "Verizon Communications, Inc. and all its subsidiaries and affiliates",
+          "count": 3
+        },
+        {
+          "name": "United Services Automobile Association",
+          "count": 3
+        },
+        {
+          "name": "Twilio, Inc.",
+          "count": 3
         }
       ]
     }
