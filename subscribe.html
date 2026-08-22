@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <title>Case Watch — PERM Case Update Emails | ImmiLane</title>
 <meta name="description" content="Get AI-generated PERM case-summary emails: daily or weekly digests with your case status, position vs the DOL frontier, estimated decision date, and status-change alerts within hours of a DOL update.">
-<meta name="robots" content="noindex"><!-- TEMP: unlinked soft-launch, remove when Case Watch goes public -->
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -470,6 +469,48 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
 
 const API_BASE = 'https://api.immilane.com';
 const CASE_RE = /^G-(100|200|300)-\d{5}-\d{6}$/;
+
+/* Funnel beacon. First-party only — no third-party script, no cookie, no
+   address ever leaves this page (the server hashes what it needs). The
+   session id is per-tab (sessionStorage) purely so the two pre-form steps
+   can be joined into one visit; it dies with the tab. Honours Do Not Track:
+   the pageview still counts, but the server stores no IP or user agent. */
+const IL_TRACK = (function () {
+  var sid;
+  try {
+    sid = sessionStorage.getItem('il_sid');
+    if (!sid) {
+      sid = (crypto.randomUUID ? crypto.randomUUID()
+                               : String(Date.now()) + Math.random().toString(36).slice(2));
+      sessionStorage.setItem('il_sid', sid);
+    }
+  } catch (e) { sid = null; }        /* private mode — still count the view */
+  var q = new URLSearchParams(location.search);
+  return function (event, plan) {
+    try {
+      var body = JSON.stringify({
+        event: event, plan: plan || null, session_id: sid,
+        path: location.pathname, referrer: document.referrer || null,
+        dnt: (navigator.doNotTrack === '1' || window.doNotTrack === '1') ? 1 : 0,
+        utm_source: q.get('utm_source'), utm_medium: q.get('utm_medium'),
+        utm_campaign: q.get('utm_campaign')
+      });
+      /* sendBeacon survives the page unload that follows a plan click, but it
+         cannot complete a preflighted request: an application/json body makes
+         the request non-simple, so the browser sends the OPTIONS and then
+         silently drops the POST. text/plain is CORS-safelisted, so there is no
+         preflight and the body still arrives as JSON (the server parses it
+         regardless of the declared type). */
+      if (navigator.sendBeacon)
+        navigator.sendBeacon(API_BASE + '/subs/track',
+                             new Blob([body], {type: 'text/plain;charset=UTF-8'}));
+      else
+        fetch(API_BASE + '/subs/track', {method: 'POST', keepalive: true,
+          headers: {'Content-Type': 'text/plain;charset=UTF-8'}, body: body});
+    } catch (e) { /* analytics must never break the page */ }
+  };
+})();
+IL_TRACK('page_view');
 const PLAN_LABELS = {
   daily: 'Daily Digest — $8.99/mo',
   weekly: 'Weekly Digest — $4.99/mo',
@@ -552,6 +593,7 @@ document.querySelectorAll('.plan-cta').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     document.querySelector('input[name=cadence][value="' + this.dataset.cadence + '"]').checked = true;
+    IL_TRACK('plan_selected', this.dataset.cadence);
     refreshPlanUI();
     document.getElementById('register').scrollIntoView({behavior: 'smooth'});
   });
@@ -674,7 +716,10 @@ document.getElementById('submit').addEventListener('click', async function() {
       const r = await fetch(API_BASE + '/subs/checkout', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email, case_number: caseNumber, cadence})
+        body: JSON.stringify({email, case_number: caseNumber, cadence,
+                              session_id: (function () {
+                                try { return sessionStorage.getItem('il_sid'); }
+                                catch (e) { return null; } })()})
       });
       let data = await r.json();
       if (r.status === 409 && data.state) {
