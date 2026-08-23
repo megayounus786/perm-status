@@ -14,14 +14,9 @@
 <meta property="og:url" content="https://immilane.com/subscribe">
 <meta property="og:site_name" content="ImmiLane">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://immilane.com/assets/og-case-watch.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ImmiLane Case Watch — a sample PERM case-status digest email.">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Case Watch — PERM Case Update Emails">
 <meta name="twitter:description" content="Your PERM case status, queue position and estimated decision date, emailed daily or weekly from DOL public case data.">
-<meta name="twitter:image" content="https://immilane.com/assets/og-case-watch.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
@@ -128,25 +123,12 @@
   }
 
   /* Sticky nav is ~65px tall — keep #anchor jumps from landing underneath it. */
-  #pricing, #faq, #register, #trial, #manage, #digest-preview { scroll-margin-top: 84px; }
+  #pricing, #faq, #register, #trial, #manage { scroll-margin-top: 84px; }
 
   /* ── Hero CTA row (the free sample is the low-friction path) ─────────── */
   .hero-cta-row { position: relative; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 26px; }
   .hero-cta-row .btn { text-decoration: none; }
   .hero-cta-note { position: relative; margin: 12px auto 0; max-width: 520px; font-size: 12.5px; line-height: 1.55; color: var(--text-muted); }
-
-  /* ── Digest preview (show the product, don't just describe it) ───────── */
-  .digest-preview { padding: 42px 0 4px; }
-  .digest-preview-head { text-align: center; margin-bottom: 22px; }
-  .digest-preview-head h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
-  .digest-preview-head p { margin: 8px auto 0; max-width: 560px; font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
-  .digest-frame { max-width: 520px; margin: 0 auto; border-radius: 16px; border: 1px solid var(--card-border); background: var(--card-bg); padding: 10px; box-shadow: var(--plan-shadow); }
-  .digest-frame img { display: block; width: 100%; height: auto; border-radius: 9px; }
-  .digest-caption { text-align: center; margin: 12px auto 0; max-width: 520px; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
-  @media (max-width: 768px) {
-    .digest-preview { padding: 34px 0 4px; }
-    .digest-preview-head h3 { font-size: 19px; }
-  }
 
   /* ── FAQ (collapsed by default so it never buries the signup form) ───── */
   .faq { padding: 34px 0 0; max-width: 720px; margin: 0 auto; }
@@ -349,23 +331,6 @@
     </div>
     <div class="prefill-note" id="prefill-note"></div>
   </header>
-
-  <!-- ── What the email actually looks like ───────────────────────────── -->
-  <section class="digest-preview" id="digest-preview">
-    <div class="digest-preview-head">
-      <span class="feature-eyebrow">What lands in your inbox</span>
-      <h3>This is the email</h3>
-      <p>Not a notification that "something changed" — a written summary of where your
-      case stands, rebuilt from DOL's public case data on every scan.</p>
-    </div>
-    <div class="digest-frame">
-      <img src="assets/case-watch-digest-preview.png" loading="lazy" decoding="async"
-           width="800" height="985"
-           alt="Sample Case Watch daily digest email: case number and employer, an Analyst Review status badge with a plain-English explanation, a &quot;where you stand&quot; section showing the DOL frontier date and cases ahead, an estimated decision date with a likely window, and DOL's certified, denied and RFI counts for the last 24 hours.">
-    </div>
-    <p class="digest-caption">An actual Case Watch daily digest, trimmed for length — the case number
-    has been swapped for a placeholder.</p>
-  </section>
 
   <!-- ── Pricing ──────────────────────────────────────────────────────── -->
   <section class="pricing" id="pricing">
@@ -1157,7 +1122,7 @@ document.getElementById('manage-submit').addEventListener('click', async functio
     }, s * 1000);
   });
 
-  var sections = ['digest-preview', 'pricing', 'faq', 'register', 'trial'];
+  var sections = ['pricing', 'faq', 'register', 'trial'];
   var seen = {};
   if (window.IntersectionObserver) {
     var obs = new IntersectionObserver(function(entries) {
