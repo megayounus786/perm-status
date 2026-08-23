@@ -7,7 +7,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <title>Case Watch — PERM Case Update Emails | ImmiLane</title>
 <meta name="description" content="Get AI-generated PERM case-summary emails: daily or weekly digests with your case status, position vs the DOL frontier, estimated decision date, and status-change alerts within hours of a DOL update.">
-<meta name="robots" content="noindex"><!-- STAGING: remove before prod -->
+<link rel="canonical" href="https://immilane.com/subscribe">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Case Watch — PERM Case Update Emails | ImmiLane">
+<meta property="og:description" content="Register your PERM case once. We watch DOL's public case data and email you a plain-English summary: your status, queue position, cases ahead, and an estimated decision date — plus status-change alerts within hours.">
+<meta property="og:url" content="https://immilane.com/subscribe">
+<meta property="og:site_name" content="ImmiLane">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://immilane.com/assets/og-case-watch.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ImmiLane Case Watch — a sample PERM case-status digest email.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Case Watch — PERM Case Update Emails">
+<meta name="twitter:description" content="Your PERM case status, queue position and estimated decision date, emailed daily or weekly from DOL public case data.">
+<meta name="twitter:image" content="https://immilane.com/assets/og-case-watch.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,6 +126,40 @@
     .hero-alert { border-radius: 16px; text-align: left; }
     .beta-banner { margin-top: 24px; }
   }
+
+  /* Sticky nav is ~65px tall — keep #anchor jumps from landing underneath it. */
+  #pricing, #faq, #register, #trial, #manage, #digest-preview { scroll-margin-top: 84px; }
+
+  /* ── Hero CTA row (the free sample is the low-friction path) ─────────── */
+  .hero-cta-row { position: relative; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 26px; }
+  .hero-cta-row .btn { text-decoration: none; }
+  .hero-cta-note { position: relative; margin: 12px auto 0; max-width: 520px; font-size: 12.5px; line-height: 1.55; color: var(--text-muted); }
+
+  /* ── Digest preview (show the product, don't just describe it) ───────── */
+  .digest-preview { padding: 42px 0 4px; }
+  .digest-preview-head { text-align: center; margin-bottom: 22px; }
+  .digest-preview-head h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
+  .digest-preview-head p { margin: 8px auto 0; max-width: 560px; font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
+  .digest-frame { max-width: 520px; margin: 0 auto; border-radius: 16px; border: 1px solid var(--card-border); background: var(--card-bg); padding: 10px; box-shadow: var(--plan-shadow); }
+  .digest-frame img { display: block; width: 100%; height: auto; border-radius: 9px; }
+  .digest-caption { text-align: center; margin: 12px auto 0; max-width: 520px; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
+  @media (max-width: 768px) {
+    .digest-preview { padding: 34px 0 4px; }
+    .digest-preview-head h3 { font-size: 19px; }
+  }
+
+  /* ── FAQ (collapsed by default so it never buries the signup form) ───── */
+  .faq { padding: 34px 0 0; max-width: 720px; margin: 0 auto; }
+  .faq-head { text-align: center; margin-bottom: 18px; }
+  .faq-head h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+  .faq details { border: 1px solid var(--card-border); background: var(--card-bg); border-radius: 12px; margin-bottom: 9px; }
+  .faq summary { cursor: pointer; list-style: none; padding: 14px 44px 14px 18px; font-size: 14.5px; font-weight: 600; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 19px; font-weight: 400; line-height: 1; color: var(--text-muted); }
+  .faq details[open] summary::after { content: '\2212'; }
+  .faq details p { margin: 0; padding: 0 18px 15px; font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); }
+  .faq details p a { color: #60a5fa; }
+  html.light .faq details p a { color: #2563eb; }
 
   /* ── Pricing ─────────────────────────────────────────────────────────── */
   .pricing { padding: 44px 0 8px; }
@@ -256,7 +306,7 @@
       <li><a href="leaderboard.html">Top Employers</a></li>
       <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
       <li><a href="guides.html">Guides</a></li>
-      <li><a href="subscribe.html" class="active">Case Watch</a></li>
+      <li><a href="subscribe" class="active">Case Watch</a></li>
     </ul>
     <div class="nav-utils"><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">&#127769;</span><span class="theme-toggle-icon sun">&#9728;&#65039;</span></button></div>
   </div>
@@ -279,6 +329,14 @@
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12L13 2Z"/></svg>
       <span><strong>Status-change alerts on every plan</strong> — we check DOL multiple times a day and email you within hours of your status changing.</span>
     </div>
+    <!-- The free sample is the cheapest thing a cold visitor can say yes to,
+         but its section sits far down the page — this lifts it into the hero.
+         One form, one anchor: this jumps to #trial, it does not duplicate it. -->
+    <div class="hero-cta-row">
+      <a class="btn btn-primary" href="#pricing">See plans &amp; pricing</a>
+      <a class="btn btn-secondary" href="#trial" id="hero-sample-cta">See a free sample for my case</a>
+    </div>
+    <p class="hero-cta-note">The sample is one real digest built from your own case data — no card, no subscription.</p>
     <!-- Shown ONLY when the backend confirms billing is off (free beta).
          With billing on this stays hidden — copy must never contradict a
          live paid checkout. -->
@@ -291,6 +349,23 @@
     </div>
     <div class="prefill-note" id="prefill-note"></div>
   </header>
+
+  <!-- ── What the email actually looks like ───────────────────────────── -->
+  <section class="digest-preview" id="digest-preview">
+    <div class="digest-preview-head">
+      <span class="feature-eyebrow">What lands in your inbox</span>
+      <h3>This is the email</h3>
+      <p>Not a notification that "something changed" — a written summary of where your
+      case stands, rebuilt from DOL's public case data on every scan.</p>
+    </div>
+    <div class="digest-frame">
+      <img src="assets/case-watch-digest-preview.png" loading="lazy" decoding="async"
+           width="800" height="985"
+           alt="Sample Case Watch daily digest email: case number and employer, an Analyst Review status badge with a plain-English explanation, a &quot;where you stand&quot; section showing the DOL frontier date and cases ahead, an estimated decision date with a likely window, and DOL's certified, denied and RFI counts for the last 24 hours.">
+    </div>
+    <p class="digest-caption">An actual Case Watch daily digest, trimmed for length — the case number
+    has been swapped for a placeholder.</p>
+  </section>
 
   <!-- ── Pricing ──────────────────────────────────────────────────────── -->
   <section class="pricing" id="pricing">
@@ -345,8 +420,62 @@
         <button type="button" class="plan-cta" data-cadence="alerts">Choose Alerts Only</button>
       </label>
     </div>
-    <p class="pricing-fineprint">Prices shown are launch pricing. One subscription watches one PERM case —
+    <p class="pricing-fineprint">One subscription watches one PERM case —
     you can add separate subscriptions for additional cases anytime.</p>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+  <!-- Collapsed by default: answers the price objection where it forms without
+       pushing the signup form down the page. Every answer restates something
+       already stated elsewhere on this page, in Terms, or in the Refund policy. -->
+  <section class="faq" id="faq">
+    <div class="faq-head">
+      <span class="feature-eyebrow">Before you decide</span>
+      <h3>Common questions</h3>
+    </div>
+
+    <details>
+      <summary>Where does the information come from?</summary>
+      <p>From <a href="https://flag.dol.gov/" target="_blank" rel="noopener">DOL's public
+      case-status data</a>. We scan it, work out where your case sits relative to the cases DOL
+      is certifying right now, and write it up in plain English. The emails are informational
+      summaries — not legal advice.</p>
+    </details>
+
+    <details>
+      <summary>What if my case isn't in DOL's system yet?</summary>
+      <p>We'll tell you that outright and keep checking automatically — we never guess a status.
+      Once the case appears in DOL's data, your emails start covering it.</p>
+    </details>
+
+    <details>
+      <summary>How do I cancel?</summary>
+      <p>Cancel any time, no phone call or email required. Every Case Watch email has a one-click
+      unsubscribe, or use the <a href="#manage">manage section</a> below: enter your email, we send
+      a secure sign-in link, and you can change plans or unsubscribe from there. No password.
+      Cancelling stops all future charges; you keep receiving emails through the end of the period
+      you've already paid for. Full detail is in our
+      <a href="refund.html">refund &amp; cancellation policy</a>.</p>
+    </details>
+
+    <details>
+      <summary>Does one subscription cover more than one case?</summary>
+      <p>No — one subscription watches one PERM case. If you're following more than one, register
+      each case separately. The same email address is fine for all of them.</p>
+    </details>
+
+    <details>
+      <summary>How quickly do status-change alerts arrive?</summary>
+      <p>Status-change alerts are included on every plan, including Change Alerts Only. We scan
+      DOL's system several times a day and email you within hours of your status changing.</p>
+    </details>
+
+    <details>
+      <summary>Am I charged as soon as I sign up?</summary>
+      <p>No. You get a verification email first. You confirm your case details there before
+      anything is charged, and payment is handled by Stripe. Plans then renew monthly until you
+      cancel.</p>
+    </details>
   </section>
 
   <!-- ── Checkout return banner (shown after Stripe redirects back) ───── -->
@@ -514,6 +643,17 @@ const IL_TRACK = (function () {
   };
 })();
 IL_TRACK('page_view');
+
+/* GA4 funnel events. Same defensive house style as index.html: bail if the
+   gtag stub never loaded (blocked/offline) and never let analytics throw into
+   the page. Plan name + displayed price only — the email address, the case
+   number and every other user-entered value stay on this page. */
+function GA(name, params) {
+  if (typeof gtag !== 'function') return;
+  try { gtag('event', name, params || {}); } catch (e) {}
+}
+const GA_PLAN = {daily: 'daily', weekly: 'weekly', alerts: 'alerts_only'};
+
 const PLAN_LABELS = {
   daily: 'Daily Digest — $8.99/mo',
   weekly: 'Weekly Digest — $4.99/mo',
@@ -575,7 +715,7 @@ function applyBillingUI() {
     b.innerHTML = '<strong>Payment received — your Case Watch subscription is active!</strong><br>' +
       'Your email and case were already verified before checkout, so there’s nothing else to do — ' +
       'updates for your case start with the next scan. You can change plans or cancel anytime from ' +
-      '<a href="subscribe.html#manage">Manage subscriptions</a>.';
+      '<a href="subscribe#manage">Manage subscriptions</a>.';
   } else {
     b.className = 'result err';
     b.innerHTML = '<strong>Checkout was cancelled — you have not been charged.</strong><br>' +
@@ -597,6 +737,8 @@ document.querySelectorAll('.plan-cta').forEach(btn => {
     e.preventDefault();
     document.querySelector('input[name=cadence][value="' + this.dataset.cadence + '"]').checked = true;
     IL_TRACK('plan_selected', this.dataset.cadence);
+    GA('plan_click', {plan: GA_PLAN[this.dataset.cadence] || this.dataset.cadence,
+                      price: PLAN_PRICES[this.dataset.cadence]});
     refreshPlanUI();
     document.getElementById('register').scrollIntoView({behavior: 'smooth'});
   });
@@ -707,6 +849,7 @@ document.getElementById('submit').addEventListener('click', async function() {
     return showResult(result, 'err', 'This case number doesn’t look right: ' + caseNumber +
       ' — expected format G-100/G-200/G-300-XXXXX-XXXXXX.');
 
+  GA('signup_submit', {plan: GA_PLAN[cadence] || cadence, price: PLAN_PRICES[cadence]});
   btn.disabled = true;
 
   // Billing on → VERIFY-FIRST: the case number is first validated against
@@ -832,6 +975,7 @@ document.getElementById('trial-submit').addEventListener('click', async function
     return showResult(result, 'err', 'This case number doesn’t look right: ' + (caseNumber || '(empty)') +
       ' — expected format G-100/G-200/G-300-XXXXX-XXXXXX.');
 
+  GA('sample_submit');
   btn.disabled = true;
   btn.textContent = 'Checking DOL live — this can take a minute…';
   try {
@@ -872,7 +1016,7 @@ document.getElementById('trial-submit').addEventListener('click', async function
       html += ' You can also <a href="' + data.preview_url + '" target="_blank" rel="noopener">view it in your browser</a>.';
     }
     html += '<br><a class="btn btn-primary" style="display:inline-block;margin-top:12px" ' +
-      'href="subscribe.html?src=sample&case=' + encodeURIComponent(data.case.case_number) +
+      'href="subscribe?src=sample&case=' + encodeURIComponent(data.case.case_number) +
       '&email=' + encodeURIComponent(email) + '#register">Start watching this case &rarr;</a>';
     showResult(result, 'ok', html);
   } catch (e) {
@@ -884,8 +1028,14 @@ document.getElementById('trial-submit').addEventListener('click', async function
 });
 
 // ── Manage subscription (magic link) ──────────────────────────────────────
+document.getElementById('hero-sample-cta').addEventListener('click', function() {
+  GA('sample_cta_click', {source: 'hero'});
+  IL_TRACK('sample_cta_click');
+});
+
 document.getElementById('manage-submit').addEventListener('click', async function() {
   const btn = this;
+  GA('manage_link_click');
   const result = document.getElementById('manage-result');
   const email = document.getElementById('manage-email').value.trim();
   result.className = 'result';
@@ -965,7 +1115,68 @@ document.getElementById('manage-submit').addEventListener('click', async functio
     note.style.display = 'block';
   }
 })();
+
+// ═══════════════════════════════════════════════════════
+// GA ENGAGEMENT TRACKING  (mirrors index.html so the two pages compare)
+// ═══════════════════════════════════════════════════════
+(function() {
+  if (typeof gtag !== 'function') return;
+
+  // First keystroke in each form — a step marker only, never the value typed.
+  function firstInput(ids, event) {
+    var fired = false;
+    ids.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function() {
+        if (fired) return;
+        fired = true;
+        gtag('event', event, {});
+      }, { once: false });
+    });
+  }
+  firstInput(['email', 'case-number'], 'signup_form_start');
+  firstInput(['trial-email', 'trial-case'], 'sample_form_start');
+
+  var scrollFired = {};
+  window.addEventListener('scroll', function() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if (max <= 0) return;
+    var pct = Math.round(100 * window.scrollY / max);
+    [25, 50, 75, 90].forEach(function(t) {
+      if (pct >= t && !scrollFired[t]) {
+        scrollFired[t] = true;
+        gtag('event', 'scroll_depth', { percent: t });
+      }
+    });
+  }, { passive: true });
+
+  [10, 30, 60, 180].forEach(function(s) {
+    setTimeout(function() {
+      if (!document.hidden) gtag('event', 'time_on_page', { seconds: s });
+    }, s * 1000);
+  });
+
+  var sections = ['digest-preview', 'pricing', 'faq', 'register', 'trial'];
+  var seen = {};
+  if (window.IntersectionObserver) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !seen[e.target.id]) {
+          seen[e.target.id] = true;
+          gtag('event', 'section_view', { section: e.target.id });
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  }
+})();
 </script>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "aa22dbee0e9b4144965de16be0ccbae4"}'></script><!-- End Cloudflare Web Analytics -->
 <!-- il-session-check -->
 <script>
 /* Anonymous content-filter measurement: one yes/no beacon per pageview

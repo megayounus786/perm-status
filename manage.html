@@ -141,7 +141,7 @@ function billingLine(s) {
 
 function fail(msg) {
   panel.className = 'panel err';
-  panel.innerHTML = msg + '<br><a href="subscribe.html#manage">Request a new sign-in link</a>';
+  panel.innerHTML = msg + '<br><a href="subscribe#manage">Request a new sign-in link</a>';
 }
 
 function esc(s) {
@@ -273,7 +273,7 @@ async function load() {
     if (!data.subscriptions.length) {
       panel.className = 'panel info';
       panel.innerHTML = 'No Case Watch subscriptions for this address yet. ' +
-        '<a href="subscribe.html">Start watching a case →</a>';
+        '<a href="subscribe">Start watching a case →</a>';
       return;
     }
     panel.className = 'panel';

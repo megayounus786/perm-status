@@ -85,16 +85,10 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://immilane.com/subscribe.html</loc>
+    <loc>https://immilane.com/subscribe</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://immilane.com/manage.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
   </url>
   <url>
     <loc>https://immilane.com/terms.html</loc>
