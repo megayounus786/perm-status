@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-08-24T23:52:54-04:00",
+  "updatedAt": "2026-08-25T07:14:49-04:00",
   "backlog": {
-    "total": 98633,
-    "startOfMonth": 109033,
+    "total": 98983,
+    "startOfMonth": 109027,
     "thisMonth": {
       "name": "Aug 2026",
-      "processed": 16539,
-      "intake": 6139
+      "processed": 16548,
+      "intake": 6504
     },
     "lastMonth": {
       "name": "Jul 2026",
@@ -23,18 +23,18 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 809,
-    "certified": 759,
-    "rfi": 29,
-    "denied": 21,
+    "total": 9,
+    "certified": 5,
+    "rfi": 0,
+    "denied": 4,
     "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 434,
-      "certified": 297,
-      "rfi": 5,
-      "denied": 4,
-      "withdrawn": 122
+      "total": 809,
+      "certified": 759,
+      "rfi": 29,
+      "denied": 21,
+      "withdrawn": 0
     }
   },
   "dol": {
@@ -42,8 +42,8 @@
     "monthFull": "October",
     "day": 18,
     "daysInMonth": 100,
-    "estFinish": "Sep 5",
-    "movementPerWeek": 14.4,
+    "estFinish": "Sep 8",
+    "movementPerWeek": 12.9,
     "casesRemaining": 389,
     "latestLetter": "T",
     "pctProcessed": 18
@@ -135,44 +135,43 @@
       "denied": 949,
       "rfi": 492,
       "status": "done",
-      "processedPct": 94.2,
-      "todayProcessed": 9
+      "processedPct": 94.2
     },
     {
       "label": "Jul '25",
       "total": 9779,
       "certified": 8373,
-      "review": 192,
+      "review": 190,
       "withdrawn": 476,
-      "denied": 388,
+      "denied": 390,
       "rfi": 346,
       "status": "done",
       "processedPct": 93.1,
-      "todayProcessed": 1
+      "todayProcessed": 2
     },
     {
       "label": "Aug '25",
       "total": 9946,
-      "certified": 8425,
-      "review": 557,
+      "certified": 8426,
+      "review": 555,
       "withdrawn": 468,
-      "denied": 162,
+      "denied": 163,
       "rfi": 312,
       "status": "done",
       "processedPct": 89.5,
-      "todayProcessed": 33
+      "todayProcessed": 2
     },
     {
       "label": "Sep '25",
       "total": 13643,
-      "certified": 9844,
-      "review": 2863,
+      "certified": 9848,
+      "review": 2858,
       "withdrawn": 525,
-      "denied": 83,
+      "denied": 84,
       "rfi": 305,
       "status": "processing",
       "processedPct": 75.0,
-      "todayProcessed": 754
+      "todayProcessed": 5
     },
     {
       "label": "Oct '25",
@@ -185,8 +184,7 @@
       "status": "active",
       "processedPct": 18.0,
       "dolDay": 18,
-      "dolDays": 100,
-      "todayProcessed": 12
+      "dolDays": 100
     },
     {
       "label": "Nov '25",
@@ -289,10 +287,10 @@
     },
     {
       "label": "Aug '26",
-      "total": 6139,
+      "total": 6504,
       "certified": 0,
-      "review": 6079,
-      "withdrawn": 60,
+      "review": 6438,
+      "withdrawn": 66,
       "denied": 0,
       "rfi": 0,
       "status": "pending",
@@ -300,14 +298,6 @@
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-07-26",
-      "total": 131,
-      "certified": 126,
-      "rfi": 0,
-      "denied": 3,
-      "withdrawn": 2
-    },
     {
       "date": "2026-07-27",
       "total": 688,
@@ -539,6 +529,14 @@
       "rfi": 29,
       "denied": 21,
       "withdrawn": 0
+    },
+    {
+      "date": "2026-08-25",
+      "total": 9,
+      "certified": 5,
+      "rfi": 0,
+      "denied": 4,
+      "withdrawn": 0
     }
   ],
   "rateWeeks": [
@@ -632,10 +630,10 @@
     },
     {
       "weekStart": "2026-08-24",
-      "total": 809,
-      "certified": 759,
+      "total": 818,
+      "certified": 764,
       "rfi": 29,
-      "denied": 21,
+      "denied": 25,
       "withdrawn": 0,
       "partial": true
     }
@@ -645,11 +643,11 @@
       "tabKey": "active",
       "tabLabel": "Sep",
       "subtitle": "September 2025 filings \u00b7 13,620 total",
-      "certified": 9844,
-      "review": 2863,
+      "certified": 9848,
+      "review": 2858,
       "withdrawn": 525,
       "rfi": 305,
-      "denied": 83
+      "denied": 84
     },
     {
       "tabKey": "next",
