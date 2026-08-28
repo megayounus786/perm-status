@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-27T18:19:13-04:00",
+  "updatedAt": "2026-08-27T21:19:09-04:00",
   "backlog": {
-    "total": 97960,
+    "total": 97901,
     "startOfMonth": 109023,
     "thisMonth": {
       "name": "Aug 2026",
-      "processed": 18486,
+      "processed": 18545,
       "intake": 7423
     },
     "lastMonth": {
@@ -23,10 +23,10 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 525,
-    "certified": 449,
-    "rfi": 38,
-    "denied": 35,
+    "total": 584,
+    "certified": 506,
+    "rfi": 39,
+    "denied": 36,
     "withdrawn": 3,
     "stillUpdating": false,
     "yesterday": {
@@ -166,26 +166,26 @@
     {
       "label": "Sep '25",
       "total": 13643,
-      "certified": 11179,
-      "review": 1408,
+      "certified": 11230,
+      "review": 1355,
       "withdrawn": 527,
-      "denied": 149,
-      "rfi": 357,
+      "denied": 150,
+      "rfi": 358,
       "status": "processing",
-      "processedPct": 85.6,
-      "todayProcessed": 305
+      "processedPct": 86.0,
+      "todayProcessed": 358
     },
     {
       "label": "Oct '25",
       "total": 512,
-      "certified": 247,
-      "review": 230,
+      "certified": 253,
+      "review": 224,
       "withdrawn": 32,
       "denied": 1,
       "rfi": 2,
       "status": "processing",
-      "processedPct": 48.8,
-      "todayProcessed": 104
+      "processedPct": 50.0,
+      "todayProcessed": 110
     },
     {
       "label": "Nov '25",
@@ -536,10 +536,10 @@
     },
     {
       "date": "2026-08-27",
-      "total": 525,
-      "certified": 449,
-      "rfi": 38,
-      "denied": 35,
+      "total": 584,
+      "certified": 506,
+      "rfi": 39,
+      "denied": 36,
       "withdrawn": 3
     }
   ],
@@ -634,10 +634,10 @@
     },
     {
       "weekStart": "2026-08-24",
-      "total": 2756,
-      "certified": 2431,
-      "rfi": 138,
-      "denied": 180,
+      "total": 2815,
+      "certified": 2488,
+      "rfi": 139,
+      "denied": 181,
       "withdrawn": 7,
       "partial": true
     }
@@ -647,8 +647,8 @@
       "tabKey": "active",
       "tabLabel": "Oct",
       "subtitle": "October 2025 filings \u00b7 512 total",
-      "certified": 247,
-      "review": 230,
+      "certified": 253,
+      "review": 224,
       "withdrawn": 32,
       "rfi": 2,
       "denied": 1
