@@ -238,8 +238,16 @@ function renderSub(s) {
     });
 
     unsub.addEventListener('click', async () => {
-      if (!confirm('Stop watching ' + s.case_number + '? Emails stop immediately, any paid plan '
-                   + 'simply won’t renew (no further charges), and you can re-subscribe anytime.')) return;
+      // Paid plan (cancel_at_period_end): alerts keep sending until the
+      // already-paid current_period_end. Free/beta rows stop immediately.
+      const paidThrough = (s.billing_status === 'active' && s.current_period_end)
+        ? fmtDate(s.current_period_end) : null;
+      if (!confirm('Stop watching ' + s.case_number + '? ' + (paidThrough
+            ? 'Your plan won’t renew (no further charges), and you’ll keep '
+              + 'getting alerts until ' + paidThrough + ' — the period you’ve '
+              + 'already paid for. You can re-subscribe anytime.'
+            : 'Emails stop immediately, any paid plan simply won’t renew '
+              + '(no further charges), and you can re-subscribe anytime.'))) return;
       unsub.disabled = true;
       try {
         const r = await fetch(API_BASE + '/subs/manage/unsubscribe', {
