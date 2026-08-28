@@ -995,7 +995,7 @@ document.getElementById('trial-submit').addEventListener('click', async function
 
 // ── Manage subscription (magic link) ──────────────────────────────────────
 document.getElementById('hero-sample-cta').addEventListener('click', function() {
-  GA('sample_cta_click', {source: 'hero'});
+  GA('sample_cta_click', {cta_source: 'hero'});
   IL_TRACK('sample_cta_click');
 });
 
