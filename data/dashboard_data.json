@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-02T22:59:09-04:00",
+  "updatedAt": "2026-09-02T23:46:22-04:00",
   "backlog": {
-    "total": 95287,
+    "total": 95280,
     "startOfMonth": 97333,
     "thisMonth": {
       "name": "Sep 2026",
-      "processed": 2046,
+      "processed": 2053,
       "intake": 0
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 2046,
-    "certified": 1783,
+    "total": 2053,
+    "certified": 1790,
     "rfi": 105,
     "denied": 142,
     "withdrawn": 10,
@@ -44,8 +44,8 @@
     "daysInMonth": 100,
     "estFinish": "Oct 18",
     "movementPerWeek": 3.9,
-    "casesRemaining": 12192,
-    "latestLetter": "Z",
+    "casesRemaining": 12185,
+    "latestLetter": "S",
     "pctProcessed": 15
   },
   "timeline": [
@@ -191,8 +191,8 @@
     {
       "label": "Nov '25",
       "total": 15075,
-      "certified": 2189,
-      "review": 12192,
+      "certified": 2196,
+      "review": 12185,
       "withdrawn": 575,
       "denied": 24,
       "rfi": 87,
@@ -200,7 +200,7 @@
       "processedPct": 15.3,
       "dolDay": 15,
       "dolDays": 100,
-      "todayProcessed": 1600
+      "todayProcessed": 1607
     },
     {
       "label": "Dec '25",
@@ -537,8 +537,8 @@
     },
     {
       "date": "2026-09-02",
-      "total": 2046,
-      "certified": 1783,
+      "total": 2053,
+      "certified": 1790,
       "rfi": 105,
       "denied": 142,
       "withdrawn": 10
@@ -635,14 +635,15 @@
     },
     {
       "weekStart": "2026-08-31",
-      "total": 2527,
-      "certified": 2214,
+      "total": 2534,
+      "certified": 2221,
       "rfi": 133,
       "denied": 159,
       "withdrawn": 15,
       "partial": true
     }
   ],
+  "outages": [],
   "statusDistribution": [
     {
       "tabKey": "active",
@@ -658,8 +659,8 @@
       "tabKey": "next",
       "tabLabel": "Nov",
       "subtitle": "November 2025 filings \u00b7 15,067 total",
-      "certified": 2189,
-      "review": 12192,
+      "certified": 2196,
+      "review": 12185,
       "withdrawn": 575,
       "rfi": 87,
       "denied": 24
