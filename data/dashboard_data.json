@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-05T06:59:03-04:00",
+  "updatedAt": "2026-09-05T09:14:16-04:00",
   "backlog": {
-    "total": 96136,
+    "total": 96122,
     "startOfMonth": 97486,
     "thisMonth": {
       "name": "Sep 2026",
-      "processed": 3373,
+      "processed": 3387,
       "intake": 2023
     },
     "lastMonth": {
@@ -23,8 +23,8 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 20,
-    "certified": 20,
+    "total": 34,
+    "certified": 34,
     "rfi": 0,
     "denied": 0,
     "withdrawn": 0,
@@ -43,9 +43,9 @@
     "day": 25,
     "daysInMonth": 100,
     "estFinish": "Oct 7",
-    "movementPerWeek": 5.0,
-    "casesRemaining": 10723,
-    "latestLetter": "V",
+    "movementPerWeek": 4.9,
+    "casesRemaining": 10709,
+    "latestLetter": "W",
     "pctProcessed": 25
   },
   "timeline": [
@@ -184,16 +184,16 @@
     {
       "label": "Nov '25",
       "total": 15075,
-      "certified": 3592,
-      "review": 10723,
+      "certified": 3606,
+      "review": 10709,
       "withdrawn": 586,
       "denied": 43,
       "rfi": 123,
       "status": "active",
-      "processedPct": 24.9,
+      "processedPct": 25.0,
       "dolDay": 25,
       "dolDays": 100,
-      "todayProcessed": 20
+      "todayProcessed": 34
     },
     {
       "label": "Dec '25",
@@ -544,8 +544,8 @@
     },
     {
       "date": "2026-09-05",
-      "total": 20,
-      "certified": 20,
+      "total": 34,
+      "certified": 34,
       "rfi": 0,
       "denied": 0,
       "withdrawn": 0
@@ -642,8 +642,8 @@
     },
     {
       "weekStart": "2026-08-31",
-      "total": 4145,
-      "certified": 3681,
+      "total": 4159,
+      "certified": 3695,
       "rfi": 185,
       "denied": 247,
       "withdrawn": 26,
@@ -672,8 +672,8 @@
       "tabKey": "next",
       "tabLabel": "Nov",
       "subtitle": "November 2025 filings \u00b7 15,067 total",
-      "certified": 3592,
-      "review": 10723,
+      "certified": 3606,
+      "review": 10709,
       "withdrawn": 586,
       "rfi": 123,
       "denied": 43
