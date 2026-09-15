@@ -45,15 +45,19 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Disclaimer | ImmiLane</title>
-<meta name="description" content="ImmiLane disclaimer — important information about the limitations of the data and estimates provided on this PERM labor certification tracking site.">
-<link rel="canonical" href="https://immilane.com/disclaimer">
+<title>PERM Status Check — How to Check Your DOL Case | ImmiLane</title>
+<meta name="description" content="Check your PERM status: what FLAG shows your employer, what you can track yourself, and live DOL processing data covering 207,000+ cases.">
+<link rel="canonical" href="https://immilane.com/perm-status-check">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Disclaimer | ImmiLane">
-<meta property="og:description" content="Important information about the limitations of ImmiLane's PERM labor certification data and estimates.">
-<meta property="og:url" content="https://immilane.com/disclaimer">
+<meta property="og:title" content="PERM Status Check — How to Check Your DOL Case | ImmiLane">
+<meta property="og:description" content="Check your PERM status: what FLAG shows your employer, what you can track yourself, and live DOL processing data covering 207,000+ cases.">
+<meta property="og:url" content="https://immilane.com/perm-status-check">
 <meta property="og:site_name" content="ImmiLane">
 <meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PERM Status Check — How to Check Your DOL Case | ImmiLane">
+<meta name="twitter:description" content="Check your PERM status: what FLAG shows your employer, what you can track yourself, and live DOL processing data covering 207,000+ cases.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I check my PERM status online myself?","acceptedAnswer":{"@type":"Answer","text":"There is no DOL portal for applicants to look up an individual PERM case. Your employer or attorney can check FLAG, and ImmiLane's Case Watch can monitor your case number and email you when the status changes."}},{"@type":"Question","name":"How do I know if my PERM case is close to a decision?","acceptedAnswer":{"@type":"Answer","text":"Compare your filing month to the DOL's processing frontier on ImmiLane's live dashboard. If the DOL is adjudicating the month you filed in, a decision is typically weeks away."}},{"@type":"Question","name":"What information do I need to track my PERM case?","acceptedAnswer":{"@type":"Answer","text":"Your filing date, and ideally the G-100 case number from the ETA-9089 filing confirmation. The filing date places you in the queue; the case number allows case-specific tracking."}},{"@type":"Question","name":"How often does ImmiLane's data update?","acceptedAnswer":{"@type":"Answer","text":"ImmiLane scans the DOL FLAG data multiple times every day, so dashboard figures, estimates, and Case Watch alerts reflect near real-time DOL processing."}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
@@ -121,16 +125,20 @@
   html.light .theme-toggle-icon.moon { display: none; }
   html.light .theme-toggle-icon.sun { display: inline; }
 
-  .content { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; margin: 24px 0 40px; line-height: 1.8; }
-  .content h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; color: var(--text-primary); }
-  .content h3:first-child { margin-top: 0; }
-  .content p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
-  .content ul { padding-left: 24px; margin-bottom: 12px; }
-  .content li { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
-  .content a { color: #3b82f6; text-decoration: none; }
-  .content a:hover { text-decoration: underline; }
-  .content strong { color: var(--text-primary); }
-  .last-updated { font-size: 12px; color: var(--text-dim); margin-top: 24px; }
+  .faq-list { margin: 24px 0 40px; display: flex; flex-direction: column; gap: 16px; }
+  .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; transition: border-color 0.2s; }
+  .faq-item:hover { border-color: rgba(59,130,246,0.2); }
+  .faq-question { padding: 20px 24px; font-size: 15px; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; user-select: none; }
+  .faq-question::after { content: '+'; font-size: 20px; font-weight: 300; color: var(--text-muted); flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item.open .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 24px 20px; font-size: 14px; color: var(--text-secondary); line-height: 1.8; display: none; }
+  .faq-item.open .faq-answer { display: block; }
+  .faq-answer p { margin-bottom: 8px; }
+  .faq-answer p:last-child { margin-bottom: 0; }
+  .faq-answer a { color: #3b82f6; text-decoration: none; }
+  .faq-answer a:hover { text-decoration: underline; }
+  .faq-answer ul { padding-left: 20px; margin: 8px 0; }
+  .faq-answer li { margin-bottom: 4px; }
 
   @media (max-width: 768px) {
     .container { padding: 0 14px; }
@@ -138,7 +146,43 @@
     .logo { font-size: 18px; }
     .logo-icon { width: 28px; height: 28px; font-size: 14px; }
     .hero { padding: 24px 0 14px; }
+    .faq-question { padding: 16px 18px; font-size: 14px; }
+    .faq-answer { padding: 0 18px 16px; }
+  }
+
+  /* landing-page components (SEO pages, 2026-09-15) */
+  .hero .eyebrow { font-size: 14px; font-weight: 500; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .hero h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; text-transform: none; background: linear-gradient(135deg, var(--text-primary), var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .lede { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin: 4px 0 22px; max-width: 740px; }
+  .lede a, .live-note a { color: #3b82f6; text-decoration: none; }
+  .lede a:hover, .live-note a:hover { text-decoration: underline; }
+  .live-strip { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 10px; }
+  .live-stat { flex: 1 1 150px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 14px 16px; }
+  .live-stat .v { font-size: 21px; font-weight: 700; letter-spacing: -0.5px; }
+  .live-stat .l { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+  .live-note { font-size: 11.5px; color: var(--text-dim); margin: 0 0 28px; }
+  .content { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; margin: 0 0 32px; line-height: 1.8; }
+  .content h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; color: var(--text-primary); }
+  .content h3:first-child { margin-top: 0; }
+  .content p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
+  .content ul, .content ol { padding-left: 24px; margin-bottom: 12px; }
+  .content li { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
+  .content a { color: #3b82f6; text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content strong { color: var(--text-primary); }
+  .step-list { counter-reset: step; list-style: none; padding-left: 0; }
+  .step-list li { counter-increment: step; position: relative; padding-left: 36px; margin-bottom: 14px; }
+  .step-list li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .cta-box { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.08)); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 20px 24px; margin: 0 0 40px; }
+  .cta-box p { margin-bottom: 0; font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+  .cta-box a { color: #3b82f6; font-weight: 600; text-decoration: none; }
+  .cta-box a:hover { text-decoration: underline; }
+  .section-label { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 12px; }
+  @media (max-width: 768px) {
+    .hero .eyebrow { font-size: 12px; letter-spacing: 1px; }
+    .hero h1 { font-size: 21px; letter-spacing: -0.5px; }
     .content { padding: 24px 18px; }
+    .live-stat .v { font-size: 18px; }
   }
 </style>
 </head>
@@ -194,47 +238,86 @@
 
 <div class="container">
   <div class="hero">
-    <h1>Legal</h1>
-    <h2>Disclaimer</h2>
+    <div class="eyebrow">Live DOL Data</div>
+    <h1>PERM Status Check</h1>
   </div>
+  <p class="lede">There is no public DOL portal where applicants can look up an individual PERM case — only the sponsoring employer or their attorney can see the official status in FLAG. What you <em>can</em> do is track exactly where the DOL is in its queue and get alerted the moment your own case changes. ImmiLane follows 207,000+ PERM cases from the DOL FLAG system, refreshed throughout the day.</p>
+  <div class="live-strip">
+    <div class="live-stat"><div class="v" data-live="frontier">November 2025</div><div class="l">DOL now processing</div></div>
+    <div class="live-stat"><div class="v" data-live="pct">56%</div><div class="l">Through that month</div></div>
+    <div class="live-stat"><div class="v" data-live="avg">396</div><div class="l">Avg days to decision</div></div>
+    <div class="live-stat"><div class="v" data-live="pending">93,481</div><div class="l">Cases pending</div></div>
+  </div>
+  <p class="live-note">Live from DOL FLAG data tracked by ImmiLane &middot; last updated <span data-live="updated">Sep 15, 2026</span> &middot; <a href="./">open the full dashboard</a></p>
 
   <div class="content">
-    <h3>Informational Purposes Only</h3>
-    <p>All content on ImmiLane (immilane.com) &mdash; including PERM processing data, timeline estimates, status distributions, employer statistics, and visa bulletin information &mdash; is provided strictly for informational purposes. Nothing on this site constitutes legal advice, immigration counseling, or professional consultation of any kind.</p>
-    <p>ImmiLane is not a law firm, immigration consultancy, or government agency. The site's operators are not licensed attorneys and do not provide legal services. No attorney-client relationship is created by your use of this site.</p>
-
-    <h3>Data Accuracy</h3>
-    <p>ImmiLane sources its PERM case data from publicly available records at the U.S. Department of Labor's <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG (Foreign Labor Application Gateway)</a> system. While we make every reasonable effort to present this data accurately and keep it current by scanning the FLAG system multiple times daily, we cannot guarantee that the information is complete, error-free, or up to date at all times.</p>
-    <p>Data discrepancies may arise due to delays in the DOL's own reporting, temporary system outages, changes to the FLAG data format, or errors in our data processing pipeline. Users should independently verify any critical information through official government sources or their legal representatives.</p>
-
-    <h3>Estimates and Projections</h3>
-    <p>The processing timeline estimates provided by ImmiLane's <a href="estimate">Estimate Tool</a> are algorithmic projections based on historical processing patterns and current DOL throughput data. These estimates are <strong>not guarantees</strong> of when any individual case will be processed. Actual processing times can vary significantly due to factors including but not limited to:</p>
-    <ul>
-      <li>Individual case audits or requests for additional information</li>
-      <li>Changes in DOL staffing levels, policies, or priorities</li>
-      <li>Government shutdowns, budget constraints, or administrative reorganizations</li>
-      <li>Seasonal fluctuations in filing volumes and processing capacity</li>
-      <li>System migrations or technical changes at the DOL</li>
-    </ul>
-    <p>Do not make significant personal, professional, or financial decisions based solely on ImmiLane's processing estimates.</p>
-
-    <h3>No Liability</h3>
-    <p>ImmiLane and its operators shall not be held liable for any losses, damages, or adverse outcomes resulting from the use of or reliance on information presented on this site. This includes, without limitation, any decisions related to employment, immigration filings, travel plans, financial commitments, or legal strategy made on the basis of data or estimates from ImmiLane.</p>
-
-    <h3>External Links</h3>
-    <p>ImmiLane may contain links to external websites and resources, including government sites such as FLAG.DOL.GOV and travel.state.gov. These links are provided for convenience and reference only. We do not control, endorse, or assume responsibility for the content, accuracy, or privacy practices of any external sites. Visiting external links is at your own risk.</p>
-
-    <h3>Consult an Immigration Attorney</h3>
-    <p>If you have questions about your specific immigration case, PERM labor certification filing, or employment-based green card process, we strongly recommend consulting with a qualified immigration attorney. An experienced attorney can provide personalized advice based on your individual circumstances, which no informational website &mdash; including ImmiLane &mdash; can replace.</p>
-
-    <h3>Changes to This Disclaimer</h3>
-    <p>We may update this Disclaimer from time to time to reflect changes in our practices or for legal, operational, or regulatory reasons. Any changes will be posted on this page with an updated date. Your continued use of ImmiLane after changes are posted constitutes acceptance of the updated Disclaimer.</p>
-
-    <h3>Contact</h3>
-    <p>If you have questions about this Disclaimer, please reach out through the feedback form on the <a href="./">ImmiLane Dashboard</a>.</p>
-
-    <div class="last-updated">Last updated: May 2026</div>
+    <h3>How to check your PERM status, step by step</h3>
+    <ol class="step-list">
+      <li><strong>Find your filing date and case number.</strong> Your employer or attorney received a confirmation when the ETA Form 9089 was filed; the case number looks like G-100-XXXXX-XXXXXX. The filing date is what determines your place in line.</li>
+      <li><strong>See which filing month the DOL is working on.</strong> The <a href="./">live dashboard</a> shows the current processing frontier — right now the DOL is adjudicating <strong data-live="frontier">November 2025</strong> filings and is about <strong data-live="pct">56%</strong> of the way through that month.</li>
+      <li><strong>Compare your filing date to the frontier.</strong> Cases are processed roughly in filing-month order (<a href="guide-how-dol-processes-perm">how DOL ordering works</a>), so the gap between your month and the frontier is your queue position.</li>
+      <li><strong>Get a date estimate.</strong> The <a href="estimate">estimate tool</a> projects your decision window from your filing date or case number using the DOL&rsquo;s measured pace.</li>
+      <li><strong>Watch your specific case.</strong> <a href="subscribe">Case Watch</a> monitors your case number and emails you when the official DOL status changes, so you don&rsquo;t have to keep asking your employer.</li>
+    </ol>
+    <h3>Who can see the official status</h3>
+    <p>The DOL&rsquo;s FLAG system only shows PERM case status to the account that filed it — the employer or the law firm. As the beneficiary, you are not a party to the application, so there is no login for you. Most applicants get updates in one of three ways: periodic checks by their attorney, HR updates, or a tracking service like ImmiLane&rsquo;s <a href="subscribe">Case Watch</a> that watches the public DOL data for their case number.</p>
+    <p>Wondering what a status like &ldquo;Analyst Review&rdquo; actually means? See <a href="perm-case-status">what each PERM case status means</a>.</p>
   </div>
+  <div class="section-label">Frequently asked</div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-question">Can I check my PERM status online myself?</div>
+      <div class="faq-answer">There is no DOL portal for applicants. Your employer or attorney can check FLAG, and ImmiLane&rsquo;s <a href="subscribe">Case Watch</a> can watch your case number and email you when the status changes. The <a href="./">dashboard</a> shows where the DOL queue stands overall.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How do I know if my PERM case is close to a decision?</div>
+      <div class="faq-answer">Compare your filing month to the processing frontier. The DOL is currently working through <span data-live="frontier">November 2025</span> filings, moving about <span data-live="move">5.6</span>% of a month per week. If your month is next, a decision is typically weeks away, not months.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What information do I need to track my case?</div>
+      <div class="faq-answer">Just your filing date, and ideally the G-100 case number from the ETA-9089 filing confirmation. The filing date alone is enough to place you in the queue; the case number lets Case Watch follow your specific case.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How often does ImmiLane's data update?</div>
+      <div class="faq-answer">ImmiLane scans the DOL FLAG data multiple times every day. Dashboard figures, estimates, and Case Watch alerts all come from the same live dataset.</div>
+    </div>
+  </div>
+  <div class="cta-box"><p><strong>Shortcut:</strong> put your filing date into the <a href="estimate">estimate tool</a> for a projected decision window, or turn on <a href="subscribe">Case Watch</a> to get an email the moment your status changes. Also see <a href="perm-processing-time">current PERM processing times</a>.</p></div>
+
+<script>
+/* Fill live DOL numbers from the same data file the dashboard uses.
+   Static baked values remain if the fetch fails. */
+(function () {
+  fetch('data/dashboard_data.json').then(function (r) { return r.json(); }).then(function (d) {
+    function set(k, v) {
+      document.querySelectorAll('[data-live="' + k + '"]').forEach(function (el) { el.textContent = v; });
+    }
+    var m = (d.dol.label || '').match(/'(\d\d)/);
+    var yr = m ? '20' + m[1] : '';
+    set('frontier', d.dol.monthFull + (yr ? ' ' + yr : ''));
+    set('pct', d.dol.pctProcessed + '%');
+    set('remain', Number(d.dol.casesRemaining).toLocaleString());
+    set('avg', d.avgDays.current);
+    set('avgCert', d.avgDays.certified);
+    set('pending', Number(d.backlog.total).toLocaleString());
+    set('todayTotal', Number(d.today.total).toLocaleString());
+    set('move', d.dol.movementPerWeek);
+    var nx = (d.statusDistribution || []).filter(function (t) { return t.tabKey === 'next'; })[0];
+    if (nx) {
+      ['certified', 'review', 'withdrawn', 'rfi', 'denied'].forEach(function (k) {
+        set('nx-' + k, Number(nx[k]).toLocaleString());
+      });
+    }
+    if (d.updatedAt) {
+      var dt = new Date(d.updatedAt);
+      if (!isNaN(dt)) set('updated', dt.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET');
+    }
+  }).catch(function () {});
+})();
+</script>
 </div>
 
 <footer>
@@ -248,6 +331,15 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
 });
 document.getElementById('nav-toggle').addEventListener('click', function() {
   document.querySelector('nav').classList.toggle('nav-open');
+});
+
+document.querySelectorAll('.faq-question').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = this.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  });
 });
 </script>
 
@@ -487,5 +579,65 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
 })();
 </script>
 <!-- /il-session-check -->
+<!-- il-cw-announce START -->
+<style id="il-cw-announce-css">
+  .il-cw { position: relative; z-index: 91; display: none; background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(139,92,246,0.14)); border-bottom: 1px solid rgba(139,92,246,0.36); backdrop-filter: blur(12px); }
+  .il-cw-inner { max-width: 1200px; margin: 0 auto; padding: 11px 44px 11px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); text-decoration: none; cursor: pointer; }
+  .il-cw-badge { flex: none; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 999px; padding: 2px 9px; }
+  .il-cw-text strong { color: var(--text-primary); font-weight: 600; }
+  .il-cw-cta { flex: none; font-weight: 600; color: #8b5cf6; white-space: nowrap; }
+  .il-cw-inner:hover .il-cw-cta { text-decoration: underline; }
+  .il-cw-inner:focus-visible { outline: 2px solid var(--input-focus); outline-offset: -2px; }
+  .il-cw-close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: 1px solid transparent; border-radius: 8px; color: var(--text-muted); font-size: 16px; line-height: 1; padding: 4px 8px; cursor: pointer; }
+  .il-cw-close:hover { color: var(--text-primary); background: var(--tab-bg); }
+  .il-cw-close:focus-visible { outline: 2px solid var(--input-focus); outline-offset: 1px; }
+  @media (max-width: 768px) {
+    .il-cw-inner { font-size: 12.5px; gap: 8px; padding: 9px 40px 9px 16px; }
+  }
+</style>
+<script id="il-cw-announce-js">
+/* Case Watch announcement strip. Pure DOM + localStorage: no data dependency,
+   so the failure mode is simply "no banner". Dismissal persists for 30 days.
+   Sets window.__ilAnnounce so the data-freshness banner stands down while
+   this strip is showing (no stacked banners under the nav). */
+(function () {
+  'use strict';
+  try {
+    var KEY = 'il-cw-announce-dismissed';
+    var TTL = 30 * 24 * 60 * 60 * 1000;
+    try {
+      var ts = parseInt(localStorage.getItem(KEY), 10);
+      if (ts && (Date.now() - ts) < TTL) return;
+    } catch (e) {}
+    window.__ilAnnounce = true;
+    function dismiss(el) {
+      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+      el.remove();
+    }
+    function insert() {
+      try {
+        var nav = document.querySelector('nav');
+        if (!nav || !nav.parentNode) { window.__ilAnnounce = false; return; }
+        var el = document.createElement('div');
+        el.className = 'il-cw';
+        el.innerHTML = '<a class="il-cw-inner" href="subscribe">' +
+          '<span class="il-cw-badge">New</span>' +
+          '<span class="il-cw-text"><strong>Case Watch</strong> — get an email the moment your PERM case status changes.</span>' +
+          '<span class="il-cw-cta">Track my case →</span>' +
+          '</a><button type="button" class="il-cw-close" aria-label="Dismiss Case Watch announcement">&#10005;</button>';
+        el.querySelector('.il-cw-close').addEventListener('click', function (ev) {
+          ev.preventDefault(); ev.stopPropagation(); dismiss(el);
+        });
+        el.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') dismiss(el); });
+        nav.insertAdjacentElement('afterend', el);
+        el.style.display = 'block';
+      } catch (e) {}
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', insert);
+    else insert();
+  } catch (e) {}
+})();
+</script>
+<!-- il-cw-announce END -->
 </body>
 </html>

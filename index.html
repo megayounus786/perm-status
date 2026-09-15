@@ -45,26 +45,26 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>PERM Tracker 2026 — DOL Processing Times &amp; Labor Certification Dashboard | ImmiLane</title>
-<meta name="description" content="Track PERM processing times in real-time. Free DOL labor certification tracker with monthly backlog data, processing rates, status distribution, and timeline estimates for employment-based green card applications.">
+<title>PERM Status Check — Live DOL Case Tracker | ImmiLane</title>
+<meta name="description" content="Check your PERM status against live DOL data — 207,000+ labor certification cases updated daily, with estimates and email alerts when your case moves.">
 <meta name="keywords" content="PERM tracker, PERM processing times, DOL labor certification, PERM status, green card processing, PERM backlog, PERM processing times 2026, perm track, track perm application">
 <link rel="canonical" href="https://immilane.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="PERM Tracker 2026 — DOL Processing Times Dashboard">
-<meta property="og:description" content="Real-time PERM processing tracker with DOL labor certification data, monthly backlogs, and processing rate analytics.">
-<meta property="og:url" content="https://immilane.com">
+<meta property="og:title" content="PERM Status Check — Live DOL Case Tracker | ImmiLane">
+<meta property="og:description" content="Check your PERM status against live DOL data — 207,000+ labor certification cases updated daily, with estimates and email alerts when your case moves.">
+<meta property="og:url" content="https://immilane.com/">
 <meta property="og:site_name" content="ImmiLane">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PERM Processing Times 2026 — Live DOL Tracker">
-<meta name="twitter:description" content="Real-time PERM labor certification tracking with status breakdowns, monthly trends, and employer filing stats.">
+<meta name="twitter:title" content="PERM Status Check — Live DOL Case Tracker | ImmiLane">
+<meta name="twitter:description" content="Check your PERM status against live DOL data — 207,000+ labor certification cases updated daily, with estimates and email alerts when your case moves.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "ImmiLane PERM Tracker",
   "url": "https://immilane.com",
-  "description": "Real-time PERM processing times tracker with DOL labor certification data, monthly backlogs, and processing analytics.",
+  "description": "Check PERM status against live DOL data: 207,000+ labor certification cases, processing times, estimates, and email alerts.",
   "applicationCategory": "Immigration Tool",
   "operatingSystem": "Web Browser",
   "offers": {
@@ -820,13 +820,13 @@
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="./" class="active">Dashboard</a></li>
-      <li><a href="estimate.html">Estimate</a></li>
-      <li><a href="leaderboard.html">Top Employers</a></li>
-      <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
-      <li><a href="guides.html">Guides</a></li>
+      <li><a href="estimate">Estimate</a></li>
+      <li><a href="leaderboard">Top Employers</a></li>
+      <li><a href="visa-bulletin">Visa Bulletin</a></li>
+      <li><a href="guides">Guides</a></li>
       <li><a href="subscribe">Case Watch</a></li>
-      <li><a href="about-perm.html">About PERM</a></li>
-      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about-perm">About PERM</a></li>
+      <li><a href="faq">FAQ</a></li>
     </ul>
     <div class="nav-utils"><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button>
     <div class="nav-search" id="nav-search">
@@ -2493,7 +2493,7 @@ renderDashboard(window.DASHBOARD_DATA);
   <p>Aggregate counts hide a lot. A filing month can look "half done" nationally while a single large sponsor &mdash; a consulting firm or a big tech employer with thousands of cases &mdash; skews the picture. ImmiLane keeps the data resolved down to the individual employer, so you can search the company sponsoring your case and see how its filings specifically are moving, what fraction have certified, and whether its cases are drawing an unusual number of audits. This employer-level view is the part of ImmiLane you will not find in a generic processing-time chart, and it is what powers the per-company pages and the search box in the navigation bar.</p>
 
   <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">How the certification estimate is built</h3>
-  <p>The <a href="estimate.html" style="color:#60a5fa;">Estimate tool</a> does not quote a one-size-fits-all "12 to 16 months." Instead it takes your filing month, measures the DOL's observed clearance pace for the months immediately ahead of yours, and projects when the frontier is likely to reach your filing date at the current rate &mdash; then widens that into a range to account for audits and month-to-month variation in DOL output. As fresh scans change the underlying pace, the estimate moves with it. The full methodology, including how we treat audited cases and recruiting-delayed filings, is written up in our <a href="guide-estimate-methodology.html" style="color:#60a5fa;">estimate methodology guide</a>.</p>
+  <p>The <a href="estimate" style="color:#60a5fa;">Estimate tool</a> does not quote a one-size-fits-all "12 to 16 months." Instead it takes your filing month, measures the DOL's observed clearance pace for the months immediately ahead of yours, and projects when the frontier is likely to reach your filing date at the current rate &mdash; then widens that into a range to account for audits and month-to-month variation in DOL output. As fresh scans change the underlying pace, the estimate moves with it. The full methodology, including how we treat audited cases and recruiting-delayed filings, is written up in our <a href="guide-estimate-methodology" style="color:#60a5fa;">estimate methodology guide</a>.</p>
 
   <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">What the status labels mean</h3>
   <ul style="margin:0.5rem 0 1rem 1.5rem;">
@@ -2503,7 +2503,8 @@ renderDashboard(window.DASHBOARD_DATA);
     <li><strong style="color:#e2e8f0;">Denied:</strong> the application was not approved; the employer may request reconsideration or appeal to BALCA.</li>
     <li><strong style="color:#e2e8f0;">Withdrawn:</strong> the employer or its representative pulled the application before a decision.</li>
   </ul>
-  <p>New to the process? Start with our plain-English <a href="about-perm.html" style="color:#60a5fa;">overview of PERM</a>, then dig into the <a href="guides.html" style="color:#60a5fa;">guides library</a> for deeper explainers on DOL ordering, the visa bulletin, EB categories, and audits.</p>
+    <p>Checking on your own case? See <a href="perm-status-check" style="color:#60a5fa;">how to check your PERM status</a>, <a href="perm-case-status" style="color:#60a5fa;">what each case status means</a>, <a href="perm-processing-time" style="color:#60a5fa;">current PERM processing times</a>, or <a href="dol-case-status" style="color:#60a5fa;">how DOL case status works in FLAG</a>.</p>
+  <p>New to the process? Start with our plain-English <a href="about-perm" style="color:#60a5fa;">overview of PERM</a>, then dig into the <a href="guides" style="color:#60a5fa;">guides library</a> for deeper explainers on DOL ordering, the visa bulletin, EB categories, and audits.</p>
 
   <p style="margin-top:1.5rem;font-size:13px;color:#64748b;"><em>Disclaimer: ImmiLane is an independent data tool for informational purposes only and is not affiliated with or endorsed by the U.S. Department of Labor. Nothing here is legal advice. Figures are estimates derived from observed DOL data and will not match every individual case. Consult a qualified immigration attorney for guidance on your specific PERM application.</em></p>
 </section>
@@ -2514,7 +2515,7 @@ renderDashboard(window.DASHBOARD_DATA);
 
 
 <footer>
-  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; <a href="guides.html">Guides</a> &middot; <a href="about-us.html">About</a> &middot; <a href="support.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="refund.html">Refund</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
+  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; <a href="guides">Guides</a> &middot; <a href="about-us">About</a> &middot; <a href="support">Contact</a> &middot; <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a> &middot; <a href="refund">Refund</a> &middot; <a href="disclaimer">Disclaimer</a> &middot; <br><a href="perm-status-check">PERM Status Check</a> &middot; <a href="perm-case-status">Case Status Meanings</a> &middot; <a href="dol-case-status">DOL Case Status</a> &middot; <a href="perm-processing-time">Processing Times</a> &middot; &copy; 2026 ImmiLane
 </footer>
 
 <!-- ImmiLane Mobile app promo banner removed per Younus (2026-07-01). -->
@@ -2701,7 +2702,7 @@ function employerSlug(name) {
       try { gtag('event', 'employer_selected', { employer_name: name }); } catch (e) {}
     }
     // Navigate to the dedicated, deep-linkable employer profile page.
-    window.location.href = 'employer.html?e=' + encodeURIComponent(name.trim());
+    window.location.href = 'employer?e=' + encodeURIComponent(name.trim());
   }
 
   // ---- One typeahead widget. Nav search + hero search both run this. ----

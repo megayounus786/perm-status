@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Page Not Found | ImmiLane</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-html: #0a0a12; --bg-body: #0a0a12; --text-primary: #f0f0f8; --text-secondary: #94a3b8; --text-muted: #64748b; --text-dim: #475569;
+    --card-bg: rgba(255,255,255,0.04); --card-border: rgba(255,255,255,0.06);
+    --gradient-start: rgba(59,130,246,0.08); --gradient-end: rgba(139,92,246,0.06);
+  }
+  html.light {
+    --bg-html: #f5f7fa; --bg-body: #f5f7fa; --text-primary: #1a1a2e; --text-secondary: #475569; --text-muted: #64748b; --text-dim: #94a3b8;
+    --card-bg: rgba(255,255,255,0.85); --card-border: rgba(0,0,0,0.08);
+    --gradient-start: transparent; --gradient-end: transparent;
+  }
+  html { background: var(--bg-html); }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); color: var(--text-primary); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 20%, var(--gradient-start) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, var(--gradient-end) 0%, transparent 50%); z-index: 0; pointer-events: none; }
+  .card { position: relative; z-index: 1; max-width: 480px; width: 100%; text-align: center; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 48px 32px; }
+  .logo-icon { width: 48px; height: 48px; margin: 0 auto 20px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .code { font-size: 13px; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
+  p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .links a { display: inline-block; padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--text-secondary); border: 1px solid var(--card-border); transition: color 0.2s, border-color 0.2s; }
+  .links a:hover { color: var(--text-primary); border-color: var(--text-muted); }
+  .links a.primary { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo-icon">&#127963;&#65039;</div>
+  <div class="code">404 &middot; Not Found</div>
+  <h1>This page doesn&rsquo;t exist</h1>
+  <p>The address may be mistyped or the page may have moved. Everything on ImmiLane is reachable from the dashboard below.</p>
+  <div class="links">
+    <a class="primary" href="/">PERM Dashboard</a>
+    <a href="/estimate">Estimate Tool</a>
+    <a href="/perm-status-check">Check PERM Status</a>
+    <a href="/faq">FAQ</a>
+  </div>
+</div>
+</body>
+</html>

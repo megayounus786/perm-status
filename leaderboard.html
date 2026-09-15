@@ -45,13 +45,13 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Top Employers by PERM Filing Volume | ImmiLane</title>
-<meta name="description" content="Leaderboard of U.S. employers ranked by PERM (green card) labor certification filing volume. Search and browse all employers in the ImmiLane dataset, sorted from highest to lowest filing count.">
+<title>PERM Employer Leaderboard — Top Sponsors | ImmiLane</title>
+<meta name="description" content="U.S. employers ranked by PERM filing volume. Search any company to see green card sponsorship activity, certification rates, and top job titles.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://immilane.com/leaderboard.html">
+<link rel="canonical" href="https://immilane.com/leaderboard">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Top Employers by PERM Filing Volume | ImmiLane">
-<meta property="og:description" content="Employers ranked by PERM green card filing volume.">
+<meta property="og:title" content="PERM Employer Leaderboard — Top Sponsors | ImmiLane">
+<meta property="og:description" content="U.S. employers ranked by PERM filing volume. Search any company to see green card sponsorship activity, certification rates, and top job titles.">
 <meta property="og:site_name" content="ImmiLane">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
@@ -264,12 +264,12 @@
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="./">Dashboard</a></li>
-      <li><a href="estimate.html">Estimate</a></li>
-      <li><a href="leaderboard.html" class="active">Top Employers</a></li>
-      <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
-      <li><a href="guides.html">Guides</a></li>
+      <li><a href="estimate">Estimate</a></li>
+      <li><a href="leaderboard" class="active">Top Employers</a></li>
+      <li><a href="visa-bulletin">Visa Bulletin</a></li>
+      <li><a href="guides">Guides</a></li>
       <li><a href="subscribe">Case Watch</a></li>
-      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="faq">FAQ</a></li>
     </ul>
     <div class="nav-utils"><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button></div>
   </div>
@@ -327,7 +327,7 @@
 </main>
 
 <footer>
-  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> (OFLC disclosure) &middot; <a href="guides.html">Guides</a> &middot; <a href="about-us.html">About</a> &middot; <a href="support.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="refund.html">Refund</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
+  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> (OFLC disclosure) &middot; <a href="guides">Guides</a> &middot; <a href="about-us">About</a> &middot; <a href="support">Contact</a> &middot; <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a> &middot; <a href="refund">Refund</a> &middot; <a href="disclaimer">Disclaimer</a> &middot; <br><a href="perm-status-check">PERM Status Check</a> &middot; <a href="perm-case-status">Case Status Meanings</a> &middot; <a href="dol-case-status">DOL Case Status</a> &middot; <a href="perm-processing-time">Processing Times</a> &middot; &copy; 2026 ImmiLane
 </footer>
 
 <script>
@@ -397,7 +397,7 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
     var rankCls = rank===1?'top1':rank===2?'top2':rank===3?'top3':'';
     var pct = maxBar>0 ? Math.max(2, Math.round(val(item,sortKey)/maxBar*100)) : 0;
     var selfCls = item.idx===deepTarget ? ' lb-self' : '';
-    var href = 'employer.html?e=' + encodeURIComponent(item.n);
+    var href = 'employer?e=' + encodeURIComponent(item.n);
     return '<tr data-idx="'+item.idx+'"class="'+ (selfCls?selfCls.trim():'') +'">'
       + '<td class="lb-rank '+rankCls+'">'+(medal?'<span class="lb-medal">'+medal+'</span>':'')+'#'+n(rank)+'</td>'
       + '<td><span class="lb-name"><span class="lb-mark">'+esc(initials(item.n))+'</span>'

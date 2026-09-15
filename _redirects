@@ -1,0 +1,26 @@
+# 301 .html -> clean URLs (canonical). CF Pages would otherwise 308 these.
+/index.html / 301
+/about-perm.html /about-perm 301
+/about-us.html /about-us 301
+/disclaimer.html /disclaimer 301
+/employer.html /employer 301
+/estimate.html /estimate 301
+/faq.html /faq 301
+/guide-eb1-eb2-eb3-explained.html /guide-eb1-eb2-eb3-explained 301
+/guide-estimate-methodology.html /guide-estimate-methodology 301
+/guide-final-action-vs-filing-dates.html /guide-final-action-vs-filing-dates 301
+/guide-how-dol-processes-perm.html /guide-how-dol-processes-perm 301
+/guide-perm-audits-rfis.html /guide-perm-audits-rfis 301
+/guides.html /guides 301
+/leaderboard.html /leaderboard 301
+/manage.html /manage 301
+/privacy.html /privacy 301
+/refund.html /refund 301
+/subscribe.html /subscribe 301
+/support.html /support 301
+/terms.html /terms 301
+/visa-bulletin.html /visa-bulletin 301
+/perm-status-check.html /perm-status-check 301
+/perm-case-status.html /perm-case-status 301
+/dol-case-status.html /dol-case-status 301
+/perm-processing-time.html /perm-processing-time 301

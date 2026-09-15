@@ -45,15 +45,19 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Disclaimer | ImmiLane</title>
-<meta name="description" content="ImmiLane disclaimer — important information about the limitations of the data and estimates provided on this PERM labor certification tracking site.">
-<link rel="canonical" href="https://immilane.com/disclaimer">
+<title>PERM Processing Time 2026 — Live DOL Data | ImmiLane</title>
+<meta name="description" content="Current PERM processing time: which filing month the DOL is working on now, average days to a decision, and how the pace is trending.">
+<link rel="canonical" href="https://immilane.com/perm-processing-time">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Disclaimer | ImmiLane">
-<meta property="og:description" content="Important information about the limitations of ImmiLane's PERM labor certification data and estimates.">
-<meta property="og:url" content="https://immilane.com/disclaimer">
+<meta property="og:title" content="PERM Processing Time 2026 — Live DOL Data | ImmiLane">
+<meta property="og:description" content="Current PERM processing time: which filing month the DOL is working on now, average days to a decision, and how the pace is trending.">
+<meta property="og:url" content="https://immilane.com/perm-processing-time">
 <meta property="og:site_name" content="ImmiLane">
 <meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PERM Processing Time 2026 — Live DOL Data | ImmiLane">
+<meta name="twitter:description" content="Current PERM processing time: which filing month the DOL is working on now, average days to a decision, and how the pace is trending.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long does PERM take in 2026?","acceptedAnswer":{"@type":"Answer","text":"Measured from live DOL data, PERM decisions are averaging roughly 396 days (about 13 months) from filing for non-audited cases. Audited cases take substantially longer."}},{"@type":"Question","name":"Which PERM filing month is the DOL processing now?","acceptedAnswer":{"@type":"Answer","text":"ImmiLane's live tracker shows the DOL's current processing frontier — the filing month being adjudicated, percent complete, and cases remaining — updated multiple times daily."}},{"@type":"Question","name":"Is PERM processing getting faster or slower?","acceptedAnswer":{"@type":"Answer","text":"ImmiLane measures the DOL's weekly pace through each filing month and charts it over time, showing whether processing is accelerating or slowing."}},{"@type":"Question","name":"Does premium processing exist for PERM?","acceptedAnswer":{"@type":"Answer","text":"No. PERM has no premium processing option — every case waits in the DOL queue, so the processing frontier is the only reliable timeline signal."}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
@@ -121,16 +125,20 @@
   html.light .theme-toggle-icon.moon { display: none; }
   html.light .theme-toggle-icon.sun { display: inline; }
 
-  .content { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; margin: 24px 0 40px; line-height: 1.8; }
-  .content h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; color: var(--text-primary); }
-  .content h3:first-child { margin-top: 0; }
-  .content p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
-  .content ul { padding-left: 24px; margin-bottom: 12px; }
-  .content li { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
-  .content a { color: #3b82f6; text-decoration: none; }
-  .content a:hover { text-decoration: underline; }
-  .content strong { color: var(--text-primary); }
-  .last-updated { font-size: 12px; color: var(--text-dim); margin-top: 24px; }
+  .faq-list { margin: 24px 0 40px; display: flex; flex-direction: column; gap: 16px; }
+  .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; transition: border-color 0.2s; }
+  .faq-item:hover { border-color: rgba(59,130,246,0.2); }
+  .faq-question { padding: 20px 24px; font-size: 15px; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; user-select: none; }
+  .faq-question::after { content: '+'; font-size: 20px; font-weight: 300; color: var(--text-muted); flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item.open .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 24px 20px; font-size: 14px; color: var(--text-secondary); line-height: 1.8; display: none; }
+  .faq-item.open .faq-answer { display: block; }
+  .faq-answer p { margin-bottom: 8px; }
+  .faq-answer p:last-child { margin-bottom: 0; }
+  .faq-answer a { color: #3b82f6; text-decoration: none; }
+  .faq-answer a:hover { text-decoration: underline; }
+  .faq-answer ul { padding-left: 20px; margin: 8px 0; }
+  .faq-answer li { margin-bottom: 4px; }
 
   @media (max-width: 768px) {
     .container { padding: 0 14px; }
@@ -138,7 +146,43 @@
     .logo { font-size: 18px; }
     .logo-icon { width: 28px; height: 28px; font-size: 14px; }
     .hero { padding: 24px 0 14px; }
+    .faq-question { padding: 16px 18px; font-size: 14px; }
+    .faq-answer { padding: 0 18px 16px; }
+  }
+
+  /* landing-page components (SEO pages, 2026-09-15) */
+  .hero .eyebrow { font-size: 14px; font-weight: 500; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .hero h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; text-transform: none; background: linear-gradient(135deg, var(--text-primary), var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .lede { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin: 4px 0 22px; max-width: 740px; }
+  .lede a, .live-note a { color: #3b82f6; text-decoration: none; }
+  .lede a:hover, .live-note a:hover { text-decoration: underline; }
+  .live-strip { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 10px; }
+  .live-stat { flex: 1 1 150px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 14px 16px; }
+  .live-stat .v { font-size: 21px; font-weight: 700; letter-spacing: -0.5px; }
+  .live-stat .l { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+  .live-note { font-size: 11.5px; color: var(--text-dim); margin: 0 0 28px; }
+  .content { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 32px; margin: 0 0 32px; line-height: 1.8; }
+  .content h3 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; color: var(--text-primary); }
+  .content h3:first-child { margin-top: 0; }
+  .content p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
+  .content ul, .content ol { padding-left: 24px; margin-bottom: 12px; }
+  .content li { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
+  .content a { color: #3b82f6; text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+  .content strong { color: var(--text-primary); }
+  .step-list { counter-reset: step; list-style: none; padding-left: 0; }
+  .step-list li { counter-increment: step; position: relative; padding-left: 36px; margin-bottom: 14px; }
+  .step-list li::before { content: counter(step); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .cta-box { background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.08)); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 20px 24px; margin: 0 0 40px; }
+  .cta-box p { margin-bottom: 0; font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+  .cta-box a { color: #3b82f6; font-weight: 600; text-decoration: none; }
+  .cta-box a:hover { text-decoration: underline; }
+  .section-label { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin: 0 0 12px; }
+  @media (max-width: 768px) {
+    .hero .eyebrow { font-size: 12px; letter-spacing: 1px; }
+    .hero h1 { font-size: 21px; letter-spacing: -0.5px; }
     .content { padding: 24px 18px; }
+    .live-stat .v { font-size: 18px; }
   }
 </style>
 </head>
@@ -194,47 +238,87 @@
 
 <div class="container">
   <div class="hero">
-    <h1>Legal</h1>
-    <h2>Disclaimer</h2>
+    <div class="eyebrow">Live DOL Data</div>
+    <h1>PERM Processing Time: Where the DOL Is Right Now</h1>
   </div>
+  <p class="lede">PERM processing time is best read from the DOL&rsquo;s own queue, not from anecdotes. ImmiLane measures it directly from live DOL data across 207,000+ cases: the month being adjudicated, the pace of movement, and the average days from filing to decision — updated <span data-live="updated">multiple times daily</span>.</p>
+  <div class="live-strip">
+    <div class="live-stat"><div class="v" data-live="frontier">November 2025</div><div class="l">Filing month in process</div></div>
+    <div class="live-stat"><div class="v" data-live="pct">56%</div><div class="l">Through that month</div></div>
+    <div class="live-stat"><div class="v" data-live="avg">396</div><div class="l">Avg days, all decisions</div></div>
+    <div class="live-stat"><div class="v" data-live="avgCert">394</div><div class="l">Avg days, certified</div></div>
+    <div class="live-stat"><div class="v" data-live="move">5.6</div><div class="l">% of month cleared/week</div></div>
+  </div>
+  <p class="live-note">Live from DOL FLAG data tracked by ImmiLane &middot; last updated <span data-live="updated">Sep 15, 2026</span> &middot; <a href="./">open the full dashboard</a></p>
 
   <div class="content">
-    <h3>Informational Purposes Only</h3>
-    <p>All content on ImmiLane (immilane.com) &mdash; including PERM processing data, timeline estimates, status distributions, employer statistics, and visa bulletin information &mdash; is provided strictly for informational purposes. Nothing on this site constitutes legal advice, immigration counseling, or professional consultation of any kind.</p>
-    <p>ImmiLane is not a law firm, immigration consultancy, or government agency. The site's operators are not licensed attorneys and do not provide legal services. No attorney-client relationship is created by your use of this site.</p>
-
-    <h3>Data Accuracy</h3>
-    <p>ImmiLane sources its PERM case data from publicly available records at the U.S. Department of Labor's <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG (Foreign Labor Application Gateway)</a> system. While we make every reasonable effort to present this data accurately and keep it current by scanning the FLAG system multiple times daily, we cannot guarantee that the information is complete, error-free, or up to date at all times.</p>
-    <p>Data discrepancies may arise due to delays in the DOL's own reporting, temporary system outages, changes to the FLAG data format, or errors in our data processing pipeline. Users should independently verify any critical information through official government sources or their legal representatives.</p>
-
-    <h3>Estimates and Projections</h3>
-    <p>The processing timeline estimates provided by ImmiLane's <a href="estimate">Estimate Tool</a> are algorithmic projections based on historical processing patterns and current DOL throughput data. These estimates are <strong>not guarantees</strong> of when any individual case will be processed. Actual processing times can vary significantly due to factors including but not limited to:</p>
+    <h3>Current PERM processing time</h3>
+    <p>The DOL is adjudicating <strong data-live="frontier">November 2025</strong> filings — about <strong data-live="pct">56%</strong> of the way through that month, clearing roughly <strong data-live="move">5.6</strong>% of a filing month per week. Decisions are averaging <strong data-live="avg">396</strong> days from filing (<strong data-live="avgCert">394</strong> days for certified cases). In practical terms: a non-audited case filed today should expect a decision in roughly 13&ndash;14 months at the current pace.</p>
+    <h3>Why your case may take more or less time</h3>
     <ul>
-      <li>Individual case audits or requests for additional information</li>
-      <li>Changes in DOL staffing levels, policies, or priorities</li>
-      <li>Government shutdowns, budget constraints, or administrative reorganizations</li>
-      <li>Seasonal fluctuations in filing volumes and processing capacity</li>
-      <li>System migrations or technical changes at the DOL</li>
+      <li><strong>Filing-month order.</strong> The DOL processes PERM in rough filing-month order, so your wait is mostly the distance between your month and the frontier — details in <a href="guide-how-dol-processes-perm">how the DOL processes PERM</a>.</li>
+      <li><strong>Audits.</strong> Audited cases leave the main queue and typically add many months — see <a href="guide-perm-audits-rfis">audits and RFIs</a>.</li>
+      <li><strong>Volume surges.</strong> Heavy filing months (often Q4) take longer to clear than light ones.</li>
+      <li><strong>DOL throughput.</strong> Staffing and budget changes move the weekly pace; the dashboard&rsquo;s trend shows whether the pace is accelerating or slowing.</li>
     </ul>
-    <p>Do not make significant personal, professional, or financial decisions based solely on ImmiLane's processing estimates.</p>
-
-    <h3>No Liability</h3>
-    <p>ImmiLane and its operators shall not be held liable for any losses, damages, or adverse outcomes resulting from the use of or reliance on information presented on this site. This includes, without limitation, any decisions related to employment, immigration filings, travel plans, financial commitments, or legal strategy made on the basis of data or estimates from ImmiLane.</p>
-
-    <h3>External Links</h3>
-    <p>ImmiLane may contain links to external websites and resources, including government sites such as FLAG.DOL.GOV and travel.state.gov. These links are provided for convenience and reference only. We do not control, endorse, or assume responsibility for the content, accuracy, or privacy practices of any external sites. Visiting external links is at your own risk.</p>
-
-    <h3>Consult an Immigration Attorney</h3>
-    <p>If you have questions about your specific immigration case, PERM labor certification filing, or employment-based green card process, we strongly recommend consulting with a qualified immigration attorney. An experienced attorney can provide personalized advice based on your individual circumstances, which no informational website &mdash; including ImmiLane &mdash; can replace.</p>
-
-    <h3>Changes to This Disclaimer</h3>
-    <p>We may update this Disclaimer from time to time to reflect changes in our practices or for legal, operational, or regulatory reasons. Any changes will be posted on this page with an updated date. Your continued use of ImmiLane after changes are posted constitutes acceptance of the updated Disclaimer.</p>
-
-    <h3>Contact</h3>
-    <p>If you have questions about this Disclaimer, please reach out through the feedback form on the <a href="./">ImmiLane Dashboard</a>.</p>
-
-    <div class="last-updated">Last updated: May 2026</div>
+    <h3>Reading it for your own case</h3>
+    <p>Find your filing month, compare it to the frontier above, and divide the gap by the weekly pace — or let the <a href="estimate">estimate tool</a> do exactly that from your filing date or case number. To see where the queue stands the day anything changes, <a href="subscribe">Case Watch</a> emails you on status movement. Understanding your current label? See <a href="perm-case-status">what each case status means</a>.</p>
   </div>
+  <div class="section-label">Frequently asked</div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-question">How long does PERM take in 2026?</div>
+      <div class="faq-answer">Measured from live DOL data, decisions are averaging about <span data-live="avg">396</span> days (roughly 13 months) from filing for non-audited cases. Audited cases take substantially longer.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Which PERM filing month is the DOL processing now?</div>
+      <div class="faq-answer">Right now the DOL is working through <span data-live="frontier">November 2025</span> filings, about <span data-live="pct">56%</span> complete, with <span data-live="remain">6,076</span> cases remaining in that month.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Is PERM processing getting faster or slower?</div>
+      <div class="faq-answer">The queue is currently moving at about <span data-live="move">5.6</span>% of a filing month per week. The <a href="./">dashboard</a> charts the pace over time so you can see the trend rather than a single snapshot.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Does premium processing exist for PERM?</div>
+      <div class="faq-answer">No. Unlike some USCIS petitions, PERM has no premium processing — every case waits in the DOL queue, which is why tracking the frontier is the only reliable timeline signal.</div>
+    </div>
+  </div>
+  <div class="cta-box"><p><strong>Get your date:</strong> the <a href="estimate">estimate tool</a> converts today&rsquo;s pace into a projected decision window for your filing date — and <a href="perm-status-check">here&rsquo;s how to check your status</a> along the way.</p></div>
+
+<script>
+/* Fill live DOL numbers from the same data file the dashboard uses.
+   Static baked values remain if the fetch fails. */
+(function () {
+  fetch('data/dashboard_data.json').then(function (r) { return r.json(); }).then(function (d) {
+    function set(k, v) {
+      document.querySelectorAll('[data-live="' + k + '"]').forEach(function (el) { el.textContent = v; });
+    }
+    var m = (d.dol.label || '').match(/'(\d\d)/);
+    var yr = m ? '20' + m[1] : '';
+    set('frontier', d.dol.monthFull + (yr ? ' ' + yr : ''));
+    set('pct', d.dol.pctProcessed + '%');
+    set('remain', Number(d.dol.casesRemaining).toLocaleString());
+    set('avg', d.avgDays.current);
+    set('avgCert', d.avgDays.certified);
+    set('pending', Number(d.backlog.total).toLocaleString());
+    set('todayTotal', Number(d.today.total).toLocaleString());
+    set('move', d.dol.movementPerWeek);
+    var nx = (d.statusDistribution || []).filter(function (t) { return t.tabKey === 'next'; })[0];
+    if (nx) {
+      ['certified', 'review', 'withdrawn', 'rfi', 'denied'].forEach(function (k) {
+        set('nx-' + k, Number(nx[k]).toLocaleString());
+      });
+    }
+    if (d.updatedAt) {
+      var dt = new Date(d.updatedAt);
+      if (!isNaN(dt)) set('updated', dt.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' }) + ' ET');
+    }
+  }).catch(function () {});
+})();
+</script>
 </div>
 
 <footer>
@@ -248,6 +332,15 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
 });
 document.getElementById('nav-toggle').addEventListener('click', function() {
   document.querySelector('nav').classList.toggle('nav-open');
+});
+
+document.querySelectorAll('.faq-question').forEach(function(q) {
+  q.addEventListener('click', function() {
+    var item = this.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  });
 });
 </script>
 
@@ -487,5 +580,65 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
 })();
 </script>
 <!-- /il-session-check -->
+<!-- il-cw-announce START -->
+<style id="il-cw-announce-css">
+  .il-cw { position: relative; z-index: 91; display: none; background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(139,92,246,0.14)); border-bottom: 1px solid rgba(139,92,246,0.36); backdrop-filter: blur(12px); }
+  .il-cw-inner { max-width: 1200px; margin: 0 auto; padding: 11px 44px 11px 24px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); text-decoration: none; cursor: pointer; }
+  .il-cw-badge { flex: none; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 999px; padding: 2px 9px; }
+  .il-cw-text strong { color: var(--text-primary); font-weight: 600; }
+  .il-cw-cta { flex: none; font-weight: 600; color: #8b5cf6; white-space: nowrap; }
+  .il-cw-inner:hover .il-cw-cta { text-decoration: underline; }
+  .il-cw-inner:focus-visible { outline: 2px solid var(--input-focus); outline-offset: -2px; }
+  .il-cw-close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: 1px solid transparent; border-radius: 8px; color: var(--text-muted); font-size: 16px; line-height: 1; padding: 4px 8px; cursor: pointer; }
+  .il-cw-close:hover { color: var(--text-primary); background: var(--tab-bg); }
+  .il-cw-close:focus-visible { outline: 2px solid var(--input-focus); outline-offset: 1px; }
+  @media (max-width: 768px) {
+    .il-cw-inner { font-size: 12.5px; gap: 8px; padding: 9px 40px 9px 16px; }
+  }
+</style>
+<script id="il-cw-announce-js">
+/* Case Watch announcement strip. Pure DOM + localStorage: no data dependency,
+   so the failure mode is simply "no banner". Dismissal persists for 30 days.
+   Sets window.__ilAnnounce so the data-freshness banner stands down while
+   this strip is showing (no stacked banners under the nav). */
+(function () {
+  'use strict';
+  try {
+    var KEY = 'il-cw-announce-dismissed';
+    var TTL = 30 * 24 * 60 * 60 * 1000;
+    try {
+      var ts = parseInt(localStorage.getItem(KEY), 10);
+      if (ts && (Date.now() - ts) < TTL) return;
+    } catch (e) {}
+    window.__ilAnnounce = true;
+    function dismiss(el) {
+      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+      el.remove();
+    }
+    function insert() {
+      try {
+        var nav = document.querySelector('nav');
+        if (!nav || !nav.parentNode) { window.__ilAnnounce = false; return; }
+        var el = document.createElement('div');
+        el.className = 'il-cw';
+        el.innerHTML = '<a class="il-cw-inner" href="subscribe">' +
+          '<span class="il-cw-badge">New</span>' +
+          '<span class="il-cw-text"><strong>Case Watch</strong> — get an email the moment your PERM case status changes.</span>' +
+          '<span class="il-cw-cta">Track my case →</span>' +
+          '</a><button type="button" class="il-cw-close" aria-label="Dismiss Case Watch announcement">&#10005;</button>';
+        el.querySelector('.il-cw-close').addEventListener('click', function (ev) {
+          ev.preventDefault(); ev.stopPropagation(); dismiss(el);
+        });
+        el.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') dismiss(el); });
+        nav.insertAdjacentElement('afterend', el);
+        el.style.display = 'block';
+      } catch (e) {}
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', insert);
+    else insert();
+  } catch (e) {}
+})();
+</script>
+<!-- il-cw-announce END -->
 </body>
 </html>

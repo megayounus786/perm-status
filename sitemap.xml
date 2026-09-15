@@ -2,116 +2,140 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://immilane.com/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://immilane.com/estimate.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <loc>https://immilane.com/estimate</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://immilane.com/leaderboard.html</loc>
-    <lastmod>2026-06-09</lastmod>
+    <loc>https://immilane.com/leaderboard</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://immilane.com/visa-bulletin.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <loc>https://immilane.com/visa-bulletin</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immilane.com/about-perm.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <loc>https://immilane.com/about-perm</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immilane.com/faq.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <loc>https://immilane.com/faq</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immilane.com/guides.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://immilane.com/guides</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://immilane.com/guide-how-dol-processes-perm.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://immilane.com/guide-how-dol-processes-perm</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immilane.com/guide-final-action-vs-filing-dates.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://immilane.com/guide-final-action-vs-filing-dates</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immilane.com/guide-eb1-eb2-eb3-explained.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://immilane.com/guide-eb1-eb2-eb3-explained</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immilane.com/guide-perm-audits-rfis.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://immilane.com/guide-perm-audits-rfis</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immilane.com/guide-estimate-methodology.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://immilane.com/guide-estimate-methodology</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immilane.com/about-us.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://immilane.com/about-us</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://immilane.com/support.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <loc>https://immilane.com/support</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://immilane.com/subscribe</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://immilane.com/terms.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <loc>https://immilane.com/terms</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://immilane.com/disclaimer.html</loc>
-    <lastmod>2026-05-14</lastmod>
+    <loc>https://immilane.com/disclaimer</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://immilane.com/privacy.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <loc>https://immilane.com/privacy</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://immilane.com/refund.html</loc>
-    <lastmod>2026-08-22</lastmod>
+    <loc>https://immilane.com/refund</loc>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://immilane.com/perm-status-check</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://immilane.com/perm-case-status</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://immilane.com/dol-case-status</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://immilane.com/perm-processing-time</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

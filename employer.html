@@ -48,7 +48,7 @@
 <title>Employer PERM &amp; H-1B Profile | ImmiLane</title>
 <meta name="description" content="PERM labor certification and H-1B salary profile for this employer: total filings, status distribution, certification rate, top job titles, occupations, and certified H-1B LCA offered wages (FY2025).">
 <meta name="robots" content="index,follow">
-<link rel="canonical" id="emp-canonical" href="https://immilane.com/employer.html">
+<link rel="canonical" id="emp-canonical" href="https://immilane.com/employer">
 <meta property="og:type" content="website">
 <meta property="og:title" id="emp-og-title" content="Employer PERM &amp; H-1B Profile | ImmiLane">
 <meta property="og:description" id="emp-og-desc" content="PERM and H-1B salary data for this employer.">
@@ -535,13 +535,13 @@
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="./">Dashboard</a></li>
-      <li><a href="estimate.html">Estimate</a></li>
-      <li><a href="leaderboard.html">Top Employers</a></li>
-      <li><a href="visa-bulletin.html">Visa Bulletin</a></li>
-      <li><a href="guides.html">Guides</a></li>
+      <li><a href="estimate">Estimate</a></li>
+      <li><a href="leaderboard">Top Employers</a></li>
+      <li><a href="visa-bulletin">Visa Bulletin</a></li>
+      <li><a href="guides">Guides</a></li>
       <li><a href="subscribe">Case Watch</a></li>
-      <li><a href="about-perm.html">About PERM</a></li>
-      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="about-perm">About PERM</a></li>
+      <li><a href="faq">FAQ</a></li>
     </ul>
     <div class="nav-utils"><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode"><span class="theme-toggle-icon moon">🌙</span><span class="theme-toggle-icon sun">☀️</span></button>
     <div class="nav-search" id="nav-search">
@@ -562,7 +562,7 @@
 </main>
 
 <footer>
-  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; <a href="guides.html">Guides</a> &middot; <a href="about-us.html">About</a> &middot; <a href="support.html">Contact</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="refund.html">Refund</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; &copy; 2026 ImmiLane
+  Data sourced from <a href="https://flag.dol.gov/programs/lca" target="_blank" rel="noopener">FLAG.DOL.GOV</a> &middot; Updated daily &middot; <a href="guides">Guides</a> &middot; <a href="about-us">About</a> &middot; <a href="support">Contact</a> &middot; <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a> &middot; <a href="refund">Refund</a> &middot; <a href="disclaimer">Disclaimer</a> &middot; <br><a href="perm-status-check">PERM Status Check</a> &middot; <a href="perm-case-status">Case Status Meanings</a> &middot; <a href="dol-case-status">DOL Case Status</a> &middot; <a href="perm-processing-time">Processing Times</a> &middot; &copy; 2026 ImmiLane
 </footer>
 
 <script>
@@ -1592,7 +1592,7 @@ function applySeo(name) {
   const ogT = document.getElementById('emp-og-title'); if (ogT) ogT.setAttribute('content', t);
   const ogD = document.getElementById('emp-og-desc'); if (ogD) ogD.setAttribute('content', desc);
   const can = document.getElementById('emp-canonical');
-  if (can) can.setAttribute('href', 'https://immilane.com/employer.html?e=' + encodeURIComponent(employerSlug(name)));
+  if (can) can.setAttribute('href', 'https://immilane.com/employer?e=' + encodeURIComponent(employerSlug(name)));
 }
 
 // ── Page bootstrap ────────────────────────────────────────────────────────
@@ -1915,7 +1915,7 @@ function scrollChartsToLatest() {
     if (typeof gtag === 'function') {
       try { gtag('event', 'employer_selected', { employer_name: name }); } catch (e) {}
     }
-    window.location.href = 'employer.html?e=' + encodeURIComponent(name.trim());
+    window.location.href = 'employer?e=' + encodeURIComponent(name.trim());
   }
 })();
 </script>
