@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-09-23T23:49:10-04:00",
+  "updatedAt": "2026-09-24T07:05:58-04:00",
   "backlog": {
-    "total": 90689,
-    "startOfMonth": 97441,
+    "total": 91151,
+    "startOfMonth": 97436,
     "thisMonth": {
       "name": "Sep 2026",
-      "processed": 14121,
-      "intake": 7369
+      "processed": 14154,
+      "intake": 7869
     },
     "lastMonth": {
       "name": "Aug 2026",
@@ -23,18 +23,18 @@
     "trend90Day": 0
   },
   "today": {
-    "total": 887,
-    "certified": 807,
-    "rfi": 44,
-    "denied": 29,
-    "withdrawn": 7,
+    "total": 33,
+    "certified": 33,
+    "rfi": 0,
+    "denied": 0,
+    "withdrawn": 0,
     "stillUpdating": false,
     "yesterday": {
-      "total": 735,
-      "certified": 687,
-      "rfi": 26,
-      "denied": 17,
-      "withdrawn": 5
+      "total": 887,
+      "certified": 807,
+      "rfi": 44,
+      "denied": 29,
+      "withdrawn": 7
     }
   },
   "dol": {
@@ -42,10 +42,10 @@
     "monthFull": "December",
     "day": 5,
     "daysInMonth": 100,
-    "estFinish": "Jan 22",
+    "estFinish": "Jan 23",
     "movementPerWeek": 1.7,
-    "casesRemaining": 13767,
-    "latestLetter": "I",
+    "casesRemaining": 13734,
+    "latestLetter": "V",
     "pctProcessed": 5
   },
   "timeline": [
@@ -135,8 +135,7 @@
       "denied": 993,
       "rfi": 505,
       "status": "done",
-      "processedPct": 94.7,
-      "todayProcessed": 1
+      "processedPct": 94.7
     },
     {
       "label": "Jul '25",
@@ -147,8 +146,7 @@
       "denied": 464,
       "rfi": 364,
       "status": "done",
-      "processedPct": 95.0,
-      "todayProcessed": 2
+      "processedPct": 95.0
     },
     {
       "label": "Aug '25",
@@ -159,8 +157,7 @@
       "denied": 339,
       "rfi": 391,
       "status": "done",
-      "processedPct": 94.9,
-      "todayProcessed": 1
+      "processedPct": 94.9
     },
     {
       "label": "Sep '25",
@@ -171,8 +168,7 @@
       "denied": 368,
       "rfi": 505,
       "status": "done",
-      "processedPct": 95.4,
-      "todayProcessed": 18
+      "processedPct": 95.4
     },
     {
       "label": "Oct '25",
@@ -194,22 +190,21 @@
       "denied": 177,
       "rfi": 499,
       "status": "processing",
-      "processedPct": 84.4,
-      "todayProcessed": 348
+      "processedPct": 84.4
     },
     {
       "label": "Dec '25",
       "total": 15334,
-      "certified": 770,
-      "review": 13767,
+      "certified": 803,
+      "review": 13734,
       "withdrawn": 542,
       "denied": 1,
       "rfi": 19,
       "status": "active",
-      "processedPct": 5.2,
+      "processedPct": 5.4,
       "dolDay": 5,
       "dolDays": 100,
-      "todayProcessed": 510
+      "todayProcessed": 33
     },
     {
       "label": "Jan '26",
@@ -301,10 +296,10 @@
     },
     {
       "label": "Sep '26",
-      "total": 7369,
+      "total": 7869,
       "certified": 0,
-      "review": 7308,
-      "withdrawn": 61,
+      "review": 7803,
+      "withdrawn": 66,
       "denied": 0,
       "rfi": 0,
       "status": "pending",
@@ -312,14 +307,6 @@
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-08-25",
-      "total": 796,
-      "certified": 688,
-      "rfi": 42,
-      "denied": 62,
-      "withdrawn": 4
-    },
     {
       "date": "2026-08-26",
       "total": 626,
@@ -554,6 +541,14 @@
       "rfi": 44,
       "denied": 29,
       "withdrawn": 7
+    },
+    {
+      "date": "2026-09-24",
+      "total": 33,
+      "certified": 33,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0
     }
   ],
   "rateWeeks": [
@@ -647,8 +642,8 @@
     },
     {
       "weekStart": "2026-09-21",
-      "total": 2430,
-      "certified": 2202,
+      "total": 2463,
+      "certified": 2235,
       "rfi": 120,
       "denied": 94,
       "withdrawn": 14,
@@ -677,8 +672,8 @@
       "tabKey": "next",
       "tabLabel": "Dec",
       "subtitle": "December 2025 filings \u00b7 15,099 total",
-      "certified": 770,
-      "review": 13767,
+      "certified": 803,
+      "review": 13734,
       "withdrawn": 542,
       "rfi": 19,
       "denied": 1
