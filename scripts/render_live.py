@@ -433,6 +433,20 @@ def main() -> int:
     print(f"render_live: DOL {vals['frontier']} · {vals['pct']} · {vals['avg']} avg days · "
           f"{vals['pending']} pending · updated {vals['updated']} · bulletin {vb.get('bulletin_date')}")
     print(f"render_live: {'would change' if a.check else 'rendered'} {len(changed)} file(s): {', '.join(changed) or '-'}")
+
+    # ── SEO item 3 (2026-09-24): static employer pages — additive, non-fatal ──
+    # build_employer_pages.deploy_step() refreshes the top-300 employer data from
+    # the worker (per-employer fallback to the committed snapshot) and re-renders
+    # employers/*.html, employers.html, the sitemap <!--il-ssr:employers--> block
+    # and the employer.html slug map. It runs AFTER the sitemap job above so its
+    # data-driven <lastmod>s win. A failure here must not undo the renders above,
+    # so it only logs a WARN and the committed employer pages deploy as-is.
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import build_employer_pages as bep
+        print("render_live: " + bep.deploy_step(root, check=a.check))
+    except Exception as e:
+        print(f"render_live: WARN employer pages step failed ({type(e).__name__}: {e}) — committed employer pages deploy as-is")
     return 0
 
 
