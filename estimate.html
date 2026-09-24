@@ -58,7 +58,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PERM Estimate — Predict Your Approval Date | ImmiLane">
 <meta name="twitter:description" content="Estimate your PERM approval date from your filing date or case number, projected from the DOL's live processing pace. Free and updated daily.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ImmiLane PERM Estimate","url":"https://immilane.com/estimate.html","description":"Estimate PERM labor certification completion dates based on live DOL processing data.","applicationCategory":"Government Data Tracker","operatingSystem":"Web","provider":{"@type":"Organization","name":"ImmiLane","url":"https://immilane.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ImmiLane PERM Estimate","url":"https://immilane.com/estimate","description":"Estimate PERM labor certification completion dates based on live DOL processing data.","applicationCategory":"Government Data Tracker","operatingSystem":"Web","provider":{"@type":"Organization","name":"ImmiLane","url":"https://immilane.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8NXS7DNX1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8NXS7DNX1');</script>
 <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
@@ -320,7 +320,7 @@
 
 <noscript>
   <div style="padding:40px 20px;text-align:center;color:#f0f0f8;background:#0a0a12;min-height:100vh;font-family:sans-serif;">
-    <h1 style="margin-bottom:16px;">ImmiLane PERM Estimate</h1>
+    <p style="font-size:2em;font-weight:700;margin-bottom:16px;">ImmiLane PERM Estimate</p>
     <p>This page requires JavaScript to compute estimates from live DOL data. Please enable JavaScript in your browser settings and reload the page.</p>
   </div>
 </noscript>
@@ -675,7 +675,7 @@ const API_VERSION = '3';
     html += '<div class="est-stat"><div class="est-stat-label">DOL Position</div><div class="est-stat-value warning">' + esc(est.dol_current) + '</div></div>';
     html += '<div class="est-stat"><div class="est-stat-label">Months Ahead</div><div class="est-stat-value accent">' + est.months_ahead + '</div></div>';
     html += '<div class="est-stat"><div class="est-stat-label">Cases in Queue</div><div class="est-stat-value">' + n(est.cases_ahead) + '</div></div>';
-    html += '<div class="est-stat"><div class="est-stat-label">Processing Speed</div><div class="est-stat-value success">' + n(est.processing_speed_per_week) + '/wk</div></div>';
+    html += '<div class="est-stat"><div class="est-stat-label">Processing Speed</div><div class="est-stat-value success">' + n(est.processing_speed_per_week) + '&#47;wk</div></div>';
     html += '<div class="est-stat"><div class="est-stat-label">Days Remaining</div><div class="est-stat-value accent">~' + n(est.days_remaining) + '</div></div>';
     html += '</div>';
 

@@ -807,7 +807,7 @@
 
 <noscript>
   <div style="padding:40px 20px;text-align:center;color:#f0f0f8;background:#0a0a12;min-height:100vh;font-family:sans-serif;">
-    <h1 style="margin-bottom:16px;">ImmiLane PERM Tracker</h1>
+    <p style="font-size:2em;font-weight:700;margin-bottom:16px;">ImmiLane PERM Tracker</p>
     <p>This dashboard requires JavaScript to display real-time PERM processing data. Please enable JavaScript in your browser settings and reload the page.</p>
   </div>
 </noscript>
@@ -861,7 +861,7 @@
     </div>
     <h1>PERM Processing Dashboard</h1>
     <h2>Real-time DOL Labor Certification Tracking</h2>
-    <p class="update-time"><span class="dot"></span><span id="updated-text">Loading…</span></p>
+    <p class="update-time"><span class="dot"></span><span id="updated-text">Last updated Sep 24, 2026, 3:18 PM ET</span></p>
   </div>
 
   <!-- ImmiLane Mobile app promo moved to below the footer (see end of <body>). -->
@@ -883,7 +883,73 @@
     </div>
   </div>
 
-  <div class="stats-grid" id="stats-grid"></div>
+  <div class="stats-grid" id="stats-grid"><!--il-ssr:stats-grid-->
+    <div class="stat-card" style="--accent:#3b82f6;">
+      <div class="stat-label">Total Backlog
+        <span class="info-icon">?<span class="tooltip">
+          <div class="tt-section">This month (Sep 2026, so far)</div>
+          <div class="tt-row"><span class="tt-label">Processed</span><span class="tt-val">14,718</span></div>
+          <div class="tt-row"><span class="tt-label">New intake</span><span class="tt-val">+7,869</span></div>
+          <div class="tt-row"><span class="tt-label">Net change</span><span class="tt-val" style="color:#22c55e;">−6,849</span></div>
+        </span></span>
+      </div>
+      <div class="stat-value" style="color:var(--text-primary);">90,587</div>
+      <div class="stat-trend trend-neutral">Backlog at start of month: 97,436</div>
+      <div class="stat-details">
+        <div class="stat-detail-row"><span class="stat-detail-label" style="color:var(--text-secondary);font-weight:500;">Last month (Aug 2026)</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Processed</span><span class="stat-detail-value">20,445</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">New intake</span><span class="stat-detail-value">+8,939</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Net change</span><span class="stat-detail-value" style="color:#22c55e;">−11,506</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card" style="--accent:#f59e0b;">
+      <div class="stat-label">Avg Processing Days
+        <span class="info-icon">?<span class="tooltip">Average calendar days from PERM filing to DOL decision, based on cases decided in the last 30 days.</span></span>
+      </div>
+      <div class="stat-value" style="color:#f59e0b;">391</div>
+      <div class="stat-trend trend-neutral">— 0 days from last month</div>
+      <div class="stat-details">
+        <div class="stat-detail-row"><span class="stat-detail-label">Certified cases avg</span><span class="stat-detail-value">389 days</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">RFI cases avg</span><span class="stat-detail-value">397 days</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Denied cases avg</span><span class="stat-detail-value">422 days</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">90-day trend</span><span class="stat-detail-value" style="color:#22c55e;">0 days</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card" style="--accent:#22c55e;">
+      <div class="stat-label">Processed Today
+        <span class="info-icon">?<span class="tooltip">
+          <div class="tt-section">Today's breakdown</div>
+          <div class="tt-row"><span class="tt-label">Certified</span><span class="tt-val" style="color:#22c55e;">522</span></div>
+          <div class="tt-row"><span class="tt-label">RFI</span><span class="tt-val" style="color:#f59e0b;">14</span></div>
+          <div class="tt-row"><span class="tt-label">Denied</span><span class="tt-val" style="color:#ef4444;">10</span></div>
+          <div class="tt-row"><span class="tt-label">Withdrawn</span><span class="tt-val" style="color:#64748b;">3</span></div>
+        </span></span>
+      </div>
+      <div class="stat-value" style="color:#22c55e;">597</div>
+      <div class="stat-trend trend-neutral">Final count</div>
+      <div class="stat-details">
+        <div class="stat-detail-row"><span class="stat-detail-label">Yesterday certified</span><span class="stat-detail-value" style="color:#22c55e;">807</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Yesterday denied</span><span class="stat-detail-value" style="color:#ef4444;">29</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Yesterday RFI</span><span class="stat-detail-value" style="color:#f59e0b;">44</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Yesterday withdrawn</span><span class="stat-detail-value">7</span></div>
+      </div>
+    </div>
+
+    <div class="stat-card" style="--accent:#8b5cf6;">
+      <div class="stat-label">DOL Currently Processing
+        <span class="info-icon">?<span class="tooltip">The filing month DOL is currently reviewing.</span></span>
+      </div>
+      <div class="stat-value" style="color:#8b5cf6;">Dec '25</div>
+      <div class="stat-trend trend-neutral">7% processed · 13,395 remaining</div>
+      <div class="stat-details">
+        <div class="stat-detail-row"><span class="stat-detail-label">Total cases</span><span class="stat-detail-value">15,334</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Est. finish</span><span class="stat-detail-value">Dec 24</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Movement/week</span><span class="stat-detail-value">~2.2 days</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Cases remaining</span><span class="stat-detail-value" style="color:#f59e0b;">~13,395</span></div>
+      </div>
+    </div><!--/il-ssr:stats-grid--></div>
 
   <div class="charts-row">
     <div class="card">
