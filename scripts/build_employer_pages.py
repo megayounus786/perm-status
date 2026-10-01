@@ -680,16 +680,13 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
 
 
 def shared_widgets(root: str) -> str:
-    """Feedback widget + session-check + Case Watch strip, copied verbatim from the
-    guide template so every page shares the same behaviour; relative hrefs made
-    absolute because these pages live one directory deeper."""
+    """Feedback widget + session-check, copied verbatim from the guide template
+    so every page shares the same behaviour."""
     src = open(os.path.join(root, "guide-how-dol-processes-perm.html"), encoding="utf-8").read()
-    m = re.search(r"(<!-- Feedback Widget \(shared across all pages\) -->.*?<!-- il-cw-announce END -->)", src, re.S)
+    m = re.search(r"(<!-- Feedback Widget \(shared across all pages\) -->.*?<!-- /il-session-check -->)", src, re.S)
     if not m:
         raise RuntimeError("shared widget block not found in guide template")
-    block = m.group(1)
-    block = block.replace('href="subscribe"', 'href="/subscribe"')
-    return block
+    return m.group(1)
 
 
 # ── employer page ────────────────────────────────────────────────────────────
