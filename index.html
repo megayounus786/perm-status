@@ -2436,6 +2436,7 @@ renderDashboard(window.DASHBOARD_DATA);
 // scanner deploy, same content as the baked DASHBOARD_DATA) and re-render
 // in place — but only when its updatedAt is newer than what's on screen.
 (function initAutoRefresh() {
+  const AUTO_REFRESH_ENABLED = false; if (!AUTO_REFRESH_ENABLED) return; // OFF since 2026-10-01 (Younus): data loads once per page view. Set true to turn back on.
   const REFRESH_HIDDEN_THRESHOLD_MS = 120 * 1000;
   const REFRESH_FETCH_TIMEOUT_MS = 10 * 1000;
   const DEFERRED_RETRY_MS = 3 * 1000;
