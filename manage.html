@@ -124,8 +124,20 @@ function planPrice(cadence) {
   return lab.includes('— ') ? lab.split('— ')[1] : '';
 }
 
+// What each plan keeps sending through a paid period after a cancel.
+const SERVICE = {
+  daily: 'daily emails and status alerts',
+  weekly: 'weekly emails and status alerts',
+  alerts: 'status alerts'
+};
+
 function billingLine(s) {
   const bs = s.billing_status || 'beta';
+  // Cancelled, but the period is already paid: still served until then.
+  if (s.active_until) {
+    return 'Cancelled — paid through ' + fmtDate(s.active_until) + '. Your ' +
+      (SERVICE[s.cadence] || 'emails') + ' keep coming until then; no further charges.';
+  }
   if (bs === 'beta') return 'Free beta subscription';
   if (bs === 'active') {
     const renews = fmtDate(s.current_period_end);
@@ -192,7 +204,9 @@ function renderSub(s) {
   const liveStatus = (s.case && s.case.found && s.case.status) || s.status;
   const statusPill = s.active
     ? '<span class="status-pill">' + esc(liveStatus || 'watching') + '</span>'
-    : '<span class="status-pill inactive">unsubscribed</span>';
+    : s.active_until
+      ? '<span class="status-pill inactive">ends ' + esc(fmtDate(s.active_until)) + '</span>'
+      : '<span class="status-pill inactive">unsubscribed</span>';
   card.innerHTML =
     '<div class="sub-head"><div><div class="case-no">' + esc(s.case_number) + '</div>' +
     '<div class="sub-meta">Subscribed ' + esc((s.created_at || '').slice(0, 10)) +
@@ -238,14 +252,16 @@ function renderSub(s) {
     });
 
     unsub.addEventListener('click', async () => {
-      // Paid plan (cancel_at_period_end): alerts keep sending until the
-      // already-paid current_period_end. Free/beta rows stop immediately.
+      // Paid plan (cancel_at_period_end): its digests and alerts keep
+      // sending until the already-paid current_period_end. Free/beta rows
+      // stop immediately.
       const paidThrough = (s.billing_status === 'active' && s.current_period_end)
         ? fmtDate(s.current_period_end) : null;
       if (!confirm('Stop watching ' + s.case_number + '? ' + (paidThrough
-            ? 'Your plan won’t renew (no further charges), and you’ll keep '
-              + 'getting alerts until ' + paidThrough + ' — the period you’ve '
-              + 'already paid for. You can re-subscribe anytime.'
+            ? 'Your plan won’t renew (no further charges). You’ve paid through '
+              + paidThrough + ', so your ' + (SERVICE[s.cadence] || 'emails')
+              + ' keep coming until then. To stop all emails now, use the '
+              + 'unsubscribe link in any email.'
             : 'Emails stop immediately, any paid plan simply won’t renew '
               + '(no further charges), and you can re-subscribe anytime.'))) return;
       unsub.disabled = true;
@@ -263,6 +279,13 @@ function renderSub(s) {
         unsub.disabled = false;
       }
     });
+  } else if (s.active_until) {
+    const hint = document.createElement('div');
+    hint.className = 'sub-meta';
+    hint.style.marginTop = '12px';
+    hint.innerHTML = 'Changed your mind? <a href="subscribe" style="color:#60a5fa">Submit the subscribe form</a> ' +
+      'again with this email and case number — you can resume without paying twice.';
+    card.appendChild(hint);
   }
   return card;
 }

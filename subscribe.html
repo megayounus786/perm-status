@@ -859,6 +859,19 @@ document.getElementById('submit').addEventListener('click', async function() {
       }
       if (!r.ok || !data.ok)
         throw serverErr(data.message || (data.errors || ['request failed']).join(', '));
+      if (data.state === 'paid_through') {
+        // This watch is already paid through a date (renewal cancelled, or
+        // emails stopped): no new payment. The emailed link offers
+        // "Resume my subscription" or "Keep it ending".
+        const msg = String(data.message || '').replace(/[&<>]/g,
+          c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'})[c]);
+        showResult(result, 'ok', '<strong>' + msg + '</strong>' +
+          '<br><span style="color:var(--text-muted)">Link expired or no email? Just submit ' +
+          'this form again for a fresh one.</span>');
+        btn.disabled = false;
+        applyBillingUI();
+        return;
+      }
       showResult(result, 'ok',
         '<strong>Check your email — we’ve sent a verification link (valid 30 minutes).' +
         '</strong><br>Confirm your case there to continue to payment. The email goes to ' +
