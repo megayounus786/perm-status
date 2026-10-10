@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-09T18:07:38-04:00",
+  "updatedAt": "2026-10-09T21:07:33-04:00",
   "backlog": {
-    "total": 87185,
+    "total": 87133,
     "startOfMonth": 89205,
     "thisMonth": {
       "name": "Oct 2026",
-      "processed": 5008,
+      "processed": 5060,
       "intake": 2988
     },
     "lastMonth": {
@@ -22,16 +22,16 @@
     "denied": 360,
     "trend90Day": -87,
     "windowDays": 30,
-    "sampleSize": 17585,
+    "sampleSize": 17573,
     "samples": {
-      "certified": 16449,
+      "certified": 16437,
       "rfi": 695,
       "denied": 441
     }
   },
   "today": {
-    "total": 513,
-    "certified": 489,
+    "total": 565,
+    "certified": 541,
     "rfi": 17,
     "denied": 6,
     "withdrawn": 1,
@@ -51,8 +51,8 @@
     "daysInMonth": 100,
     "estFinish": "Oct 26",
     "movementPerWeek": 5.5,
-    "casesRemaining": 5785,
-    "latestLetter": "W",
+    "casesRemaining": 5733,
+    "latestLetter": "U",
     "pctProcessed": 57
   },
   "timeline": [
@@ -204,16 +204,16 @@
     {
       "label": "Dec '25",
       "total": 15334,
-      "certified": 8473,
-      "review": 5785,
+      "certified": 8525,
+      "review": 5733,
       "withdrawn": 568,
       "denied": 25,
       "rfi": 200,
       "status": "active",
-      "processedPct": 56.7,
+      "processedPct": 57.1,
       "dolDay": 57,
       "dolDays": 100,
-      "todayProcessed": 501
+      "todayProcessed": 553
     },
     {
       "label": "Jan '26",
@@ -561,8 +561,8 @@
     },
     {
       "date": "2026-10-09",
-      "total": 513,
-      "certified": 489,
+      "total": 565,
+      "certified": 541,
       "rfi": 17,
       "denied": 6,
       "withdrawn": 1
@@ -659,8 +659,8 @@
     },
     {
       "weekStart": "2026-10-05",
-      "total": 3704,
-      "certified": 3499,
+      "total": 3756,
+      "certified": 3551,
       "rfi": 145,
       "denied": 55,
       "withdrawn": 5,
@@ -683,8 +683,8 @@
       "tabKey": "next",
       "tabLabel": "Dec",
       "subtitle": "December 2025 filings \u00b7 15,051 total",
-      "certified": 8473,
-      "review": 5785,
+      "certified": 8525,
+      "review": 5733,
       "withdrawn": 568,
       "rfi": 200,
       "denied": 25
