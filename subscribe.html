@@ -671,17 +671,73 @@ function applyBillingUI() {
   applyBillingUI();
 })();
 
-// Banner after Stripe redirects back (?checkout=success|cancelled)
+// "What to expect" after payment (2026-10-13, feedback #43: a new subscriber
+// thought no digest had come; it had gone to spam). Same wording as the
+// welcome email (perm-tracker subs/email_render_v2.py FIRST_EMAIL_NOTICE /
+// INBOX_TIP); keep the two in step. ?plan= comes from the Checkout success
+// URL; without it the page shows the generic version.
+const SENDER_ADDRESS = 'notifications@immilane.com';
+const FIRST_EMAIL_NOTICE = {
+  daily: 'Your first daily update arrives {when} around 7:15 AM Eastern, then every morning.',
+  weekly: 'Your first weekly update arrives {when} around 7:15 AM Eastern, then every Monday.',
+  alerts: 'You’ll get an email only when your case status changes. We check DOL’s ' +
+          'system six times a day, so a quiet inbox just means no change yet.'
+};
+const FIRST_EMAIL_GENERIC = 'Daily plans get their first update the next morning around ' +
+  '7:15 AM Eastern, weekly plans on Monday morning, and alerts-only plans only when the ' +
+  'case status changes.';
+const INBOX_TIP = 'If you don’t see it, check your Spam or Promotions folder and add ' +
+  '{sender} to your contacts so future emails land in your inbox.';
+const INBOX_TIP_ALERTS = 'These emails can be weeks apart, so add {sender} to your ' +
+  'contacts now so they land in your inbox, and check your Spam or Promotions folder ' +
+  'if one seems to be missing.';
+const INBOX_TIP_GENERIC = 'If you don’t see our emails, check your Spam or Promotions ' +
+  'folder and add {sender} to your contacts so future emails land in your inbox.';
+// "No email?" line under the check-your-email messages.
+const NO_EMAIL_TIP = 'Not in your inbox within a few minutes? Check your Spam or Promotions folder.';
+
+// Digests go out around 7:15 AM Eastern; paying before 7:00 ET still makes
+// that morning's run (same rule as the email, _first_digest_when).
+function firstDigestWhen(plan, now) {
+  const p = {};
+  new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', hourCycle: 'h23',
+    hour: 'numeric', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric'})
+    .formatToParts(now || new Date()).forEach(x => { p[x.type] = x.value; });
+  const early = Number(p.hour) % 24 < 7;
+  if (plan !== 'weekly') return early ? 'this morning' : 'tomorrow morning';
+  const wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday);
+  let days = (8 - wd) % 7;
+  if (days === 0 && early) return 'this morning';
+  if (days === 0) days = 7;
+  const d = new Date(Date.UTC(+p.year, +p.month - 1, +p.day + days));
+  return 'on ' + d.toLocaleDateString('en-US', {timeZone: 'UTC', weekday: 'long',
+                                                month: 'long', day: 'numeric'});
+}
+
+function whatToExpectHTML(plan) {
+  const sender = '<strong>' + SENDER_ADDRESS + '</strong>';
+  if (!FIRST_EMAIL_NOTICE[plan])
+    return '<strong>What to expect:</strong> ' + FIRST_EMAIL_GENERIC + '<br>' +
+      INBOX_TIP_GENERIC.replace('{sender}', sender);
+  return '<strong>What to expect:</strong> ' +
+    FIRST_EMAIL_NOTICE[plan].replace('{when}', firstDigestWhen(plan)) + '<br>' +
+    (plan === 'alerts' ? INBOX_TIP_ALERTS : INBOX_TIP).replace('{sender}', sender);
+}
+
+// Banner after Stripe redirects back (?checkout=success&plan=…|cancelled)
 (function checkoutReturn() {
-  const state = new URLSearchParams(location.search).get('checkout');
+  const qs = new URLSearchParams(location.search);
+  const state = qs.get('checkout');
   if (!state) return;
   const b = document.getElementById('checkout-banner');
   if (state === 'success') {
     b.className = 'result ok';
     b.innerHTML = '<strong>Payment received — your Case Watch subscription is active!</strong><br>' +
-      'Your email and case were already verified before checkout, so there’s nothing else to do — ' +
-      'updates for your case start with the next scan. You can change plans or cancel anytime from ' +
-      '<a href="subscribe#manage">Manage subscriptions</a>.';
+      'Your email and case were already verified before checkout, so there’s nothing else to do. ' +
+      'A confirmation email (“Your Case Watch is live”) is on its way now.' +
+      '<span style="display:block;margin:10px 0">' + whatToExpectHTML(qs.get('plan')) + '</span>' +
+      'You can change plans or cancel anytime from ' +
+      '<a href="subscribe#manage" style="word-break:normal">Manage subscriptions</a>.';
   } else {
     b.className = 'result err';
     b.innerHTML = '<strong>Checkout was cancelled — you have not been charged.</strong><br>' +
@@ -877,6 +933,7 @@ document.getElementById('submit').addEventListener('click', async function() {
         '</strong><br>Confirm your case there to continue to payment. The email goes to ' +
         '<strong>' + email + '</strong>; you’ll review the case details for ' + caseNumber +
         ' before anything is charged.' +
+        '<br>' + NO_EMAIL_TIP +
         '<br><span style="color:var(--text-muted)">Link expired or no email? Just submit ' +
         'this form again for a fresh one.</span>');
       btn.disabled = false;
@@ -990,7 +1047,8 @@ document.getElementById('trial-submit').addEventListener('click', async function
     let html = '<strong>Sample generated for ' + data.case.case_number + '</strong>' +
       (data.case.employer ? ' — ' + data.case.employer : '') +
       ' · live status: <strong>' + data.case.status + '</strong><br>' + data.message;
-    html += '<br>Check your inbox — your sample is on its way to <strong>' + email + '</strong>.';
+    html += '<br>Check your inbox — your sample is on its way to <strong>' + email + '</strong>. ' +
+      NO_EMAIL_TIP;
     if (data.preview_url) {
       html += ' You can also <a href="' + data.preview_url + '" target="_blank" rel="noopener">view it in your browser</a>.';
     }
