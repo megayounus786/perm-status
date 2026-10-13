@@ -689,6 +689,28 @@ def shared_widgets(root: str) -> str:
     return m.group(1)
 
 
+SHIELD_RE = re.compile(r"<!-- il-shield -->.*?<!-- /il-shield -->", re.S)
+MONU_TAG_RE = re.compile(r'<script[^>]*src="//monu\.delivery/site/[^"]+"[^>]*></script>')
+
+
+def shared_shield(root: str) -> str:
+    """The no-peek head block (written by scripts/insert_session_check.py), copied
+    verbatim from the guide template like shared_widgets(); "" if it has none."""
+    src = open(os.path.join(root, "guide-how-dol-processes-perm.html"), encoding="utf-8").read()
+    m = SHIELD_RE.search(src)
+    return m.group(0) if m else ""
+
+
+def with_shield(html: str, shield: str) -> str:
+    """Put the head block right after the Monumetric tag (or refresh it)."""
+    if not shield:
+        return SHIELD_RE.sub("", html)
+    if SHIELD_RE.search(html):
+        return SHIELD_RE.sub(lambda _: shield, html, count=1)
+    m = MONU_TAG_RE.search(html)
+    return html[:m.end()] + "\n" + shield + html[m.end():] if m else html
+
+
 # ── employer page ────────────────────────────────────────────────────────────
 def build_page(m: dict, ctx: dict) -> str:
     name = m["name"]
@@ -1148,10 +1170,11 @@ def render_all(root: str, reg: dict, check: bool = False) -> List[str]:
     ctx = {"dash": dashboard_ctx(root), "index": reg.get("index") or {}, "liveMeta": reg.get("liveMeta") or {},
            "extras": extras_all, "related": related, "topN": top_n,
            "widgets": shared_widgets(root), "generated": today_et().strftime("%b %-d, %Y")}
+    shield = shared_shield(root)
     outputs: Dict[str, str] = {}
     for m in members:
-        outputs[os.path.join(OUT_DIR, m["slug"] + ".html")] = build_page(m, ctx)
-    outputs[HUB_REL] = build_hub(members, ctx)
+        outputs[os.path.join(OUT_DIR, m["slug"] + ".html")] = with_shield(build_page(m, ctx), shield)
+    outputs[HUB_REL] = with_shield(build_hub(members, ctx), shield)
     # sitemap + employer.html blocks
     sm_path = os.path.join(root, "sitemap.xml")
     sm = open(sm_path, encoding="utf-8").read()

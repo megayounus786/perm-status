@@ -2,6 +2,30 @@
 <html lang="en">
 <head>
 <script type="text/javascript" src="//monu.delivery/site/6/7/24ec8e-ce2f-4a85-ba1a-e1a4ecaea496.js" data-cfasync="false"></script>
+<!-- il-shield -->
+<style id="il-shield-css">html.il-shield body{opacity:0!important;visibility:hidden!important}</style>
+<script id="il-shield">
+/* Ad-block notice, part 1 of 2 (part 2: assets/il-session.js). Written by scripts/insert_session_check.py -- edit there. Hides the page until the ad-block check has answered, only when the Monumetric script above did not run; never for crawlers, the open pages, or a switch that is not "on". */
+(function(){try{
+var M="on",A=false,L='https://monu.delivery/site/6/7/24ec8e-ce2f-4a85-ba1a-e1a4ecaea496.js',O=['subscribe', 'manage', 'refund', 'terms', 'privacy', 'disclaimer', 'support'],B=/bot|crawl|spider|slurp|google-|googleother|mediapartners|lighthouse|pagespeed|headless|bingpreview|facebookexternalhit|preview|embedly|ia_archiver|gtmetrix|pingdom|uptime|phantom|puppeteer|playwright|selenium/i;
+if(M!=='on'||window.__ilShield)return;
+if(!A&&window.$MMT&&window.$MMT.dsloaded)return;
+var n=navigator;if(B.test(n.userAgent||'')||n.webdriver===true)return;
+if(O.indexOf((location.pathname||'/').toLowerCase().replace(/\.html$/,'').split('/')[1]||'')!==-1)return;
+if(!window.fetch||!window.Promise||!window.performance||!performance.now)return;
+var de=document.documentElement,S={t0:performance.now(),e:{}},e=S.e;
+try{S.flag=+localStorage.getItem('il-wall')>Date.now()}catch(x){}
+try{S.retry=sessionStorage.getItem('il-retry')==='1';sessionStorage.removeItem('il-retry')}catch(x){}
+S.done=function(){de.classList.remove('il-shield');de.removeAttribute('aria-busy')};
+window.__ilShield=S;de.classList.add('il-shield');de.setAttribute('aria-busy','true');
+var d=document.createElement('script');d.async=true;d.onload=function(){e.s=0};d.onerror=function(){e.s=1};d.src='/ad_header.js';(document.head||de).appendChild(d);
+fetch(L,{mode:'no-cors'}).then(function(){e.f=0},function(){e.f=1});
+fetch('/assets/il-config.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){e.m=j&&typeof j.wall==='string'?j.wall:'off'},function(){e.m='off'});
+document.addEventListener('DOMContentLoaded',function(){if(!S.owned)S.done()});
+setTimeout(function(){if(!S.owned)S.done()},2500);
+}catch(x){try{document.documentElement.classList.remove('il-shield')}catch(y){}}})();
+</script>
+<!-- /il-shield -->
 <!-- ImmiLane: collapse EMPTY Monumetric ad slots until a real ad fills them (added 2026-06-24). Removes blank reserved gaps while ads are unfilled; reveals each slot at its reserved size the moment a creative loads. Does not touch the loader or ad-unit ids. -->
 <style id="mmt-empty-collapse-css">div[id^="mmt-"]:not([data-mmt-filled]){min-height:0}</style>
 <script id="mmt-empty-collapse">
@@ -496,90 +520,7 @@ document.querySelectorAll('.faq-question').forEach(function(q) {
 </script>
 
 <!-- il-session-check -->
-<script>
-/* Anonymous content-filter measurement: one yes/no beacon per pageview
-   (did ad content render), daily aggregate counters only. No cookies, no
-   identifiers, no IP storage — consistent with the Privacy Policy. */
-(function () {
-  'use strict';
-  try {
-    if (window.__ilSessionCheck) return;
-    window.__ilSessionCheck = 1;
-    var h = location.hostname;
-    var API = (h === 'immilane.com' || h === 'www.immilane.com')
-      ? 'https://immilane-api.younusahamad.workers.dev'
-      : 'https://immilane-api-staging.younusahamad.workers.dev';
-    var DECOY = h.slice(-9) === 'github.io'
-      ? '/perm-status-staging/ad_header.js'
-      : '/ad_header.js';
-    var sent = false;
-    var tripped = {};
-    function send() {
-      if (sent) return;
-      sent = true;
-      try {
-        var s = [];
-        for (var k in tripped) { if (tripped[k]) s.push(k); }
-        var payload = JSON.stringify({
-          b: s.length ? 1 : 0,
-          s: s,
-          p: (location.pathname || '/').slice(0, 64),
-          dv: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'm' : 'd'
-        });
-        var url = API + '/api/session-check';
-        if (!(navigator.sendBeacon && navigator.sendBeacon(url, payload))) {
-          fetch(url, { method: 'POST', body: payload, keepalive: true }).catch(function () {});
-        }
-      } catch (e) {}
-    }
-    function run() {
-      try {
-        var pending = 3;
-        function done() { pending -= 1; if (pending <= 0) send(); }
-        // Signal d: bait element using ids/classes generic filter lists hide.
-        var bait = document.createElement('div');
-        bait.id = 'adsbox';
-        bait.className = 'ad_slot sponsored-ad textAd';
-        bait.setAttribute('aria-hidden', 'true');
-        bait.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;';
-        bait.innerHTML = '&nbsp;';
-        document.body.appendChild(bait);
-        setTimeout(function () {
-          try {
-            var cs = window.getComputedStyle ? getComputedStyle(bait) : null;
-            tripped.d = !bait.offsetParent || bait.offsetHeight === 0 ||
-              !!(cs && (cs.display === 'none' || cs.visibility === 'hidden'));
-            if (bait.parentNode) { bait.parentNode.removeChild(bait); }
-          } catch (e) {}
-          done();
-        }, 350);
-        // Signal s: same-origin decoy script with a filter-listed filename.
-        var decDone = false;
-        var dec = document.createElement('script');
-        dec.async = true;
-        dec.onload = function () { if (!decDone) { decDone = true; done(); } };
-        dec.onerror = function () { if (!decDone) { decDone = true; tripped.s = true; done(); } };
-        dec.src = DECOY;
-        (document.head || document.documentElement).appendChild(dec);
-        setTimeout(function () { if (!decDone) { decDone = true; done(); } }, 2000);
-        // Signal f: the real ad-script host (also catches DNS-level filtering).
-        var fDone = false;
-        try {
-          fetch('https://monu.delivery/site/6/7/24ec8e-ce2f-4a85-ba1a-e1a4ecaea496.js', { mode: 'no-cors' })
-            .then(function () { if (!fDone) { fDone = true; done(); } },
-                  function () { if (!fDone) { fDone = true; tripped.f = true; done(); } });
-        } catch (e) { if (!fDone) { fDone = true; done(); } }
-        setTimeout(function () { if (!fDone) { fDone = true; done(); } }, 2000);
-        // Backstop: exactly one beacon per pageview no matter what.
-        setTimeout(send, 3000);
-      } catch (e) {}
-    }
-    function kick() { setTimeout(run, 200); }
-    if (document.readyState === 'complete' || document.readyState === 'interactive') { kick(); }
-    else { document.addEventListener('DOMContentLoaded', kick); }
-  } catch (e) {}
-})();
-</script>
+<script src="/assets/il-session.js?v=71051eac" defer></script>
 <!-- /il-session-check -->
 </body>
 </html>

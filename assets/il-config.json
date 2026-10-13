@@ -1,0 +1,4 @@
+{
+  "wall": "on",
+  "_help": "Ad-block wall switch, read fresh by assets/il-session.js. on = show the wall. measure = count would-be walls, never show one. off = no wall and nothing extra is sent (the page counter works as before)."
+}

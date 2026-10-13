@@ -1,133 +1,186 @@
 #!/usr/bin/env python3
-"""Insert (or refresh) the session-check measurement snippet on every page.
+"""Refresh the shared page-script include on every page.
 
-The snippet measures, per pageview, whether the visitor's browser filters ad
-content (three independent bait signals) and reports a single anonymous
-yes/no beacon to the immilane-api Worker at /api/session-check. Aggregate
-daily counters only — no IDs, no cookies, no IP storage.
+Every page loads assets/il-session.js through one small include between the
+il-session-check markers. That file holds the session-check measurement (one
+anonymous yes/no beacon per pageview: does this browser filter ad content) and
+the ad-block notice built on it. Aggregate counters only: no IDs, no cookies,
+no IP storage. The wall's on/off switch is assets/il-config.json.
 
-Idempotent: replaces any existing block between the markers, else inserts
-before </body>. Run from the repo root: python3 scripts/insert_session_check.py
+This script rewrites the include on every page that already has the markers
+and stamps ?v=<first 8 hex of the file's sha1>, so browsers fetch a changed
+file at once (static files are browser-cached for 4 hours on immilane.com).
+Run it after every edit of assets/il-session.js.
+
+Pages without the markers are left alone on purpose: 404.html and
+uscis-case-check.html never load the script. To add the include to a new page:
+    python3 scripts/insert_session_check.py --add new-page.html
+
+No-peek head block (2026-10-13). Every page that loads the script, carries the
+Monumetric tag and is not one of the open pages also gets a small inline block
+right after the Monumetric tag, between <!-- il-shield --> markers. It hides
+the page body before anything is drawn, only when Monumetric's script did not
+run, until il-session.js has decided (page or notice). The block is written
+from assets/il-session.js (crawler pattern, open pages, ad-host address,
+WALL_IF_ADS_RUN) and assets/il-config.json ("wall"): it hides nothing unless
+the switch is "on". So after changing the switch, run this script too (the
+switch file alone still works, but blocked visitors then see a blank page for
+a moment before the page, instead of nothing at all). The employer and
+visa-bulletin builders copy the block from the guide template at deploy time.
+
+Idempotent. Usage (from anywhere):
+    python3 scripts/insert_session_check.py            # rewrite
+    python3 scripts/insert_session_check.py --check    # exit 1 if anything is stale
 """
+import hashlib
+import json
 import pathlib
 import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+ASSET = ROOT / "assets" / "il-session.js"
+CONFIG = ROOT / "assets" / "il-config.json"
 MARK_START = "<!-- il-session-check -->"
 MARK_END = "<!-- /il-session-check -->"
-
-SNIPPET = MARK_START + """
-<script>
-/* Anonymous content-filter measurement: one yes/no beacon per pageview
-   (did ad content render), daily aggregate counters only. No cookies, no
-   identifiers, no IP storage — consistent with the Privacy Policy. */
-(function () {
-  'use strict';
-  try {
-    if (window.__ilSessionCheck) return;
-    window.__ilSessionCheck = 1;
-    var h = location.hostname;
-    var API = (h === 'immilane.com' || h === 'www.immilane.com')
-      ? 'https://immilane-api.younusahamad.workers.dev'
-      : 'https://immilane-api-staging.younusahamad.workers.dev';
-    var DECOY = h.slice(-9) === 'github.io'
-      ? '/perm-status-staging/ad_header.js'
-      : '/ad_header.js';
-    var sent = false;
-    var tripped = {};
-    function send() {
-      if (sent) return;
-      sent = true;
-      try {
-        var s = [];
-        for (var k in tripped) { if (tripped[k]) s.push(k); }
-        var payload = JSON.stringify({
-          b: s.length ? 1 : 0,
-          s: s,
-          p: (location.pathname || '/').slice(0, 64),
-          dv: (window.matchMedia && matchMedia('(pointer:coarse)').matches) ? 'm' : 'd'
-        });
-        var url = API + '/api/session-check';
-        if (!(navigator.sendBeacon && navigator.sendBeacon(url, payload))) {
-          fetch(url, { method: 'POST', body: payload, keepalive: true }).catch(function () {});
-        }
-      } catch (e) {}
-    }
-    function run() {
-      try {
-        var pending = 3;
-        function done() { pending -= 1; if (pending <= 0) send(); }
-        // Signal d: bait element using ids/classes generic filter lists hide.
-        var bait = document.createElement('div');
-        bait.id = 'adsbox';
-        bait.className = 'ad_slot sponsored-ad textAd';
-        bait.setAttribute('aria-hidden', 'true');
-        bait.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;';
-        bait.innerHTML = '&nbsp;';
-        document.body.appendChild(bait);
-        setTimeout(function () {
-          try {
-            var cs = window.getComputedStyle ? getComputedStyle(bait) : null;
-            tripped.d = !bait.offsetParent || bait.offsetHeight === 0 ||
-              !!(cs && (cs.display === 'none' || cs.visibility === 'hidden'));
-            if (bait.parentNode) { bait.parentNode.removeChild(bait); }
-          } catch (e) {}
-          done();
-        }, 350);
-        // Signal s: same-origin decoy script with a filter-listed filename.
-        var decDone = false;
-        var dec = document.createElement('script');
-        dec.async = true;
-        dec.onload = function () { if (!decDone) { decDone = true; done(); } };
-        dec.onerror = function () { if (!decDone) { decDone = true; tripped.s = true; done(); } };
-        dec.src = DECOY;
-        (document.head || document.documentElement).appendChild(dec);
-        setTimeout(function () { if (!decDone) { decDone = true; done(); } }, 2000);
-        // Signal f: the real ad-script host (also catches DNS-level filtering).
-        var fDone = false;
-        try {
-          fetch('https://monu.delivery/site/6/7/24ec8e-ce2f-4a85-ba1a-e1a4ecaea496.js', { mode: 'no-cors' })
-            .then(function () { if (!fDone) { fDone = true; done(); } },
-                  function () { if (!fDone) { fDone = true; tripped.f = true; done(); } });
-        } catch (e) { if (!fDone) { fDone = true; done(); } }
-        setTimeout(function () { if (!fDone) { fDone = true; done(); } }, 2000);
-        // Backstop: exactly one beacon per pageview no matter what.
-        setTimeout(send, 3000);
-      } catch (e) {}
-    }
-    function kick() { setTimeout(run, 200); }
-    if (document.readyState === 'complete' || document.readyState === 'interactive') { kick(); }
-    else { document.addEventListener('DOMContentLoaded', kick); }
-  } catch (e) {}
-})();
-</script>
-""" + MARK_END
-
 BLOCK_RE = re.compile(re.escape(MARK_START) + r".*?" + re.escape(MARK_END), re.S)
+HEAD_START = "<!-- il-shield -->"
+HEAD_END = "<!-- /il-shield -->"
+HEAD_RE = re.compile(r"\n?" + re.escape(HEAD_START) + r".*?" + re.escape(HEAD_END), re.S)
+MONU_RE = re.compile(r'<script[^>]*src="//monu\.delivery/site/[^"]+"[^>]*></script>')
+
+HEAD_JS = """(function(){try{
+var M=%(mode)s,A=%(ads)s,L=%(loader)s,O=%(open)s,B=%(bot)s;
+if(M!=='on'||window.__ilShield)return;
+if(!A&&window.$MMT&&window.$MMT.dsloaded)return;
+var n=navigator;if(B.test(n.userAgent||'')||n.webdriver===true)return;
+if(O.indexOf((location.pathname||'/').toLowerCase().replace(/\\.html$/,'').split('/')[1]||'')!==-1)return;
+if(!window.fetch||!window.Promise||!window.performance||!performance.now)return;
+var de=document.documentElement,S={t0:performance.now(),e:{}},e=S.e;
+try{S.flag=+localStorage.getItem('il-wall')>Date.now()}catch(x){}
+try{S.retry=sessionStorage.getItem('il-retry')==='1';sessionStorage.removeItem('il-retry')}catch(x){}
+S.done=function(){de.classList.remove('il-shield');de.removeAttribute('aria-busy')};
+window.__ilShield=S;de.classList.add('il-shield');de.setAttribute('aria-busy','true');
+var d=document.createElement('script');d.async=true;d.onload=function(){e.s=0};d.onerror=function(){e.s=1};d.src='/ad_header.js';(document.head||de).appendChild(d);
+fetch(L,{mode:'no-cors'}).then(function(){e.f=0},function(){e.f=1});
+fetch('/assets/il-config.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){e.m=j&&typeof j.wall==='string'?j.wall:'off'},function(){e.m='off'});
+document.addEventListener('DOMContentLoaded',function(){if(!S.owned)S.done()});
+setTimeout(function(){if(!S.owned)S.done()},2500);
+}catch(x){try{document.documentElement.classList.remove('il-shield')}catch(y){}}})();"""
 
 
-def process(path):
+def _js_const(src, name, pattern):
+    m = re.search(r"var " + name + r" = (" + pattern + r");", src)
+    if not m:
+        sys.exit(f"FATAL: {name} not found in assets/il-session.js")
+    return m.group(1)
+
+
+def head_block():
+    """The inline no-peek block, built from il-session.js + il-config.json."""
+    src = ASSET.read_text(encoding="utf-8")
+    try:
+        mode = json.loads(CONFIG.read_text(encoding="utf-8")).get("wall")
+    except Exception:
+        mode = "off"
+    js = HEAD_JS % {
+        "mode": json.dumps(mode if isinstance(mode, str) else "off"),
+        "ads": _js_const(src, "WALL_IF_ADS_RUN", r"true|false"),
+        "loader": _js_const(src, "LOADER", r"'[^']+'"),
+        "open": _js_const(src, "OPEN_PAGES", r"\[[^\]]*\]"),
+        "bot": _js_const(src, "BOT_RE", r"/[^\n]+/i"),
+    }
+    return (HEAD_START + "\n"
+            + '<style id="il-shield-css">html.il-shield body{opacity:0!important;visibility:hidden!important}</style>\n'
+            + '<script id="il-shield">\n/* Ad-block notice, part 1 of 2 (part 2: assets/il-session.js). Written by scripts/insert_session_check.py -- edit there.'
+            + ' Hides the page until the ad-block check has answered, only when the Monumetric script above did not run;'
+            + ' never for crawlers, the open pages, or a switch that is not "on". */\n'
+            + js + "\n</script>\n" + HEAD_END)
+
+
+def open_page(path):
+    """Billing/legal pages that never get the notice (same list as il-session.js)."""
+    src = ASSET.read_text(encoding="utf-8")
+    names = json.loads(_js_const(src, "OPEN_PAGES", r"\[[^\]]*\]").replace("'", '"'))
+    return path.relative_to(ROOT).parts[0].lower().replace(".html", "") in names
+
+
+def with_head(html, head, wanted):
+    """Insert, refresh or remove the head block. wanted=False removes it."""
+    found = HEAD_RE.findall(html)
+    if len(found) > 1:
+        raise ValueError("more than one il-shield block")
+    stripped = HEAD_RE.sub("", html) if found else html
+    if not wanted:
+        return stripped
+    m = MONU_RE.search(stripped)
+    if not m:
+        return stripped
+    return stripped[:m.end()] + "\n" + head + stripped[m.end():]
+SKIP_DIRS = {".git", "scripts", "node_modules"}
+
+
+def snippet():
+    version = hashlib.sha1(ASSET.read_bytes()).hexdigest()[:8]
+    return (MARK_START + "\n"
+            + '<script src="/assets/il-session.js?v=' + version + '" defer></script>\n'
+            + MARK_END)
+
+
+def pages():
+    for path in sorted(ROOT.rglob("*.html")):
+        if SKIP_DIRS.isdisjoint(path.relative_to(ROOT).parts):
+            yield path
+
+
+def process(path, block, add, check, head):
     html = path.read_text(encoding="utf-8")
-    if BLOCK_RE.search(html):
-        updated = BLOCK_RE.sub(lambda _: SNIPPET, html)
-        action = "refreshed"
-    else:
+    found = BLOCK_RE.findall(html)
+    if len(found) > 1:
+        sys.exit(f"FATAL: {path.relative_to(ROOT)} has {len(found)} il-session-check blocks")
+    if found:
+        updated = BLOCK_RE.sub(lambda _: block, html)
+    elif add:
         idx = html.rfind("</body>")
         if idx == -1:
-            return f"SKIP (no </body>): {path.name}"
-        updated = html[:idx] + SNIPPET + "\n" + html[idx:]
-        action = "inserted"
-    path.write_text(updated, encoding="utf-8")
-    return f"{action}: {path.name}"
+            sys.exit(f"FATAL: no </body> in {path.relative_to(ROOT)}")
+        updated = html[:idx] + block + "\n" + html[idx:]
+    else:
+        if HEAD_START in html:
+            sys.exit(f"FATAL: {path.relative_to(ROOT)} has an il-shield block but no il-session-check include")
+        return "skipped"
+    try:
+        updated = with_head(updated, head, not open_page(path))
+    except ValueError as e:
+        sys.exit(f"FATAL: {path.relative_to(ROOT)}: {e}")
+    if updated == html:
+        return "current"
+    if not check:
+        path.write_text(updated, encoding="utf-8")
+    return "stale" if check else "updated"
 
 
 def main():
-    pages = sorted(ROOT.glob("*.html"))
-    if not pages:
-        sys.exit("no HTML pages found")
-    for page in pages:
-        print(process(page))
+    args = sys.argv[1:]
+    check = "--check" in args
+    add = set()
+    if "--add" in args:
+        add = {(ROOT / a).resolve() for a in args[args.index("--add") + 1:] if not a.startswith("--")}
+    block = snippet()
+    head = head_block()
+    counts = {}
+    shielded = 0
+    for path in pages():
+        result = process(path, block, path.resolve() in add, check, head)
+        counts[result] = counts.get(result, 0) + 1
+        if result == "skipped":
+            print(f"no markers, left alone: {path.relative_to(ROOT)}")
+        else:
+            shielded += HEAD_START in path.read_text(encoding="utf-8")
+    print(block.splitlines()[1])
+    print(", ".join(f"{k}: {v}" for k, v in sorted(counts.items())) + f"; pages with the no-peek head block: {shielded}")
+    if check and counts.get("stale"):
+        sys.exit(1)
 
 
 if __name__ == "__main__":
