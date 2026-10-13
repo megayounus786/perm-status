@@ -157,6 +157,7 @@
   .hero h1 { font-size: 14px; font-weight: 500; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
   .hero h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--text-primary), var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .update-time { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .chart-note { font-size: 12px; color: var(--text-dim); margin-top: 10px; line-height: 1.5; }
   .update-time .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-right: 6px; animation: pulse 2s infinite; }
   @keyframes updated-flash { 0% { color: #22c55e; } 100% { color: inherit; } }
   .update-time .updated-flash { animation: updated-flash 2s ease-out; }
@@ -882,6 +883,7 @@
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#3b82f6;"></div>RFI</div>
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#ef4444;"></div>Denied</div>
     </div>
+    <p class="chart-note">A month's total counts the cases filed in that month that we have found in DOL's live FLAG case-status data so far. It is not DOL's official count of applications received, so it can differ from DOL's published numbers.</p>
   </div>
 
   <div class="stats-grid" id="stats-grid"><!--il-ssr:stats-grid-->
@@ -965,6 +967,7 @@
         </div>
       </div>
       <div class="rate-chart-wrap" id="rate-chart"></div>
+      <p class="chart-note" id="rate-note">DOL does not process cases on weekends or federal holidays, so those days show 0 or close to 0.</p>
     </div>
     <div class="card">
       <div class="card-header">
@@ -2265,6 +2268,8 @@ function renderRate(range) {
     ? fmtDayLabel(bars[0].date).replace('\n',' ') + ' – ' + fmtDayLabel(bars[bars.length-1].date).replace('\n',' ')
     : fmtWeekLabel(bars[0].weekStart) + ' – ' + fmtWeekLabel(bars[bars.length-1].weekStart);
   document.getElementById('rate-subtitle').textContent = subtitle;
+  const rateNote = document.getElementById('rate-note');
+  if (rateNote) rateNote.style.display = range === 'day' ? '' : 'none';
 
   const chartH = 190;
   const avgVal = Math.round((() => { const nonZero = bars.filter(b => b.total > 0); if (nonZero.length <= 1) return nonZero.length ? nonZero[0].total : 0; const obs = nonZero.slice(1); return obs.reduce((s,b) => s+b.total,0) / obs.length; })());
