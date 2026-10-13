@@ -205,6 +205,7 @@
   #gtip .gt-row { display: flex; justify-content: space-between; gap: 24px; }
   #gtip .gt-label { color: var(--text-muted); } #gtip .gt-val { font-weight: 700; }
   #gtip .gt-sep { border-top: 1px solid var(--sep); margin: 5px 0; }
+  #gtip .combo-tip-note { white-space: normal; max-width: 230px; color: var(--text-muted); line-height: 1.5; }
 
   /* ── RATE CHART ── */
   .rate-chart-wrap { position: relative; height: 220px; display: flex; }
@@ -2068,14 +2069,21 @@ function renderStatCards() {
 // ═══════════════════════════════════════════════════════
 // TIMELINE + BACKLOG
 // ═══════════════════════════════════════════════════════
+// Hover notes for filing months with an unusual total (keyed by m.label).
+const MONTH_NOTES = {
+  "Oct '25": "Few filings: DOL's filing system was down during the federal shutdown (Oct 1 – Nov 12, 2025)."
+};
 function renderCombo() {
   const el = document.getElementById('combo-chart');
-  // Show only 2 most recent completed months + active + pending
+  // Show the newest finished month + active + pending. A finished month with
+  // under SMALL_MONTH cases (Oct '25: federal shutdown) is passed over, so the
+  // one finished month shown is a full-size one; it stays in the data.
+  const SMALL_MONTH = 2000;
   const allMonths = D.timeline;
-  const activeIdx = allMonths.findIndex(m => m.status === 'active');
   const doneMonths = allMonths.filter(m => m.status === 'done');
-  const keep2Done = doneMonths.slice(-2);
-  const cutoff = keep2Done.length ? allMonths.indexOf(keep2Done[0]) : 0;
+  const bigDone = doneMonths.filter(m => m.total >= SMALL_MONTH);
+  const firstDone = bigDone.length ? bigDone[bigDone.length - 1] : doneMonths[doneMonths.length - 1];
+  const cutoff = firstDone ? allMonths.indexOf(firstDone) : 0;
   const months = allMonths.slice(cutoff);
   const maxT = Math.max(...months.map(m => m.total));
   const maxH = 140, n2 = months.length;
@@ -2099,6 +2107,7 @@ function renderCombo() {
     var arPct = m.total > 0 ? m.review / m.total : 0;
     h += tipRow('Status', m.status==='done'?(arPct < 0.01 ? '✅ Complete' : '🟢 Finalizing'):(m.status==='processing'||m.status==='active')?'🔶 Processing':'⏳ Pending');
     if (m.status==='active' || m.status==='processing') h += tipRow('Processed', Math.round(m.processedPct||0)+'%');
+    if (MONTH_NOTES[m.label]) h += '<div class="gt-sep"></div><div class="combo-tip-note">'+MONTH_NOTES[m.label]+'</div>';
     return h;
   }
 
