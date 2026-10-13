@@ -2123,7 +2123,9 @@ function renderCombo() {
     const revH  = Math.round(barH * m.review    / m.total);
     const wdH   = Math.round(barH * m.withdrawn / m.total);
     const rfiH  = Math.round(barH * rfiCount    / m.total);
-    const denH  = Math.max(0, barH - certH - revH - wdH - rfiH);
+    // Denied takes the rounding remainder only when the month has denials, so a
+    // month with none never shows a 1px red sliver.
+    const denH  = denCount > 0 ? Math.max(0, barH - certH - revH - wdH - rfiH) : 0;
     const certPct = pct(m.certified, m.total);
     const pctLbl  = certPct > 0 ? certPct+'%' : '';
 
