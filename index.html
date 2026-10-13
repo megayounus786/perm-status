@@ -2083,7 +2083,7 @@ function renderCombo() {
 
   function comboTip(m) {
     const rfiCount = (typeof m.rfi === 'number') ? m.rfi : 0;
-    const denCount = (typeof m.rfi === 'number') ? Math.max(0, m.denied - m.rfi) : m.denied;
+    const denCount = m.denied || 0; // denied and rfi are separate counts in the data
     const certPct = pct(m.certified, m.total);
     const revPct  = pct(m.review,    m.total);
     const wdPct   = pct(m.withdrawn, m.total);
@@ -2105,7 +2105,7 @@ function renderCombo() {
   let html = '';
   months.forEach((m, i) => {
     const rfiCount = (typeof m.rfi === 'number') ? m.rfi : 0;
-    const denCount = (typeof m.rfi === 'number') ? Math.max(0, m.denied - m.rfi) : m.denied;
+    const denCount = m.denied || 0; // denied and rfi are separate counts in the data
     const barH  = Math.round(m.total / maxT * maxH);
     const certH = Math.round(barH * m.certified / m.total);
     const revH  = Math.round(barH * m.review    / m.total);
