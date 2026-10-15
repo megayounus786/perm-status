@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-15T12:18:28-04:00",
+  "updatedAt": "2026-10-15T15:18:07-04:00",
   "backlog": {
-    "total": 85769,
+    "total": 85544,
     "startOfMonth": 89194,
     "thisMonth": {
       "name": "Oct 2026",
-      "processed": 8110,
+      "processed": 8335,
       "intake": 4685
     },
     "lastMonth": {
@@ -18,23 +18,23 @@
     "current": 301,
     "deltaFromLastMonth": -22,
     "certified": 299,
-    "rfi": 313,
-    "denied": 360,
+    "rfi": 312,
+    "denied": 359,
     "trend90Day": -82,
     "windowDays": 30,
-    "sampleSize": 16338,
+    "sampleSize": 16332,
     "samples": {
-      "certified": 15320,
-      "rfi": 622,
-      "denied": 396
+      "certified": 15297,
+      "rfi": 631,
+      "denied": 404
     }
   },
   "today": {
-    "total": 254,
-    "certified": 244,
-    "rfi": 8,
-    "denied": 0,
-    "withdrawn": 2,
+    "total": 479,
+    "certified": 444,
+    "rfi": 21,
+    "denied": 11,
+    "withdrawn": 3,
     "stillUpdating": false,
     "yesterday": {
       "total": 2125,
@@ -45,15 +45,15 @@
     }
   },
   "dol": {
-    "label": "Dec '25",
-    "monthFull": "December",
-    "day": 67,
+    "label": "Jan '26",
+    "monthFull": "January",
+    "day": 1,
     "daysInMonth": 100,
-    "estFinish": "Oct 29",
-    "movementPerWeek": 5.2,
-    "casesRemaining": 4206,
-    "latestLetter": "Z",
-    "pctProcessed": 67
+    "estFinish": "Feb 19",
+    "movementPerWeek": 1.7,
+    "casesRemaining": 10013,
+    "latestLetter": "U",
+    "pctProcessed": 1
   },
   "timeline": [
     {
@@ -192,37 +192,39 @@
       "label": "Nov '25",
       "total": 15075,
       "certified": 13181,
-      "review": 385,
+      "review": 382,
       "withdrawn": 615,
-      "denied": 289,
-      "rfi": 579,
+      "denied": 291,
+      "rfi": 580,
       "status": "done",
-      "processedPct": 93.2
+      "processedPct": 93.2,
+      "todayProcessed": 3
     },
     {
       "label": "Dec '25",
       "total": 15334,
-      "certified": 9984,
-      "review": 4206,
+      "certified": 10184,
+      "review": 3985,
       "withdrawn": 570,
-      "denied": 35,
-      "rfi": 252,
-      "status": "active",
-      "processedPct": 67.0,
-      "dolDay": 67,
-      "dolDays": 100,
-      "todayProcessed": 249
+      "denied": 44,
+      "rfi": 264,
+      "status": "processing",
+      "processedPct": 68.4,
+      "todayProcessed": 470
     },
     {
       "label": "Jan '26",
       "total": 11738,
-      "certified": 0,
-      "review": 10014,
-      "withdrawn": 402,
-      "denied": 0,
-      "rfi": 0,
-      "status": "pending",
-      "processedPct": 0
+      "certified": 88,
+      "review": 10013,
+      "withdrawn": 403,
+      "denied": 2,
+      "rfi": 1,
+      "status": "active",
+      "processedPct": 0.8,
+      "dolDay": 1,
+      "dolDays": 100,
+      "todayProcessed": 3
     },
     {
       "label": "Feb '26",
@@ -559,11 +561,11 @@
     },
     {
       "date": "2026-10-15",
-      "total": 254,
-      "certified": 244,
-      "rfi": 8,
-      "denied": 0,
-      "withdrawn": 2
+      "total": 479,
+      "certified": 444,
+      "rfi": 21,
+      "denied": 11,
+      "withdrawn": 3
     }
   ],
   "rateWeeks": [
@@ -657,11 +659,11 @@
     },
     {
       "weekStart": "2026-10-12",
-      "total": 3047,
-      "certified": 1549,
-      "rfi": 55,
-      "denied": 37,
-      "withdrawn": 171,
+      "total": 3272,
+      "certified": 1749,
+      "rfi": 68,
+      "denied": 48,
+      "withdrawn": 172,
       "partial": true
     }
   ],
@@ -669,115 +671,28 @@
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Nov",
-      "subtitle": "November 2025 filings \u00b7 15,049 total",
-      "certified": 13181,
-      "review": 385,
-      "withdrawn": 615,
-      "rfi": 579,
-      "denied": 289
+      "tabLabel": "Dec",
+      "subtitle": "December 2025 filings \u00b7 15,047 total",
+      "certified": 10184,
+      "review": 3985,
+      "withdrawn": 570,
+      "rfi": 264,
+      "denied": 44
     },
     {
       "tabKey": "next",
-      "tabLabel": "Dec",
-      "subtitle": "December 2025 filings \u00b7 15,047 total",
-      "certified": 9984,
-      "review": 4206,
-      "withdrawn": 570,
-      "rfi": 252,
-      "denied": 35
+      "tabLabel": "Jan",
+      "subtitle": "January 2026 filings \u00b7 10,507 total",
+      "certified": 88,
+      "review": 10013,
+      "withdrawn": 403,
+      "rfi": 1,
+      "denied": 2
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Nov '25",
-      "subtitle": "November 2025",
-      "list": [
-        {
-          "name": "Stoughton Trailers, LLC",
-          "count": 336
-        },
-        {
-          "name": "Grayco Management, LLC",
-          "count": 194
-        },
-        {
-          "name": "Harrys of America LLC",
-          "count": 183
-        },
-        {
-          "name": "Labor Guys, LLC",
-          "count": 178
-        },
-        {
-          "name": "Capstone Logistics LLC",
-          "count": 172
-        },
-        {
-          "name": "Amazon Data Services, Inc.",
-          "count": 147
-        },
-        {
-          "name": "APPLE INC.",
-          "count": 136
-        },
-        {
-          "name": "JCG Foods of Georgia, LLC",
-          "count": 135
-        },
-        {
-          "name": "Amazon.com Services LLC",
-          "count": 135
-        },
-        {
-          "name": "FMR LLC",
-          "count": 92
-        },
-        {
-          "name": "Amazon Web Services, Inc.",
-          "count": 90
-        },
-        {
-          "name": "Amazon Dev Center U.S., Inc.",
-          "count": 90
-        },
-        {
-          "name": "NATURE'S WAY FARMS, LLC",
-          "count": 86
-        },
-        {
-          "name": "Tesla, Inc.",
-          "count": 84
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 79
-        },
-        {
-          "name": "UST Global Inc",
-          "count": 72
-        },
-        {
-          "name": "Sentech Services, Inc",
-          "count": 70
-        },
-        {
-          "name": "ByteDance Inc.",
-          "count": 69
-        },
-        {
-          "name": "Citibank, N.A.",
-          "count": 66
-        },
-        {
-          "name": "ServiceNow, Inc.",
-          "count": 65
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Dec '25",
       "subtitle": "December 2025",
       "list": [
@@ -860,6 +775,93 @@
         {
           "name": "Caremark LLC",
           "count": 74
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Jan '26",
+      "subtitle": "January 2026",
+      "list": [
+        {
+          "name": "Cognizant Technology Solutions US Corporation",
+          "count": 1204
+        },
+        {
+          "name": "Amazon.com Services LLC",
+          "count": 360
+        },
+        {
+          "name": "NVIDIA Corporation",
+          "count": 282
+        },
+        {
+          "name": "Upshift Work LLC",
+          "count": 218
+        },
+        {
+          "name": "Table 301, INC.",
+          "count": 84
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 83
+        },
+        {
+          "name": "Tesla, Inc.",
+          "count": 77
+        },
+        {
+          "name": "Amazon Web Services, Inc.",
+          "count": 76
+        },
+        {
+          "name": "WAL-MART ASSOCIATES, INC.",
+          "count": 74
+        },
+        {
+          "name": "Ten D Enterprises, Inc.",
+          "count": 72
+        },
+        {
+          "name": "ByteDance Inc.",
+          "count": 66
+        },
+        {
+          "name": "SAVANNAH CHATHAM COUNTY PUBLIC SCHOOL SYSTEM",
+          "count": 57
+        },
+        {
+          "name": "PECO FOODS, INC",
+          "count": 57
+        },
+        {
+          "name": "Ernst & Young U.S. LLP",
+          "count": 54
+        },
+        {
+          "name": "Capital One Services, LLC",
+          "count": 54
+        },
+        {
+          "name": "Databricks, Inc.",
+          "count": 50
+        },
+        {
+          "name": "NATURE'S WAY FARMS, LLC",
+          "count": 48
+        },
+        {
+          "name": "Nexgen Ventures, LLC",
+          "count": 47
+        },
+        {
+          "name": "FMR LLC",
+          "count": 47
+        },
+        {
+          "name": "Boddie-Noell Enterprises Inc.",
+          "count": 47
         }
       ]
     }
