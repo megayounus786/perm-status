@@ -675,14 +675,17 @@ const STATUS_COLORS = {
   'AUDIT REVIEW':           '#dc2626',
   'PENDING AUDIT RESPONSE': '#b91c1c',
   'CERTIFIED - EXPIRED':    '#15803d',
-  'SUPERVISED RECRUITMENT': '#7c3aed'
+  'SUPERVISED RECRUITMENT': '#7c3aed',
+  'APPLICATION ON HOLD':    '#9038b8'   // DOL paused the case; not a decision, still pending
 };
 const DEFAULT_COLOR = '#475569';
 const PENDING_STATUSES = new Set([
-  'ANALYST REVIEW','AUDIT REVIEW','PENDING AUDIT RESPONSE','RFI ISSUED','SUPERVISED RECRUITMENT'
+  'ANALYST REVIEW','AUDIT REVIEW','PENDING AUDIT RESPONSE','RFI ISSUED','SUPERVISED RECRUITMENT',
+  'APPLICATION ON HOLD'
 ]);
 
 function titleCase(s) {
+  if (s === 'APPLICATION ON HOLD') return 'On Hold';
   return s.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()).replace(/Rfi/g, 'RFI');
 }
 

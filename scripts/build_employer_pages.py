@@ -396,7 +396,7 @@ def perm_stats(h1b: dict) -> dict:
 
 def live_stats(live: Optional[dict]) -> dict:
     if not live:
-        return {"tracked": 0, "pending": 0, "certified": 0, "denied": 0, "withdrawn": 0, "rfi": 0, "audit": 0, "rate": None, "statuses": {}}
+        return {"tracked": 0, "pending": 0, "certified": 0, "denied": 0, "withdrawn": 0, "rfi": 0, "audit": 0, "hold": 0, "rate": None, "statuses": {}}
     s = live.get("statuses") or {}
     cert = s.get("CERTIFIED", 0) + s.get("CERTIFIED - EXPIRED", 0)
     den = s.get("DENIED", 0)
@@ -404,10 +404,11 @@ def live_stats(live: Optional[dict]) -> dict:
     rfi = s.get("RFI ISSUED", 0)
     ar = s.get("ANALYST REVIEW", 0)
     audit = s.get("AUDIT REVIEW", 0) + s.get("PENDING AUDIT RESPONSE", 0) + s.get("SUPERVISED RECRUITMENT", 0)
-    pending = ar + rfi + audit
+    hold = s.get("APPLICATION ON HOLD", 0)   # DOL paused the case: not a decision, still pending
+    pending = ar + rfi + audit + hold
     tracked = sum(v for v in s.values() if isinstance(v, int))
     return {"tracked": tracked, "pending": pending, "certified": cert, "denied": den, "withdrawn": wd,
-            "rfi": rfi, "ar": ar, "audit": audit, "rate": pct(cert, cert + den) if (cert + den) else None,
+            "rfi": rfi, "ar": ar, "audit": audit, "hold": hold, "rate": pct(cert, cert + den) if (cert + den) else None,
             "statuses": s, "first": live.get("firstFiling") or "", "last": live.get("lastFiling") or ""}
 
 
@@ -805,7 +806,7 @@ def build_page(m: dict, ctx: dict) -> str:
 
     # ── live status section ────────────────────────────────────────────
     if ls["tracked"]:
-        order = [("CERTIFIED", "Certified"), ("ANALYST REVIEW", "Analyst review"), ("RFI ISSUED", "RFI issued"),
+        order = [("CERTIFIED", "Certified"), ("ANALYST REVIEW", "Analyst review"), ("APPLICATION ON HOLD", "On hold"), ("RFI ISSUED", "RFI issued"),
                  ("AUDIT REVIEW", "Audit review"), ("PENDING AUDIT RESPONSE", "Pending audit response"),
                  ("SUPERVISED RECRUITMENT", "Supervised recruitment"), ("DENIED", "Denied"), ("WITHDRAWN", "Withdrawn"),
                  ("CERTIFIED - EXPIRED", "Certified (expired)")]
@@ -814,7 +815,7 @@ def build_page(m: dict, ctx: dict) -> str:
             f"<p>ImmiLane's case-status tracker re-scans DOL's public PERM records several times a day for cases filed since "
             f"{esc(fmt_month(ls['first']))}. For {esc(name)} it currently tracks <b>{n(ls['tracked'])}</b> filings: "
             f"<b>{n(ls['certified'])}</b> certified, <b>{n(ls['pending'])}</b> still pending"
-            + (f" ({n(ls['ar'])} in analyst review" + (f", {n(ls['rfi'])} with an RFI" if ls['rfi'] else "") + (f", {n(ls['audit'])} in audit" if ls['audit'] else "") + ")" if ls['pending'] else "")
+            + (f" ({n(ls['ar'])} in analyst review" + (f", {n(ls['rfi'])} with an RFI" if ls['rfi'] else "") + (f", {n(ls['audit'])} in audit" if ls['audit'] else "") + (f", {n(ls['hold'])} on hold" if ls['hold'] else "") + ")" if ls['pending'] else "")
             + f", <b>{n(ls['denied'])}</b> denied and <b>{n(ls['withdrawn'])}</b> withdrawn."
             + (f" Certification rate among decided cases: <b>{fmt_pct(ls['rate'])}</b>." if ls['rate'] is not None else "")
             + f" Most recent filing seen: <b>{esc(fmt_date(ls['last']))}</b>.</p>"
