@@ -324,16 +324,16 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     var yr = m ? '20' + m[1] : '';
     set('frontier', d.dol.monthFull + (yr ? ' ' + yr : ''));
     set('pct', d.dol.pctProcessed + '%');
-    set('remain', Number(d.dol.casesRemaining).toLocaleString());
+    set('remain', Number(d.dol.casesRemaining + (d.dol.casesOnHold || 0)).toLocaleString());  // on hold = still pending
     set('avg', d.avgDays.current);
     set('avgCert', d.avgDays.certified);
-    set('pending', Number(d.backlog.total).toLocaleString());
+    set('pending', Number(d.backlog.total + (d.backlog.onHold || 0)).toLocaleString());
     set('todayTotal', Number(d.today.total).toLocaleString());
     set('move', d.dol.movementPerWeek);
     var nx = (d.statusDistribution || []).filter(function (t) { return t.tabKey === 'next'; })[0];
     if (nx) {
-      ['certified', 'review', 'withdrawn', 'rfi', 'denied'].forEach(function (k) {
-        set('nx-' + k, Number(nx[k]).toLocaleString());
+      ['certified', 'review', 'withdrawn', 'rfi', 'denied', 'onHold'].forEach(function (k) {
+        set('nx-' + k, Number(nx[k] || 0).toLocaleString());
       });
     }
     if (d.updatedAt) {

@@ -269,6 +269,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
   <div class="live-strip">
     <div class="live-stat"><div class="v" data-live="nx-certified">1,085</div><div class="l">Certified</div></div>
     <div class="live-stat"><div class="v" data-live="nx-review">13,395</div><div class="l">Analyst review</div></div>
+    <div class="live-stat"><div class="v" data-live="nx-onHold">0</div><div class="l">On hold</div></div>
     <div class="live-stat"><div class="v" data-live="nx-rfi">25</div><div class="l">RFI / audit</div></div>
     <div class="live-stat"><div class="v" data-live="nx-denied">1</div><div class="l">Denied</div></div>
     <div class="live-stat"><div class="v" data-live="nx-withdrawn">545</div><div class="l">Withdrawn</div></div>
@@ -280,6 +281,8 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     <p>The DOL approved the labor certification — the big green light. The employer has <strong>180 days</strong> to file the I-140 immigrant petition with USCIS before the certification expires. If your case shows Certified, the PERM stage is done.</p>
     <h3>Analyst Review</h3>
     <p>The case is in the DOL&rsquo;s working queue: either waiting for a Certifying Officer or actively being adjudicated. This is the normal state for every case that hasn&rsquo;t been decided yet, and for cases in the current processing month it usually means a decision is close. See <a href="perm-processing-time">how fast the queue is moving</a>.</p>
+    <h3>On hold</h3>
+    <p>The DOL has paused the case (for example while an employer is under review); it is not a decision. The case is still pending; it is just not moving for now. Since mid-2026 ImmiLane has seen many cases from a few large employers go on hold, which is why some filing months show a large On hold count.</p>
     <h3>Audit</h3>
     <p>The DOL asked for supporting documentation before deciding — recruitment records, the signed ETA-9089, prevailing wage evidence. Audits add months to the timeline because audited cases sit in a separate, slower queue. Our <a href="guide-perm-audits-rfis">audit and RFI guide</a> covers triggers and typical delays.</p>
     <h3>Denied</h3>
@@ -325,16 +328,16 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     var yr = m ? '20' + m[1] : '';
     set('frontier', d.dol.monthFull + (yr ? ' ' + yr : ''));
     set('pct', d.dol.pctProcessed + '%');
-    set('remain', Number(d.dol.casesRemaining).toLocaleString());
+    set('remain', Number(d.dol.casesRemaining + (d.dol.casesOnHold || 0)).toLocaleString());  // on hold = still pending
     set('avg', d.avgDays.current);
     set('avgCert', d.avgDays.certified);
-    set('pending', Number(d.backlog.total).toLocaleString());
+    set('pending', Number(d.backlog.total + (d.backlog.onHold || 0)).toLocaleString());
     set('todayTotal', Number(d.today.total).toLocaleString());
     set('move', d.dol.movementPerWeek);
     var nx = (d.statusDistribution || []).filter(function (t) { return t.tabKey === 'next'; })[0];
     if (nx) {
-      ['certified', 'review', 'withdrawn', 'rfi', 'denied'].forEach(function (k) {
-        set('nx-' + k, Number(nx[k]).toLocaleString());
+      ['certified', 'review', 'withdrawn', 'rfi', 'denied', 'onHold'].forEach(function (k) {
+        set('nx-' + k, Number(nx[k] || 0).toLocaleString());
       });
     }
     if (d.updatedAt) {
