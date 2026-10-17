@@ -129,6 +129,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     --gradient-start: rgba(59,130,246,0.08); --gradient-end: rgba(139,92,246,0.06);
     --noscript-bg: #0a0a12;
     --avg-color: #fbbf24;
+    --onhold-text: #c084fc;
   }
 
   html.light {
@@ -146,6 +147,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     --gradient-start: transparent; --gradient-end: transparent;
     --noscript-bg: #f5f7fa;
     --avg-color: #b45309;
+    --onhold-text: #7e22ce;
   }
 
   html { background: var(--bg-html); overflow-x: hidden; }
@@ -293,7 +295,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
   .ml-label { font-size: 9px; color: var(--text-dim); font-weight: 500; white-space: nowrap; }
   .combo-col.active-month .ml-label { color: #f59e0b; font-weight: 700; }
   .combo-col.active-month .bl-bar  { box-shadow: 0 0 14px rgba(245,158,11,0.25); }
-  .backlog-legend { display: flex; gap: 16px; justify-content: center; margin-top: 12px; }
+  .backlog-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: center; margin-top: 12px; }
   .backlog-legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); }
   .backlog-legend-dot { width: 8px; height: 8px; border-radius: 2px; }
 
@@ -903,6 +905,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     <div class="backlog-legend">
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#22c55e;"></div>Certified</div>
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#f59e0b;"></div>Analyst Review</div>
+      <div class="backlog-legend-item" title="DOL has paused the case (for example while an employer is under review); it is not a decision."><div class="backlog-legend-dot" style="background:#9038b8;"></div>On hold</div>
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#64748b;"></div>Withdrawn</div>
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#3b82f6;"></div>RFI</div>
       <div class="backlog-legend-item"><div class="backlog-legend-dot" style="background:#ef4444;"></div>Denied</div>
@@ -2199,11 +2202,20 @@ function renderUpdatedAt() {
   document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdatedAt(D.updatedAt);
 }
 
+// APPLICATION ON HOLD (2026-10-17): its own status, colour #9038b8 (purple; kept
+// apart from the RFI blue for colour-blind readers). Not a decision: never
+// processed; still pending, so it counts in the backlog and in what is left of
+// the DOL month (scripts/render_live.py ports these cards).
+const ONHOLD_COLOR = '#9038b8';
+const ONHOLD_NOTE = "On hold: DOL has paused the case (for example while an employer is under review); it is not a decision.";
+
 // ═══════════════════════════════════════════════════════
 // STAT CARDS
 // ═══════════════════════════════════════════════════════
 function renderStatCards() {
   const { backlog, avgDays, today, dol } = D;
+  const bHold = backlog.onHold || 0, dHold = dol.casesOnHold || 0;
+  const pendingAll = backlog.total + bHold, remainAll = dol.casesRemaining + dHold;
   const dolMonth = D.timeline.find(m => m.status === 'active');
   const netThis = backlog.thisMonth.processed - backlog.thisMonth.intake; // positive = backlog reduced
   const netLast = backlog.lastMonth.processed - backlog.lastMonth.intake;
@@ -2229,9 +2241,10 @@ function renderStatCards() {
           <div class="tt-row"><span class="tt-label">Net change</span><span class="tt-val" style="color:${ntThis.color};">${ntThis.str}</span></div>
         </span></span>
       </div>
-      <div class="stat-value" style="color:var(--text-primary);">${n(backlog.total)}</div>
-      <div class="stat-trend trend-neutral">Backlog at start of month: ${n(backlog.startOfMonth)}</div>
-      <div class="stat-details">
+      <div class="stat-value" style="color:var(--text-primary);">${n(pendingAll)}</div>
+      <div class="stat-trend trend-neutral">Backlog at start of month: ${n(backlog.startOfMonth + bHold)}</div>
+      <div class="stat-details">${bHold > 0 ? `
+        <div class="stat-detail-row"><span class="stat-detail-label">Incl. on hold</span><span class="stat-detail-value" style="color:var(--onhold-text);">${n(bHold)}</span></div>` : ''}
         <div class="stat-detail-row"><span class="stat-detail-label" style="color:var(--text-secondary);font-weight:500;">Last month (${backlog.lastMonth.name})</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Processed</span><span class="stat-detail-value">${n(backlog.lastMonth.processed)}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">New intake</span><span class="stat-detail-value">+${n(backlog.lastMonth.intake)}</span></div>
@@ -2260,7 +2273,9 @@ function renderStatCards() {
           <div class="tt-row"><span class="tt-label">Certified</span><span class="tt-val" style="color:#22c55e;">${n(today.certified)}</span></div>
           <div class="tt-row"><span class="tt-label">RFI</span><span class="tt-val" style="color:#f59e0b;">${n(today.rfi)}</span></div>
           <div class="tt-row"><span class="tt-label">Denied</span><span class="tt-val" style="color:#ef4444;">${n(today.denied)}</span></div>
-          <div class="tt-row"><span class="tt-label">Withdrawn</span><span class="tt-val" style="color:#64748b;">${n(today.withdrawn)}</span></div>
+          <div class="tt-row"><span class="tt-label">Withdrawn</span><span class="tt-val" style="color:#64748b;">${n(today.withdrawn)}</span></div>${today.onHold > 0 ? `
+          <div class="tt-row"><span class="tt-label">On hold</span><span class="tt-val" style="color:var(--onhold-text);">${n(today.onHold)}</span></div>` : ''}${today.other > 0 ? `
+          <div class="tt-row"><span class="tt-label">Other</span><span class="tt-val">${n(today.other)}</span></div>` : ''}
         </span></span>
       </div>
       <div class="stat-value" style="color:#22c55e;">${n(today.total)}</div>
@@ -2278,12 +2293,13 @@ function renderStatCards() {
         <span class="info-icon">?<span class="tooltip">The filing month DOL is currently reviewing.</span></span>
       </div>
       <div class="stat-value" style="color:#8b5cf6;">${dol.label}</div>
-      <div class="stat-trend trend-neutral">${prog}% processed · ${n(dol.casesRemaining)} remaining</div>
+      <div class="stat-trend trend-neutral">${prog}% processed · ${n(remainAll)} remaining</div>
       <div class="stat-details">
         <div class="stat-detail-row"><span class="stat-detail-label">Total cases</span><span class="stat-detail-value">${n(dolMonth ? dolMonth.total : 0)}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Est. finish</span><span class="stat-detail-value">${dol.estFinish || 'TBD'}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Movement/week</span><span class="stat-detail-value">~${dol.movementPerWeek || '—'} days</span></div>
-        <div class="stat-detail-row"><span class="stat-detail-label">Cases remaining</span><span class="stat-detail-value" style="color:#f59e0b;">~${n(dol.casesRemaining)}</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Cases remaining</span><span class="stat-detail-value" style="color:#f59e0b;">~${n(remainAll)}</span></div>${dHold > 0 ? `
+        <div class="stat-detail-row"><span class="stat-detail-label">Incl. on hold</span><span class="stat-detail-value" style="color:var(--onhold-text);">~${n(dHold)}</span></div>` : ''}
       </div>
     </div>`;
 }
@@ -2319,17 +2335,21 @@ function renderCombo() {
     const wdPct   = pct(m.withdrawn, m.total);
     const rfiPct  = pct(rfiCount,    m.total);
     const denPct  = pct(denCount,    m.total);
+    const holdCount = m.onHold || 0, othCount = m.other || 0;
     let h = '<div class="gt-title">'+m.label+' — '+n(m.total)+' cases</div>';
     h += tipRow('Certified',      n(m.certified)+' ('+certPct+'%)', '#22c55e');
     h += tipRow('Analyst Review', n(m.review)   +' ('+revPct +'%)', '#f59e0b');
+    h += tipRow('On hold',        n(holdCount)  +' ('+pct(holdCount, m.total)+'%)', 'var(--onhold-text)');
     h += tipRow('Withdrawn',      n(m.withdrawn)+' ('+wdPct  +'%)', '#64748b');
     h += tipRow('RFI',            n(rfiCount)   +' ('+rfiPct +'%)', '#3b82f6');
     h += tipRow('Denied',         n(denCount)   +' ('+denPct +'%)', '#ef4444');
+    if (othCount > 0) h += tipRow('Other', n(othCount)+' ('+pct(othCount, m.total)+'%)');
     h += '<div class="gt-sep"></div>';
     var arPct = m.total > 0 ? m.review / m.total : 0;
     h += tipRow('Status', m.status==='done'?(arPct < 0.01 ? '✅ Complete' : '🟢 Finalizing'):(m.status==='processing'||m.status==='active')?'🔶 Processing':'⏳ Pending');
     if (m.status==='active' || m.status==='processing') h += tipRow('Processed', Math.round(m.processedPct||0)+'%');
     if (MONTH_NOTES[m.label]) h += '<div class="gt-sep"></div><div class="combo-tip-note">'+MONTH_NOTES[m.label]+'</div>';
+    if (holdCount > 0) h += '<div class="gt-sep"></div><div class="combo-tip-note">'+ONHOLD_NOTE+'</div>';
     return h;
   }
 
@@ -2338,13 +2358,15 @@ function renderCombo() {
     const rfiCount = (typeof m.rfi === 'number') ? m.rfi : 0;
     const denCount = m.denied || 0; // denied and rfi are separate counts in the data
     const barH  = Math.round(m.total / maxT * maxH);
-    const certH = Math.round(barH * m.certified / m.total);
-    const revH  = Math.round(barH * m.review    / m.total);
-    const wdH   = Math.round(barH * m.withdrawn / m.total);
-    const rfiH  = Math.round(barH * rfiCount    / m.total);
-    // Denied takes the rounding remainder only when the month has denials, so a
-    // month with none never shows a 1px red sliver.
-    const denH  = denCount > 0 ? Math.max(0, barH - certH - revH - wdH - rfiH) : 0;
+    // Every status gets its own height; Analyst Review takes what is left
+    // (rounding and the few "Other" cases), so red only ever means Denied.
+    const segH  = c => Math.round(barH * (c || 0) / m.total);
+    const certH = segH(m.certified);
+    const wdH   = segH(m.withdrawn);
+    const rfiH  = segH(rfiCount);
+    const denH  = segH(denCount);
+    const holdH = segH(m.onHold);
+    const revH  = Math.max(0, barH - certH - wdH - rfiH - denH - holdH);
     const certPct = pct(m.certified, m.total);
     const pctLbl  = certPct > 0 ? certPct+'%' : '';
 
@@ -2385,6 +2407,7 @@ function renderCombo() {
     if (denH  > 0) html += '<div class="bl-seg" style="height:'+denH +'px;background:#ef4444;"></div>';
     if (rfiH  > 0) html += '<div class="bl-seg" style="height:'+rfiH +'px;background:#3b82f6;"></div>';
     if (wdH   > 0) html += '<div class="bl-seg" style="height:'+wdH  +'px;background:#64748b;"></div>';
+    if (holdH > 0) html += '<div class="bl-seg" style="height:'+holdH+'px;background:'+ONHOLD_COLOR+';"></div>';
     if (revH  > 0) html += '<div class="bl-seg" style="height:'+revH +'px;background:#f59e0b;"></div>';
     if (certH > 0) html += '<div class="bl-seg" style="height:'+certH+'px;background:#22c55e;"></div>';
     html += '</div></div>';
@@ -2532,6 +2555,8 @@ function renderRate(range) {
       tipRow('RFI',        n(b.rfi),        '#f59e0b')+
       tipRow('Denied',     n(b.denied),     '#ef4444')+
       tipRow('Withdrawn',  n(b.withdrawn),  '#64748b')+
+      (b.onHold > 0 ? tipRow('On hold', n(b.onHold), 'var(--onhold-text)') : '')+
+      (b.other > 0 ? tipRow('Other', n(b.other)) : '')+
       '<div class="gt-sep"></div>'+
       tipRow('vs avg', (diff>=0?'+':'')+n(diff), diff>=0?'#22c55e':'#ef4444');
     bar.addEventListener('mouseenter', e => {
@@ -2566,10 +2591,12 @@ function renderDonut(idx) {
   const items = [
     { color:'#22c55e', label:'Certified',      value: s.certified },
     { color:'#f59e0b', label:'Analyst Review',  value: s.review    },
+    { color:ONHOLD_COLOR, label:'On hold',      value: s.onHold || 0 },
     { color:'#64748b', label:'Withdrawn',        value: s.withdrawn },
     { color:'#3b82f6', label:'RFI Issued',       value: s.rfi       },
     { color:'#ef4444', label:'Denied',           value: s.denied    }
   ];
+  if (s.other > 0) items.push({ color:'#94a3b8', label:'Other', value: s.other });
   const total = items.reduce((t,i) => t+i.value, 0);
   items.forEach(i => { i.pct = total ? +(i.value/total*100).toFixed(1) : 0; });
   const totalStr = n(total);
@@ -2577,7 +2604,7 @@ function renderDonut(idx) {
   const totalEl = document.getElementById('donut-total');
   const subEl   = document.getElementById('donut-sublabel');
   const pctEl   = document.getElementById('donut-pct');
-  const subtitle = s.tabKey === '1y' ? 'Last 12 months: '+last12MonthsRange(D.updatedAt) : s.subtitle;
+  const subtitle = s.tabKey === '1y' ? 'Last 12 months: '+last12MonthsRange(D.updatedAt) : s.subtitle.replace(/[\d,]+ total$/, totalStr+' total');
   document.getElementById('status-subtitle').textContent = subtitle;
   totalEl.textContent = totalStr; totalEl.style.color = 'var(--text-primary)';
   subEl.textContent = 'Total Cases'; pctEl.style.display = 'none';
@@ -2809,6 +2836,7 @@ renderDashboard(window.DASHBOARD_DATA);
   <h3 style="color:#e2e8f0;font-size:1.2rem;margin-top:1.5rem;">What the status labels mean</h3>
   <ul style="margin:0.5rem 0 1rem 1.5rem;">
     <li><strong style="color:#e2e8f0;">Analyst Review:</strong> the case is in the DOL queue or actively being adjudicated by a certifying officer.</li>
+    <li><strong style="color:#e2e8f0;">On hold:</strong> DOL has paused the case (for example while an employer is under review); it is not a decision.</li>
     <li><strong style="color:#e2e8f0;">Certified:</strong> labor certification approved; the employer has 180 days to file the I-140 with USCIS.</li>
     <li><strong style="color:#e2e8f0;">Audit:</strong> the DOL has asked for supporting documentation before deciding, which adds months to the timeline.</li>
     <li><strong style="color:#e2e8f0;">Denied:</strong> the application was not approved; the employer may request reconsideration or appeal to BALCA.</li>

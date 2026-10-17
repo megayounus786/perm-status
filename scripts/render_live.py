@@ -150,10 +150,10 @@ def dashboard_values(d: dict) -> dict:
     v = {
         "frontier": frontier,
         "pct": f"{js_num(dol['pctProcessed'])}%",
-        "remain": n(dol["casesRemaining"]),
+        "remain": n(dol["casesRemaining"] + (dol.get("casesOnHold") or 0)),
         "avg": js_num(d["avgDays"]["current"]),
         "avgCert": js_num(d["avgDays"]["certified"]),
-        "pending": n(d["backlog"]["total"]),
+        "pending": n(d["backlog"]["total"] + (d["backlog"].get("onHold") or 0)),
         "todayTotal": n(d["today"]["total"]),
         "move": js_num(dol["movementPerWeek"]),
         "updated": fmt_et_short(d["updatedAt"]),
@@ -161,12 +161,23 @@ def dashboard_values(d: dict) -> dict:
     if nx:
         for k in ("certified", "review", "withdrawn", "rfi", "denied"):
             v["nx-" + k] = n(nx[k])
+        v["nx-onHold"] = n(nx.get("onHold") or 0)
     return v
 
 
 def render_stat_cards(D: dict) -> str:
     """Exact port of index.html renderStatCards() (same template, same text)."""
     backlog, avgDays, today, dol = D["backlog"], D["avgDays"], D["today"], D["dol"]
+    bHold, dHold = backlog.get("onHold") or 0, dol.get("casesOnHold") or 0
+    pendingAll, remainAll = backlog["total"] + bHold, dol["casesRemaining"] + dHold
+    holdRowB = (f"""
+        <div class="stat-detail-row"><span class="stat-detail-label">Incl. on hold</span><span class="stat-detail-value" style="color:var(--onhold-text);">{n(bHold)}</span></div>""") if bHold > 0 else ""
+    holdRowD = (f"""
+        <div class="stat-detail-row"><span class="stat-detail-label">Incl. on hold</span><span class="stat-detail-value" style="color:var(--onhold-text);">~{n(dHold)}</span></div>""") if dHold > 0 else ""
+    tHold = (f"""
+          <div class="tt-row"><span class="tt-label">On hold</span><span class="tt-val" style="color:var(--onhold-text);">{n(today['onHold'])}</span></div>""") if (today.get("onHold") or 0) > 0 else ""
+    tOther = (f"""
+          <div class="tt-row"><span class="tt-label">Other</span><span class="tt-val">{n(today['other'])}</span></div>""") if (today.get("other") or 0) > 0 else ""
     dolMonth = next((m for m in D["timeline"] if m.get("status") == "active"), None)
     netThis = backlog["thisMonth"]["processed"] - backlog["thisMonth"]["intake"]
     netLast = backlog["lastMonth"]["processed"] - backlog["lastMonth"]["intake"]
@@ -197,9 +208,9 @@ def render_stat_cards(D: dict) -> str:
           <div class="tt-row"><span class="tt-label">Net change</span><span class="tt-val" style="color:{ntThis['color']};">{ntThis['str']}</span></div>
         </span></span>
       </div>
-      <div class="stat-value" style="color:var(--text-primary);">{n(backlog['total'])}</div>
-      <div class="stat-trend trend-neutral">Backlog at start of month: {n(backlog['startOfMonth'])}</div>
-      <div class="stat-details">
+      <div class="stat-value" style="color:var(--text-primary);">{n(pendingAll)}</div>
+      <div class="stat-trend trend-neutral">Backlog at start of month: {n(backlog['startOfMonth'] + bHold)}</div>
+      <div class="stat-details">{holdRowB}
         <div class="stat-detail-row"><span class="stat-detail-label" style="color:var(--text-secondary);font-weight:500;">Last month ({backlog['lastMonth']['name']})</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Processed</span><span class="stat-detail-value">{n(backlog['lastMonth']['processed'])}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">New intake</span><span class="stat-detail-value">+{n(backlog['lastMonth']['intake'])}</span></div>
@@ -228,7 +239,7 @@ def render_stat_cards(D: dict) -> str:
           <div class="tt-row"><span class="tt-label">Certified</span><span class="tt-val" style="color:#22c55e;">{n(today['certified'])}</span></div>
           <div class="tt-row"><span class="tt-label">RFI</span><span class="tt-val" style="color:#f59e0b;">{n(today['rfi'])}</span></div>
           <div class="tt-row"><span class="tt-label">Denied</span><span class="tt-val" style="color:#ef4444;">{n(today['denied'])}</span></div>
-          <div class="tt-row"><span class="tt-label">Withdrawn</span><span class="tt-val" style="color:#64748b;">{n(today['withdrawn'])}</span></div>
+          <div class="tt-row"><span class="tt-label">Withdrawn</span><span class="tt-val" style="color:#64748b;">{n(today['withdrawn'])}</span></div>{tHold}{tOther}
         </span></span>
       </div>
       <div class="stat-value" style="color:#22c55e;">{n(today['total'])}</div>
@@ -246,12 +257,12 @@ def render_stat_cards(D: dict) -> str:
         <span class="info-icon">?<span class="tooltip">The filing month DOL is currently reviewing.</span></span>
       </div>
       <div class="stat-value" style="color:#8b5cf6;">{dol['label']}</div>
-      <div class="stat-trend trend-neutral">{prog}% processed · {n(dol['casesRemaining'])} remaining</div>
+      <div class="stat-trend trend-neutral">{prog}% processed · {n(remainAll)} remaining</div>
       <div class="stat-details">
         <div class="stat-detail-row"><span class="stat-detail-label">Total cases</span><span class="stat-detail-value">{n(dolMonth['total'] if dolMonth else 0)}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Est. finish</span><span class="stat-detail-value">{dol.get('estFinish') or 'TBD'}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Movement/week</span><span class="stat-detail-value">~{js_num(dol.get('movementPerWeek')) or '—'} days</span></div>
-        <div class="stat-detail-row"><span class="stat-detail-label">Cases remaining</span><span class="stat-detail-value" style="color:#f59e0b;">~{n(dol['casesRemaining'])}</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Cases remaining</span><span class="stat-detail-value" style="color:#f59e0b;">~{n(remainAll)}</span></div>{holdRowD}
       </div>
     </div>"""
 
