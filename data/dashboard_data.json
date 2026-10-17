@@ -1,17 +1,24 @@
 {
-  "updatedAt": "2026-10-17T07:12:24-04:00",
+  "updatedAt": "2026-10-17T09:16:07-04:00",
   "backlog": {
     "total": 85498,
+    "onHold": 1553,
     "startOfMonth": 87705,
     "thisMonth": {
       "name": "Oct 2026",
       "processed": 7691,
-      "intake": 5484
+      "intake": 5484,
+      "onHold": 4,
+      "other": 0,
+      "decided": 7687
     },
     "lastMonth": {
       "name": "Sep 2026",
       "processed": 18509,
-      "intake": 10317
+      "intake": 10317,
+      "onHold": 300,
+      "other": 3,
+      "decided": 18206
     }
   },
   "avgDays": {
@@ -22,9 +29,9 @@
     "denied": 357,
     "trend90Day": -80,
     "windowDays": 30,
-    "sampleSize": 15928,
+    "sampleSize": 15858,
     "samples": {
-      "certified": 14920,
+      "certified": 14850,
       "rfi": 606,
       "denied": 402
     }
@@ -36,12 +43,18 @@
     "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
+    "onHold": 0,
+    "other": 0,
+    "decided": 9,
     "yesterday": {
       "total": 616,
       "certified": 556,
       "rfi": 42,
       "denied": 15,
-      "withdrawn": 3
+      "withdrawn": 3,
+      "onHold": 0,
+      "other": 0,
+      "decided": 616
     }
   },
   "dol": {
@@ -52,6 +65,7 @@
     "estFinish": "Aug 21",
     "movementPerWeek": 0.7,
     "casesRemaining": 10011,
+    "casesOnHold": 1230,
     "latestLetter": "E",
     "pctProcessed": 1
   },
@@ -65,7 +79,9 @@
       "denied": 569,
       "rfi": 324,
       "status": "done",
-      "processedPct": 94.9
+      "processedPct": 94.9,
+      "onHold": 0,
+      "other": 30
     },
     {
       "label": "Dec '24",
@@ -76,7 +92,9 @@
       "denied": 591,
       "rfi": 366,
       "status": "done",
-      "processedPct": 95.0
+      "processedPct": 95.0,
+      "onHold": 0,
+      "other": 3
     },
     {
       "label": "Jan '25",
@@ -87,7 +105,9 @@
       "denied": 361,
       "rfi": 183,
       "status": "done",
-      "processedPct": 94.4
+      "processedPct": 94.4,
+      "onHold": 0,
+      "other": 1
     },
     {
       "label": "Feb '25",
@@ -98,7 +118,9 @@
       "denied": 379,
       "rfi": 237,
       "status": "done",
-      "processedPct": 95.2
+      "processedPct": 95.2,
+      "onHold": 0,
+      "other": 3
     },
     {
       "label": "Mar '25",
@@ -109,7 +131,9 @@
       "denied": 319,
       "rfi": 260,
       "status": "done",
-      "processedPct": 95.3
+      "processedPct": 95.3,
+      "onHold": 1,
+      "other": 1
     },
     {
       "label": "Apr '25",
@@ -120,7 +144,9 @@
       "denied": 469,
       "rfi": 380,
       "status": "done",
-      "processedPct": 94.6
+      "processedPct": 94.6,
+      "onHold": 1,
+      "other": 1
     },
     {
       "label": "May '25",
@@ -131,7 +157,9 @@
       "denied": 495,
       "rfi": 431,
       "status": "done",
-      "processedPct": 95.2
+      "processedPct": 95.2,
+      "onHold": 2,
+      "other": 3
     },
     {
       "label": "Jun '25",
@@ -142,7 +170,9 @@
       "denied": 996,
       "rfi": 505,
       "status": "done",
-      "processedPct": 94.7
+      "processedPct": 94.7,
+      "onHold": 3,
+      "other": 0
     },
     {
       "label": "Jul '25",
@@ -153,7 +183,9 @@
       "denied": 464,
       "rfi": 364,
       "status": "done",
-      "processedPct": 95.0
+      "processedPct": 95.0,
+      "onHold": 2,
+      "other": 6
     },
     {
       "label": "Aug '25",
@@ -164,7 +196,9 @@
       "denied": 346,
       "rfi": 397,
       "status": "done",
-      "processedPct": 95.0
+      "processedPct": 95.0,
+      "onHold": 4,
+      "other": 19
     },
     {
       "label": "Sep '25",
@@ -175,7 +209,9 @@
       "denied": 399,
       "rfi": 517,
       "status": "done",
-      "processedPct": 95.8
+      "processedPct": 95.8,
+      "onHold": 1,
+      "other": 25
     },
     {
       "label": "Oct '25",
@@ -186,7 +222,9 @@
       "denied": 15,
       "rfi": 11,
       "status": "done",
-      "processedPct": 93.6
+      "processedPct": 93.6,
+      "onHold": 0,
+      "other": 0
     },
     {
       "label": "Nov '25",
@@ -197,7 +235,9 @@
       "denied": 301,
       "rfi": 595,
       "status": "done",
-      "processedPct": 93.4
+      "processedPct": 93.4,
+      "onHold": 23,
+      "other": 3
     },
     {
       "label": "Dec '25",
@@ -209,7 +249,10 @@
       "rfi": 302,
       "status": "processing",
       "processedPct": 73.7,
-      "todayProcessed": 9
+      "onHold": 286,
+      "other": 1,
+      "todayProcessed": 9,
+      "todayDecisions": 9
     },
     {
       "label": "Jan '26",
@@ -221,6 +264,8 @@
       "rfi": 1,
       "status": "active",
       "processedPct": 0.8,
+      "onHold": 1230,
+      "other": 1,
       "dolDay": 1,
       "dolDays": 100
     },
@@ -228,12 +273,14 @@
       "label": "Feb '26",
       "total": 5607,
       "certified": 0,
-      "review": 5482,
+      "review": 5484,
       "withdrawn": 122,
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 1
     },
     {
       "label": "Mar '26",
@@ -244,18 +291,22 @@
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 1
     },
     {
       "label": "Apr '26",
       "total": 7555,
       "certified": 0,
-      "review": 7498,
+      "review": 7499,
       "withdrawn": 53,
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 3
     },
     {
       "label": "May '26",
@@ -266,7 +317,9 @@
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 0
     },
     {
       "label": "Jun '26",
@@ -277,18 +330,22 @@
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 4
     },
     {
       "label": "Jul '26",
       "total": 9166,
       "certified": 0,
-      "review": 9003,
+      "review": 9004,
       "withdrawn": 92,
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 70
     },
     {
       "label": "Aug '26",
@@ -299,7 +356,9 @@
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 0
     },
     {
       "label": "Sep '26",
@@ -310,7 +369,9 @@
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 0
     },
     {
       "label": "Oct '26",
@@ -321,7 +382,9 @@
       "denied": 0,
       "rfi": 0,
       "status": "pending",
-      "processedPct": 0
+      "processedPct": 0,
+      "onHold": 0,
+      "other": 1
     }
   ],
   "rateDays": [
@@ -331,7 +394,10 @@
       "certified": 696,
       "rfi": 51,
       "denied": 14,
-      "withdrawn": 1
+      "withdrawn": 1,
+      "onHold": 0,
+      "other": 0,
+      "decided": 762
     },
     {
       "date": "2026-09-19",
@@ -339,7 +405,10 @@
       "certified": 45,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 45
     },
     {
       "date": "2026-09-20",
@@ -347,7 +416,10 @@
       "certified": 0,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 0
     },
     {
       "date": "2026-09-21",
@@ -355,7 +427,10 @@
       "certified": 708,
       "rfi": 50,
       "denied": 48,
-      "withdrawn": 2
+      "withdrawn": 2,
+      "onHold": 0,
+      "other": 0,
+      "decided": 808
     },
     {
       "date": "2026-09-22",
@@ -363,7 +438,10 @@
       "certified": 687,
       "rfi": 26,
       "denied": 17,
-      "withdrawn": 5
+      "withdrawn": 5,
+      "onHold": 0,
+      "other": 0,
+      "decided": 735
     },
     {
       "date": "2026-09-23",
@@ -371,7 +449,10 @@
       "certified": 807,
       "rfi": 44,
       "denied": 29,
-      "withdrawn": 7
+      "withdrawn": 7,
+      "onHold": 0,
+      "other": 0,
+      "decided": 887
     },
     {
       "date": "2026-09-24",
@@ -379,7 +460,10 @@
       "certified": 813,
       "rfi": 17,
       "denied": 12,
-      "withdrawn": 7
+      "withdrawn": 7,
+      "onHold": 48,
+      "other": 0,
+      "decided": 849
     },
     {
       "date": "2026-09-25",
@@ -387,7 +471,10 @@
       "certified": 671,
       "rfi": 8,
       "denied": 6,
-      "withdrawn": 5
+      "withdrawn": 5,
+      "onHold": 0,
+      "other": 0,
+      "decided": 690
     },
     {
       "date": "2026-09-26",
@@ -395,7 +482,10 @@
       "certified": 0,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 0
     },
     {
       "date": "2026-09-27",
@@ -403,7 +493,10 @@
       "certified": 14,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 14
     },
     {
       "date": "2026-09-28",
@@ -411,7 +504,10 @@
       "certified": 884,
       "rfi": 16,
       "denied": 5,
-      "withdrawn": 6
+      "withdrawn": 6,
+      "onHold": 0,
+      "other": 0,
+      "decided": 911
     },
     {
       "date": "2026-09-29",
@@ -419,7 +515,10 @@
       "certified": 888,
       "rfi": 28,
       "denied": 62,
-      "withdrawn": 3
+      "withdrawn": 3,
+      "onHold": 0,
+      "other": 0,
+      "decided": 981
     },
     {
       "date": "2026-09-30",
@@ -427,7 +526,10 @@
       "certified": 816,
       "rfi": 36,
       "denied": 41,
-      "withdrawn": 2
+      "withdrawn": 2,
+      "onHold": 0,
+      "other": 0,
+      "decided": 895
     },
     {
       "date": "2026-10-01",
@@ -435,7 +537,10 @@
       "certified": 741,
       "rfi": 20,
       "denied": 11,
-      "withdrawn": 3
+      "withdrawn": 3,
+      "onHold": 0,
+      "other": 0,
+      "decided": 775
     },
     {
       "date": "2026-10-02",
@@ -443,7 +548,10 @@
       "certified": 519,
       "rfi": 7,
       "denied": 2,
-      "withdrawn": 1
+      "withdrawn": 1,
+      "onHold": 0,
+      "other": 0,
+      "decided": 529
     },
     {
       "date": "2026-10-03",
@@ -451,7 +559,10 @@
       "certified": 0,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 0
     },
     {
       "date": "2026-10-04",
@@ -459,7 +570,10 @@
       "certified": 0,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 0
     },
     {
       "date": "2026-10-05",
@@ -467,7 +581,10 @@
       "certified": 758,
       "rfi": 35,
       "denied": 15,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 808
     },
     {
       "date": "2026-10-06",
@@ -475,7 +592,10 @@
       "certified": 813,
       "rfi": 22,
       "denied": 2,
-      "withdrawn": 2
+      "withdrawn": 2,
+      "onHold": 0,
+      "other": 0,
+      "decided": 839
     },
     {
       "date": "2026-10-07",
@@ -483,7 +603,10 @@
       "certified": 725,
       "rfi": 50,
       "denied": 13,
-      "withdrawn": 2
+      "withdrawn": 2,
+      "onHold": 0,
+      "other": 0,
+      "decided": 790
     },
     {
       "date": "2026-10-08",
@@ -491,7 +614,10 @@
       "certified": 714,
       "rfi": 21,
       "denied": 19,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 754
     },
     {
       "date": "2026-10-09",
@@ -499,7 +625,10 @@
       "certified": 544,
       "rfi": 17,
       "denied": 6,
-      "withdrawn": 1
+      "withdrawn": 1,
+      "onHold": 0,
+      "other": 0,
+      "decided": 568
     },
     {
       "date": "2026-10-10",
@@ -507,7 +636,10 @@
       "certified": 0,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 0
     },
     {
       "date": "2026-10-11",
@@ -515,7 +647,10 @@
       "certified": 0,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 0
     },
     {
       "date": "2026-10-12",
@@ -523,7 +658,10 @@
       "certified": 0,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 3
+      "withdrawn": 3,
+      "onHold": 0,
+      "other": 0,
+      "decided": 3
     },
     {
       "date": "2026-10-13",
@@ -531,7 +669,10 @@
       "certified": 627,
       "rfi": 15,
       "denied": 19,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 4,
+      "other": 0,
+      "decided": 661
     },
     {
       "date": "2026-10-14",
@@ -539,7 +680,10 @@
       "certified": 593,
       "rfi": 31,
       "denied": 17,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 641
     },
     {
       "date": "2026-10-15",
@@ -547,7 +691,10 @@
       "certified": 640,
       "rfi": 32,
       "denied": 19,
-      "withdrawn": 3
+      "withdrawn": 3,
+      "onHold": 0,
+      "other": 0,
+      "decided": 694
     },
     {
       "date": "2026-10-16",
@@ -555,7 +702,10 @@
       "certified": 556,
       "rfi": 42,
       "denied": 15,
-      "withdrawn": 3
+      "withdrawn": 3,
+      "onHold": 0,
+      "other": 0,
+      "decided": 616
     },
     {
       "date": "2026-10-17",
@@ -563,7 +713,10 @@
       "certified": 9,
       "rfi": 0,
       "denied": 0,
-      "withdrawn": 0
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 9
     }
   ],
   "rateWeeks": [
@@ -573,7 +726,10 @@
       "certified": 4044,
       "rfi": 98,
       "denied": 125,
-      "withdrawn": 14
+      "withdrawn": 14,
+      "onHold": 0,
+      "other": 0,
+      "decided": 4281
     },
     {
       "weekStart": "2026-08-03",
@@ -581,7 +737,10 @@
       "certified": 4592,
       "rfi": 228,
       "denied": 196,
-      "withdrawn": 139
+      "withdrawn": 139,
+      "onHold": 0,
+      "other": 1,
+      "decided": 5155
     },
     {
       "weekStart": "2026-08-10",
@@ -589,7 +748,10 @@
       "certified": 4719,
       "rfi": 252,
       "denied": 198,
-      "withdrawn": 7
+      "withdrawn": 7,
+      "onHold": 0,
+      "other": 0,
+      "decided": 5176
     },
     {
       "weekStart": "2026-08-17",
@@ -597,7 +759,10 @@
       "certified": 4473,
       "rfi": 230,
       "denied": 177,
-      "withdrawn": 134
+      "withdrawn": 134,
+      "onHold": 6,
+      "other": 0,
+      "decided": 5014
     },
     {
       "weekStart": "2026-08-24",
@@ -605,7 +770,10 @@
       "certified": 3494,
       "rfi": 194,
       "denied": 239,
-      "withdrawn": 16
+      "withdrawn": 16,
+      "onHold": 0,
+      "other": 0,
+      "decided": 3943
     },
     {
       "weekStart": "2026-08-31",
@@ -613,7 +781,10 @@
       "certified": 3932,
       "rfi": 191,
       "denied": 249,
-      "withdrawn": 26
+      "withdrawn": 26,
+      "onHold": 0,
+      "other": 6,
+      "decided": 4398
     },
     {
       "weekStart": "2026-09-07",
@@ -621,7 +792,10 @@
       "certified": 3317,
       "rfi": 146,
       "denied": 132,
-      "withdrawn": 19
+      "withdrawn": 19,
+      "onHold": 18,
+      "other": 1,
+      "decided": 3614
     },
     {
       "weekStart": "2026-09-14",
@@ -629,7 +803,10 @@
       "certified": 3670,
       "rfi": 218,
       "denied": 92,
-      "withdrawn": 211
+      "withdrawn": 211,
+      "onHold": 234,
+      "other": 1,
+      "decided": 4191
     },
     {
       "weekStart": "2026-09-21",
@@ -637,7 +814,10 @@
       "certified": 3700,
       "rfi": 145,
       "denied": 112,
-      "withdrawn": 26
+      "withdrawn": 26,
+      "onHold": 48,
+      "other": 0,
+      "decided": 3983
     },
     {
       "weekStart": "2026-09-28",
@@ -645,7 +825,10 @@
       "certified": 3848,
       "rfi": 107,
       "denied": 121,
-      "withdrawn": 15
+      "withdrawn": 15,
+      "onHold": 0,
+      "other": 0,
+      "decided": 4091
     },
     {
       "weekStart": "2026-10-05",
@@ -653,7 +836,10 @@
       "certified": 3554,
       "rfi": 145,
       "denied": 55,
-      "withdrawn": 5
+      "withdrawn": 5,
+      "onHold": 0,
+      "other": 0,
+      "decided": 3759
     },
     {
       "weekStart": "2026-10-12",
@@ -662,6 +848,9 @@
       "rfi": 120,
       "denied": 70,
       "withdrawn": 9,
+      "onHold": 4,
+      "other": 0,
+      "decided": 2624,
       "partial": true
     }
   ],
@@ -675,7 +864,9 @@
       "review": 3180,
       "withdrawn": 571,
       "rfi": 302,
-      "denied": 57
+      "denied": 57,
+      "onHold": 286,
+      "other": 1
     },
     {
       "tabKey": "next",
@@ -685,7 +876,9 @@
       "review": 10011,
       "withdrawn": 404,
       "rfi": 1,
-      "denied": 2
+      "denied": 2,
+      "onHold": 1230,
+      "other": 1
     }
   ],
   "employers": [
