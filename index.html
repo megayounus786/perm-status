@@ -2208,6 +2208,17 @@ function renderUpdatedAt() {
 // the DOL month (scripts/render_live.py ports these cards).
 const ONHOLD_COLOR = '#9038b8';
 const ONHOLD_NOTE = "On hold: DOL has paused the case (for example while an employer is under review); it is not a decision.";
+// "Processed" = real decisions only (owner, 2026-10-17): certified + RFI +
+// denied + withdrawn. Moves into On hold (and the rare other statuses) are
+// shown in hover boxes as "not counted". `decided` comes from the builder;
+// older data falls back to total minus onHold/other (monthDecided: processed).
+function decided(r) {
+  if (!r) return 0;
+  return typeof r.decided === 'number' ? r.decided : Math.max(0, (r.total || 0) - (r.onHold || 0) - (r.other || 0));
+}
+function monthDecided(m) {
+  return typeof m.decided === 'number' ? m.decided : Math.max(0, (m.processed || 0) - (m.onHold || 0) - (m.other || 0));
+}
 
 // ═══════════════════════════════════════════════════════
 // STAT CARDS
@@ -2217,8 +2228,11 @@ function renderStatCards() {
   const bHold = backlog.onHold || 0, dHold = dol.casesOnHold || 0;
   const pendingAll = backlog.total + bHold, remainAll = dol.casesRemaining + dHold;
   const dolMonth = D.timeline.find(m => m.status === 'active');
-  const netThis = backlog.thisMonth.processed - backlog.thisMonth.intake; // positive = backlog reduced
-  const netLast = backlog.lastMonth.processed - backlog.lastMonth.intake;
+  const procThis = monthDecided(backlog.thisMonth), procLast = monthDecided(backlog.lastMonth);
+  // start of month incl. on hold: cases moved into hold this month were already pending then
+  const startAll = backlog.startOfMonth + bHold - (backlog.thisMonth.onHold || 0);
+  const netThis = procThis - backlog.thisMonth.intake; // positive = backlog reduced
+  const netLast = procLast - backlog.lastMonth.intake;
   // Format net: always show direction explicitly, never double-negate
   function fmtNet(v) {
     if (v > 0) return { str: '−'+n(v), color:'#22c55e' };       // processed > intake = good (backlog shrinks)
@@ -2229,24 +2243,25 @@ function renderStatCards() {
   const deltaDir = avgDays.deltaFromLastMonth > 0 ? '▲' : avgDays.deltaFromLastMonth < 0 ? '▼' : '—';
   const deltaClass = avgDays.deltaFromLastMonth > 0 ? 'trend-down' : avgDays.deltaFromLastMonth < 0 ? 'trend-up' : 'trend-neutral';
   const prog = Math.round(dol.day / dol.daysInMonth * 100);
-  const todayStatus = today.stillUpdating ? '⏳ Still updating — yesterday: '+n(today.yesterday.total) : 'Final count';
+  const todayStatus = today.stillUpdating ? '⏳ Still updating — yesterday: '+n(decided(today.yesterday)) : 'Final count';
+  const yHold = today.yesterday.onHold || 0;
 
   document.getElementById('stats-grid').innerHTML = `
     <div class="stat-card" style="--accent:#3b82f6;">
       <div class="stat-label">Total Backlog
         <span class="info-icon">?<span class="tooltip">
           <div class="tt-section">This month (${backlog.thisMonth.name}, so far)</div>
-          <div class="tt-row"><span class="tt-label">Processed</span><span class="tt-val">${n(backlog.thisMonth.processed)}</span></div>
+          <div class="tt-row"><span class="tt-label">Processed</span><span class="tt-val">${n(procThis)}</span></div>
           <div class="tt-row"><span class="tt-label">New intake</span><span class="tt-val">+${n(backlog.thisMonth.intake)}</span></div>
           <div class="tt-row"><span class="tt-label">Net change</span><span class="tt-val" style="color:${ntThis.color};">${ntThis.str}</span></div>
         </span></span>
       </div>
       <div class="stat-value" style="color:var(--text-primary);">${n(pendingAll)}</div>
-      <div class="stat-trend trend-neutral">Backlog at start of month: ${n(backlog.startOfMonth + bHold)}</div>
+      <div class="stat-trend trend-neutral">Backlog at start of month: ${n(startAll)}</div>
       <div class="stat-details">${bHold > 0 ? `
         <div class="stat-detail-row"><span class="stat-detail-label">Incl. on hold</span><span class="stat-detail-value" style="color:var(--onhold-text);">${n(bHold)}</span></div>` : ''}
         <div class="stat-detail-row"><span class="stat-detail-label" style="color:var(--text-secondary);font-weight:500;">Last month (${backlog.lastMonth.name})</span></div>
-        <div class="stat-detail-row"><span class="stat-detail-label">Processed</span><span class="stat-detail-value">${n(backlog.lastMonth.processed)}</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Processed</span><span class="stat-detail-value">${n(procLast)}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">New intake</span><span class="stat-detail-value">+${n(backlog.lastMonth.intake)}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Net change</span><span class="stat-detail-value" style="color:${ntLast.color};">${ntLast.str}</span></div>
       </div>
@@ -2274,17 +2289,18 @@ function renderStatCards() {
           <div class="tt-row"><span class="tt-label">RFI</span><span class="tt-val" style="color:#f59e0b;">${n(today.rfi)}</span></div>
           <div class="tt-row"><span class="tt-label">Denied</span><span class="tt-val" style="color:#ef4444;">${n(today.denied)}</span></div>
           <div class="tt-row"><span class="tt-label">Withdrawn</span><span class="tt-val" style="color:#64748b;">${n(today.withdrawn)}</span></div>${today.onHold > 0 ? `
-          <div class="tt-row"><span class="tt-label">On hold</span><span class="tt-val" style="color:var(--onhold-text);">${n(today.onHold)}</span></div>` : ''}${today.other > 0 ? `
-          <div class="tt-row"><span class="tt-label">Other</span><span class="tt-val">${n(today.other)}</span></div>` : ''}
+          <div class="tt-row"><span class="tt-label">On hold (not counted)</span><span class="tt-val" style="color:var(--onhold-text);">${n(today.onHold)}</span></div>` : ''}${today.other > 0 ? `
+          <div class="tt-row"><span class="tt-label">Other (not counted)</span><span class="tt-val">${n(today.other)}</span></div>` : ''}
         </span></span>
       </div>
-      <div class="stat-value" style="color:#22c55e;">${n(today.total)}</div>
+      <div class="stat-value" style="color:#22c55e;">${n(decided(today))}</div>
       <div class="stat-trend trend-neutral">${todayStatus}</div>
       <div class="stat-details">
         <div class="stat-detail-row"><span class="stat-detail-label">Yesterday certified</span><span class="stat-detail-value" style="color:#22c55e;">${n(today.yesterday.certified)}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Yesterday denied</span><span class="stat-detail-value" style="color:#ef4444;">${n(today.yesterday.denied)}</span></div>
         <div class="stat-detail-row"><span class="stat-detail-label">Yesterday RFI</span><span class="stat-detail-value" style="color:#f59e0b;">${n(today.yesterday.rfi)}</span></div>
-        <div class="stat-detail-row"><span class="stat-detail-label">Yesterday withdrawn</span><span class="stat-detail-value">${n(today.yesterday.withdrawn)}</span></div>
+        <div class="stat-detail-row"><span class="stat-detail-label">Yesterday withdrawn</span><span class="stat-detail-value">${n(today.yesterday.withdrawn)}</span></div>${yHold > 0 ? `
+        <div class="stat-detail-row"><span class="stat-detail-label">Yesterday on hold</span><span class="stat-detail-value" style="color:var(--onhold-text);">${n(yHold)}</span></div>` : ''}
       </div>
     </div>
 
@@ -2418,8 +2434,9 @@ function renderCombo() {
       const pctTxt   = m.status==='done' ? certPct+'%' : m.status==='processing' ? Math.round(m.processedPct)+'%' : Math.round(m.dolDay/m.dolDays*100)+'%';
       html += '<div style="font-size:8px;color:'+pctColor+';font-weight:600;">'+pctTxt+'</div>';
     }
-    if (m.todayProcessed > 0) {
-      html += '<div style="font-size:9px;color:#86efac;font-weight:600;margin-top:2px;" title="Processed today">+'+m.todayProcessed+' today</div>';
+    const todayN = typeof m.todayDecisions === 'number' ? m.todayDecisions : m.todayProcessed;
+    if (todayN > 0) {
+      html += '<div style="font-size:9px;color:#86efac;font-weight:600;margin-top:2px;" title="Processed today">+'+todayN+' today</div>';
     }
     html += '</div>';
   });
@@ -2501,7 +2518,7 @@ function renderRate(range) {
   const isTodayUpdating = range === 'day' && D.today.stillUpdating;
 
   // Compute max and ticks dynamically
-  const rawMax = Math.max(...bars.map(b => b.total));
+  const rawMax = Math.max(...bars.map(decided));
   const niceMax = Math.ceil(rawMax / 100) * 100 + 100;
   const step = Math.ceil(niceMax / 4 / 100) * 100;
   const ticks = [];
@@ -2516,7 +2533,7 @@ function renderRate(range) {
   if (rateNote) rateNote.style.display = range === 'day' ? '' : 'none';
 
   const chartH = 190;
-  const avgVal = Math.round((() => { const nonZero = bars.filter(b => b.total > 0); if (nonZero.length <= 1) return nonZero.length ? nonZero[0].total : 0; const obs = nonZero.slice(1); return obs.reduce((s,b) => s+b.total,0) / obs.length; })());
+  const avgVal = Math.round((() => { const nonZero = bars.filter(b => decided(b) > 0); if (nonZero.length <= 1) return nonZero.length ? decided(nonZero[0]) : 0; const obs = nonZero.slice(1); return obs.reduce((s,b) => s+decided(b),0) / obs.length; })());
   const avgH   = Math.round(avgVal / niceMax * (chartH-4));
   const avgLabel = range === 'day' ? 'Daily avg: '+n(avgVal) : 'Weekly avg: '+n(avgVal);
   document.getElementById('rate-avg-stat').textContent = avgLabel;
@@ -2528,7 +2545,7 @@ function renderRate(range) {
   h += '<div class="avg-line" style="bottom:'+(26+avgH)+'px;"><span class="avg-label">avg '+n(avgVal)+'</span></div>';
   h += '<div class="bars-container">';
   bars.forEach((b, i) => {
-    const bH  = Math.max(2, Math.round(b.total / niceMax * (chartH-4)));
+    const bH  = Math.max(2, Math.round(decided(b) / niceMax * (chartH-4)));
     const wk  = (range==='day' && isWeekend(b.date)) ? ' weekend' : '';
     h += '<div class="bar-group"><div class="bar'+wk+'" data-ri="'+i+'" style="height:'+bH+'px;"></div></div>';
   });
@@ -2548,15 +2565,15 @@ function renderRate(range) {
     const idx = parseInt(bar.dataset.ri);
     const b = bars[idx];
     const title = range==='day' ? fmtDayLabel(b.date).replace('\n',' ') : fmtWeekRange(b.weekStart, b.partial);
-    const diff  = b.total - avgVal;
+    const diff  = decided(b) - avgVal;
     const tipH  =
-      '<div class="gt-title">'+title+' — '+n(b.total)+' total</div>'+
+      '<div class="gt-title">'+title+' — '+n(decided(b))+' processed</div>'+
       tipRow('Certified',  n(b.certified),  '#22c55e')+
       tipRow('RFI',        n(b.rfi),        '#f59e0b')+
       tipRow('Denied',     n(b.denied),     '#ef4444')+
       tipRow('Withdrawn',  n(b.withdrawn),  '#64748b')+
-      (b.onHold > 0 ? tipRow('On hold', n(b.onHold), 'var(--onhold-text)') : '')+
-      (b.other > 0 ? tipRow('Other', n(b.other)) : '')+
+      (b.onHold > 0 ? tipRow('On hold (not counted)', n(b.onHold), 'var(--onhold-text)') : '')+
+      (b.other > 0 ? tipRow('Other (not counted)', n(b.other)) : '')+
       '<div class="gt-sep"></div>'+
       tipRow('vs avg', (diff>=0?'+':'')+n(diff), diff>=0?'#22c55e':'#ef4444');
     bar.addEventListener('mouseenter', e => {
@@ -3362,10 +3379,13 @@ function employerSlug(name) {
     var parts = [];
     parts.push('<strong>Data updated ' + when + '</strong>');
     var t = data.today, y = t && t.yesterday;
-    if (t && typeof t.total === 'number' && t.total > 0) {
-      parts.push('<strong>' + fmtNum(t.total) + '</strong> decision' + (t.total === 1 ? '' : 's') + ' posted by DOL so far today' + (typeof t.certified === 'number' ? ' (' + fmtNum(t.certified) + ' approved)' : ''));
-    } else if (y && typeof y.total === 'number' && y.total > 0) {
-      parts.push('<strong>' + fmtNum(y.total) + '</strong> decisions posted yesterday' + (typeof y.certified === 'number' ? ' (' + fmtNum(y.certified) + ' approved)' : ''));
+    // decisions only: moves into On hold / other statuses are not counted (2026-10-17)
+    var dec = function (r) { return !r || typeof r.total !== 'number' ? null : (typeof r.decided === 'number' ? r.decided : Math.max(0, r.total - (r.onHold || 0) - (r.other || 0))); };
+    var tn = dec(t), yn = dec(y);
+    if (tn > 0) {
+      parts.push('<strong>' + fmtNum(tn) + '</strong> decision' + (tn === 1 ? '' : 's') + ' posted by DOL so far today' + (typeof t.certified === 'number' ? ' (' + fmtNum(t.certified) + ' approved)' : ''));
+    } else if (yn > 0) {
+      parts.push('<strong>' + fmtNum(yn) + '</strong> decisions posted yesterday' + (typeof y.certified === 'number' ? ' (' + fmtNum(y.certified) + ' approved)' : ''));
     }
     var total = 0;
     if (Array.isArray(data.timeline)) {

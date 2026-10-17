@@ -328,7 +328,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     set('avg', d.avgDays.current);
     set('avgCert', d.avgDays.certified);
     set('pending', Number(d.backlog.total + (d.backlog.onHold || 0)).toLocaleString());
-    set('todayTotal', Number(d.today.total).toLocaleString());
+    set('todayTotal', Number(typeof d.today.decided === 'number' ? d.today.decided : Math.max(0, d.today.total - (d.today.onHold || 0) - (d.today.other || 0))).toLocaleString());
     set('move', d.dol.movementPerWeek);
     var nx = (d.statusDistribution || []).filter(function (t) { return t.tabKey === 'next'; })[0];
     if (nx) {

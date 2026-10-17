@@ -810,10 +810,13 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
     var parts = [];
     parts.push('<strong>Data updated ' + when + '</strong>');
     var t = data.today, y = t && t.yesterday;
-    if (t && typeof t.total === 'number' && t.total > 0) {
-      parts.push('<strong>' + fmtNum(t.total) + '</strong> decision' + (t.total === 1 ? '' : 's') + ' posted by DOL so far today' + (typeof t.certified === 'number' ? ' (' + fmtNum(t.certified) + ' approved)' : ''));
-    } else if (y && typeof y.total === 'number' && y.total > 0) {
-      parts.push('<strong>' + fmtNum(y.total) + '</strong> decisions posted yesterday' + (typeof y.certified === 'number' ? ' (' + fmtNum(y.certified) + ' approved)' : ''));
+    // decisions only: moves into On hold / other statuses are not counted (2026-10-17)
+    var dec = function (r) { return !r || typeof r.total !== 'number' ? null : (typeof r.decided === 'number' ? r.decided : Math.max(0, r.total - (r.onHold || 0) - (r.other || 0))); };
+    var tn = dec(t), yn = dec(y);
+    if (tn > 0) {
+      parts.push('<strong>' + fmtNum(tn) + '</strong> decision' + (tn === 1 ? '' : 's') + ' posted by DOL so far today' + (typeof t.certified === 'number' ? ' (' + fmtNum(t.certified) + ' approved)' : ''));
+    } else if (yn > 0) {
+      parts.push('<strong>' + fmtNum(yn) + '</strong> decisions posted yesterday' + (typeof y.certified === 'number' ? ' (' + fmtNum(y.certified) + ' approved)' : ''));
     }
     var total = 0;
     if (Array.isArray(data.timeline)) {
