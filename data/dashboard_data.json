@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T06:50:58-04:00",
+  "updatedAt": "2026-10-18T09:17:34-04:00",
   "backlog": {
     "total": 85604,
     "onHold": 1553,
@@ -25,14 +25,14 @@
     "current": 301,
     "deltaFromLastMonth": -18,
     "certified": 299,
-    "rfi": 310,
+    "rfi": 311,
     "denied": 357,
     "trend90Day": -80,
     "windowDays": 30,
-    "sampleSize": 15205,
+    "sampleSize": 15143,
     "samples": {
-      "certified": 14265,
-      "rfi": 568,
+      "certified": 14214,
+      "rfi": 557,
       "denied": 372
     }
   },
