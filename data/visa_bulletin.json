@@ -1,34 +1,34 @@
 {
-  "bulletin_date": "October 2026",
-  "last_updated": "2026-09-29T11:02:05Z",
-  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2027/visa-bulletin-for-october-2026.html",
+  "bulletin_date": "November 2026",
+  "last_updated": "2026-10-22T19:16:34Z",
+  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2027/visa-bulletin-for-november-2026.html",
   "final_action_dates": {
     "1st": {
       "all_other": "C",
-      "china": "01JUL23",
+      "china": "01AUG23",
       "india": "01FEB23",
       "mexico": "C",
       "philippines": "C"
     },
     "2nd": {
-      "all_other": "01JAN25",
+      "all_other": "01APR25",
       "china": "01OCT21",
       "india": "01NOV13",
-      "mexico": "01JAN25",
-      "philippines": "01JAN25"
+      "mexico": "01APR25",
+      "philippines": "01APR25"
     },
     "3rd": {
-      "all_other": "15MAY24",
-      "china": "08JAN22",
-      "india": "01JAN14",
-      "mexico": "15MAY24",
+      "all_other": "15JUN24",
+      "china": "22JAN22",
+      "india": "22JAN14",
+      "mexico": "15JUN24",
       "philippines": "15AUG23"
     },
     "Other Workers": {
-      "all_other": "01JAN22",
+      "all_other": "01JUN22",
       "china": "01OCT19",
-      "india": "01JAN14",
-      "mexico": "01JAN22",
+      "india": "22JAN14",
+      "mexico": "01JUN22",
       "philippines": "01JAN22"
     },
     "4th": {
@@ -97,10 +97,10 @@
       "philippines": "01JAN24"
     },
     "Other Workers": {
-      "all_other": "01JUN22",
+      "all_other": "01JUL22",
       "china": "01OCT20",
       "india": "15JAN15",
-      "mexico": "01JUN22",
+      "mexico": "01JUL22",
       "philippines": "01JUN22"
     },
     "4th": {
