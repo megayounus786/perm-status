@@ -187,6 +187,8 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
   .update-time .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-right: 6px; animation: pulse 2s infinite; }
   @keyframes updated-flash { 0% { color: #22c55e; } 100% { color: inherit; } }
   .update-time .updated-flash { animation: updated-flash 2s ease-out; }
+  .update-time.stale { color: #d97706; }
+  .update-time.stale .dot { background: #f59e0b; animation: none; }
   @keyframes pulse    { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
   @keyframes dotpulse { 0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.6),0 0 12px rgba(245,158,11,0.4)} 50%{box-shadow:0 0 0 6px rgba(245,158,11,0),0 0 20px rgba(245,158,11,0.6)} }
   @keyframes spin     { to { transform: rotate(360deg); } }
@@ -2202,8 +2204,26 @@ function setupTabs(id, cb) {
 // ═══════════════════════════════════════════════════════
 // UPDATED-AT
 // ═══════════════════════════════════════════════════════
+// Stale-data note (audit 2026-10-23 H1): when the numbers are older than
+// they should be (the Mac froze on Oct 20 and the site sat ~14 h behind), say
+// so instead of a green "Last updated". Normal gap between scans is 3 h, so
+// 6 h means a missed update; data from the 21:00/23:30 runs waits for the
+// 06:00 run (which can finish ~08:10), so it gets 9 h before it counts as late.
+function dataIsStale(iso, now) {
+  const t = new Date(iso);
+  if (isNaN(t)) return false;
+  const ageH = ((now || new Date()) - t) / 3600000;
+  const etHour = +new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: 'numeric', hourCycle: 'h23' }).format(t);
+  const overnight = etHour >= 21 || etHour < 6;
+  return ageH > (overnight ? 9 : 6);
+}
 function renderUpdatedAt() {
-  document.getElementById('updated-text').textContent = 'Last updated ' + fmtUpdatedAt(D.updatedAt);
+  const el = document.getElementById('updated-text');
+  const stale = dataIsStale(D.updatedAt);
+  el.textContent = (stale ? 'Data last updated ' : 'Last updated ') + fmtUpdatedAt(D.updatedAt)
+    + (stale ? ' · new numbers are delayed' : '');
+  const box = el.closest('.update-time');
+  if (box) box.classList.toggle('stale', stale);
 }
 
 // APPLICATION ON HOLD (2026-10-17): its own status, colour #9038b8 (purple; kept
