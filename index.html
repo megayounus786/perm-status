@@ -236,23 +236,25 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
 
   /* ── RATE CHART ── */
   .rate-chart-wrap { position: relative; height: 220px; display: flex; }
-  .y-axis { width: 38px; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 26px; padding-top: 4px; flex-shrink: 0; }
-  .y-tick { font-size: 9px; color: var(--text-dim); text-align: right; padding-right: 6px; font-weight: 500; }
-  .chart-area { flex: 1; position: relative; padding-bottom: 26px; }
-  .grid-lines { position: absolute; inset: 0 0 26px 0; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none; z-index: 0; }
-  .grid-line { border-top: 1px dashed var(--grid-line); }
+  /* y labels, gridlines, bars and the avg line all share one scale: renderRate() places each at bottom = 26px + value/max × plot height */
+  .y-axis { width: 38px; position: relative; flex-shrink: 0; }
+  .y-tick { position: absolute; right: 0; transform: translateY(50%); line-height: 1; font-size: 9px; color: var(--text-dim); text-align: right; padding-right: 6px; font-weight: 500; white-space: nowrap; }
+  .chart-area { flex: 1; min-width: 0; position: relative; }
+  .grid-lines { position: absolute; inset: 0 0 26px 0; pointer-events: none; z-index: 0; }
+  .grid-line { position: absolute; left: 0; right: 0; height: 0; border-top: 1px dashed var(--grid-line); }
   .grid-line:last-child { border-top: 1px solid var(--grid-line-last); }
   .avg-line { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--avg-color, #fbbf24); z-index: 4; pointer-events: none; }
   .avg-label { position: absolute; right: 4px; font-size: 10px; color: var(--avg-color, #fbbf24); font-weight: 800; transform: translateY(-13px); text-shadow: 0 0 6px var(--bg-body), 0 0 6px var(--bg-body), 0 0 6px var(--bg-body); letter-spacing: 0.2px; }
   .bars-container { position: absolute; inset: 0 0 26px 0; display: flex; align-items: flex-end; gap: 3px; z-index: 1; padding: 0 2px; }
-  .bar-group { flex: 1; display: flex; align-items: flex-end; justify-content: center; height: 100%; }
+  .bar-group { flex: 1 1 0; min-width: 0; display: flex; align-items: flex-end; justify-content: center; height: 100%; }
   .bar { width: 100%; max-width: 26px; border-radius: 4px 4px 0 0; cursor: pointer; transition: opacity 0.18s, box-shadow 0.18s, transform 0.12s; background: linear-gradient(180deg, #6366f1, #3b82f6); }
   .bar.weekend { background: linear-gradient(180deg, rgba(99,102,241,0.3), rgba(59,130,246,0.3)); }
   .bar.dimmed  { opacity: var(--bar-dimmed); }
   .bar.hovered { opacity: 1 !important; box-shadow: 0 0 16px rgba(99,102,241,0.5); transform: scaleX(1.08); }
-  .bar-labels { position: absolute; bottom: 0; left: 0; right: 0; height: 26px; display: flex; padding: 0 2px; }
-  .bar-label-slot { flex: 1; display: flex; align-items: center; justify-content: center; }
-  .bar-label { font-size: 8px; color: var(--text-dim); font-weight: 500; text-align: center; line-height: 1.3; }
+  /* same gap/padding as .bars-container so slot i sits exactly under bar i; labels centre on their slot and may be wider than it */
+  .bar-labels { position: absolute; bottom: 0; left: 0; right: 0; height: 26px; display: flex; gap: 3px; padding: 0 2px; }
+  .bar-label-slot { flex: 1 1 0; min-width: 0; position: relative; }
+  .bar-label { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; font-size: 8px; color: var(--text-dim); font-weight: 500; text-align: center; line-height: 1.3; }
 
   /* ── DONUT ── */
   .donut-container { display: flex; align-items: center; gap: 24px; }
@@ -398,7 +400,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     color: var(--text-dim); pointer-events: none; display: flex; align-items: center;
   }
   .nav-search-input {
-    width: clamp(150px, calc(33vw - 218px), 260px); padding: 8px 32px 8px 34px;
+    width: clamp(172px, calc(33vw - 218px), 260px); padding: 8px 32px 8px 34px;
     border: 1px solid var(--input-border);
     background: var(--input-bg);
     color: var(--text-primary); font-size: 13px; font-family: inherit;
@@ -693,7 +695,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
 
   @media (max-width: 768px) {
     .nav-right { gap: 6px; order: 2; margin-left: auto; }
-    .nav-search-input { width: 120px !important; }
+    .nav-search-input { width: clamp(120px, calc(100vw - 300px), 200px) !important; }
     .nav-search-dropdown { width: calc(100vw - 28px); right: 14px; max-height: 60vh; }
     .emp-modal {
       width: 100%; max-width: 100%;
@@ -708,7 +710,9 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     .emp-stat-value { font-size: 24px; }
   }
   @media (max-width: 480px) {
-    .nav-search-input { width: 100px !important; padding: 8px 10px 8px 30px !important; font-size: 12px; }
+    /* wider where the header has room, keeping >= 10px between the logo and the theme toggle
+       (375 px → 103, 390 px → 118, up to 160); the placeholder script picks the wording that fits */
+    .nav-search-input { width: clamp(100px, calc(100vw - 272px), 160px) !important; padding: 8px 6px 8px 28px !important; font-size: 12px; }
   }
 
   /* ── THEME TOGGLE ── */
@@ -2517,13 +2521,17 @@ function renderRate(range) {
   const bars  = range === 'day' ? D.rateDays  : D.rateWeeks;
   const isTodayUpdating = range === 'day' && D.today.stillUpdating;
 
-  // Compute max and ticks dynamically
-  const rawMax = Math.max(...bars.map(decided));
-  const niceMax = Math.ceil(rawMax / 100) * 100 + 100;
-  const step = Math.ceil(niceMax / 4 / 100) * 100;
+  // One even scale: the smallest 1/2/2.5/5 × 10^k step that covers the tallest bar in at most 5 steps.
+  // Gridlines, y labels, bars and the avg line are all placed from it.
+  const rawMax = Math.max(1, ...bars.map(decided));
+  let step = 1;
+  for (let p = 1; ; p *= 10) {
+    const s = [1, 2, 2.5, 5].map(m => m * p).find(s => Number.isInteger(s) && Math.ceil(rawMax / s) <= 5);
+    if (s) { step = s; break; }
+  }
+  const niceMax = Math.ceil(rawMax / step) * step;
   const ticks = [];
   for (let v = niceMax; v >= 0; v -= step) ticks.push(v);
-  if (ticks[ticks.length-1] !== 0) ticks.push(0);
 
   const subtitle = range === 'day'
     ? fmtDayLabel(bars[0].date).replace('\n',' ') + ' – ' + fmtDayLabel(bars[bars.length-1].date).replace('\n',' ')
@@ -2532,34 +2540,31 @@ function renderRate(range) {
   const rateNote = document.getElementById('rate-note');
   if (rateNote) rateNote.style.display = range === 'day' ? '' : 'none';
 
-  const chartH = 190;
+  const plotH = 186;                                 // px from the 0 line (26px above the wrap bottom) to the top gridline
+  const yPx = v => Math.round(v / niceMax * plotH);
   const avgVal = Math.round((() => { const nonZero = bars.filter(b => decided(b) > 0); if (nonZero.length <= 1) return nonZero.length ? decided(nonZero[0]) : 0; const obs = nonZero.slice(1); return obs.reduce((s,b) => s+decided(b),0) / obs.length; })());
-  const avgH   = Math.round(avgVal / niceMax * (chartH-4));
   const avgLabel = range === 'day' ? 'Daily avg: '+n(avgVal) : 'Weekly avg: '+n(avgVal);
   document.getElementById('rate-avg-stat').textContent = avgLabel;
 
   let h = '<div class="y-axis">';
-  ticks.forEach(t => { h += '<div class="y-tick">'+n(t)+'</div>'; });
+  ticks.forEach(t => { h += '<div class="y-tick" style="bottom:'+(26+yPx(t))+'px;">'+n(t)+'</div>'; });
   h += '</div><div class="chart-area">';
-  h += '<div class="grid-lines">'; ticks.forEach(() => { h += '<div class="grid-line"></div>'; }); h += '</div>';
-  h += '<div class="avg-line" style="bottom:'+(26+avgH)+'px;"><span class="avg-label">avg '+n(avgVal)+'</span></div>';
+  h += '<div class="grid-lines">'; ticks.forEach(t => { h += '<div class="grid-line" style="bottom:'+yPx(t)+'px;"></div>'; }); h += '</div>';
+  h += '<div class="avg-line" style="bottom:'+(26+yPx(avgVal))+'px;"><span class="avg-label">avg '+n(avgVal)+'</span></div>';
   h += '<div class="bars-container">';
   bars.forEach((b, i) => {
-    const bH  = Math.max(2, Math.round(decided(b) / niceMax * (chartH-4)));
+    const bH  = Math.max(2, yPx(decided(b)));
     const wk  = (range==='day' && isWeekend(b.date)) ? ' weekend' : '';
     h += '<div class="bar-group"><div class="bar'+wk+'" data-ri="'+i+'" style="height:'+bH+'px;"></div></div>';
   });
   h += '</div><div class="bar-labels">';
-  const isMobile = window.innerWidth < 768;
-  const labelStep = isMobile ? (bars.length > 20 ? 4 : 3) : 1;
   bars.forEach((b, i) => {
-    const show = (i % labelStep === 0) || !isMobile;
     const lbl = range==='day' ? fmtDayLabel(b.date) : fmtWeekLabel(b.weekStart);
-    const lines = lbl.split('\n');
-    h += '<div class="bar-label-slot"><span class="bar-label" style="'+(show?'':'visibility:hidden')+'">'+lines.map(l=>'<span>'+l+'</span>').join('<br>')+'</span></div>';
+    h += '<div class="bar-label-slot"><span class="bar-label">'+lbl.split('\n').map(l=>'<span>'+l+'</span>').join('<br>')+'</span></div>';
   });
   h += '</div></div>';
   wrap.innerHTML = h;
+  layoutRateLabels(wrap);
 
   wrap.querySelectorAll('.bar').forEach(bar => {
     const idx = parseInt(bar.dataset.ri);
@@ -2587,6 +2592,32 @@ function renderRate(range) {
     });
   });
 }
+// Date labels sit centred under their own bar. When labels are wider than the bar pitch (phones),
+// show every Nth label counted back from the newest bar, and pad both rows equally so the
+// outermost labels stay inside the chart. Re-run on resize; bars and labels share one layout.
+function layoutRateLabels(wrap) {
+  const bc = wrap.querySelector('.bars-container'), bl = wrap.querySelector('.bar-labels');
+  const labels = [...wrap.querySelectorAll('.bar-label')];
+  if (!bc || !bl || !labels.length || !bc.clientWidth) return;
+  const gap = 3, cnt = labels.length;
+  labels.forEach(l => { l.style.visibility = ''; });
+  const maxW = Math.max(...labels.map(l => l.getBoundingClientRect().width));
+  let pad = 2, slotW = 0;
+  for (let k = 0; k < 3; k++) {
+    slotW = (bc.clientWidth - 2 * pad - gap * (cnt - 1)) / cnt;
+    pad = Math.max(2, Math.ceil(maxW / 2 - slotW / 2));
+  }
+  bc.style.padding = bl.style.padding = '0 ' + pad + 'px';
+  slotW = (bc.clientWidth - 2 * pad - gap * (cnt - 1)) / cnt;
+  const step = Math.max(1, Math.ceil((maxW + 0.5) / (slotW + gap)));   // shown labels never touch
+  labels.forEach((l, i) => { if ((cnt - 1 - i) % step) l.style.visibility = 'hidden'; });
+}
+let rateResizeT = 0;
+window.addEventListener('resize', () => {
+  clearTimeout(rateResizeT);
+  rateResizeT = setTimeout(() => { const w = document.getElementById('rate-chart'); if (w) layoutRateLabels(w); }, 150);
+});
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { const w = document.getElementById('rate-chart'); if (w) layoutRateLabels(w); });   // label widths change when Inter arrives
 setupTabs('rate-tabs', t => renderRate(t.dataset.range));
 
 // ═══════════════════════════════════════════════════════
@@ -3210,6 +3241,24 @@ function employerSlug(name) {
     return { input: searchInput };
   }
 
+  // Header search placeholder: the longest wording that fits the box (phones get
+  // "Search employer" or "Find employer"), so it never shows as "Search you…". aria-label keeps the full text.
+  function fitNavSearchPlaceholder(input) {
+    if (!input) return;
+    const options = ['Search your employer', 'Search employer', 'Find employer', 'Search'];
+    const ctx = document.createElement('canvas').getContext('2d');
+    function fit() {
+      const cs = getComputedStyle(input);
+      const avail = input.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (!(avail > 0) || !ctx) return;
+      ctx.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+      input.placeholder = options.find(t => ctx.measureText(t).width <= avail) || options[options.length - 1];
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  }
+
   // Wire the existing nav search.
   setupSearchWidget({
     root:     document.getElementById('nav-search'),
@@ -3217,6 +3266,7 @@ function employerSlug(name) {
     clearBtn: document.getElementById('nav-search-clear'),
     dropdown: document.getElementById('nav-search-dropdown'),
   });
+  fitNavSearchPlaceholder(document.getElementById('nav-search-input'));
 
   // Wire the new hero search (homepage primary element).
   const heroWidget = setupSearchWidget({

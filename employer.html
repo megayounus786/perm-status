@@ -454,7 +454,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
   .nav-right { display: flex; align-items: center; gap: 16px; min-width: 0; }
   .nav-search { display: flex; align-items: center; position: relative; }
   .nav-search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-dim); pointer-events: none; display: flex; align-items: center; }
-  .nav-search-input { width: clamp(150px, calc(33vw - 218px), 260px); padding: 8px 32px 8px 34px; border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-primary); font-size: 13px; font-family: inherit; border-radius: 10px; outline: none; transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; }
+  .nav-search-input { width: clamp(172px, calc(33vw - 218px), 260px); padding: 8px 32px 8px 34px; border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-primary); font-size: 13px; font-family: inherit; border-radius: 10px; outline: none; transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; }
   .nav-search-input::placeholder { color: var(--text-dim); }
   .nav-search-clear { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; border: none; background: var(--tab-active); color: var(--text-secondary); font-size: 14px; line-height: 1; cursor: pointer; border-radius: 50%; display: none; align-items: center; justify-content: center; transition: background 0.15s, color 0.15s; }
   .nav-search-clear:hover { background: var(--card-border-hover); color: var(--text-primary); }
@@ -494,7 +494,7 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
   }
   @media (max-width: 768px) {
     .nav-right { gap: 6px; order: 2; margin-left: auto; }
-    .nav-search-input { width: 120px !important; }
+    .nav-search-input { width: clamp(120px, calc(100vw - 300px), 200px) !important; }
     .nav-search-dropdown { width: calc(100vw - 28px); right: 14px; max-height: 60vh; }
     .emp-page { padding: 20px 14px 56px; }
     .emp-hero-title { font-size: 24px; }
@@ -508,7 +508,9 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
   }
   @media (max-width: 480px) {
     nav { padding: 10px 10px; }
-    .nav-search-input { width: 100px !important; padding: 8px 10px 8px 30px !important; font-size: 12px; }
+    /* wider only where this page's header has room (logo + 10px gap): 390 px → 100, 414 px → 124, up to 160;
+       the placeholder script picks the wording that fits */
+    .nav-search-input { width: clamp(100px, calc(100vw - 290px), 160px) !important; padding: 8px 10px 8px 30px !important; font-size: 12px; }
     .emp-keystats { grid-template-columns: 1fr 1fr; }
     .donut-wrap, .donut-svg { width: 150px; height: 150px; }
   }
@@ -1846,6 +1848,23 @@ function scrollChartsToLatest() {
   const clearBtn    = document.getElementById('nav-search-clear');
   const dropdown    = document.getElementById('nav-search-dropdown');
   if (!navSearch || !searchInput || !dropdown) return;
+
+  // Placeholder: the longest wording that fits the box (phones get "Search employer" or "Find employer"),
+  // so it never shows as "Search you…". aria-label keeps the full text.
+  (function fitPlaceholder() {
+    const options = ['Search your employer', 'Search employer', 'Find employer', 'Search'];
+    const ctx = document.createElement('canvas').getContext('2d');
+    function fit() {
+      const cs = getComputedStyle(searchInput);
+      const avail = searchInput.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (!(avail > 0) || !ctx) return;
+      ctx.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
+      searchInput.placeholder = options.find(t => ctx.measureText(t).width <= avail) || options[options.length - 1];
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
 
   let activeIdx = -1, lastMatches = [], debounceTimer = null, searchSeq = 0;
 
