@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-10-25T23:44:09-04:00",
+  "updatedAt": "2026-10-26T06:47:31-04:00",
   "backlog": {
-    "total": 84121,
+    "total": 84152,
     "onHold": 1553,
     "startOfMonth": 87688,
     "thisMonth": {
       "name": "Oct 2026",
-      "processed": 11297,
-      "intake": 7730,
+      "processed": 11307,
+      "intake": 7771,
       "onHold": 4,
       "other": 0,
-      "decided": 11293
+      "decided": 11303
     },
     "lastMonth": {
       "name": "Sep 2026",
@@ -29,23 +29,23 @@
     "denied": 350,
     "trend90Day": -74,
     "windowDays": 30,
-    "sampleSize": 14051,
+    "sampleSize": 14061,
     "samples": {
-      "certified": 13154,
+      "certified": 13164,
       "rfi": 523,
       "denied": 374
     }
   },
   "today": {
-    "total": 0,
-    "certified": 0,
+    "total": 10,
+    "certified": 10,
     "rfi": 0,
     "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
     "onHold": 0,
     "other": 0,
-    "decided": 0,
+    "decided": 10,
     "yesterday": {
       "total": 0,
       "certified": 0,
@@ -62,11 +62,11 @@
     "monthFull": "January",
     "day": 14,
     "daysInMonth": 100,
-    "estFinish": "Jan 5",
+    "estFinish": "Jan 6",
     "movementPerWeek": 2.6,
-    "casesRemaining": 8498,
+    "casesRemaining": 8488,
     "casesOnHold": 1230,
-    "latestLetter": "N",
+    "latestLetter": "P",
     "pctProcessed": 14
   },
   "timeline": [
@@ -255,17 +255,19 @@
     {
       "label": "Jan '26",
       "total": 11738,
-      "certified": 1544,
-      "review": 8498,
+      "certified": 1554,
+      "review": 8488,
       "withdrawn": 416,
       "denied": 6,
       "rfi": 43,
       "status": "active",
-      "processedPct": 13.6,
+      "processedPct": 13.7,
       "onHold": 1230,
       "other": 1,
       "dolDay": 14,
-      "dolDays": 100
+      "dolDays": 100,
+      "todayProcessed": 10,
+      "todayDecisions": 10
     },
     {
       "label": "Feb '26",
@@ -373,9 +375,9 @@
     },
     {
       "label": "Oct '26",
-      "total": 7730,
+      "total": 7771,
       "certified": 0,
-      "review": 7677,
+      "review": 7718,
       "withdrawn": 52,
       "denied": 0,
       "rfi": 0,
@@ -386,17 +388,6 @@
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-09-26",
-      "total": 0,
-      "certified": 0,
-      "rfi": 0,
-      "denied": 0,
-      "withdrawn": 0,
-      "onHold": 0,
-      "other": 0,
-      "decided": 0
-    },
     {
       "date": "2026-09-27",
       "total": 14,
@@ -715,20 +706,20 @@
       "onHold": 0,
       "other": 0,
       "decided": 0
+    },
+    {
+      "date": "2026-10-26",
+      "total": 10,
+      "certified": 10,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 10
     }
   ],
   "rateWeeks": [
-    {
-      "weekStart": "2026-08-03",
-      "total": 5156,
-      "certified": 4592,
-      "rfi": 228,
-      "denied": 196,
-      "withdrawn": 139,
-      "onHold": 0,
-      "other": 1,
-      "decided": 5155
-    },
     {
       "weekStart": "2026-08-10",
       "total": 5176,
@@ -848,7 +839,18 @@
       "withdrawn": 14,
       "onHold": 0,
       "other": 0,
-      "decided": 3606,
+      "decided": 3606
+    },
+    {
+      "weekStart": "2026-10-26",
+      "total": 10,
+      "certified": 10,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 10,
       "partial": true
     }
   ],
@@ -870,8 +872,8 @@
       "tabKey": "next",
       "tabLabel": "Jan",
       "subtitle": "January 2026 filings \u00b7 10,507 total",
-      "certified": 1544,
-      "review": 8498,
+      "certified": 1554,
+      "review": 8488,
       "withdrawn": 416,
       "rfi": 43,
       "denied": 6,
