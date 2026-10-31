@@ -508,8 +508,8 @@
 (function () {
   'use strict';
   var BANNER_ON = true;
-  var BANNER_ID = 'il-maint-2026-10-31';
-  var BANNER_TEXT = 'Case Watch alerts and daily data updates are paused for maintenance. Service will be restored by Tuesday, Nov 3. Existing data stays available.';
+  var BANNER_ID = 'il-maint-2026-10-31b';
+  var BANNER_TEXT = 'Scheduled maintenance: some data may be out of date until Tuesday, Nov 3.';
   try {
     if (!BANNER_ON) return;
     try { if (localStorage.getItem('il-banner-closed') === BANNER_ID) return; } catch (e) {}
