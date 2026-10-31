@@ -500,3 +500,41 @@
     }
   } catch (e) {}
 })();
+
+/* Maintenance banner (2026-10-31, Pi outage). Thin dismissible bar at the top
+ * of every page; dismissal remembered in localStorage per BANNER_ID.
+ * REMOVE: set BANNER_ON = false (or delete this block), then run
+ * python3 scripts/insert_session_check.py and push. */
+(function () {
+  'use strict';
+  var BANNER_ON = true;
+  var BANNER_ID = 'il-maint-2026-10-31';
+  var BANNER_TEXT = 'Case Watch alerts and daily data updates are paused for maintenance. Service will be restored by Tuesday, Nov 3. Existing data stays available.';
+  try {
+    if (!BANNER_ON) return;
+    try { if (localStorage.getItem('il-banner-closed') === BANNER_ID) return; } catch (e) {}
+    function show() {
+      if (document.getElementById('il-maint')) return;
+      var bar = document.createElement('div');
+      bar.id = 'il-maint';
+      bar.setAttribute('role', 'status');
+      bar.style.cssText = 'position:relative;z-index:2147483000;background:#fff4d6;color:#5c4400;border-bottom:1px solid #f0d58a;font:12.5px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding:5px 34px 5px 12px;text-align:center;margin:0;';
+      var txt = document.createElement('span');
+      txt.textContent = BANNER_TEXT;
+      var x = document.createElement('button');
+      x.type = 'button';
+      x.setAttribute('aria-label', 'Dismiss');
+      x.textContent = '×';
+      x.style.cssText = 'position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;color:#5c4400;font-size:17px;line-height:1;cursor:pointer;padding:2px 6px;';
+      x.onclick = function () {
+        try { localStorage.setItem('il-banner-closed', BANNER_ID); } catch (e) {}
+        if (bar.parentNode) bar.parentNode.removeChild(bar);
+      };
+      bar.appendChild(txt);
+      bar.appendChild(x);
+      document.body.insertBefore(bar, document.body.firstChild);
+    }
+    if (document.body) show();
+    else document.addEventListener('DOMContentLoaded', show);
+  } catch (e) {}
+})();
