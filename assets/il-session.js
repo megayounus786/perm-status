@@ -507,7 +507,7 @@
  * python3 scripts/insert_session_check.py and push. */
 (function () {
   'use strict';
-  var BANNER_ON = true;
+  var BANNER_ON = false;
   var BANNER_ID = 'il-maint-2026-10-31b';
   var BANNER_TEXT = 'Scheduled maintenance: some data may be out of date until Tuesday, Nov 3.';
   try {
