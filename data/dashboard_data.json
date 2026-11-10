@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-10T09:10:33-05:00",
+  "updatedAt": "2026-11-10T12:10:38-05:00",
   "backlog": {
-    "total": 80389,
+    "total": 80187,
     "onHold": 1960,
     "startOfMonth": 81928,
     "thisMonth": {
       "name": "Nov 2026",
-      "processed": 3934,
+      "processed": 4136,
       "intake": 2395,
       "onHold": 0,
       "other": 0,
-      "decided": 3934
+      "decided": 4136
     },
     "lastMonth": {
       "name": "Oct 2026",
@@ -29,23 +29,23 @@
     "denied": 324,
     "trend90Day": -64,
     "windowDays": 30,
-    "sampleSize": 13744,
+    "sampleSize": 13946,
     "samples": {
-      "certified": 12738,
-      "rfi": 596,
-      "denied": 410
+      "certified": 12930,
+      "rfi": 602,
+      "denied": 414
     }
   },
   "today": {
-    "total": 89,
-    "certified": 77,
-    "rfi": 5,
-    "denied": 6,
+    "total": 291,
+    "certified": 269,
+    "rfi": 11,
+    "denied": 10,
     "withdrawn": 1,
     "stillUpdating": false,
     "onHold": 0,
     "other": 0,
-    "decided": 89,
+    "decided": 291,
     "yesterday": {
       "total": 603,
       "certified": 559,
@@ -58,16 +58,16 @@
     }
   },
   "dol": {
-    "label": "Jan '26",
-    "monthFull": "January",
-    "day": 73,
+    "label": "Feb '26",
+    "monthFull": "February",
+    "day": 4,
     "daysInMonth": 100,
-    "estFinish": "Nov 20",
-    "movementPerWeek": 6.0,
-    "casesRemaining": 1524,
-    "casesOnHold": 1230,
+    "estFinish": "Apr 16",
+    "movementPerWeek": 1.2,
+    "casesRemaining": 4778,
+    "casesOnHold": 407,
     "latestLetter": "W",
-    "pctProcessed": 73
+    "pctProcessed": 4
   },
   "timeline": [
     {
@@ -229,60 +229,64 @@
     {
       "label": "Nov '25",
       "total": 15075,
-      "certified": 13263,
-      "review": 66,
+      "certified": 13267,
+      "review": 61,
       "withdrawn": 616,
-      "denied": 426,
+      "denied": 427,
       "rfi": 678,
       "status": "done",
       "processedPct": 95.3,
       "onHold": 23,
       "other": 3,
-      "todayProcessed": 6,
-      "todayDecisions": 6
+      "todayProcessed": 11,
+      "todayDecisions": 11
     },
     {
       "label": "Dec '25",
       "total": 15334,
       "certified": 13031,
-      "review": 807,
+      "review": 806,
       "withdrawn": 575,
-      "denied": 179,
+      "denied": 180,
       "rfi": 455,
       "status": "done",
       "processedPct": 89.1,
       "onHold": 286,
-      "other": 1
+      "other": 1,
+      "todayProcessed": 1,
+      "todayDecisions": 1
     },
     {
       "label": "Jan '26",
       "total": 11738,
-      "certified": 8226,
-      "review": 1524,
+      "certified": 8360,
+      "review": 1382,
       "withdrawn": 426,
-      "denied": 91,
-      "rfi": 240,
-      "status": "active",
-      "processedPct": 72.9,
+      "denied": 93,
+      "rfi": 246,
+      "status": "processing",
+      "processedPct": 74.1,
       "onHold": 1230,
       "other": 1,
-      "dolDay": 73,
-      "dolDays": 100,
-      "todayProcessed": 79,
-      "todayDecisions": 79
+      "todayProcessed": 221,
+      "todayDecisions": 221
     },
     {
       "label": "Feb '26",
       "total": 5607,
-      "certified": 0,
-      "review": 4984,
+      "certified": 199,
+      "review": 4778,
       "withdrawn": 214,
-      "denied": 0,
-      "rfi": 0,
-      "status": "pending",
-      "processedPct": 0,
+      "denied": 5,
+      "rfi": 2,
+      "status": "active",
+      "processedPct": 3.7,
       "onHold": 407,
-      "other": 2
+      "other": 2,
+      "dolDay": 4,
+      "dolDays": 100,
+      "todayProcessed": 57,
+      "todayDecisions": 57
     },
     {
       "label": "Mar '26",
@@ -727,14 +731,14 @@
     },
     {
       "date": "2026-11-10",
-      "total": 89,
-      "certified": 77,
-      "rfi": 5,
-      "denied": 6,
+      "total": 291,
+      "certified": 269,
+      "rfi": 11,
+      "denied": 10,
       "withdrawn": 1,
       "onHold": 0,
       "other": 0,
-      "decided": 89
+      "decided": 291
     }
   ],
   "rateWeeks": [
@@ -861,14 +865,14 @@
     },
     {
       "weekStart": "2026-11-09",
-      "total": 692,
-      "certified": 636,
-      "rfi": 39,
-      "denied": 14,
+      "total": 894,
+      "certified": 828,
+      "rfi": 45,
+      "denied": 18,
       "withdrawn": 3,
       "onHold": 0,
       "other": 0,
-      "decided": 692,
+      "decided": 894,
       "partial": true
     }
   ],
@@ -882,119 +886,32 @@
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Dec",
-      "subtitle": "December 2025 filings \u00b7 15,047 total",
-      "certified": 13031,
-      "review": 807,
-      "withdrawn": 575,
-      "rfi": 455,
-      "denied": 179,
-      "onHold": 286,
+      "tabLabel": "Jan",
+      "subtitle": "January 2026 filings \u00b7 10,507 total",
+      "certified": 8360,
+      "review": 1382,
+      "withdrawn": 426,
+      "rfi": 246,
+      "denied": 93,
+      "onHold": 1230,
       "other": 1
     },
     {
       "tabKey": "next",
-      "tabLabel": "Jan",
-      "subtitle": "January 2026 filings \u00b7 10,507 total",
-      "certified": 8226,
-      "review": 1524,
-      "withdrawn": 426,
-      "rfi": 240,
-      "denied": 91,
-      "onHold": 1230,
-      "other": 1
+      "tabLabel": "Feb",
+      "subtitle": "February 2026 filings \u00b7 5,198 total",
+      "certified": 199,
+      "review": 4778,
+      "withdrawn": 214,
+      "rfi": 2,
+      "denied": 5,
+      "onHold": 407,
+      "other": 2
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Dec '25",
-      "subtitle": "December 2025",
-      "list": [
-        {
-          "name": "Amazon Dev Center U.S., Inc.",
-          "count": 763
-        },
-        {
-          "name": "Amazon.com Services LLC",
-          "count": 572
-        },
-        {
-          "name": "OneCruit LLC",
-          "count": 243
-        },
-        {
-          "name": "Cognizant Technology Solutions US Corporation",
-          "count": 234
-        },
-        {
-          "name": "NVIDIA Corporation",
-          "count": 209
-        },
-        {
-          "name": "Amazon Web Services, Inc.",
-          "count": 144
-        },
-        {
-          "name": "JCG Foods of Georgia, LLC",
-          "count": 123
-        },
-        {
-          "name": "ServiceNow, Inc.",
-          "count": 122
-        },
-        {
-          "name": "Boddie-Noell Enterprises Inc.",
-          "count": 107
-        },
-        {
-          "name": "Upshift Work LLC",
-          "count": 106
-        },
-        {
-          "name": "Amazon Development Center U.S., Inc.",
-          "count": 102
-        },
-        {
-          "name": "Boston Consulting Group, Inc.",
-          "count": 94
-        },
-        {
-          "name": "APPLE INC.",
-          "count": 87
-        },
-        {
-          "name": "NATURE'S WAY FARMS, LLC",
-          "count": 82
-        },
-        {
-          "name": "Insulation By Cohen's LLC",
-          "count": 80
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 77
-        },
-        {
-          "name": "R B DUNCAN & SON LLLP",
-          "count": 76
-        },
-        {
-          "name": "Arch Enterprises, LLC",
-          "count": 75
-        },
-        {
-          "name": "WENDY'S OF COLORADO SPRINGS, INC",
-          "count": 74
-        },
-        {
-          "name": "Caremark LLC",
-          "count": 74
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Jan '26",
       "subtitle": "January 2026",
       "list": [
@@ -1077,6 +994,93 @@
         {
           "name": "Boddie-Noell Enterprises Inc.",
           "count": 47
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Feb '26",
+      "subtitle": "February 2026",
+      "list": [
+        {
+          "name": "Cognizant Technology Solutions US Corporation",
+          "count": 393
+        },
+        {
+          "name": "OneCruit LLC",
+          "count": 100
+        },
+        {
+          "name": "JKS&K, Inc.",
+          "count": 83
+        },
+        {
+          "name": "Hexaware Technologies, Inc.",
+          "count": 83
+        },
+        {
+          "name": "Upshift Work LLC",
+          "count": 69
+        },
+        {
+          "name": "LGS Staffing LLC (f/k/a Labor Guys, LLC)",
+          "count": 53
+        },
+        {
+          "name": "Goodhouse AI INC",
+          "count": 43
+        },
+        {
+          "name": "Case Farms Processing, Inc",
+          "count": 41
+        },
+        {
+          "name": "Advanced Micro Devices, Inc.",
+          "count": 39
+        },
+        {
+          "name": "COMPUNNEL SOFTWARE GROUP INC.",
+          "count": 35
+        },
+        {
+          "name": "ByteDance Inc.",
+          "count": 34
+        },
+        {
+          "name": "Amazon.com Services LLC",
+          "count": 33
+        },
+        {
+          "name": "Amazon Web Services, Inc.",
+          "count": 33
+        },
+        {
+          "name": "By the Sea Resorts, Inc.",
+          "count": 32
+        },
+        {
+          "name": "SPACE COAST SERVICES MANAGEMENT, INC.",
+          "count": 31
+        },
+        {
+          "name": "BeaconFire Staffing Solutions Inc",
+          "count": 31
+        },
+        {
+          "name": "NATURE'S WAY FARMS, LLC",
+          "count": 30
+        },
+        {
+          "name": "CitiusTech Inc.",
+          "count": 28
+        },
+        {
+          "name": "Metromont LLC",
+          "count": 22
+        },
+        {
+          "name": "Ernst & Young U.S. LLP",
+          "count": 22
         }
       ]
     }
