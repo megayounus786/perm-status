@@ -515,6 +515,57 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
     .donut-wrap, .donut-svg { width: 150px; height: 150px; }
   }
 </style>
+<style id="il-polish-css">
+  /* apple-design pass 2026-11-12: press feedback, touch, focus ring, reduced motion /
+     transparency / more contrast. CSS only; nothing changes at rest for default settings.
+     Overrides use an extra "html" where a later style block (feedback widget) has the same selector. */
+
+  /* Tap without double-tap-zoom wait on controls (skill section 1) */
+  :where(a, button, input, select, textarea, label, summary, [role="button"], .faq-question, .nav-search-item) { touch-action: manipulation; }
+
+  /* Touch screens: no hover lift left stuck after a tap */
+  @media (hover: none) {
+    .stat-card:hover, html .fb-trigger:hover, .app-badge-ios:hover, .est-watch-cta-btn:hover, .fyx-bar:hover { transform: none; }
+  }
+
+  /* Instant press feedback: in fast on press, normal ease back out (skill section 1) */
+  html .fb-trigger:active, html .fb-submit:not(:disabled):active, .est-watch-cta-btn:active, .app-badge-ios:active { transform: scale(0.97); transition-duration: 80ms; }
+  html .fb-submit { transition: opacity 0.2s, transform 0.15s ease-out; }
+  .nav-toggle:active, .theme-toggle:active, .nav-search-clear:active, .hero-search-clear:active, .announce-close:active, .emp-modal-close:active, html .fb-close:active, html .il-fresh-close:active { opacity: 0.6; transition: none; }
+  .card-tab:not(.active):active, .est-subtab:not(.active):active { background: var(--tab-active); color: var(--text-primary); transition: none; }
+  .nav-search-item:active { background: rgba(59,130,246,0.24); transition: none; }
+  .faq-question:active { background: rgba(59,130,246,0.08); }
+  .faq-q:active { opacity: 0.7; }
+  .nav-links a:active { color: var(--text-primary); }
+  @media (max-width: 1140px) { nav .nav-links a:active { background: rgba(59,130,246,0.18); } }
+
+  /* Keyboard focus: one clear ring (zero specificity, so existing focus styles still win) */
+  :where(a, button, summary, [role="button"], [tabindex]):focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+
+  /* Reduced motion: stop looping decoration and lifts, keep colour/opacity feedback (skill section 14) */
+  @media (prefers-reduced-motion: reduce) {
+    .update-time .dot, .app-promo-eyebrow .pulse-dot, .tl-dot.processing, .tl-spin-ring, .dol-radar-ring, .dol-radar-ring2, .sk { animation: none; }
+    .stat-card:hover, html .fb-trigger:hover, .app-badge-ios:hover, .est-watch-cta-btn:hover, .fyx-bar:hover, .guide-card:hover, .bar.hovered, a.emp-badge.rank:hover .rank-arrow { transform: none; }
+    html .fb-trigger:active, html .fb-submit:not(:disabled):active, .est-watch-cta-btn:active, .app-badge-ios:active, .est-btn:not(:disabled):active, a.emp-badge.rank:active { transform: none; opacity: 0.85; }
+    .emp-modal { transform: translate(-50%, -50%); }
+    .faq-a, .faq-q .chev, .est-conf-bar-fill { transition: none; }
+  }
+  @media (prefers-reduced-motion: reduce) and (max-width: 768px) { .emp-modal { transform: none; } }
+
+  /* Reduce transparency: solid header and floating panels, no blur (skill sections 12, 14) */
+  @media (prefers-reduced-transparency: reduce) {
+    nav { background: var(--bg-html); -webkit-backdrop-filter: none; backdrop-filter: none; }
+    .nav-search-dropdown, .hero-search-dropdown, .fy-tooltip { background: var(--modal-bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+    .emp-modal-backdrop { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  }
+
+  /* Increase contrast: stronger grey text and borders, solid header (skill section 14) */
+  @media (prefers-contrast: more) {
+    html:not(.light):root { --text-secondary: #cbd5e1; --text-muted: #a3b1c4; --text-dim: #8b9ab0; --card-border: rgba(255,255,255,0.24); --card-border-hover: rgba(255,255,255,0.34); --nav-border: rgba(255,255,255,0.24); --sep: rgba(255,255,255,0.18); --input-border: rgba(255,255,255,0.4); }
+    html.light:root { --text-secondary: #334155; --text-muted: #475569; --text-dim: #5b6b80; --card-border: rgba(0,0,0,0.26); --card-border-hover: rgba(0,0,0,0.36); --nav-border: rgba(0,0,0,0.26); --sep: rgba(0,0,0,0.2); --input-border: rgba(0,0,0,0.42); }
+    nav { background: var(--bg-html); }
+  }
+</style>
 </head>
 <body>
 <!-- Monumetric anchored ad units (self-positioning via loader) — BEGIN -->
