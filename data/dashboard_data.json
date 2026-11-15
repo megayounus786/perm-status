@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-14T18:14:19-05:00",
+  "updatedAt": "2026-11-14T21:13:59-05:00",
   "backlog": {
-    "total": 78338,
+    "total": 78269,
     "onHold": 2120,
     "startOfMonth": 81435,
     "thisMonth": {
       "name": "Nov 2026",
-      "processed": 6826,
+      "processed": 6895,
       "intake": 3729,
       "onHold": 0,
       "other": 0,
-      "decided": 6826
+      "decided": 6895
     },
     "lastMonth": {
       "name": "Oct 2026",
@@ -26,26 +26,26 @@
     "deltaFromLastMonth": -10,
     "certified": 290,
     "rfi": 305,
-    "denied": 321,
+    "denied": 320,
     "trend90Day": -62,
     "windowDays": 30,
-    "sampleSize": 14701,
+    "sampleSize": 14736,
     "samples": {
-      "certified": 13669,
-      "rfi": 613,
-      "denied": 419
+      "certified": 13704,
+      "rfi": 614,
+      "denied": 418
     }
   },
   "today": {
-    "total": 284,
-    "certified": 267,
-    "rfi": 11,
+    "total": 353,
+    "certified": 335,
+    "rfi": 12,
     "denied": 6,
     "withdrawn": 0,
     "stillUpdating": false,
     "onHold": 0,
     "other": 0,
-    "decided": 284,
+    "decided": 353,
     "yesterday": {
       "total": 907,
       "certified": 860,
@@ -60,14 +60,14 @@
   "dol": {
     "label": "Feb '26",
     "monthFull": "February",
-    "day": 32,
+    "day": 33,
     "daysInMonth": 100,
-    "estFinish": "Dec 5",
-    "movementPerWeek": 6.2,
-    "casesRemaining": 3173,
+    "estFinish": "Dec 4",
+    "movementPerWeek": 6.4,
+    "casesRemaining": 3107,
     "casesOnHold": 407,
     "latestLetter": "Z",
-    "pctProcessed": 32
+    "pctProcessed": 33
   },
   "timeline": [
     {
@@ -257,34 +257,34 @@
     {
       "label": "Jan '26",
       "total": 11738,
-      "certified": 9033,
-      "review": 658,
+      "certified": 9036,
+      "review": 655,
       "withdrawn": 426,
       "denied": 128,
       "rfi": 262,
-      "status": "processing",
+      "status": "done",
       "processedPct": 80.3,
       "onHold": 1230,
       "other": 1,
-      "todayProcessed": 6,
-      "todayDecisions": 6
+      "todayProcessed": 9,
+      "todayDecisions": 9
     },
     {
       "label": "Feb '26",
       "total": 5607,
-      "certified": 1731,
-      "review": 3173,
+      "certified": 1796,
+      "review": 3107,
       "withdrawn": 222,
       "denied": 9,
-      "rfi": 63,
+      "rfi": 64,
       "status": "active",
-      "processedPct": 32.2,
+      "processedPct": 33.3,
       "onHold": 407,
       "other": 2,
-      "dolDay": 32,
+      "dolDay": 33,
       "dolDays": 100,
-      "todayProcessed": 277,
-      "todayDecisions": 277
+      "todayProcessed": 343,
+      "todayDecisions": 343
     },
     {
       "label": "Mar '26",
@@ -729,14 +729,14 @@
     },
     {
       "date": "2026-11-14",
-      "total": 284,
-      "certified": 267,
-      "rfi": 11,
+      "total": 353,
+      "certified": 335,
+      "rfi": 12,
       "denied": 6,
       "withdrawn": 0,
       "onHold": 0,
       "other": 0,
-      "decided": 284
+      "decided": 353
     }
   ],
   "rateWeeks": [
@@ -863,14 +863,14 @@
     },
     {
       "weekStart": "2026-11-09",
-      "total": 3584,
-      "certified": 3362,
-      "rfi": 134,
+      "total": 3653,
+      "certified": 3430,
+      "rfi": 135,
       "denied": 77,
       "withdrawn": 11,
       "onHold": 0,
       "other": 0,
-      "decided": 3584,
+      "decided": 3653,
       "partial": true
     }
   ],
@@ -886,8 +886,8 @@
       "tabKey": "active",
       "tabLabel": "Jan",
       "subtitle": "January 2026 filings \u00b7 10,507 total",
-      "certified": 9033,
-      "review": 658,
+      "certified": 9036,
+      "review": 655,
       "withdrawn": 426,
       "rfi": 262,
       "denied": 128,
@@ -898,10 +898,10 @@
       "tabKey": "next",
       "tabLabel": "Feb",
       "subtitle": "February 2026 filings \u00b7 5,198 total",
-      "certified": 1731,
-      "review": 3173,
+      "certified": 1796,
+      "review": 3107,
       "withdrawn": 222,
-      "rfi": 63,
+      "rfi": 64,
       "denied": 9,
       "onHold": 407,
       "other": 2
