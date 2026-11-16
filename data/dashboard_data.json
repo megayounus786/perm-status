@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-16T06:47:10-05:00",
+  "updatedAt": "2026-11-16T09:14:15-05:00",
   "backlog": {
-    "total": 78203,
+    "total": 78145,
     "onHold": 2120,
     "startOfMonth": 81435,
     "thisMonth": {
       "name": "Nov 2026",
-      "processed": 7050,
+      "processed": 7108,
       "intake": 3818,
       "onHold": 0,
       "other": 0,
-      "decided": 7050
+      "decided": 7108
     },
     "lastMonth": {
       "name": "Oct 2026",
@@ -26,26 +26,26 @@
     "deltaFromLastMonth": -11,
     "certified": 289,
     "rfi": 304,
-    "denied": 320,
+    "denied": 319,
     "trend90Day": -62,
     "windowDays": 30,
-    "sampleSize": 14237,
+    "sampleSize": 14294,
     "samples": {
-      "certified": 13247,
-      "rfi": 579,
-      "denied": 411
+      "certified": 13292,
+      "rfi": 586,
+      "denied": 416
     }
   },
   "today": {
-    "total": 15,
-    "certified": 15,
-    "rfi": 0,
-    "denied": 0,
-    "withdrawn": 0,
+    "total": 73,
+    "certified": 60,
+    "rfi": 7,
+    "denied": 5,
+    "withdrawn": 1,
     "stillUpdating": false,
     "onHold": 0,
     "other": 0,
-    "decided": 15,
+    "decided": 73,
     "yesterday": {
       "total": 140,
       "certified": 125,
@@ -60,14 +60,14 @@
   "dol": {
     "label": "Feb '26",
     "monthFull": "February",
-    "day": 36,
+    "day": 37,
     "daysInMonth": 100,
-    "estFinish": "Dec 7",
-    "movementPerWeek": 6.1,
-    "casesRemaining": 2954,
+    "estFinish": "Dec 6",
+    "movementPerWeek": 6.2,
+    "casesRemaining": 2905,
     "casesOnHold": 407,
-    "latestLetter": "Y",
-    "pctProcessed": 36
+    "latestLetter": "X",
+    "pctProcessed": 37
   },
   "timeline": [
     {
@@ -243,44 +243,48 @@
       "label": "Dec '25",
       "total": 15334,
       "certified": 13350,
-      "review": 468,
+      "review": 467,
       "withdrawn": 575,
-      "denied": 190,
+      "denied": 191,
       "rfi": 464,
       "status": "done",
       "processedPct": 91.3,
       "onHold": 286,
-      "other": 1
+      "other": 1,
+      "todayProcessed": 1,
+      "todayDecisions": 1
     },
     {
       "label": "Jan '26",
       "total": 11738,
       "certified": 9036,
-      "review": 653,
+      "review": 645,
       "withdrawn": 426,
-      "denied": 129,
-      "rfi": 263,
+      "denied": 133,
+      "rfi": 267,
       "status": "done",
-      "processedPct": 80.3,
+      "processedPct": 80.4,
       "onHold": 1230,
-      "other": 1
+      "other": 1,
+      "todayProcessed": 8,
+      "todayDecisions": 8
     },
     {
       "label": "Feb '26",
       "total": 5607,
-      "certified": 1936,
-      "review": 2954,
-      "withdrawn": 222,
+      "certified": 1981,
+      "review": 2905,
+      "withdrawn": 223,
       "denied": 16,
-      "rfi": 70,
+      "rfi": 73,
       "status": "active",
-      "processedPct": 36.1,
+      "processedPct": 36.9,
       "onHold": 407,
       "other": 2,
-      "dolDay": 36,
+      "dolDay": 37,
       "dolDays": 100,
-      "todayProcessed": 15,
-      "todayDecisions": 15
+      "todayProcessed": 63,
+      "todayDecisions": 63
     },
     {
       "label": "Mar '26",
@@ -725,14 +729,14 @@
     },
     {
       "date": "2026-11-16",
-      "total": 15,
-      "certified": 15,
-      "rfi": 0,
-      "denied": 0,
-      "withdrawn": 0,
+      "total": 73,
+      "certified": 60,
+      "rfi": 7,
+      "denied": 5,
+      "withdrawn": 1,
       "onHold": 0,
       "other": 0,
-      "decided": 15
+      "decided": 73
     }
   ],
   "rateWeeks": [
@@ -859,14 +863,14 @@
     },
     {
       "weekStart": "2026-11-16",
-      "total": 15,
-      "certified": 15,
-      "rfi": 0,
-      "denied": 0,
-      "withdrawn": 0,
+      "total": 73,
+      "certified": 60,
+      "rfi": 7,
+      "denied": 5,
+      "withdrawn": 1,
       "onHold": 0,
       "other": 0,
-      "decided": 15,
+      "decided": 73,
       "partial": true
     }
   ],
@@ -883,10 +887,10 @@
       "tabLabel": "Jan",
       "subtitle": "January 2026 filings \u00b7 10,507 total",
       "certified": 9036,
-      "review": 653,
+      "review": 645,
       "withdrawn": 426,
-      "rfi": 263,
-      "denied": 129,
+      "rfi": 267,
+      "denied": 133,
       "onHold": 1230,
       "other": 1
     },
@@ -894,10 +898,10 @@
       "tabKey": "next",
       "tabLabel": "Feb",
       "subtitle": "February 2026 filings \u00b7 5,198 total",
-      "certified": 1936,
-      "review": 2954,
-      "withdrawn": 222,
-      "rfi": 70,
+      "certified": 1981,
+      "review": 2905,
+      "withdrawn": 223,
+      "rfi": 73,
       "denied": 16,
       "onHold": 407,
       "other": 2
