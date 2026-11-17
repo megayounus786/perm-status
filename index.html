@@ -2735,6 +2735,47 @@ function renderStatusTabs(activeIdx) {
   setupTabs('status-tabs', t => renderDonut(parseInt(t.dataset.si)));
 }
 
+// Donut slices: one filled ring-segment <path> per item with value > 0.
+// They used to be dashed <circle> strokes; a dash that ends on the circle's start point
+// (12 o'clock) is drawn with a stray wedge there by some browsers/GPUs (Skia joins it to
+// a near-zero piece at the start of the circle). Angles use the exact counts, not the
+// rounded %. A slice > 0 is never thinner than MIN degrees so tiny counts stay visible;
+// the other slices give up that room in proportion, so slices never overlap and always
+// fill the ring exactly. Legend numbers and the hover % are unchanged.
+function donutSegs(items, c, ro, ri, idAttr) {
+  const MIN = 1.5;
+  const vals = items.map(i => (i.value > 0 ? i.value : 0));
+  const deg = vals.map(() => 0), small = vals.map(() => false);
+  for (let pass = 0; pass <= vals.length; pass++) {
+    const nSmall = small.filter(Boolean).length;
+    const rest = vals.reduce((t, v, i) => t + (small[i] ? 0 : v), 0);
+    let grew = false;
+    vals.forEach((v, i) => {
+      if (!v) return;
+      if (small[i]) { deg[i] = MIN; return; }
+      deg[i] = rest ? v / rest * (360 - nSmall * MIN) : 0;
+      if (deg[i] < MIN) { small[i] = true; grew = true; }
+    });
+    if (!grew) break;
+  }
+  const f = x => +x.toFixed(3);
+  const pt = (rad, a) => f(c + rad * Math.cos(a * Math.PI / 180)) + ' ' + f(c + rad * Math.sin(a * Math.PI / 180));
+  const arc = (rad, large, sweep, rad2, a) => 'A' + rad + ' ' + rad + ' 0 ' + large + ' ' + sweep + ' ' + pt(rad2, a);
+  let a0 = 0, out = '';
+  items.forEach((item, i) => {
+    const s = deg[i]; if (!s) return;
+    const a1 = a0 + s;
+    const d = s >= 359.999
+      ? 'M' + pt(ro, 0) + arc(ro, 1, 1, ro, 180) + arc(ro, 1, 1, ro, 360) + 'Z' +   // whole ring: outer circle minus inner (even-odd)
+        'M' + pt(ri, 0) + arc(ri, 1, 1, ri, 180) + arc(ri, 1, 1, ri, 360) + 'Z'
+      : 'M' + pt(ro, a0) + arc(ro, s > 180 ? 1 : 0, 1, ro, a1) +
+        'L' + pt(ri, a1) + arc(ri, s > 180 ? 1 : 0, 0, ri, a0) + 'Z';
+    out += '<path class="donut-seg" ' + idAttr + '="' + i + '" fill="' + item.color + '" fill-rule="evenodd" d="' + d + '" />';
+    a0 = a1;
+  });
+  return out;
+}
+
 function renderDonut(idx) {
   const s = D.statusDistribution[idx]; if (!s) return;
   statusTabKey = s.tabKey;
@@ -2760,14 +2801,7 @@ function renderDonut(idx) {
   subEl.textContent = 'Total Cases'; pctEl.style.display = 'none';
 
   const svg = document.getElementById('donut-svg');
-  const r = 70, circ = 2 * Math.PI * r;
-  let off = 0, svgH = '';
-  items.forEach((item, i) => {
-    const len = item.pct/100 * circ;
-    svgH += '<circle class="donut-seg" data-di="'+i+'" cx="90" cy="90" r="'+r+'" fill="none" stroke="'+item.color+'" stroke-width="30" stroke-dasharray="'+len+' '+(circ-len)+'" stroke-dashoffset="'+(-off)+'" />';
-    off += len;
-  });
-  svg.innerHTML = svgH;
+  svg.innerHTML = donutSegs(items, 90, 85, 55, 'data-di');   // ring r=70, width 30
 
   document.getElementById('donut-legend').innerHTML = items.map(item =>
     '<div class="legend-item"><div class="legend-dot" style="background:'+item.color+';"></div>'+item.label+'<span class="legend-value">'+n(item.value)+'</span></div>'
