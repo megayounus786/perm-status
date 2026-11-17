@@ -1101,18 +1101,18 @@ setTimeout(function(){if(!S.owned)S.done()},2500);
 <script>
 /* ===== DASHBOARD_DATA START ===== */
 window.DASHBOARD_DATA = {
-  "updatedAt": "2026-11-17T09:13:28-05:00",
+  "updatedAt": "2026-11-17T12:14:08-05:00",
   "backlog": {
-    "total": 77586,
+    "total": 77347,
     "onHold": 2120,
     "startOfMonth": 81431,
     "thisMonth": {
       "name": "Nov 2026",
-      "processed": 8041,
+      "processed": 8280,
       "intake": 4196,
       "onHold": 0,
       "other": 0,
-      "decided": 8041
+      "decided": 8280
     },
     "lastMonth": {
       "name": "Oct 2026",
@@ -1124,30 +1124,30 @@ window.DASHBOARD_DATA = {
     }
   },
   "avgDays": {
-    "current": 290,
-    "deltaFromLastMonth": -11,
+    "current": 289,
+    "deltaFromLastMonth": -12,
     "certified": 288,
-    "rfi": 304,
+    "rfi": 303,
     "denied": 319,
-    "trend90Day": -61,
+    "trend90Day": -62,
     "windowDays": 30,
-    "sampleSize": 15227,
+    "sampleSize": 15466,
     "samples": {
-      "certified": 14168,
-      "rfi": 628,
-      "denied": 431
+      "certified": 14381,
+      "rfi": 642,
+      "denied": 443
     }
   },
   "today": {
-    "total": 108,
-    "certified": 101,
-    "rfi": 3,
-    "denied": 4,
+    "total": 347,
+    "certified": 314,
+    "rfi": 17,
+    "denied": 16,
     "withdrawn": 0,
     "stillUpdating": false,
     "onHold": 0,
     "other": 0,
-    "decided": 108,
+    "decided": 347,
     "yesterday": {
       "total": 898,
       "certified": 835,
@@ -1160,16 +1160,16 @@ window.DASHBOARD_DATA = {
     }
   },
   "dol": {
-    "label": "Feb '26",
-    "monthFull": "February",
-    "day": 50,
+    "label": "Mar '26",
+    "monthFull": "March",
+    "day": 3,
     "daysInMonth": 100,
-    "estFinish": "Nov 29",
-    "movementPerWeek": 7.8,
-    "casesRemaining": 2146,
-    "casesOnHold": 407,
-    "latestLetter": "W",
-    "pctProcessed": 50
+    "estFinish": "Apr 7",
+    "movementPerWeek": 1.5,
+    "casesRemaining": 6521,
+    "casesOnHold": 160,
+    "latestLetter": "P",
+    "pctProcessed": 3
   },
   "timeline": [
     {
@@ -1306,14 +1306,16 @@ window.DASHBOARD_DATA = {
       "label": "Sep '25",
       "total": 13643,
       "certified": 12161,
-      "review": 8,
+      "review": 7,
       "withdrawn": 530,
-      "denied": 400,
+      "denied": 401,
       "rfi": 518,
       "status": "done",
       "processedPct": 95.9,
       "onHold": 1,
-      "other": 25
+      "other": 25,
+      "todayProcessed": 1,
+      "todayDecisions": 1
     },
     {
       "label": "Oct '25",
@@ -1331,73 +1333,79 @@ window.DASHBOARD_DATA = {
     {
       "label": "Nov '25",
       "total": 15075,
-      "certified": 13277,
-      "review": 38,
+      "certified": 13279,
+      "review": 32,
       "withdrawn": 616,
-      "denied": 437,
-      "rfi": 681,
+      "denied": 440,
+      "rfi": 682,
       "status": "done",
       "processedPct": 95.5,
       "onHold": 23,
-      "other": 3
+      "other": 3,
+      "todayProcessed": 6,
+      "todayDecisions": 6
     },
     {
       "label": "Dec '25",
       "total": 15334,
       "certified": 13352,
-      "review": 439,
+      "review": 436,
       "withdrawn": 575,
-      "denied": 197,
+      "denied": 200,
       "rfi": 484,
       "status": "done",
       "processedPct": 91.5,
       "onHold": 286,
-      "other": 1
+      "other": 1,
+      "todayProcessed": 3,
+      "todayDecisions": 3
     },
     {
       "label": "Jan '26",
       "total": 11738,
-      "certified": 9177,
-      "review": 500,
+      "certified": 9179,
+      "review": 495,
       "withdrawn": 426,
-      "denied": 136,
-      "rfi": 268,
+      "denied": 138,
+      "rfi": 269,
       "status": "done",
-      "processedPct": 81.6,
+      "processedPct": 81.7,
       "onHold": 1230,
       "other": 1,
-      "todayProcessed": 1,
-      "todayDecisions": 1
+      "todayProcessed": 6,
+      "todayDecisions": 6
     },
     {
       "label": "Feb '26",
       "total": 5607,
-      "certified": 2713,
-      "review": 2146,
+      "certified": 2915,
+      "review": 1929,
       "withdrawn": 223,
-      "denied": 22,
-      "rfi": 94,
-      "status": "active",
-      "processedPct": 50.5,
+      "denied": 25,
+      "rfi": 106,
+      "status": "processing",
+      "processedPct": 54.3,
       "onHold": 407,
       "other": 2,
-      "dolDay": 50,
-      "dolDays": 100,
-      "todayProcessed": 106,
-      "todayDecisions": 106
+      "todayProcessed": 323,
+      "todayDecisions": 323
     },
     {
       "label": "Mar '26",
       "total": 7128,
-      "certified": 0,
-      "review": 6706,
+      "certified": 184,
+      "review": 6521,
       "withdrawn": 261,
       "denied": 0,
-      "rfi": 0,
-      "status": "pending",
-      "processedPct": 0,
+      "rfi": 1,
+      "status": "active",
+      "processedPct": 2.6,
       "onHold": 160,
-      "other": 1
+      "other": 1,
+      "dolDay": 3,
+      "dolDays": 100,
+      "todayProcessed": 8,
+      "todayDecisions": 8
     },
     {
       "label": "Apr '26",
@@ -1829,14 +1837,14 @@ window.DASHBOARD_DATA = {
     },
     {
       "date": "2026-11-17",
-      "total": 108,
-      "certified": 101,
-      "rfi": 3,
-      "denied": 4,
+      "total": 347,
+      "certified": 314,
+      "rfi": 17,
+      "denied": 16,
       "withdrawn": 0,
       "onHold": 0,
       "other": 0,
-      "decided": 108
+      "decided": 347
     }
   ],
   "rateWeeks": [
@@ -1963,14 +1971,14 @@ window.DASHBOARD_DATA = {
     },
     {
       "weekStart": "2026-11-16",
-      "total": 1006,
-      "certified": 936,
-      "rfi": 49,
-      "denied": 20,
+      "total": 1245,
+      "certified": 1149,
+      "rfi": 63,
+      "denied": 32,
       "withdrawn": 1,
       "onHold": 0,
       "other": 0,
-      "decided": 1006,
+      "decided": 1245,
       "partial": true
     }
   ],
@@ -1984,119 +1992,32 @@ window.DASHBOARD_DATA = {
   "statusDistribution": [
     {
       "tabKey": "active",
-      "tabLabel": "Jan",
-      "subtitle": "January 2026 filings \u00b7 10,507 total",
-      "certified": 9177,
-      "review": 500,
-      "withdrawn": 426,
-      "rfi": 268,
-      "denied": 136,
-      "onHold": 1230,
-      "other": 1
+      "tabLabel": "Feb",
+      "subtitle": "February 2026 filings \u00b7 5,198 total",
+      "certified": 2915,
+      "review": 1929,
+      "withdrawn": 223,
+      "rfi": 106,
+      "denied": 25,
+      "onHold": 407,
+      "other": 2
     },
     {
       "tabKey": "next",
-      "tabLabel": "Feb",
-      "subtitle": "February 2026 filings \u00b7 5,198 total",
-      "certified": 2713,
-      "review": 2146,
-      "withdrawn": 223,
-      "rfi": 94,
-      "denied": 22,
-      "onHold": 407,
-      "other": 2
+      "tabLabel": "Mar",
+      "subtitle": "March 2026 filings \u00b7 6,967 total",
+      "certified": 184,
+      "review": 6521,
+      "withdrawn": 261,
+      "rfi": 1,
+      "denied": 0,
+      "onHold": 160,
+      "other": 1
     }
   ],
   "employers": [
     {
       "tabKey": "active",
-      "tabLabel": "Jan '26",
-      "subtitle": "January 2026",
-      "list": [
-        {
-          "name": "Cognizant Technology Solutions US Corporation",
-          "count": 1204
-        },
-        {
-          "name": "Amazon.com Services LLC",
-          "count": 360
-        },
-        {
-          "name": "NVIDIA Corporation",
-          "count": 282
-        },
-        {
-          "name": "Upshift Work LLC",
-          "count": 218
-        },
-        {
-          "name": "Table 301, INC.",
-          "count": 84
-        },
-        {
-          "name": "JPMORGAN CHASE & CO.",
-          "count": 83
-        },
-        {
-          "name": "Tesla, Inc.",
-          "count": 77
-        },
-        {
-          "name": "Amazon Web Services, Inc.",
-          "count": 76
-        },
-        {
-          "name": "WAL-MART ASSOCIATES, INC.",
-          "count": 74
-        },
-        {
-          "name": "Ten D Enterprises, Inc.",
-          "count": 72
-        },
-        {
-          "name": "ByteDance Inc.",
-          "count": 66
-        },
-        {
-          "name": "SAVANNAH CHATHAM COUNTY PUBLIC SCHOOL SYSTEM",
-          "count": 57
-        },
-        {
-          "name": "PECO FOODS, INC",
-          "count": 57
-        },
-        {
-          "name": "Ernst & Young U.S. LLP",
-          "count": 54
-        },
-        {
-          "name": "Capital One Services, LLC",
-          "count": 54
-        },
-        {
-          "name": "Databricks, Inc.",
-          "count": 50
-        },
-        {
-          "name": "NATURE'S WAY FARMS, LLC",
-          "count": 48
-        },
-        {
-          "name": "Nexgen Ventures, LLC",
-          "count": 47
-        },
-        {
-          "name": "FMR LLC",
-          "count": 47
-        },
-        {
-          "name": "Boddie-Noell Enterprises Inc.",
-          "count": 47
-        }
-      ]
-    },
-    {
-      "tabKey": "next",
       "tabLabel": "Feb '26",
       "subtitle": "February 2026",
       "list": [
@@ -2179,6 +2100,93 @@ window.DASHBOARD_DATA = {
         {
           "name": "Ernst & Young U.S. LLP",
           "count": 22
+        }
+      ]
+    },
+    {
+      "tabKey": "next",
+      "tabLabel": "Mar '26",
+      "subtitle": "March 2026",
+      "list": [
+        {
+          "name": "Stoughton Trailers, LLC",
+          "count": 433
+        },
+        {
+          "name": "Capgemini America, Inc.",
+          "count": 140
+        },
+        {
+          "name": "JCG Foods of Georgia, LLC",
+          "count": 90
+        },
+        {
+          "name": "Upshift Work LLC",
+          "count": 64
+        },
+        {
+          "name": "NATURE'S WAY FARMS, LLC",
+          "count": 54
+        },
+        {
+          "name": "Case Farms Processing, Inc",
+          "count": 52
+        },
+        {
+          "name": "JPMORGAN CHASE & CO.",
+          "count": 49
+        },
+        {
+          "name": "JLO, INC.",
+          "count": 46
+        },
+        {
+          "name": "Dakota Provisions LLC",
+          "count": 42
+        },
+        {
+          "name": "Jahaan, Inc",
+          "count": 39
+        },
+        {
+          "name": "JKS&K, Inc.",
+          "count": 39
+        },
+        {
+          "name": "Abbyland Foods Inc",
+          "count": 38
+        },
+        {
+          "name": "AT&T SERVICES, INC.",
+          "count": 38
+        },
+        {
+          "name": "CitiusTech Inc.",
+          "count": 37
+        },
+        {
+          "name": "Mitchell, Inc.",
+          "count": 35
+        },
+        {
+          "name": "McDream Enterprises II, LLC",
+          "count": 35
+        },
+        {
+          "name": "LGS Staffing LLC (f/k/a Labor Guys, LLC)",
+          "count": 34
+        },
+        {
+          "name": "FMR LLC",
+          "count": 34
+        },
+        {
+          "name": "WAL-MART ASSOCIATES, INC.",
+          "count": 33
+        },
+        {
+          "name": "COMPUNNEL SOFTWARE GROUP INC.",
+          "count": 33
         }
       ]
     }
