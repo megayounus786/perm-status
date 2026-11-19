@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-19T07:11:52-05:00",
+  "updatedAt": "2026-11-19T09:12:23-05:00",
   "backlog": {
-    "total": 76880,
+    "total": 76822,
     "onHold": 2120,
     "startOfMonth": 81419,
     "thisMonth": {
       "name": "Nov 2026",
-      "processed": 9523,
+      "processed": 9581,
       "intake": 4984,
       "onHold": 0,
       "other": 0,
-      "decided": 9523
+      "decided": 9581
     },
     "lastMonth": {
       "name": "Oct 2026",
@@ -25,27 +25,27 @@
     "current": 287,
     "deltaFromLastMonth": -14,
     "certified": 286,
-    "rfi": 300,
+    "rfi": 299,
     "denied": 319,
     "trend90Day": -62,
     "windowDays": 30,
-    "sampleSize": 16027,
+    "sampleSize": 15998,
     "samples": {
-      "certified": 14909,
-      "rfi": 677,
-      "denied": 441
+      "certified": 14890,
+      "rfi": 670,
+      "denied": 438
     }
   },
   "today": {
-    "total": 28,
-    "certified": 28,
-    "rfi": 0,
+    "total": 86,
+    "certified": 83,
+    "rfi": 3,
     "denied": 0,
     "withdrawn": 0,
     "stillUpdating": false,
     "onHold": 0,
     "other": 0,
-    "decided": 28,
+    "decided": 86,
     "yesterday": {
       "total": 732,
       "certified": 665,
@@ -60,14 +60,14 @@
   "dol": {
     "label": "Mar '26",
     "monthFull": "March",
-    "day": 9,
+    "day": 10,
     "daysInMonth": 100,
-    "estFinish": "Jan 13",
-    "movementPerWeek": 3.6,
-    "casesRemaining": 6041,
+    "estFinish": "Jan 9",
+    "movementPerWeek": 3.8,
+    "casesRemaining": 6001,
     "casesOnHold": 160,
-    "latestLetter": "W",
-    "pctProcessed": 9
+    "latestLetter": "Z",
+    "pctProcessed": 10
   },
   "timeline": [
     {
@@ -270,34 +270,34 @@
     {
       "label": "Feb '26",
       "total": 5607,
-      "certified": 3489,
-      "review": 1306,
+      "certified": 3507,
+      "review": 1288,
       "withdrawn": 225,
       "denied": 33,
       "rfi": 145,
       "status": "processing",
-      "processedPct": 65.4,
+      "processedPct": 65.7,
       "onHold": 407,
       "other": 2,
-      "todayProcessed": 3,
-      "todayDecisions": 3
+      "todayProcessed": 21,
+      "todayDecisions": 21
     },
     {
       "label": "Mar '26",
       "total": 7128,
-      "certified": 642,
-      "review": 6041,
+      "certified": 679,
+      "review": 6001,
       "withdrawn": 261,
       "denied": 0,
-      "rfi": 23,
+      "rfi": 26,
       "status": "active",
-      "processedPct": 9.3,
+      "processedPct": 9.9,
       "onHold": 160,
       "other": 1,
-      "dolDay": 9,
+      "dolDay": 10,
       "dolDays": 100,
-      "todayProcessed": 24,
-      "todayDecisions": 24
+      "todayProcessed": 64,
+      "todayDecisions": 64
     },
     {
       "label": "Apr '26",
@@ -729,14 +729,14 @@
     },
     {
       "date": "2026-11-19",
-      "total": 28,
-      "certified": 28,
-      "rfi": 0,
+      "total": 86,
+      "certified": 83,
+      "rfi": 3,
       "denied": 0,
       "withdrawn": 0,
       "onHold": 0,
       "other": 0,
-      "decided": 28
+      "decided": 86
     }
   ],
   "rateWeeks": [
@@ -863,14 +863,14 @@
     },
     {
       "weekStart": "2026-11-16",
-      "total": 2488,
-      "certified": 2288,
-      "rfi": 131,
+      "total": 2546,
+      "certified": 2343,
+      "rfi": 134,
       "denied": 66,
       "withdrawn": 3,
       "onHold": 0,
       "other": 0,
-      "decided": 2488,
+      "decided": 2546,
       "partial": true
     }
   ],
@@ -886,8 +886,8 @@
       "tabKey": "active",
       "tabLabel": "Feb",
       "subtitle": "February 2026 filings \u00b7 5,198 total",
-      "certified": 3489,
-      "review": 1306,
+      "certified": 3507,
+      "review": 1288,
       "withdrawn": 225,
       "rfi": 145,
       "denied": 33,
@@ -898,10 +898,10 @@
       "tabKey": "next",
       "tabLabel": "Mar",
       "subtitle": "March 2026 filings \u00b7 6,967 total",
-      "certified": 642,
-      "review": 6041,
+      "certified": 679,
+      "review": 6001,
       "withdrawn": 261,
-      "rfi": 23,
+      "rfi": 26,
       "denied": 0,
       "onHold": 160,
       "other": 1
