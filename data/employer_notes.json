@@ -1,0 +1,22 @@
+{
+  "_about": "Company statements shown at the top of an employer's pages. Keyed by employer slug (the /employers/<slug> static page and the /employer?e=<slug> profile). Read by scripts/build_employer_pages.py (static pages + the il-ssr:employer-notes block in employer.html). Only slugs listed here change; every other employer renders byte-for-byte as before. Numbers never come from this file. To remove a note: delete its entry and redeploy.",
+  "version": 1,
+  "notes": {
+    "merit-logistics": {
+      "label": "Company statement",
+      "date": "2026-11-23",
+      "dateText": "November 23, 2026",
+      "text": "Merit Logistics has told ImmiLane that it does not currently offer or participate in EB-3 or other employer-sponsored immigration programs and is not recruiting sponsored applicants. The figures on this page are historical U.S. Department of Labor PERM records. They are not a job posting or an offer of sponsorship.",
+      "faqStatement": "The company states that it does not currently offer employer-sponsored immigration programs (statement of November 23, 2026).",
+      "source": "Statement received from the company on November 23, 2026 (email to support@immilane.com)."
+    },
+    "merit-integrated-logistics": {
+      "label": "Company statement",
+      "date": "2026-11-23",
+      "dateText": "November 23, 2026",
+      "text": "Merit Logistics has told ImmiLane that it does not currently offer or participate in EB-3 or other employer-sponsored immigration programs and is not recruiting sponsored applicants. The figures on this page are historical U.S. Department of Labor PERM records. They are not a job posting or an offer of sponsorship.",
+      "faqStatement": "The company states that it does not currently offer employer-sponsored immigration programs (statement of November 23, 2026).",
+      "source": "Statement received from the company on November 23, 2026 (email to support@immilane.com)."
+    }
+  }
+}

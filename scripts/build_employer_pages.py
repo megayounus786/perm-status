@@ -20,6 +20,11 @@ Data sources (every number on a page comes from one of these):
   data/employers_top300_extras.json   optional: worksite locations + filing→decision
                                   days per employer from the raw PERM disclosure
                                   files (built offline by build_employer_extras.py)
+  data/employer_notes.json        optional: dated company statements keyed by slug
+                                  (shown under the heading of that employer's static
+                                  page and, via the <!--il-ssr:employer-notes--> block,
+                                  its employer.html profile). Slugs without a note
+                                  render byte-for-byte as before. Never holds numbers.
 
 Registry / snapshot: data/employers_top300.json. It pins each employer's slug (so a
 URL never changes when a display name is re-spelled), stores the last fetched
@@ -66,6 +71,7 @@ API_BASE = os.environ.get("IMMILANE_EMPLOYER_API", "https://immilane-api.younusa
 UA = "ImmiLane-render/1.0 (+https://immilane.com)"
 REGISTRY_REL = "data/employers_top300.json"
 EXTRAS_REL = "data/employers_top300_extras.json"
+NOTES_REL = "data/employer_notes.json"
 INDEX_REL = "data/employer_index.json"
 DASH_REL = "data/dashboard_data.json"
 OUT_DIR = "employers"
@@ -422,11 +428,61 @@ def above_pw_pct(h1b: dict) -> Optional[int]:
     return int(round(above / cmp * 100)) if cmp else None
 
 
-def fingerprint(m: dict, extras_entry: Optional[dict] = None) -> str:
-    """Hash of everything that changes a page's numbers (worker data, rank, offline extras)."""
+def fingerprint(m: dict, extras_entry: Optional[dict] = None, note: Optional[dict] = None) -> str:
+    """Hash of everything that changes a page's numbers (worker data, rank, offline extras)
+    and, only for employers that have one, its company-statement note."""
     core = {k: m.get(k) for k in ("name", "rank", "perm", "lca", "total", "h1b", "live")}
     core["extras"] = extras_entry
+    if note:  # added only when present, so every other employer keeps its fingerprint
+        core["note"] = note
     return hashlib.sha1(json.dumps(core, sort_keys=True, separators=(",", ":")).encode()).hexdigest()[:16]
+
+
+# ── company-statement notes (data/employer_notes.json) ──────────────────────
+NOTE_FIELDS = ("label", "date", "dateText", "text", "faqStatement", "source")
+
+
+def load_notes(root: str) -> Dict[str, dict]:
+    """{slug: note} from data/employer_notes.json; {} when the file is absent.
+    A malformed file raises (the deploy then keeps the committed pages) rather
+    than silently dropping a statement an employer asked for."""
+    raw = load_json(os.path.join(root, NOTES_REL))
+    if not raw:
+        return {}
+    out: Dict[str, dict] = {}
+    for slug, note in (raw.get("notes") or {}).items():
+        if not isinstance(note, dict) or not str(note.get("text") or "").strip():
+            raise ValueError(f"{NOTES_REL}: note for {slug!r} has no text")
+        out[normalize_slug(slug)] = {k: str(note[k]).strip() for k in NOTE_FIELDS if note.get(k)}
+    return out
+
+
+def note_label(note: dict) -> str:
+    return " · ".join(x for x in (note.get("label") or "Company statement", note.get("dateText")) if x)
+
+
+# Only emitted into the <head> of pages that carry a note.
+NOTE_CSS = """<style id="il-emp-note-css">
+  .emp-note { margin: 16px 0 2px; max-width: 760px; padding: 12px 16px 13px; border: 1px solid rgba(96,165,250,0.30); border-left: 4px solid #60a5fa; border-radius: 10px; background: rgba(59,130,246,0.08); color: var(--text-primary); font-size: 14.5px; line-height: 1.6; }
+  .emp-note .emp-note-label { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; color: #93c5fd; }
+  html.light .emp-note { background: #eef4ff; border-color: rgba(37,99,235,0.25); border-left-color: #2563eb; color: #1e293b; }
+  html.light .emp-note .emp-note-label { color: #1d4ed8; }
+  @media (max-width: 768px) { .emp-note { font-size: 14px; padding: 11px 13px 12px; } }
+</style>
+"""
+
+
+def note_block(note: dict) -> str:
+    return (f'<div class="emp-note" id="company-statement" role="note" aria-label="{esc(note_label(note))}">'
+            f'<span class="emp-note-label">{esc(note_label(note))}</span>{esc(note["text"])}</div>')
+
+
+def employer_notes_block(notes: Dict[str, dict]) -> str:
+    """JSON {slug: {label, text, faqStatement}} for employer.html's profile renderer."""
+    mp = {k: {"label": note_label(v), "text": v["text"], "faqStatement": v.get("faqStatement", "")} for k, v in notes.items()}
+    return ('\n<script id="il-employer-notes" type="application/json">'
+            + json.dumps(mp, sort_keys=True, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+            + "</script>\n")
 
 
 # ── page pieces ──────────────────────────────────────────────────────────────
@@ -734,6 +790,9 @@ def build_page(m: dict, ctx: dict) -> str:
     lca_total = sum((y.get("total") or 0) for y in h1b.get("lcaByYear") or [])
     titles = h1b.get("permTitlesAll") or []
     frontier = dash["frontier"]
+    # A company statement (data/employer_notes.json) switches the few present-tense
+    # "sponsors" phrasings to historical-record wording; numbers are unchanged.
+    note = (ctx.get("notes") or {}).get(slug)
 
     # ── title / description ────────────────────────────────────────────
     # Title: the searchable part ("<Employer> PERM & Green Card") first, then the
@@ -760,7 +819,8 @@ def build_page(m: dict, ctx: dict) -> str:
             + (f" between <b>{esc(fy_short(fy_first))}</b> and <b>{esc(fy_short(fy_last))}</b>" if fy_first and fy_last else "")
             + (f", with <b>{fmt_pct(rate)}</b> of adjudicated cases certified" if rate is not None else "") + ".")
     if rank and total_emp:
-        lede += f" That makes it the <b>#{n(rank)}</b> PERM sponsor of {n(total_emp)} employers in DOL disclosure data."
+        lede += (f" That ranks it <b>#{n(rank)}</b> by PERM filing volume among {n(total_emp)} employers in DOL disclosure data." if note else
+                 f" That makes it the <b>#{n(rank)}</b> PERM sponsor of {n(total_emp)} employers in DOL disclosure data.")
     if ls["tracked"]:
         lede += (f" The live tracker shows <b>{n(ls['pending'])}</b> of its recent filings still pending with DOL"
                  f" (DOL is currently adjudicating <b>{esc(frontier)}</b> filings).")
@@ -922,7 +982,14 @@ def build_page(m: dict, ctx: dict) -> str:
 
     # ── FAQ ────────────────────────────────────────────────────────────
     faqs: List[Tuple[str, str]] = []
-    faqs.append((f"Does {name} sponsor green cards?",
+    if note:
+        faqs.append((f"Does {name} sponsor green cards?",
+                     f"Department of Labor records show {name} filed {n(perm_total)} PERM applications"
+                     + (f" from {fy_short(fy_first)} to {fy_short(fy_last)}" if fy_first else "") + "."
+                     + (f" {note['faqStatement']}" if note.get("faqStatement") else "")
+                     + (f" The live tracker also shows {n(ls['pending'])} of its recent filings still pending with DOL." if ls['tracked'] and ls['pending'] else "")))
+    else:
+        faqs.append((f"Does {name} sponsor green cards?",
                  f"Yes. DOL disclosure data shows {n(perm_total)} PERM labor certification applications from {name}"
                  + (f" between {fy_short(fy_first)} and {fy_short(fy_last)}" if fy_first else "")
                  + ". PERM is the first step of the employer-sponsored (EB-2/EB-3) green card process."
@@ -935,15 +1002,16 @@ def build_page(m: dict, ctx: dict) -> str:
                  f"DOL processes PERM in filing-date order regardless of employer. As of {dash['updated']} it is adjudicating {frontier} filings, and recently decided cases averaged {dash['avg']} days from filing to decision."
                  + ((f" This employer's certified cases decided in {fy_short(max(extras['proc']))} had a median of {n(extras['proc'][max(extras['proc'])]['median'])} days from filing to decision.") if extras and extras.get("proc") and (extras['proc'][max(extras['proc'])].get('n') or 0) >= 5 else "")))
     if titles:
-        faqs.append((f"Which jobs does {name} sponsor for green cards?",
+        faqs.append(((f"Which job titles appear on {name}'s PERM applications?" if note else f"Which jobs does {name} sponsor for green cards?"),
                      "The most common PERM job titles are " + ", ".join(t["title"] for t in titles[:5]) + "."))
     if med_wage:
         faqs.append((f"How much does {name} pay H-1B workers?",
                      f"The median offered H-1B salary in {h1b_fy} LCA filings was {usd(med_wage)} across {n(h1b.get('total'))} certified positions"
                      + (f", and about {above}% of positions were at or above the DOL prevailing wage" if above is not None else "") + "."))
     if extras and extras.get("states"):
-        faqs.append((f"Where are {name}'s sponsored jobs located?",
-                     "The most common primary worksite states on its PERM applications are " + ", ".join(f"{s[0]} ({n(s[1])})" for s in extras["states"][:4]) + "."))
+        faqs.append(((f"Where were the jobs on {name}'s PERM applications located?" if note else f"Where are {name}'s sponsored jobs located?"),
+                     ("The most common primary worksite states on its PERM applications were " if note else "The most common primary worksite states on its PERM applications are ")
+                     + ", ".join(f"{s[0]} ({n(s[1])})" for s in extras["states"][:4]) + "."))
     faq_html = '<div class="faq" id="faq">' + "".join(f"<h3>{esc(q)}</h3><p>{esc(a)}</p>" for q, a in faqs) + "</div>"
 
     # ── aliases / related ──────────────────────────────────────────────
@@ -984,14 +1052,14 @@ def build_page(m: dict, ctx: dict) -> str:
             f'<meta property="og:description" content="{esc(desc)}">\n<meta property="og:url" content="{url}">\n'
             f'<meta property="og:site_name" content="ImmiLane">\n<meta property="og:locale" content="en_US">\n'
             f'<meta name="twitter:card" content="summary">\n<meta name="twitter:title" content="{esc(title)}">\n'
-            f'<meta name="twitter:description" content="{esc(desc)}">\n' + ld + HEAD_BOTTOM)
+            f'<meta name="twitter:description" content="{esc(desc)}">\n' + ld + (NOTE_CSS if note else "") + HEAD_BOTTOM)
 
     body = (BODY_TOP + f"""
 <div class="container">
   <div class="hero">
-    <div class="eyebrow">Employer &middot; PERM green card sponsorship{(' &middot; #' + n(rank) + ' by filings') if rank else ''}</div>
-    <h1>{esc(name)} PERM &amp; Green Card Sponsorship</h1>
-    <p class="lede" id="lede">{lede}</p>
+    <div class="eyebrow">Employer &middot; {'PERM filing history' if note else 'PERM green card sponsorship'}{(' &middot; #' + n(rank) + ' by filings') if rank else ''}</div>
+    <h1>{esc(name)} PERM &amp; Green Card {'Filing History' if note else 'Sponsorship'}</h1>
+{('    ' + note_block(note) + chr(10)) if note else ''}    <p class="lede" id="lede">{lede}</p>
   </div>
   <div class="breadcrumb"><a href="/">Dashboard</a> &rsaquo; <a href="/employers">Employer Profiles</a> &rsaquo; {esc(name)}</div>
 
@@ -1011,7 +1079,7 @@ def build_page(m: dict, ctx: dict) -> str:
     <h2 id="processing-time">PERM processing time</h2>
     {proc_html}
 
-    <h2 id="titles">Job titles sponsored</h2>
+    <h2 id="titles">{'Job titles on its PERM applications' if note else 'Job titles sponsored'}</h2>
     {titles_html}
     {('<h2 id="locations">Work locations</h2>' + loc_html) if loc_html else ''}
 
@@ -1155,8 +1223,9 @@ def render_all(root: str, reg: dict, check: bool = False) -> List[str]:
     # lastmod: today when the page's data changed vs the committed snapshot, else keep
     today = today_et().isoformat()
     extras_all = load_json(os.path.join(root, EXTRAS_REL)) or {}
+    notes = load_notes(root)
     for m in members:
-        fp = fingerprint(m, (extras_all.get("employers") or {}).get(m["slug"]))
+        fp = fingerprint(m, (extras_all.get("employers") or {}).get(m["slug"]), notes.get(m["slug"]))
         if m.get("fingerprint") != fp or not m.get("lastmod"):
             m["fingerprint"], m["lastmod"] = fp, today
     for m in members:  # the figure every page/hub row shows (same source as the interactive profile)
@@ -1170,7 +1239,7 @@ def render_all(root: str, reg: dict, check: bool = False) -> List[str]:
     # data is a byte-for-byte no-op — no spurious file churn on every deploy.
     ctx = {"dash": dashboard_ctx(root), "index": reg.get("index") or {}, "liveMeta": reg.get("liveMeta") or {},
            "extras": extras_all, "related": related, "topN": top_n,
-           "widgets": shared_widgets(root), "generated": today_et().strftime("%b %-d, %Y")}
+           "widgets": shared_widgets(root), "generated": today_et().strftime("%b %-d, %Y"), "notes": notes}
     shield = shared_shield(root)
     outputs: Dict[str, str] = {}
     for m in members:
@@ -1186,7 +1255,11 @@ def render_all(root: str, reg: dict, check: bool = False) -> List[str]:
     eh_path = os.path.join(root, "employer.html")
     eh = open(eh_path, encoding="utf-8").read()
     if "<!--il-ssr:static-employers-->" in eh:
-        outputs["employer.html"] = sub_marked(eh, "static-employers", employer_html_block(members))
+        eh = sub_marked(eh, "static-employers", employer_html_block(members))
+    if "<!--il-ssr:employer-notes-->" in eh:
+        eh = sub_marked(eh, "employer-notes", employer_notes_block(notes))
+    if eh != open(eh_path, encoding="utf-8").read():
+        outputs["employer.html"] = eh
     changed = []
     for rel, content in outputs.items():
         p = os.path.join(root, rel)
