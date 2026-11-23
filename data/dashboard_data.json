@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T21:12:01-05:00",
+  "updatedAt": "2026-11-22T23:41:52-05:00",
   "backlog": {
     "total": 75712,
     "onHold": 2120,
@@ -23,7 +23,7 @@
   },
   "avgDays": {
     "current": 283,
-    "deltaFromLastMonth": -16,
+    "deltaFromLastMonth": -17,
     "certified": 281,
     "rfi": 294,
     "denied": 318,
@@ -63,7 +63,7 @@
     "day": 29,
     "daysInMonth": 100,
     "estFinish": "Dec 14",
-    "movementPerWeek": 7.0,
+    "movementPerWeek": 6.9,
     "casesRemaining": 4612,
     "casesOnHold": 160,
     "latestLetter": "M",
