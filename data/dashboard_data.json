@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T06:43:23-05:00",
+  "updatedAt": "2026-11-24T09:40:31-05:00",
   "backlog": {
     "total": 75084,
     "onHold": 2120,
@@ -63,7 +63,7 @@
     "day": 36,
     "daysInMonth": 100,
     "estFinish": "Dec 13",
-    "movementPerWeek": 7.4,
+    "movementPerWeek": 7.3,
     "casesRemaining": 4157,
     "casesOnHold": 160,
     "latestLetter": "Z",
