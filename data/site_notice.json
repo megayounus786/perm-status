@@ -1,5 +1,5 @@
 {
-  "enabled": true,
+  "enabled": false,
   "title": "Status updates are temporarily paused.",
   "text": "We're working to resolve a technical issue. Case statuses and processing data shown here are from November 23, 2026 and will update automatically once checks resume.",
   "since": "2026-11-24",
