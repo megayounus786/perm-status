@@ -11,6 +11,10 @@ enabled  -> a calm amber notice strip goes right under the site <nav> on every
             page in PAGES (+ employers/*.html), its CSS goes into <head>, and on
             subscribe.html a small script adds the note to "case not found" style
             results while live checks are paused.
+            subscribe.html also PAUSES paid sign-ups and the free sample (owner,
+            Nov 24 2026): the checkout form (#register) and the free-sample form
+            (#trial) are replaced by the notice text; plans, FAQ and the manage
+            link stay. Page-side only: the subs API, Stripe and email are unchanged.
 disabled / file missing -> every page is left EXACTLY as it was (any block left by
             an earlier run is stripped, so the output is byte-identical to a render
             without this step).
@@ -45,8 +49,32 @@ PAGE_GLOBS = ("employers/*.html",)
 SCRIPT_PAGES = ("subscribe.html",)
 
 MARK = "<!--il-site-notice:{part}:{edge}-->"
-_STRIP = re.compile(r"\n?<!--il-site-notice:(css|html|js):start-->.*?<!--il-site-notice:\1:end-->",
-                    re.S)
+_STRIP = re.compile(r"\n?<!--il-site-notice:(css|html|js|pause-css|pause-register|pause-trial):start-->"
+                    r".*?<!--il-site-notice:\1:end-->", re.S)
+
+# subscribe.html while the notice is on: sign-ups + free sample paused. Every
+# child of the two form sections except its heading and the pause box is hidden,
+# and the two submit buttons are disabled (a cached script can't send anything).
+PAUSE_SECTIONS = (("register", "pause-register",
+                   "New sign-ups are paused until checks resume. Nothing can be charged right now."),
+                  ("trial", "pause-trial",
+                   "Free samples are paused until checks resume."))
+PAUSE_CSS = (
+    "<style id=\"il-site-notice-pause-css\">"
+    "#register > :not(.feature-head):not(.il-signup-paused),"
+    "#trial > :not(.feature-head):not(.il-signup-paused){display:none !important}"
+    "#register,#trial{display:flex !important;flex-direction:column}"
+    "#register > .il-signup-paused,#trial > .il-signup-paused{order:1}"
+    ".il-signup-paused{margin-top:14px;padding:12px 14px;border:1px solid rgba(245,158,11,.42);"
+    "border-left:4px solid #f59e0b;border-radius:10px;background:rgba(245,158,11,.10);"
+    "font-size:14px;line-height:1.5;text-align:left}"
+    ".il-signup-paused p{margin:0 0 6px}.il-signup-paused p:last-child{margin:0}"
+    "html.light .il-signup-paused{background:#fffbeb;border-color:#fcd34d;border-left-color:#d97706;color:#1f2937}"
+    "</style>"
+    "<script>document.addEventListener('DOMContentLoaded',function(){"
+    "['submit','trial-submit'].forEach(function(id){var b=document.getElementById(id);"
+    "if(b){b.disabled=true;b.setAttribute('aria-disabled','true');}});});</script>"
+)
 
 CSS = (
     "<style id=\"il-site-notice-css\">"
@@ -155,6 +183,27 @@ def strip(html: str) -> str:
     return _STRIP.sub("", html)
 
 
+def pause_html(n: dict, line: str) -> str:
+    body = (f"<strong>{_html.escape(n['title'])}</strong> " if n["title"] else "") + _html.escape(n["text"])
+    return (f'<div class="il-signup-paused" role="status"><p>{body}</p>'
+            f'<p>{_html.escape(line)}</p></div>')
+
+
+def apply_pause(html: str, n: dict) -> str:
+    """subscribe.html: replace the checkout and free-sample forms with the notice."""
+    out = html
+    inserted = 0
+    for sec_id, part, line in PAUSE_SECTIONS:
+        m = re.search(r'<section\b[^>]*\bid="%s"[^>]*>' % sec_id, out)
+        if not m:
+            continue
+        out = out[:m.end()] + "\n" + block(part, pause_html(n, line)) + out[m.end():]
+        inserted += 1
+    if inserted:
+        out = out.replace("</head>", block("pause-css", PAUSE_CSS) + "</head>", 1)
+    return out
+
+
 def apply(html: str, n: dict | None, with_script: bool) -> str:
     """Strip any earlier notice; insert a fresh one when n is set. A page without
     a </nav> or </head> is returned stripped only."""
@@ -169,6 +218,7 @@ def apply(html: str, n: dict | None, with_script: bool) -> str:
         i = out.rfind("</body>")
         if i != -1:
             out = out[:i] + block("js", JS) + "\n" + out[i:]
+        out = apply_pause(out, n)
     return out
 
 
