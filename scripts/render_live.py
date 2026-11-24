@@ -479,6 +479,16 @@ def main() -> int:
         print("render_live: " + bep.deploy_step(root, check=a.check))
     except Exception as e:
         print(f"render_live: WARN employer pages step failed ({type(e).__name__}: {e}) — committed employer pages deploy as-is")
+
+    # ── Site-wide notice strip (2026-11-24) — additive, non-fatal, runs LAST ──
+    # site_notice.deploy_step() reads data/site_notice.json. Enabled -> a notice strip
+    # under the <nav> of the live-data pages (incl. the employer pages re-rendered
+    # just above). Disabled or missing -> pages are left exactly as rendered above.
+    try:
+        import site_notice
+        print("render_live: " + site_notice.deploy_step(root, check=a.check))
+    except Exception as e:
+        print(f"render_live: WARN site notice step failed ({type(e).__name__}: {e}) — pages deploy without it")
     return 0
 
 

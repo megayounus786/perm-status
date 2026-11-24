@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "title": "Status updates are temporarily paused.",
+  "text": "We're working to resolve a technical issue. Case statuses and processing data shown here are from November 23, 2026 and will update automatically once checks resume.",
+  "since": "2026-11-24",
+  "note": "Site-wide notice strip, rendered at deploy by scripts/site_notice.py (called from render_live.py). To remove it: set enabled to false (or delete this file), commit, push."
+}
