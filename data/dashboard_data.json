@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T12:15:03-05:00",
+  "updatedAt": "2026-11-26T15:15:13-05:00",
   "backlog": {
     "total": 75060,
     "onHold": 2129,
@@ -25,14 +25,14 @@
     "current": 280,
     "deltaFromLastMonth": -19,
     "certified": 278,
-    "rfi": 292,
+    "rfi": 291,
     "denied": 316,
     "trend90Day": -64,
     "windowDays": 30,
-    "sampleSize": 15939,
+    "sampleSize": 15729,
     "samples": {
-      "certified": 14773,
-      "rfi": 719,
+      "certified": 14574,
+      "rfi": 708,
       "denied": 447
     }
   },
@@ -63,7 +63,7 @@
     "day": 49,
     "daysInMonth": 100,
     "estFinish": "Dec 9",
-    "movementPerWeek": 8.4,
+    "movementPerWeek": 8.3,
     "casesRemaining": 3198,
     "casesOnHold": 160,
     "latestLetter": "M",
