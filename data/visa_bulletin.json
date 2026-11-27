@@ -1,7 +1,7 @@
 {
-  "bulletin_date": "November 2026",
-  "last_updated": "2026-10-22T19:16:34Z",
-  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2027/visa-bulletin-for-november-2026.html",
+  "bulletin_date": "December 2026",
+  "last_updated": "2026-11-27T14:01:35Z",
+  "source_url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin/2027/visa-bulletin-for-december-2026.html",
   "final_action_dates": {
     "1st": {
       "all_other": "C",
@@ -47,7 +47,7 @@
     },
     "5th Unreserved": {
       "all_other": "C",
-      "china": "01DEC16",
+      "china": "01JAN17",
       "india": "01DEC23",
       "mexico": "C",
       "philippines": "C"
