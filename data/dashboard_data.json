@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-11-26T23:45:09-05:00",
+  "updatedAt": "2026-11-27T06:50:58-05:00",
   "backlog": {
-    "total": 75060,
+    "total": 75137,
     "onHold": 2129,
     "startOfMonth": 80970,
     "thisMonth": {
       "name": "Nov 2026",
       "processed": 13389,
-      "intake": 7479,
+      "intake": 7556,
       "onHold": 0,
       "other": 0,
       "decided": 13389
@@ -29,9 +29,9 @@
     "denied": 316,
     "trend90Day": -63,
     "windowDays": 30,
-    "sampleSize": 15497,
+    "sampleSize": 15476,
     "samples": {
-      "certified": 14353,
+      "certified": 14332,
       "rfi": 700,
       "denied": 444
     }
@@ -47,14 +47,14 @@
     "other": 0,
     "decided": 0,
     "yesterday": {
-      "total": 393,
-      "certified": 364,
-      "rfi": 9,
-      "denied": 20,
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
       "withdrawn": 0,
       "onHold": 0,
       "other": 0,
-      "decided": 393
+      "decided": 0
     }
   },
   "dol": {
@@ -62,8 +62,8 @@
     "monthFull": "March",
     "day": 49,
     "daysInMonth": 100,
-    "estFinish": "Dec 10",
-    "movementPerWeek": 8.1,
+    "estFinish": "Dec 11",
+    "movementPerWeek": 7.9,
     "casesRemaining": 3198,
     "casesOnHold": 160,
     "latestLetter": "M",
@@ -386,9 +386,9 @@
     },
     {
       "label": "Nov '26",
-      "total": 7479,
+      "total": 7556,
       "certified": 0,
-      "review": 7411,
+      "review": 7488,
       "withdrawn": 68,
       "denied": 0,
       "rfi": 0,
@@ -399,17 +399,6 @@
     }
   ],
   "rateDays": [
-    {
-      "date": "2026-10-28",
-      "total": 699,
-      "certified": 611,
-      "rfi": 43,
-      "denied": 44,
-      "withdrawn": 1,
-      "onHold": 0,
-      "other": 0,
-      "decided": 699
-    },
     {
       "date": "2026-10-29",
       "total": 740,
@@ -723,6 +712,17 @@
     },
     {
       "date": "2026-11-26",
+      "total": 0,
+      "certified": 0,
+      "rfi": 0,
+      "denied": 0,
+      "withdrawn": 0,
+      "onHold": 0,
+      "other": 0,
+      "decided": 0
+    },
+    {
+      "date": "2026-11-27",
       "total": 0,
       "certified": 0,
       "rfi": 0,
